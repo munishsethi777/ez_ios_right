@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
 class ActiveLearningPlanCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var learningPlanPercent: UILabel!
+    @IBOutlet weak var ring: UICircularProgressRingView!
     @IBOutlet weak var learningPlanTitle: UILabel!
-
-
+    @IBOutlet weak var lpProgress: UIProgressView!
+    
+    
 }

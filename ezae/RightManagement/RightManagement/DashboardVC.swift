@@ -16,10 +16,16 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     @IBOutlet weak var trainingView: UIView!
     @IBOutlet weak var notificationsTableView: UITableView!
     @IBOutlet weak var activeLearningPlanCollectionView: UICollectionView!
-   
+    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var completedCountLabel: UILabel!
+    @IBOutlet weak var pendingCountLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
     var notifications = [Notification]()
     var activeLearningPlans = [ActiveLearningPlan]()
-    
+    var loggedInUserSeq: Int = 0
+    var loggedInCompanySeq: Int = 0
+    var notificationsCount: Int = 0
+    var activeLpCount: Int = 0
     override func viewDidLoad() {
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8
@@ -31,18 +37,21 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         
         activeLearningPlanCollectionView.delegate = self
         activeLearningPlanCollectionView.dataSource = self
-        //activeLearningPlanCollectionView.register(ActiveLearningPlanCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "ActiveLearningPlanCollectionViewCell")
-        loadNotificaitons()
-        loadActiveLearningPlans();
-        
+        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        getDashboardStates()
+        getNotifications()
+        getActiveLearningPlans()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.notificationsCount
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "NotificationTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell
@@ -54,7 +63,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 3
+        return self.activeLpCount
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -65,24 +74,138 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ActiveLearningPlanCollectionViewCell
         let learningPlan = activeLearningPlans[indexPath.row]
         cell?.learningPlanTitle.text = learningPlan.learningPlanName
-        cell?.learningPlanPercent.text = String(learningPlan.percentageCompleted)
+        let progress = Float(learningPlan.percentageCompleted)
+        cell?.ring.setProgress(value: CGFloat(progress), animationDuration: 2)
         return cell!
-
     }
     
-    func loadNotificaitons(){
-        let not1 = Notification(seq:1,title:"Selft Nominate for the new class room training on 1st Oct.",notificationType:"nomination")
-        let not2 = Notification(seq:2,title:"New Chatroom has started follow right now.",notificationType:"chatroom")
-        let not3 = Notification(seq:3,title:"New Chatroom has started follow right now.",notificationType:"chatroom")
-        let not4 = Notification(seq:4,title:"New Chatroom has started follow right now.",notificationType:"chatroom")
-        let not5 = Notification(seq:5,title:"New Chatroom has started follow right now.",notificationType:"chatroom")
-        notifications += [not1,not2,not3,not4,not5]
+    func loadNotificaitons(response: [String: Any]){
+        let notificationJsonArr = response["notifications"] as! [Any]
+        self.notificationsCount = notificationJsonArr.count
+        for var i in (0..<notificationJsonArr.count).reversed(){
+            let notificationJson = notificationJsonArr[i] as! [String:Any]
+            let title = notificationJson["title"] as? String
+            let from = notificationJson["from"] as? String
+            let fromDate = DateUtil.sharedInstance.stringToDate(dateStr: from!)
+            let fromDateInFormat = DateUtil.sharedInstance.dateToString(date: fromDate, format: DateUtil.format)
+            let Detail = title! + " on " + fromDateInFormat
+            var notificationType = "Nominate"
+            if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
+            {
+                notificationType = "Chatroom"
+            }else{
+                notificationType = "Classroom"
+            }
+            let not1 = Notification(seq:1,title:Detail,notificationType: notificationType)
+            notifications.append(not1)
+        }
+        self.notificationsTableView.reloadData()
     }
-    func loadActiveLearningPlans(){
-        let alp1 = ActiveLearningPlan(learningPlanSeq: 1, learningPlanName: "First Training Plan", percentageCompleted: 20)
-        let alp2 = ActiveLearningPlan(learningPlanSeq: 1, learningPlanName: "First Training Plan", percentageCompleted: 20)
-        let alp3 = ActiveLearningPlan(learningPlanSeq: 1, learningPlanName: "First Training Plan", percentageCompleted: 20)
-        activeLearningPlans += [alp1,alp2,alp3]
+    
+    func loadActiveLearningPlans(response: [String: Any]){
+        let lpJsonArr = response["learningPlans"] as! [Any]
+        self.activeLpCount = lpJsonArr.count
+        for var i in (0..<lpJsonArr.count).reversed(){
+            let lpJson = lpJsonArr[i] as! [String:Any]
+            let title = lpJson["learningPlanName"] as! String
+            let progress = lpJson["percentCompleted"] as! Double
+            let alp = ActiveLearningPlan(learningPlanSeq: 1, learningPlanName: title,percentageCompleted: Int(progress))
+            activeLearningPlans.append(alp)
+        }
+        activeLearningPlanCollectionView.reloadData()
     }
+    
+    func getDashboardStates(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_DASHBOARD_COUNTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.populateDashboardCounts(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func getNotifications(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATION, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadNotificaitons(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func getActiveLearningPlans(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_LEARNING_PLAN, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadActiveLearningPlans(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+
+    
+    func populateDashboardCounts(response: [String: Any]){
+        let responseJson = response["dashboardData"] as! [String:Any]
+        let totalScore = responseJson["totalScores"] as! Int
+        let completedTrainings = responseJson["completedTrainings"] as! Int
+        let pendingTrainings = responseJson["pendingTrainings"] as! [String:Any]
+        let maxScore = pendingTrainings["maxScore"] as! Int
+        let userRank = responseJson["userRank"] as! Int
+        let pendingCount = pendingTrainings["pendingCount"] as! Int
+        let totalScoreStr = String(totalScore) + "/" + String(maxScore)
+        rankLabel.text = String(userRank)
+        totalScoreLabel.text = totalScoreStr
+        pendingCountLabel.text = String(pendingCount)
+        completedCountLabel.text = String(completedTrainings)
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     
 }

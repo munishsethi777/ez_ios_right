@@ -7,3 +7,8 @@
 //
 
 import Foundation
+let sharedInstance = UserMgr()
+let coreDataManager = CoreDataManager(modelName: "right")
+func saveUser(response: [String: Any]){
+    
+}

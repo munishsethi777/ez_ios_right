@@ -74,9 +74,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ActiveLearningPlanCollectionViewCell
         let learningPlan = activeLearningPlans[indexPath.row]
         cell?.learningPlanTitle.text = learningPlan.learningPlanName
-        cell?.learningPlanPercent.text = String(learningPlan.percentageCompleted)
         let progress = Float(learningPlan.percentageCompleted)
-        cell?.lpProgress.setProgress(progress, animated: false)
+        cell?.ring.setProgress(value: CGFloat(progress), animationDuration: 2)
         return cell!
     }
     

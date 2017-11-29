@@ -12,6 +12,5 @@ class ActiveLearningPlanCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var learningPlanPercent: UILabel!
     @IBOutlet weak var learningPlanTitle: UILabel!
-
-
+    @IBOutlet weak var lpProgress: UIProgressView!
 }

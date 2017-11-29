@@ -12,9 +12,7 @@ class Message{
     
     var messageTitle: String
     var messageDescription : String
-    var dated : String
-    var userSeq :Integer
-    var isSent:Bool
+ 
     
     init(messageTitle:String,messageDescription:String){
         self.messageTitle = messageTitle

@@ -26,6 +26,23 @@
 		E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B611F8E0B2C0063EDEC /* NotificationTableViewCell.swift */; };
 		E66D5B641F8E32C90063EDEC /* ActiveLearningPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B631F8E32C90063EDEC /* ActiveLearningPlan.swift */; };
 		E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */; };
+		F63982181FBACBCC00DA61B1 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63982171FBACBCC00DA61B1 /* StringConstants.swift */; };
+		F639821A1FBACBD800DA61B1 /* MessageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63982191FBACBD800DA61B1 /* MessageFormat.swift */; };
+		F639821C1FBACBE600DA61B1 /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639821B1FBACBE600DA61B1 /* ServiceHandler.swift */; };
+		F639821E1FBB09F500DA61B1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639821D1FBB09F400DA61B1 /* CoreDataManager.swift */; };
+		F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */; };
+		F63982241FBBFA6700DA61B1 /* UserMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63982231FBBFA6700DA61B1 /* UserMgr.swift */; };
+		F64A98221FCE7123001858DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98211FCE7123001858DE /* DateUtil.swift */; };
+		F64A98541FCEAB26001858DE /* UICircularProgressRingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98531FCE9BBE001858DE /* UICircularProgressRingLayer.swift */; };
+		F64A98551FCEAB26001858DE /* UICircularProgressRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98521FCE9BBE001858DE /* UICircularProgressRingView.swift */; };
+		F64A98561FCEAB26001858DE /* UICircularProgressRingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98511FCE9BBE001858DE /* UICircularProgressRingDelegate.swift */; };
+		F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98591FCEDC8B001858DE /* MyAchievements.swift */; };
+		F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */; };
+		F64A985E1FCFD17B001858DE /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A985D1FCFD17B001858DE /* Badge.swift */; };
+		F64A98601FD003EC001858DE /* MyTrainings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A985F1FD003EC001858DE /* MyTrainings.swift */; };
+		F64A98621FD006C4001858DE /* MyMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98611FD006C4001858DE /* MyMessages.swift */; };
+		F6DE8DFC1FBC161E00A71B97 /* PreferencesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DE8DFB1FBC161E00A71B97 /* PreferencesUtil.swift */; };
+		F6DE8DFE1FBD4D1900A71B97 /* DashboardMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DE8DFD1FBD4D1900A71B97 /* DashboardMgr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +67,24 @@
 		E66D5B611F8E0B2C0063EDEC /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = ViewControllers/NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		E66D5B631F8E32C90063EDEC /* ActiveLearningPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLearningPlan.swift; sourceTree = "<group>"; };
 		E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveLearningPlanCollectionViewCell.swift; path = ViewControllers/ActiveLearningPlanCollectionViewCell.swift; sourceTree = "<group>"; };
+		F63982171FBACBCC00DA61B1 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringConstants.swift; path = ../../../../right/right/Utils/StringConstants.swift; sourceTree = "<group>"; };
+		F63982191FBACBD800DA61B1 /* MessageFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageFormat.swift; path = ../../../../right/right/Utils/MessageFormat.swift; sourceTree = "<group>"; };
+		F639821B1FBACBE600DA61B1 /* ServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceHandler.swift; path = ../../../../right/right/Service/ServiceHandler.swift; sourceTree = "<group>"; };
+		F639821D1FBB09F400DA61B1 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../../../../SampleApp/SampleApp/CoreDataManager.swift; sourceTree = "<group>"; };
+		F63982201FBB0B9200DA61B1 /* right.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = right.xcdatamodel; sourceTree = "<group>"; };
+		F63982231FBBFA6700DA61B1 /* UserMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMgr.swift; sourceTree = "<group>"; };
+		F64A98211FCE7123001858DE /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		F64A98501FCE9BBE001858DE /* UICircularProgressRing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICircularProgressRing.h; sourceTree = "<group>"; };
+		F64A98511FCE9BBE001858DE /* UICircularProgressRingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingDelegate.swift; sourceTree = "<group>"; };
+		F64A98521FCE9BBE001858DE /* UICircularProgressRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingView.swift; sourceTree = "<group>"; };
+		F64A98531FCE9BBE001858DE /* UICircularProgressRingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingLayer.swift; sourceTree = "<group>"; };
+		F64A98591FCEDC8B001858DE /* MyAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievements.swift; sourceTree = "<group>"; };
+		F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
+		F64A985D1FCFD17B001858DE /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		F64A985F1FD003EC001858DE /* MyTrainings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrainings.swift; sourceTree = "<group>"; };
+		F64A98611FD006C4001858DE /* MyMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessages.swift; sourceTree = "<group>"; };
+		F6DE8DFB1FBC161E00A71B97 /* PreferencesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesUtil.swift; sourceTree = "<group>"; };
+		F6DE8DFD1FBD4D1900A71B97 /* DashboardMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardMgr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +117,10 @@
 		E66D5B271F8B7C220063EDEC /* RightManagement */ = {
 			isa = PBXGroup;
 			children = (
+				F63982221FBBFA3F00DA61B1 /* Managers */,
+				F639821D1FBB09F400DA61B1 /* CoreDataManager.swift */,
+				F63982161FBACB2A00DA61B1 /* Utils */,
+				F63982151FBACB1A00DA61B1 /* Services */,
 				E66D5B281F8B7C220063EDEC /* AppDelegate.swift */,
 				E66D5B2A1F8B7C220063EDEC /* ViewController.swift */,
 				E66D5B2C1F8B7C220063EDEC /* Main.storyboard */,
@@ -96,6 +135,7 @@
 				E66D5B341F8B7C220063EDEC /* Info.plist */,
 				E66D5B581F8DFDC10063EDEC /* Models */,
 				E66D5B4B1F8CA3990063EDEC /* ViewControllers */,
+				F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */,
 			);
 			path = RightManagement;
 			sourceTree = "<group>";
@@ -103,11 +143,19 @@
 		E66D5B4B1F8CA3990063EDEC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F64A98501FCE9BBE001858DE /* UICircularProgressRing.h */,
+				F64A98511FCE9BBE001858DE /* UICircularProgressRingDelegate.swift */,
+				F64A98531FCE9BBE001858DE /* UICircularProgressRingLayer.swift */,
+				F64A98521FCE9BBE001858DE /* UICircularProgressRingView.swift */,
 				E66D5B541F8CBDF20063EDEC /* MessageTableViewController.swift */,
 				E66D5B521F8CBB560063EDEC /* MessageTableViewCell.swift */,
 				E66D5B4C1F8CADDA0063EDEC /* DashboardVC.swift */,
 				E66D5B611F8E0B2C0063EDEC /* NotificationTableViewCell.swift */,
 				E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */,
+				F64A98591FCEDC8B001858DE /* MyAchievements.swift */,
+				F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */,
+				F64A985F1FD003EC001858DE /* MyTrainings.swift */,
+				F64A98611FD006C4001858DE /* MyMessages.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -118,8 +166,37 @@
 				E66D5B561F8CC2320063EDEC /* Message.swift */,
 				E66D5B591F8DFDE90063EDEC /* Notification.swift */,
 				E66D5B631F8E32C90063EDEC /* ActiveLearningPlan.swift */,
+				F64A985D1FCFD17B001858DE /* Badge.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		F63982151FBACB1A00DA61B1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F639821B1FBACBE600DA61B1 /* ServiceHandler.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		F63982161FBACB2A00DA61B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F63982191FBACBD800DA61B1 /* MessageFormat.swift */,
+				F63982171FBACBCC00DA61B1 /* StringConstants.swift */,
+				F6DE8DFB1FBC161E00A71B97 /* PreferencesUtil.swift */,
+				F64A98211FCE7123001858DE /* DateUtil.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		F63982221FBBFA3F00DA61B1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F63982231FBBFA6700DA61B1 /* UserMgr.swift */,
+				F6DE8DFD1FBD4D1900A71B97 /* DashboardMgr.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,15 +279,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				E66D5B641F8E32C90063EDEC /* ActiveLearningPlan.swift in Sources */,
+				F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */,
+				F63982181FBACBCC00DA61B1 /* StringConstants.swift in Sources */,
 				E66D5B531F8CBB560063EDEC /* MessageTableViewCell.swift in Sources */,
+				F64A98221FCE7123001858DE /* DateUtil.swift in Sources */,
+				F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */,
 				E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */,
+				F64A98561FCEAB26001858DE /* UICircularProgressRingDelegate.swift in Sources */,
+				F639821A1FBACBD800DA61B1 /* MessageFormat.swift in Sources */,
 				E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */,
+				F6DE8DFC1FBC161E00A71B97 /* PreferencesUtil.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				E66D5B5A1F8DFDE90063EDEC /* Notification.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
+				F639821C1FBACBE600DA61B1 /* ServiceHandler.swift in Sources */,
+				F64A98551FCEAB26001858DE /* UICircularProgressRingView.swift in Sources */,
 				E66D5B571F8CC2320063EDEC /* Message.swift in Sources */,
 				E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */,
+				F63982241FBBFA6700DA61B1 /* UserMgr.swift in Sources */,
+				F64A98621FD006C4001858DE /* MyMessages.swift in Sources */,
+				F64A98601FD003EC001858DE /* MyTrainings.swift in Sources */,
+				F639821E1FBB09F500DA61B1 /* CoreDataManager.swift in Sources */,
 				E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */,
+				F64A985E1FCFD17B001858DE /* Badge.swift in Sources */,
+				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
+				F6DE8DFE1FBD4D1900A71B97 /* DashboardMgr.swift in Sources */,
+				F64A98541FCEAB26001858DE /* UICircularProgressRingLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +465,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F63982201FBB0B9200DA61B1 /* right.xcdatamodel */,
+			);
+			currentVersion = F63982201FBB0B9200DA61B1 /* right.xcdatamodel */;
+			path = right.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E66D5B1D1F8B7C220063EDEC /* Project object */;
 }

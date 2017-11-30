@@ -10,12 +10,15 @@ import UIKit
 
 class MessageTableViewController: UITableViewController {
 
+    @IBOutlet var messageTableView: UITableView!
     var messages = [Message]()
-    
+    var loggedInUserSeq: Int = 0
+    var loggedInCompanySeq: Int = 0
+    var messageCount: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMessages()
-
+        getMessages()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -75,7 +78,6 @@ class MessageTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with:.fade)
         })
         deleteAction.backgroundColor = UIColor.red
-        
         return [editAction, deleteAction]
     }
     /*
@@ -102,20 +104,51 @@ class MessageTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func getMessages(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MESSSAGES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadMessages(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
     
-    private func loadMessages(){
-        let msg1 = Message(messageTitle: "This is first message",messageDescription: "This is message details")
-        let msg2 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg3 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg4 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg5 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg6 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg7 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg8 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg9 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg10 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        let msg11 = Message(messageTitle: "This is second message",messageDescription: "This is second details")
-        messages += [msg1,msg2,msg3,msg4,msg5,msg6,msg7,msg8,msg9,msg10,msg11]
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func loadMessages(response: [String: Any]){
+        let messageJsonArr = response["messages"] as! [Any];
+        messageCount = messageJsonArr.count
+        for var i in (0..<messageJsonArr.count).reversed(){
+            let messageJson = messageJsonArr[i] as! [String: Any]
+            let title = messageJson["messageText"] as! String
+            let dated = messageJson["dated"] as! String
+            let name = messageJson["name"] as! String
+            let userImage = messageJson["userImage"] as! String
+            let userImagePath = StringConstants.WEB_API_URL + userImage
+            let userType = messageJson["userType"] as! String
+            let userSeq = messageJson["userSeq"] as! Int
+            let msg = Message(messageTitle:name,messageDescription: title)
+            messages.append(msg)
+        }
+        messageTableView.reloadData()
     }
 
 }

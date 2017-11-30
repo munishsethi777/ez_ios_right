@@ -26,6 +26,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var loggedInCompanySeq: Int = 0
     var notificationsCount: Int = 0
     var activeLpCount: Int = 0
+    var action_name: String = ""
     override func viewDidLoad() {
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8

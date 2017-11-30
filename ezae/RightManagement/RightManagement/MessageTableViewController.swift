@@ -17,6 +17,8 @@ class MessageTableViewController: UITableViewController {
     var messageCount: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
         
         // Uncomment the following line to preserve selection between presentations
@@ -144,7 +146,7 @@ class MessageTableViewController: UITableViewController {
             let userImage = messageJson["userImage"] as! String
             let userImagePath = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
-            let userSeq = messageJson["userSeq"] as! Int
+            let userSeq = messageJson["userSeq"] as? Int
             let msg = Message(messageTitle:name,messageDescription: title)
             messages.append(msg)
         }

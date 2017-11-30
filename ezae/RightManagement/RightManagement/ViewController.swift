@@ -16,8 +16,18 @@ class ViewController: UIViewController {
         usernameTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+         super.viewDidAppear(false)
+        let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        if(loggedInUserSeq > 0){
+            self.performSegue(withIdentifier: "DashboardController", sender: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

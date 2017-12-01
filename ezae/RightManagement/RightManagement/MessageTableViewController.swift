@@ -52,6 +52,15 @@ class MessageTableViewController: UITableViewController {
         let message = messages[indexPath.row]
         cell?.messageTitle.text = message.messageTitle
         cell?.messageDescription.text = message.messageDescription
+        cell?.messageDateLabel.text = message.date
+        let imagePath = message.userImageUrl
+        if let url = NSURL(string: imagePath) {
+            if let data = NSData(contentsOf: url as URL) {
+                cell?.messageImageView.image = UIImage(data: data as Data)
+                cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
+                cell?.messageImageView.clipsToBounds = true
+            }
+        }
         return cell!
     }
     
@@ -144,10 +153,10 @@ class MessageTableViewController: UITableViewController {
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
             let userImage = messageJson["userImage"] as! String
-            let userImagePath = StringConstants.WEB_API_URL + userImage
+            let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as? Int
-            let msg = Message(messageTitle:name,messageDescription: title)
+            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated)
             messages.append(msg)
         }
         messageTableView.reloadData()

@@ -12,9 +12,13 @@ class Message{
     
     var messageTitle: String
     var messageDescription : String
+    var userImageUrl: String
+    var date: String
     
-    init(messageTitle:String,messageDescription:String){
+    init(messageTitle:String,messageDescription:String,userImageUrl: String,date: String){
         self.messageTitle = messageTitle
         self.messageDescription = messageDescription
+        self.userImageUrl = userImageUrl
+        self.date = date
     }
 }

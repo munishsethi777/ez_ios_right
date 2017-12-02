@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate{
+class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var rankView: UIView!
     @IBOutlet weak var scoreView: UIView!
     @IBOutlet weak var pointsView: UIView!
@@ -28,6 +29,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var activeLpCount: Int = 0
     var action_name: String = ""
     override func viewDidLoad() {
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:2000)
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8
         pointsView.layer.cornerRadius = 8
@@ -43,14 +45,22 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         getDashboardStates()
         getNotifications()
         getActiveLearningPlans()
+        
+
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfCell: CGFloat = 2  //you need to give a type as CGFloat
+        let cellWidth = UIScreen.main.bounds.size.width / numberOfCell
+        return CGSize(width: cellWidth-1, height: 73)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.notificationsCount
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,10 +83,13 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellIdentifier = "ActiveLearningPlanCollectionViewCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ActiveLearningPlanCollectionViewCell
+        cell?.ring.sizeToFit();
+        cell?.ring.font = UIFont.systemFont(ofSize: 12)
         let learningPlan = activeLearningPlans[indexPath.row]
         cell?.learningPlanTitle.text = learningPlan.learningPlanName
         let progress = Float(learningPlan.percentageCompleted)
         cell?.ring.setProgress(value: CGFloat(progress), animationDuration: 2)
+        
         return cell!
     }
     
@@ -100,7 +113,16 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
             let not1 = Notification(seq:1,title:Detail,notificationType: notificationType)
             notifications.append(not1)
         }
+        
+        
+        
         self.notificationsTableView.reloadData()
+        
+        var frame = self.notificationsTableView.frame
+        frame.size.height = self.notificationsTableView.contentSize.height
+        self.notificationsTableView.frame = frame
+        
+
     }
     
     func loadActiveLearningPlans(response: [String: Any]){

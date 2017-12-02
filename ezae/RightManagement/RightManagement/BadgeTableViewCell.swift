@@ -15,6 +15,8 @@ class BadgeTableViewCell: UITableViewCell {
     @IBOutlet weak var badgeImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.badgeTitleLabel.numberOfLines=0
+        self.badgeTitleLabel.sizeToFit()
         // Initialization code
     }
     

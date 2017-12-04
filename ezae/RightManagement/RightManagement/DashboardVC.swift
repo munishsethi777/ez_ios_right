@@ -10,6 +10,9 @@ import UIKit
 
 class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var activeLearningPlansHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var notificationTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var rankView: UIView!
     @IBOutlet weak var scoreView: UIView!
@@ -29,7 +32,6 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var activeLpCount: Int = 0
     var action_name: String = ""
     override func viewDidLoad() {
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:2000)
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8
         pointsView.layer.cornerRadius = 8
@@ -46,7 +48,16 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         getNotifications()
         getActiveLearningPlans()
         
-
+        
+        
+        
+    }
+    func resetScrollHeight(){
+        var scrollheight: CGFloat = 50
+        scrollheight += self.notificationTableViewHeightConstraint.constant
+        scrollheight += self.activeLearningPlansHeightConstraint.constant
+        scrollheight += self.topView.frame.height
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:scrollheight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfCell: CGFloat = 2  //you need to give a type as CGFloat
@@ -113,16 +124,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
             let not1 = Notification(seq:1,title:Detail,notificationType: notificationType)
             notifications.append(not1)
         }
-        
-        
-        
         self.notificationsTableView.reloadData()
-        
-        var frame = self.notificationsTableView.frame
-        frame.size.height = self.notificationsTableView.contentSize.height
-        self.notificationsTableView.frame = frame
-        
-
+        self.notificationTableViewHeightConstraint.constant = self.notificationsTableView.contentSize.height
+        resetScrollHeight()
     }
     
     func loadActiveLearningPlans(response: [String: Any]){
@@ -136,6 +140,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
             activeLearningPlans.append(alp)
         }
         activeLearningPlanCollectionView.reloadData()
+        self.activeLearningPlansHeightConstraint.constant = self.activeLearningPlanCollectionView.collectionViewLayout.collectionViewContentSize.height
+        resetScrollHeight()
     }
     
     func getDashboardStates(){

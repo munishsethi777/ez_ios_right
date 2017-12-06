@@ -83,13 +83,12 @@
                         <viewControllerLayoutGuide type="top" id="2mu-tG-Tye"/>
                         <viewControllerLayoutGuide type="bottom" id="3Cn-ou-kxq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BAN-CB-XtQ" userLabel="ScrollView" customClass="UIScrollView">
+                    <view key="view" contentMode="top" id="BAN-CB-XtQ" userLabel="ScrollView" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbT-q5-pEY">
+                            <view contentMode="scaleAspectFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbT-q5-pEY" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="say-oC-o57">
                                         <rect key="frame" x="8" y="8" width="70" height="70"/>
@@ -110,7 +109,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0p9-zK-PjY">
-                                        <rect key="frame" x="103" y="8" width="70" height="70"/>
+                                        <rect key="frame" x="102" y="8" width="71" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="ic_chatroom_blue-web.png"/>
                                         <connections>
@@ -141,17 +140,17 @@
                                         </accessibility>
                                     </view>
                                     <view alpha="0.65000000000000002" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="rankView" translatesAutoresizingMaskIntoConstraints="NO" id="gad-kd-Ctx" userLabel="rankView" customClass="dashboard">
-                                        <rect key="frame" x="105" y="97" width="66" height="63"/>
+                                        <rect key="frame" x="103" y="97" width="67" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPU-og-iPP">
-                                                <rect key="frame" x="0.0" y="43" width="66" height="20"/>
+                                                <rect key="frame" x="0.0" y="43" width="67" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szg-jm-nrE">
-                                                <rect key="frame" x="0.0" y="14" width="66" height="21"/>
+                                                <rect key="frame" x="0.0" y="14" width="67" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -165,18 +164,18 @@
                                         </accessibility>
                                     </view>
                                     <view alpha="0.64999997615814209" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3b-bn-vIM" userLabel="trainingView">
-                                        <rect key="frame" x="205" y="97" width="66" height="63"/>
+                                        <rect key="frame" x="203" y="97" width="67" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwf-UI-OIB">
-                                                <rect key="frame" x="0.0" y="14" width="66" height="21"/>
+                                                <rect key="frame" x="0.0" y="14" width="67" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSp-nQ-bgk">
-                                                <rect key="frame" x="0.0" y="43" width="66" height="20"/>
+                                                <rect key="frame" x="0.0" y="43" width="67" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
@@ -188,17 +187,17 @@
                                         </accessibility>
                                     </view>
                                     <view alpha="0.64999997615814209" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYj-5g-fXc" userLabel="scoreView">
-                                        <rect key="frame" x="301" y="97" width="66" height="63"/>
+                                        <rect key="frame" x="302" y="97" width="65" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyN-4L-twB">
-                                                <rect key="frame" x="0.0" y="43" width="66" height="20"/>
+                                                <rect key="frame" x="0.0" y="43" width="65" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100/220" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-xG-ewu">
-                                                <rect key="frame" x="0.0" y="14" width="66" height="21"/>
+                                                <rect key="frame" x="0.0" y="14" width="65" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -211,7 +210,7 @@
                                         </accessibility>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-Xj-PP0">
-                                        <rect key="frame" x="201" y="8" width="70" height="70"/>
+                                        <rect key="frame" x="202" y="8" width="68" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="ic_learningplan_blue-web.png"/>
                                         <connections>
@@ -220,19 +219,30 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="170" id="lSp-ea-epk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="uq9-O9-WjJ"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-KW-C79">
-                                <rect key="frame" x="0.0" y="188" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NOTIFICATIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dc-KW-C79">
+                                <rect key="frame" x="0.0" y="185" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.23720645930000001" green="0.64047812410000005" blue="0.93704394040000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="IYh-xg-Eud"/>
+                                    <constraint firstAttribute="height" constant="21" id="ewG-R4-G0O"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.55780060279999999" green="0.53319849409999998" blue="0.55566512759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vtK-j6-ndU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="vtK-j6-ndU">
                                 <rect key="frame" x="0.0" y="217" width="375" height="142"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="R8S-SR-E9V"/>
+                                    <constraint firstAttribute="height" constant="200" identifier="notificationsTableViewHeightConstraint" id="x2S-Rp-MU7"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" id="NqH-53-Aw3" customClass="NotificationTableViewCell" customModule="RightManagement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="40"/>
@@ -264,79 +274,101 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IXR-pb-LF6">
-                                <rect key="frame" x="0.0" y="450" width="375" height="155"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="hd3-35-STh">
-                                    <size key="itemSize" width="173" height="73"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" reuseIdentifier="ActiveLearningPlanCollectionViewCell" id="gpc-zv-QF9" customClass="ActiveLearningPlanCollectionViewCell" customModule="RightManagement" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="173" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="173" height="73"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learning Plan1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-s2-JGl">
-                                                    <rect key="frame" x="8" y="6" width="96" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-FA-tif" customClass="UICircularProgressRingView" customModule="RightManagement">
-                                                    <rect key="frame" x="111" y="9" width="55" height="55"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
-                                                            <color key="value" red="0.60936523561813871" green="0.66210263879153453" blue="0.80622571243523322" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
-                                                            <color key="value" red="0.96976198186528495" green="0.6600245097278532" blue="0.66322747884836508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="viewStyle">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                            <real key="value" value="-90"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2fU-Wd-H4R" userLabel="ActiveLearningPlansView">
+                                <rect key="frame" x="0.0" y="359" width="375" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ACTIVE LEARNING PLANS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-7M-UpY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.23720645930000001" green="0.64047812410000005" blue="0.93704394040000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.55780060279999999" green="0.53319849409999998" blue="0.55566512759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IXR-pb-LF6">
+                                        <rect key="frame" x="0.0" y="34" width="375" height="82"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="hd3-35-STh">
+                                            <size key="itemSize" width="173" height="73"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" reuseIdentifier="ActiveLearningPlanCollectionViewCell" id="gpc-zv-QF9" customClass="ActiveLearningPlanCollectionViewCell" customModule="RightManagement" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="173" height="73"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learning Plan1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-s2-JGl">
+                                                            <rect key="frame" x="8" y="6" width="96" height="60"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-FA-tif" customClass="UICircularProgressRingView" customModule="RightManagement">
+                                                            <rect key="frame" x="111" y="9" width="55" height="55"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                                                    <color key="value" red="0.60936523561813871" green="0.66210263879153453" blue="0.80622571243523322" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                                                    <color key="value" red="0.96976198186528495" green="0.6600245097278532" blue="0.66322747884836508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="viewStyle">
+                                                                    <integer key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                                    <real key="value" value="-90"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
                                                 </view>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                        <size key="customSize" width="173" height="73"/>
-                                        <connections>
-                                            <outlet property="learningPlanTitle" destination="p6B-s2-JGl" id="ep5-kN-DEq"/>
-                                            <outlet property="ring" destination="vGe-FA-tif" id="35X-Sr-DeW"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active Learning Plans" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-7M-UpY">
-                                <rect key="frame" x="0.0" y="358" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.55780060279999999" green="0.53319849409999998" blue="0.55566512759999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                                <size key="customSize" width="173" height="73"/>
+                                                <connections>
+                                                    <outlet property="learningPlanTitle" destination="p6B-s2-JGl" id="ep5-kN-DEq"/>
+                                                    <outlet property="ring" destination="vGe-FA-tif" id="35X-Sr-DeW"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" identifier="activeLearningPlansHeightConstraint" id="8IP-Ds-gny"/>
+                                    <constraint firstAttribute="width" constant="375" id="HSs-Gi-yR6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vtK-j6-ndU" firstAttribute="width" secondItem="BAN-CB-XtQ" secondAttribute="width" id="7KW-7C-240"/>
+                            <constraint firstItem="kbT-q5-pEY" firstAttribute="bottom" secondItem="5dc-KW-C79" secondAttribute="top" id="CVT-mC-zs7"/>
+                            <constraint firstItem="2fU-Wd-H4R" firstAttribute="width" secondItem="BAN-CB-XtQ" secondAttribute="width" id="DX3-qV-fxI"/>
+                            <constraint firstItem="kbT-q5-pEY" firstAttribute="width" secondItem="BAN-CB-XtQ" secondAttribute="width" id="Twg-nG-4nj"/>
+                            <constraint firstItem="5dc-KW-C79" firstAttribute="width" secondItem="BAN-CB-XtQ" secondAttribute="width" id="euC-Ws-QJD"/>
+                            <constraint firstItem="kbT-q5-pEY" firstAttribute="top" secondItem="BAN-CB-XtQ" secondAttribute="top" id="hYM-YT-O9B"/>
+                            <constraint firstItem="vtK-j6-ndU" firstAttribute="bottom" secondItem="2fU-Wd-H4R" secondAttribute="top" id="oKc-9m-ZFR"/>
+                            <constraint firstItem="5dc-KW-C79" firstAttribute="bottom" secondItem="vtK-j6-ndU" secondAttribute="top" id="urM-Ga-3Ce"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="H3U-yh-xqO">
                         <barButtonItem key="backBarButtonItem" title="Back" id="YWX-62-UYj"/>
                     </navigationItem>
                     <connections>
                         <outlet property="activeLearningPlanCollectionView" destination="IXR-pb-LF6" id="SEd-CX-3sk"/>
+                        <outlet property="activeLearningPlansHeightConstraint" destination="8IP-Ds-gny" id="TJy-MC-m60"/>
                         <outlet property="completedCountLabel" destination="Pwf-UI-OIB" id="02G-nY-0HP"/>
+                        <outlet property="notificationTableViewHeightConstraint" destination="x2S-Rp-MU7" id="Pkv-OP-f09"/>
                         <outlet property="notificationsTableView" destination="vtK-j6-ndU" id="ek5-bz-9nD"/>
                         <outlet property="pendingCountLabel" destination="WQC-vs-6wg" id="pQc-HP-fPn"/>
                         <outlet property="pointsView" destination="0gK-8d-6HN" id="5fo-dO-vch"/>
@@ -344,6 +376,7 @@
                         <outlet property="rankView" destination="gad-kd-Ctx" id="PXa-EA-uaX"/>
                         <outlet property="scoreView" destination="wYj-5g-fXc" id="W9x-HN-rcW"/>
                         <outlet property="scrollView" destination="BAN-CB-XtQ" id="2zx-PO-0mm"/>
+                        <outlet property="topView" destination="kbT-q5-pEY" id="iLI-J1-POu"/>
                         <outlet property="totalScoreLabel" destination="oCD-xG-ewu" id="IYu-wO-gZ5"/>
                         <outlet property="trainingView" destination="t3b-bn-vIM" id="JHY-hY-nJ3"/>
                     </connections>

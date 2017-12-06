@@ -8,8 +8,9 @@
 
 import Foundation
 struct StringConstants {
-    static let ACTION_API_URL = "http://www.ezae.in/Actions/Mobile/"
+    static var ACTION_API_URL = "http://www.ezae.in/Actions/Mobile/"
     static let WEB_API_URL = "http://www.ezae.in/"
+    static let IMAGE_URL = "http://www.ezae.in/images/"
     //User Actions
     static let LOGIN_URL = ACTION_API_URL + "UserAction.php?call=login&username={0}&password={1}&gcmid={2}"
     static let GET_DASHBOARD_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardStats&userSeq={0}&companySeq={1}";
@@ -19,6 +20,7 @@ struct StringConstants {
     
     //Learning Plan Actions
     static let GET_LEARNING_PLAN = ACTION_API_URL + "LearningPlanAction.php?call=getLearningPlans&userSeq={0}&companySeq={1}"
+    static let GET_LEARNING_PLAN_DETAIL = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&call=getLearningPlanDetails"
     
     //Badge Actions
     static let GET_ACHIEVEMENT_BADGES = ACTION_API_URL + "BadgeAction.php?call=myAchievementMyBadges&userSeq={0}&companyseq={1}"

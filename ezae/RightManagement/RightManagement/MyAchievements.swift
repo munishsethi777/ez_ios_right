@@ -10,8 +10,7 @@ import UIKit
 
 class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
-   
-   
+    
     @IBOutlet weak var badgeTableView: UITableView!
     var loggedInUserSeq: Int = 0
     @IBOutlet weak var scoreLabel: UILabel!

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,30 +90,13 @@
                             <view contentMode="scaleAspectFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbT-q5-pEY" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="say-oC-o57">
-                                        <rect key="frame" x="8" y="8" width="70" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="ic_achievement-web.png"/>
-                                        <connections>
-                                            <action selector="achievementsButton" destination="UlI-sw-qrf" eventType="touchUpInside" id="QNq-1k-aFi"/>
-                                            <segue destination="H5H-DG-r1d" kind="show" id="faa-MJ-kWz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdc-ik-hVe" userLabel="btn1">
-                                        <rect key="frame" x="297" y="8" width="70" height="70"/>
+                                        <rect key="frame" x="312" y="8" width="55" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" identifier="btn1"/>
                                         <state key="normal" title="Button" image="ic_messages_blue-web.png"/>
                                         <connections>
                                             <segue destination="ru2-qC-wPH" kind="show" id="slG-kK-TIN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0p9-zK-PjY">
-                                        <rect key="frame" x="102" y="8" width="71" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="ic_chatroom_blue-web.png"/>
-                                        <connections>
-                                            <segue destination="PP0-xY-9TT" kind="show" id="Twk-e4-43H"/>
                                         </connections>
                                     </button>
                                     <view alpha="0.64999997615814209" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gK-8d-6HN" userLabel="pointsView">
@@ -210,11 +193,36 @@
                                         </accessibility>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-Xj-PP0">
-                                        <rect key="frame" x="202" y="8" width="68" height="70"/>
+                                        <rect key="frame" x="238" y="8" width="55" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="ic_learningplan_blue-web.png"/>
                                         <connections>
                                             <segue destination="XC9-LZ-Axb" kind="show" id="MDj-ER-SK1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="say-oC-o57">
+                                        <rect key="frame" x="86" y="8" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="ic_achievement-web.png"/>
+                                        <connections>
+                                            <action selector="achievementsButton" destination="UlI-sw-qrf" eventType="touchUpInside" id="QNq-1k-aFi"/>
+                                            <segue destination="H5H-DG-r1d" kind="show" id="faa-MJ-kWz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0p9-zK-PjY">
+                                        <rect key="frame" x="161" y="8" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="ic_chatroom_blue-web.png"/>
+                                        <connections>
+                                            <segue destination="PP0-xY-9TT" kind="show" id="Twk-e4-43H"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXv-Hl-bhc">
+                                        <rect key="frame" x="8" y="8" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="ic_training_blue-web.png"/>
+                                        <connections>
+                                            <segue destination="28k-0F-ZKl" kind="show" id="KnN-Xr-rt8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -473,7 +481,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIK-s5-7wZ">
-                                                    <rect key="frame" x="16" y="11" width="60" height="74"/>
+                                                    <rect key="frame" x="15" y="11" width="62" height="74"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V Important" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="490-D6-ZMf">
                                                     <rect key="frame" x="15" y="100" width="62" height="14"/>
@@ -790,7 +798,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tew-Yk-hjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="1893"/>
+            <point key="canvasLocation" x="742" y="1249"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="SBY-5f-1mG">
@@ -798,7 +806,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5rb-YZ-UKN" customClass="PageViewController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMx-g5-CGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663" y="802"/>
+            <point key="canvasLocation" x="322" y="636"/>
         </scene>
         <!--Message Table View Controller-->
         <scene sceneID="9Bz-do-Jrn">
@@ -1055,5 +1063,6 @@
         <image name="ic_chatroom_blue-web.png" width="512" height="512"/>
         <image name="ic_learningplan_blue-web.png" width="512" height="512"/>
         <image name="ic_messages_blue-web.png" width="512" height="512"/>
+        <image name="ic_training_blue-web.png" width="512" height="512"/>
     </resources>
 </document>

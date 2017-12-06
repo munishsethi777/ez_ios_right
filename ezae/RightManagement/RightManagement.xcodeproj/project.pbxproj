@@ -41,6 +41,11 @@
 		F64A987E1FD01ADF001858DE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A987A1FD01ADF001858DE /* Message.swift */; };
 		F64A987F1FD01ADF001858DE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A987B1FD01ADF001858DE /* Notification.swift */; };
 		F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98801FD01B57001858DE /* ServiceHandler.swift */; };
+		F64A98851FD15E18001858DE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98841FD15E18001858DE /* PageViewController.swift */; };
+		F64A98871FD16AF0001858DE /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98861FD16AF0001858DE /* DynamicViewController.swift */; };
+		F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98881FD2B630001858DE /* TrainingViewController.swift */; };
+		F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */; };
+		F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +86,11 @@
 		F64A987A1FD01ADF001858DE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Models/Message.swift; sourceTree = "<group>"; };
 		F64A987B1FD01ADF001858DE /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Models/Notification.swift; sourceTree = "<group>"; };
 		F64A98801FD01B57001858DE /* ServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceHandler.swift; path = Service/ServiceHandler.swift; sourceTree = "<group>"; };
+		F64A98841FD15E18001858DE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		F64A98861FD16AF0001858DE /* DynamicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
+		F64A98881FD2B630001858DE /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
+		F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
+		F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +160,11 @@
 				E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */,
 				F64A98591FCEDC8B001858DE /* MyAchievements.swift */,
 				F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */,
+				F64A98841FD15E18001858DE /* PageViewController.swift */,
+				F64A98861FD16AF0001858DE /* DynamicViewController.swift */,
+				F64A98881FD2B630001858DE /* TrainingViewController.swift */,
+				F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */,
+				F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -282,11 +297,13 @@
 				E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */,
 				F64A98671FD016AD001858DE /* UICircularProgressRingView.swift in Sources */,
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
+				F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */,
 				F64A987C1FD01ADF001858DE /* ActiveLearningPlan.swift in Sources */,
 				E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */,
 				F64A98681FD016AD001858DE /* UICircularProgressRingDelegate.swift in Sources */,
 				F64A98771FD01A82001858DE /* UserMgr.swift in Sources */,
 				F64A98761FD01A82001858DE /* DashboardMgr.swift in Sources */,
+				F64A98871FD16AF0001858DE /* DynamicViewController.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,
@@ -295,8 +312,11 @@
 				E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */,
 				F64A98721FD01A00001858DE /* StringConstants.swift in Sources */,
 				F64A987E1FD01ADF001858DE /* Message.swift in Sources */,
+				F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */,
+				F64A98851FD15E18001858DE /* PageViewController.swift in Sources */,
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
+				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

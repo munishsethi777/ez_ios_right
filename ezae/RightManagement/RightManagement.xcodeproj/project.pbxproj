@@ -46,6 +46,7 @@
 		F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98881FD2B630001858DE /* TrainingViewController.swift */; };
 		F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */; };
 		F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */; };
+		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		F64A98881FD2B630001858DE /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
 		F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				F64A98881FD2B630001858DE /* TrainingViewController.swift */,
 				F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */,
 				F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */,
+				F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				F64A98771FD01A82001858DE /* UserMgr.swift in Sources */,
 				F64A98761FD01A82001858DE /* DashboardMgr.swift in Sources */,
 				F64A98871FD16AF0001858DE /* DynamicViewController.swift in Sources */,
+				F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,

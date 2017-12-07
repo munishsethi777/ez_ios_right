@@ -28,6 +28,9 @@ struct StringConstants {
     //Message Actions
     static let GET_MESSSAGES = ACTION_API_URL + "MessageAction.php?call=getMessages&userSeq={0}&companySeq={1}"
     
+    //Module Actions
+    static let GET_MODULES = ACTION_API_URL + "ModuleAction.php?&call=getDirectModules&userSeq={0}&companySeq={1}"
+    
     //Action Names
     static let DASHBOARD_DATA_ACTION = "getDashboardData"
     static let NOTIFICATION_ACTION = "getNotifications"

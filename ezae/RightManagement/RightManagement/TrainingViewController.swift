@@ -13,6 +13,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var lpDetailCount: Int = 0
     var lpModuleArr: [[String]] = []
     var lpDetailArr: [Any] = []
+    var selectedModuleSeq: Int = 0
+    var selectedLpSeq: Int = 0
     @IBOutlet weak var trainingTableView: UITableView!
     var array = [ ["LearningPlan1","Module1", "Module2", "Module3", "Module3"],
                   ["LearningPlan2","Module1", "Module2", "Module3", "Module3","Module4"],
@@ -46,6 +48,17 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         let moduleJsonArr = lpJsonArr["modules"] as! [Any]
         let moduleJson = moduleJsonArr[row] as! [String: Any]
         var moduleImageUrl = moduleJson["imagepath"] as? String
+        var lpSeqStr = moduleJson["learningPlanSeq"] as? String
+        var seqStr = moduleJson["seq"] as? String
+        
+        if(lpSeqStr == nil){
+            lpSeqStr = "0"
+        }
+        if(seqStr == nil){
+            seqStr = "0"
+        }
+        var lpSeq = Int(lpSeqStr!)!
+        var seq = Int(seqStr!)!
         var progressStr = moduleJson["progress"] as? String
         var moduleType = moduleJson["moduletype"] as! String
         var leaderboardRankStr = moduleJson["leaderboard"] as? String
@@ -85,6 +98,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             buttonTitle = "Review"
         }
         cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)
+        cell?.launchModuleButton.tag = seq
+        cell?.launchModuleButton.titleLabel?.tag = lpSeq
+        cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
         if(moduleType == "quiz" && rank > 0){
             cell?.leaderboardLabel.text = String(rank) + "\nLeaderboard"
         }else{
@@ -98,41 +114,48 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         let sectionHeader = lpJsonArr["title"] as? String
         return sectionHeader
     }
+    
+    
+    func launchModule(sender:UIButton){
+        selectedModuleSeq = sender.tag
+        selectedLpSeq = (sender.titleLabel?.tag)!
+        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+    }
    
-    func tableView(_ tableView: UITableView,
-                            willDisplayHeaderView view: UIView,
-                            forSection section: Int){
-        var y: Int = 10
-        var progressY: Int = 0
-        if(section > 0){
-            y = -5
-            progressY = -18
-        }
-        let header = view as! UITableViewHeaderFooterView
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView =  UIView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
+        //headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
+        headerView.backgroundColor = UIColor.yellow
         let lpJsonArr = lpDetailArr[section] as! [String: Any]
         let percentCompleted = lpJsonArr["percentCompleted"] as! CGFloat
         let modulesJsonArr = lpJsonArr["modules"] as! [Any]
-        let progress = UICircularProgressRingView.init(frame: CGRect(x: 0, y: progressY, width: 55, height: 55))
+        let progress = UICircularProgressRingView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
         progress.setProgress(value: CGFloat(percentCompleted), animationDuration: 2)
-        progress.innerRingWidth = 5
-        progress.outerRingWidth = 5
+        progress.innerRingWidth = 3
+        progress.outerRingWidth = 3
         progress.font = UIFont(name: "Helvetica Neue", size: 10)!
-        for subview in header.subviews {
+        for subview in headerView.subviews {
             if subview is UICircularProgressRingView || subview is UILabel {
                 subview.removeFromSuperview()
             }
         }
-        header.addSubview(progress)
-        
-        let label = UILabel.init(frame: CGRect(x: 160, y: y, width: 80, height: 80))
+        headerView.addSubview(progress)
+        let label = UILabel.init(frame: CGRect(x: 50, y: 35, width: 80, height: 10))
         label.text = String(modulesJsonArr.count) + " Modules"
         label.font = UIFont(name: "Helvetica Neue", size: 10)
-        header.addSubview(label)
-        header.textLabel?.font = UIFont(name: "Helvetica Neue", size: 14)
+        headerView.addSubview(label)
+        
         let sectionHeader = lpJsonArr["title"] as? String
-        header.textLabel?.text = sectionHeader
-        header.textLabel?.frame = header.frame
-        header.textLabel?.textAlignment = NSTextAlignment.center
+        let headerLabel = UILabel.init(frame: CGRect(x: 50, y: 10, width: self.view.frame.width, height: 16))
+        headerLabel.text = sectionHeader
+        headerLabel.font = UIFont(name: "Helvetica Neue", size: 16)
+        headerView.addSubview(headerLabel)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
     }
     
     func getLearningPlanAndModules(){
@@ -169,7 +192,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             jsonArr.append(title)
             let modulesJsonArr = lpDetailJson["modules"] as! [Any]
             for var j in (0..<modulesJsonArr.count).reversed(){
-                 let moduleJson = lpDetailArr[j] as! [String: Any]
+                 let moduleJson = modulesJsonArr[j] as! [String: Any]
                  let moduleTile = moduleJson["title"] as! String
                  jsonArr.append(moduleTile)
             }
@@ -183,5 +206,16 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? LaunchModuleViewController {
+           secondController.moduleSeq = selectedModuleSeq
+           secondController.lpSeq = selectedLpSeq
+        }
+    }
+    
+    
+    
+    
     
 }

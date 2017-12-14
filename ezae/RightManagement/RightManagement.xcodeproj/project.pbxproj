@@ -42,11 +42,18 @@
 		F64A987F1FD01ADF001858DE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A987B1FD01ADF001858DE /* Notification.swift */; };
 		F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98801FD01B57001858DE /* ServiceHandler.swift */; };
 		F64A98851FD15E18001858DE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98841FD15E18001858DE /* PageViewController.swift */; };
-		F64A98871FD16AF0001858DE /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98861FD16AF0001858DE /* DynamicViewController.swift */; };
+		F64A98871FD16AF0001858DE /* LaunchModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98861FD16AF0001858DE /* LaunchModuleViewController.swift */; };
 		F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98881FD2B630001858DE /* TrainingViewController.swift */; };
 		F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */; };
 		F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */; };
+		F692B7061FDFAFEE00AD8745 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B7031FDFAFEE00AD8745 /* Checkbox.swift */; };
+		F692B7071FDFAFEE00AD8745 /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B7041FDFAFEE00AD8745 /* SSRadioButton.swift */; };
+		F692B7081FDFAFEE00AD8745 /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B7051FDFAFEE00AD8745 /* SSRadioButtonsController.swift */; };
+		F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F692B70A1FDFD42100AD8745 /* ic_check_box.png */; };
+		F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */; };
+		F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
+		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,11 +95,18 @@
 		F64A987B1FD01ADF001858DE /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Models/Notification.swift; sourceTree = "<group>"; };
 		F64A98801FD01B57001858DE /* ServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceHandler.swift; path = Service/ServiceHandler.swift; sourceTree = "<group>"; };
 		F64A98841FD15E18001858DE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		F64A98861FD16AF0001858DE /* DynamicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
+		F64A98861FD16AF0001858DE /* LaunchModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModuleViewController.swift; sourceTree = "<group>"; };
 		F64A98881FD2B630001858DE /* TrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewController.swift; sourceTree = "<group>"; };
 		F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
 		F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		F692B7031FDFAFEE00AD8745 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		F692B7041FDFAFEE00AD8745 /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
+		F692B7051FDFAFEE00AD8745 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
+		F692B70A1FDFD42100AD8745 /* ic_check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box.png; sourceTree = "<group>"; };
+		F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box_outline_blank.png; sourceTree = "<group>"; };
+		F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProgressMgr.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
+		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +139,7 @@
 		E66D5B271F8B7C220063EDEC /* RightManagement */ = {
 			isa = PBXGroup;
 			children = (
+				F692B7091FDFD42100AD8745 /* Images */,
 				F64A986A1FD01781001858DE /* CoreDataManager.swift */,
 				F63982221FBBFA3F00DA61B1 /* Managers */,
 				F63982161FBACB2A00DA61B1 /* Utils */,
@@ -151,6 +166,7 @@
 		E66D5B4B1F8CA3990063EDEC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F692B7021FDFAFEE00AD8745 /* SSRadioButtonController */,
 				F64A98661FD016AD001858DE /* UICircularProgressRing.h */,
 				F64A98641FD016AD001858DE /* UICircularProgressRingDelegate.swift */,
 				F64A98651FD016AD001858DE /* UICircularProgressRingLayer.swift */,
@@ -163,11 +179,12 @@
 				F64A98591FCEDC8B001858DE /* MyAchievements.swift */,
 				F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */,
 				F64A98841FD15E18001858DE /* PageViewController.swift */,
-				F64A98861FD16AF0001858DE /* DynamicViewController.swift */,
+				F64A98861FD16AF0001858DE /* LaunchModuleViewController.swift */,
 				F64A98881FD2B630001858DE /* TrainingViewController.swift */,
 				F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */,
 				F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */,
 				F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */,
+				F6C85C2A1FDA929000BF4987 /* PageItemController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -207,8 +224,29 @@
 			children = (
 				F64A98741FD01A82001858DE /* DashboardMgr.swift */,
 				F64A98751FD01A82001858DE /* UserMgr.swift */,
+				F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		F692B7021FDFAFEE00AD8745 /* SSRadioButtonController */ = {
+			isa = PBXGroup;
+			children = (
+				F692B7031FDFAFEE00AD8745 /* Checkbox.swift */,
+				F692B7041FDFAFEE00AD8745 /* SSRadioButton.swift */,
+				F692B7051FDFAFEE00AD8745 /* SSRadioButtonsController.swift */,
+			);
+			name = SSRadioButtonController;
+			path = ViewControllers/SSRadioButtonController;
+			sourceTree = "<group>";
+		};
+		F692B7091FDFD42100AD8745 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F692B70A1FDFD42100AD8745 /* ic_check_box.png */,
+				F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +316,9 @@
 				E66D5B411F8B98350063EDEC /* ic_achievement-web.png in Resources */,
 				E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */,
 				E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */,
+				F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */,
 				E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */,
+				F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */,
 				E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +333,7 @@
 				F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */,
 				F64A98731FD01A00001858DE /* MessageFormat.swift in Sources */,
 				F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */,
+				F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */,
 				E66D5B531F8CBB560063EDEC /* MessageTableViewCell.swift in Sources */,
 				F64A987D1FD01ADF001858DE /* Badge.swift in Sources */,
 				F64A986E1FD019DD001858DE /* PreferencesUtil.swift in Sources */,
@@ -305,8 +346,9 @@
 				E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */,
 				F64A98681FD016AD001858DE /* UICircularProgressRingDelegate.swift in Sources */,
 				F64A98771FD01A82001858DE /* UserMgr.swift in Sources */,
+				F692B7081FDFAFEE00AD8745 /* SSRadioButtonsController.swift in Sources */,
 				F64A98761FD01A82001858DE /* DashboardMgr.swift in Sources */,
-				F64A98871FD16AF0001858DE /* DynamicViewController.swift in Sources */,
+				F64A98871FD16AF0001858DE /* LaunchModuleViewController.swift in Sources */,
 				F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
@@ -314,13 +356,16 @@
 				F64A986B1FD01782001858DE /* CoreDataManager.swift in Sources */,
 				E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */,
 				E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */,
+				F692B7071FDFAFEE00AD8745 /* SSRadioButton.swift in Sources */,
 				F64A98721FD01A00001858DE /* StringConstants.swift in Sources */,
+				F692B7061FDFAFEE00AD8745 /* Checkbox.swift in Sources */,
 				F64A987E1FD01ADF001858DE /* Message.swift in Sources */,
 				F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */,
 				F64A98851FD15E18001858DE /* PageViewController.swift in Sources */,
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
 				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,
+				F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

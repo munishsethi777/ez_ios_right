@@ -12,21 +12,11 @@ class PageViewController: UIPageViewController
 {
 
     var currentPage: Int = 0;
-    fileprivate lazy var pages: [UIViewController] = {
-        let label: UILabel
-        let controller = DynamicViewController()
-        controller.strings = ["Hello world", "Foobar", "Baz"]
-        
-        let controller1 = DynamicViewController()
-        controller1.strings = ["Hellos world", "Fosobar", "Basz"]
-        
-        return [
-            controller,
-            controller1,
-            self.getViewController(withIdentifier: "Page1"),
-            self.getViewController(withIdentifier: "Page2")
-        ]
-    }()
+    var moduleSeq: Int = 0;
+    var lpSeq: Int = 0;
+    var loggedInUserSeq: Int!
+    var loggedInCompanySeq: Int!
+    fileprivate lazy var pages: [UIViewController] = []
     
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController
     {
@@ -38,10 +28,9 @@ class PageViewController: UIPageViewController
         super.viewDidLoad()
         self.dataSource = nil
         self.delegate   = nil
-        if let firstVC = pages.first
-        {
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-        }
+        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        
     }
     
     func goToNext(){
@@ -58,6 +47,52 @@ class PageViewController: UIPageViewController
         let currentController = pages[currentPage]
         setViewControllers([currentController], direction: .forward, animated: true, completion: nil)
     }
+    
+    func getModuleDetail(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_DASHBOARD_COUNTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadModuleController(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func loadModuleController(response: [String: Any]){
+        let modulesJson = response["module"] as! [String: Any]
+        let questionJsonArr = modulesJson["question"] as! [Any]
+        for var i in (0..<questionJsonArr.count).reversed(){
+//            let questionJson = questionJsonArr[i] as! [String: Any]
+//            let controller = LaunchModuleViewController()
+//            controller.questionJson = questionJson
+//            pages.append(controller)
+        }
+        if let firstVC = pages.first
+        {
+            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        }
+       
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension PageViewController: UIPageViewControllerDataSource

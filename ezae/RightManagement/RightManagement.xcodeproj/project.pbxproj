@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAB1FE918C20090B7AD /* ic_rocket.png */; };
+		E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */; };
+		E6335DB11FE918C30090B7AD /* ic_gift.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAD1FE918C20090B7AD /* ic_gift.png */; };
+		E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAE1FE918C30090B7AD /* ic_gamepad.png */; };
 		E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B281F8B7C220063EDEC /* AppDelegate.swift */; };
 		E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B2A1F8B7C220063EDEC /* ViewController.swift */; };
 		E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2C1F8B7C220063EDEC /* Main.storyboard */; };
@@ -57,6 +61,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E6335DAB1FE918C20090B7AD /* ic_rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_rocket.png; sourceTree = "<group>"; };
+		E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bar_chart.png; sourceTree = "<group>"; };
+		E6335DAD1FE918C20090B7AD /* ic_gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_gift.png; sourceTree = "<group>"; };
+		E6335DAE1FE918C30090B7AD /* ic_gamepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_gamepad.png; sourceTree = "<group>"; };
 		E66D5B251F8B7C220063EDEC /* RightManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66D5B281F8B7C220063EDEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66D5B2A1F8B7C220063EDEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +251,10 @@
 		F692B7091FDFD42100AD8745 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */,
+				E6335DAE1FE918C30090B7AD /* ic_gamepad.png */,
+				E6335DAD1FE918C20090B7AD /* ic_gift.png */,
+				E6335DAB1FE918C20090B7AD /* ic_rocket.png */,
 				F692B70A1FDFD42100AD8745 /* ic_check_box.png */,
 				F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */,
 			);
@@ -313,13 +325,17 @@
 				E66D5B471F8B98350063EDEC /* ic_training_blue-web.png in Resources */,
 				E66D5B421F8B98350063EDEC /* ic_chatroom_blue-web.png in Resources */,
 				E66D5B451F8B98350063EDEC /* ic_notes_blue-web.png in Resources */,
+				E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */,
 				E66D5B411F8B98350063EDEC /* ic_achievement-web.png in Resources */,
+				E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */,
 				E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */,
 				E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */,
+				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */,
 				E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */,
 				F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */,
 				E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */,
+				E6335DB11FE918C30090B7AD /* ic_gift.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,8 @@ struct StringConstants {
     static let WEB_API_URL = "http://www.ezae.in/"
     static let IMAGE_URL = "http://www.ezae.in/images/"
     static let DOC_URL = WEB_API_URL + "docs/moduledocs/";
+    static let LESSION_TYPE_MODULE = "lesson"
+    static let SUBMITTED_SUCCESSFULLY = "Submitted Successfully"
     //User Actions
     static let LOGIN_URL = ACTION_API_URL + "UserAction.php?call=login&username={0}&password={1}&gcmid={2}"
     static let GET_DASHBOARD_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardStats&userSeq={0}&companySeq={1}";
@@ -40,6 +42,11 @@ struct StringConstants {
     //Module Actions
     static let GET_MODULES = ACTION_API_URL + "ModuleAction.php?&call=getDirectModules&userSeq={0}&companySeq={1}"
     static let GET_MODULE_DETAIL = ACTION_API_URL + "ModuleAction.php?call=getModuleDetails&userSeq={0}&moduleSeq={1}&learningPlanSeq={2}"
+    
+    static let SUBMIT_MODULE_PROGRESS = ACTION_API_URL  + "QuizProgressAction.php?call=saveQuizProgress&userSeq={0}&companySeq={1}&answers={2}"
+    
+    //ActivityAction
+    static let SAVE_ACTIVITY = ACTION_API_URL + "ActivityAction.php?call=saveActivity&userSeq={0}&companySeq={1}&activityData={2}"
     
     //Action Names
     static let DASHBOARD_DATA_ACTION = "getDashboardData"

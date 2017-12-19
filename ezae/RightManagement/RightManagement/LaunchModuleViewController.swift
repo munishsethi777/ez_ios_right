@@ -19,6 +19,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     var questionJsonArr: [Any] = []
     var moduleJson: [String: Any] = [:]
     var isNext:Bool = false;
+    var activityData:[String: Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -36,6 +37,9 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     
     private func createPageViewController() {
         moduleJson = jsonResponse["module"] as! [String: Any]
+        if let activity = moduleJson["activity"] {
+            self.activityData = activity as! [String: Any]
+        }
         questionJsonArr = moduleJson["questions"] as! [Any]
         moduleTitle.text = moduleJson["title"] as! String
         let pageController = self.storyboard!.instantiateViewController(withIdentifier: "PageController") as! UIPageViewController
@@ -112,6 +116,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         if itemIndex < questionJsonArr.count {
             let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "ItemController") as! PageItemController
             pageItemController.moduleJson = moduleJson
+            pageItemController.activityData = activityData
             pageItemController.itemIndex = itemIndex
             let pageNo = itemIndex + 1
             pageItemController.parentController = self

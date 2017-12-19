@@ -27,4 +27,13 @@ class MessageFormat{
         }
         return url
     }
+    static func format(pattern: String,args: [Any])->String{
+        var url: String = pattern
+        var count: Int = 0
+        for arg in args{
+            url = url.replacingOccurrences(of: "{"+String(count)+"}", with: String(describing: arg))
+            count+=1
+        }
+        return url
+    }
 }

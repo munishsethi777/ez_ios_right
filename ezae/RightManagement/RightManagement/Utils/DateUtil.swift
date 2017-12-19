@@ -11,6 +11,7 @@ import Foundation
 class DateUtil{
     static let sharedInstance = DateUtil()
     static let format = "MMM d, yyyy HH:mm a"
+    static let format1 = "yyyy-MM-dd HH:mm:ss"
     func stringToDate(dateStr: String)-> Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

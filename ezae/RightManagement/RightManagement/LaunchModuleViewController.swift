@@ -20,6 +20,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     var moduleJson: [String: Any] = [:]
     var isNext:Bool = false;
     var activityData:[String: Any] = [:]
+    var currentQuestion:[String: Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -28,14 +29,14 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         setupPageControl()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    private var pageViewController: UIPageViewController?
+    var pageViewController: UIPageViewController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
     }
     
-    private func createPageViewController() {
+    func createPageViewController(itemIndex:Int) {
         moduleJson = jsonResponse["module"] as! [String: Any]
         if let activity = moduleJson["activity"] {
             self.activityData = activity as! [String: Any]
@@ -46,8 +47,8 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         pageController.dataSource = self
         
         if questionJsonArr.count > 0 {
-            setPaggerLabel(page: 1)
-            let firstController = getItemController(itemIndex: 0)!
+            setPaggerLabel(page: itemIndex+1)
+            let firstController = getItemController(itemIndex: itemIndex)!
             let startingViewControllers = [firstController]
             pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
@@ -67,14 +68,22 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         appearance.backgroundColor = UIColor.darkGray
     }
     
-   
+    private func getQuesProgress(itemIndex: Int)->[Any]{
+        let questionJson = questionJsonArr[itemIndex] as! [String: Any]
+        let questionSeq = Int(questionJson["seq"] as! String)!
+        let moduleSeq = Int(questionJson["moduleSeq"] as! String)!
+        let learningPlanseq = Int(questionJson["learningPlanSeq"] as! String)!
+        let localProgress = ModuleProgressMgr.sharedInstance.getExistingProgressArray(questionSeq: questionSeq, moduleSeq: moduleSeq, learningPlanSeq: learningPlanseq)
+        var moduleProgress = questionJson["progress"] as! [Any]
+        moduleProgress = localProgress + moduleProgress
+        return moduleProgress
+    }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let itemController = viewController as! PageItemController
         if itemController.itemIndex+1 < questionJsonArr.count {
             isNext = true;
             return getItemController(itemIndex: itemController.itemIndex+1)
         }
-        
         return nil
     }
     
@@ -101,6 +110,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         
     }
     
+    
     func setPaggerLabel(page: Int){
         let questionJson = moduleJson["questions"] as! [Any]
         let totalQuesCount = questionJson.count
@@ -114,6 +124,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     
     private func getItemController(itemIndex: Int) -> PageItemController? {
         if itemIndex < questionJsonArr.count {
+            if(itemIndex > 0){
+                let progress = getQuesProgress(itemIndex: itemIndex-1)
+                if(progress.isEmpty){
+                    return nil
+                }
+            }
             let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "ItemController") as! PageItemController
             pageItemController.moduleJson = moduleJson
             pageItemController.activityData = activityData
@@ -155,7 +171,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.jsonResponse = json
-                        self.createPageViewController()
+                        self.createPageViewController(itemIndex:0)
                     }else{
                         self.showAlert(message: message!)
                     }

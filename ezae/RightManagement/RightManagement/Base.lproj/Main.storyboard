@@ -962,6 +962,7 @@
                         <outlet property="feedbackSuccessLabel" destination="wsp-Dj-g0S" id="yaz-RW-Y6X"/>
                         <outlet property="quesTitle" destination="NtD-wp-Tkb" id="05E-nn-BbO"/>
                         <outlet property="submitProgress" destination="15j-Ic-c1X" id="PfI-PL-C4D"/>
+                        <segue destination="Vqh-mw-9Cr" kind="show" identifier="showTrainingView" id="WNI-Xb-YlR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26p-7x-dji" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1233,4 +1234,7 @@
         <image name="ic_messages_blue-web.png" width="512" height="512"/>
         <image name="ic_training_blue-web.png" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WNI-Xb-YlR"/>
+    </inferredMetricsTieBreakers>
 </document>

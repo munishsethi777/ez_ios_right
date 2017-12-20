@@ -233,7 +233,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         webView.scalesPageToFit = true
         view.addSubview(webView)
         let questionDetail = questionJson["detail"] as! String
-        let urlS = StringConstants.DOC_URL + questionDetail
+        var urlS = StringConstants.DOC_URL + questionDetail
+        urlS = urlS.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let url = URL(string: urlS)
         let request = URLRequest(url: url!)
         webView.loadRequest(request)

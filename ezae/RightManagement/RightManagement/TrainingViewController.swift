@@ -50,7 +50,6 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         var moduleImageUrl = moduleJson["imagepath"] as? String
         var lpSeqStr = moduleJson["learningPlanSeq"] as? String
         var seqStr = moduleJson["seq"] as? String
-        
         if(lpSeqStr == nil){
             lpSeqStr = "0"
         }

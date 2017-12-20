@@ -13,6 +13,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var array =  ["Module1", "Module2", "Module3", "Module4","Module5","Module6","Module7","Module8","Module9"]
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
+    var selectedModuleSeq: Int = 0
+    var selectedLpSeq: Int = 0
     var moduleCount: Int = 0
     var moduleArr: [Any] = []
     override func viewDidLoad() {
@@ -41,6 +43,13 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         var progressStr = moduleJson["progress"] as? String
         var moduleType = moduleJson["moduletype"] as! String
         var leaderboardRankStr = moduleJson["leaderboard"] as? String
+        var lpSeqStr = moduleJson["learningPlanSeq"] as? String
+        var seqStr = moduleJson["seq"] as? String
+        var lpSeq = 0
+        if(lpSeqStr != nil){
+             lpSeq = Int(lpSeqStr!)!
+        }
+        let seq = Int(seqStr!)!
         if(leaderboardRankStr == nil){
             leaderboardRankStr = "0"
         }
@@ -78,6 +87,9 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             buttonTitle = "Review"
         }
         cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
+        cell?.lauchModuleButton.tag = seq
+        cell?.lauchModuleButton.titleLabel?.tag = lpSeq
+        cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
         if(moduleType == "quiz" && rank > 0 && progress == 100){
             cell?.leaderboardLabel.text = rankStr
         }else{
@@ -119,10 +131,23 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         moduleTrainingView.reloadData()
     }
     
+    func launchModule(sender:UIButton){
+        selectedModuleSeq = sender.tag
+        selectedLpSeq = (sender.titleLabel?.tag)!
+        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+    }
+    
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? LaunchModuleViewController {
+            secondController.moduleSeq = selectedModuleSeq
+            secondController.lpSeq = selectedLpSeq
+        }
     }
     
     

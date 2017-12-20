@@ -81,6 +81,9 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             addSliderView()
         }
         executeSaveActivityCall()
+        if(!moduleProgress.isEmpty){
+            handleViews()
+        }
     }
     
     func handleWithExistingProgress(){
@@ -127,7 +130,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             radioButtonController?.delegate = self
             radioButtonController?.shouldLetDeSelect = true
         }
-        if(isProgressExist){
+        if(!moduleProgress.isEmpty){
             getScoreForSelectedOption()
         }
     }
@@ -155,14 +158,14 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             button.addTarget(self, action:#selector(addMultiSelectedAnsSeq), for: .touchUpInside)
             view.addSubview(button)
         }
-        if(isProgressExist){
+        if(!moduleProgress.isEmpty){
             getScoreForSelectedOption()
         }
     }
     
     func addTextView(){
         var answerText:String = ""
-        if(isProgressExist){
+        if(!moduleProgress.isEmpty){
             let existingProgress = moduleProgress[0] as? [String: Any]
             answerText = (existingProgress?["answerText"] as? String)!
             feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
@@ -176,13 +179,17 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         longQuestionTextView.layer.borderWidth = 1.0
         longQuestionTextView.text = answerText
         view.addSubview(longQuestionTextView)
+        if(!moduleProgress.isEmpty){
+            getScoreForSelectedOption()
+        }
     }
     
     func addSwitchView(){
         let y:Int = 130
         switcher = UISwitch.init()
         switcher.frame = CGRect(x:30,y:y,width:300,height:128)
-        if(isProgressExist){
+        changeSwitcher(sender: switcher)
+        if(!moduleProgress.isEmpty){
             let existingProgress = moduleProgress[0] as? [String: Any]
             let answerSeq = existingProgress?["answerSeq"] as! String
             let selectedAnsBySeq = getAnswerBySeq(ansSeq: Int(answerSeq)!)
@@ -196,6 +203,9 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         }
         switcher.addTarget(self, action:#selector(changeSwitcher), for: .valueChanged)
         view.addSubview(switcher)
+        if(!moduleProgress.isEmpty){
+            getScoreForSelectedOption()
+        }
     }
     
     func changeSwitcher(sender: UISwitch){
@@ -223,7 +233,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         webView.scalesPageToFit = true
         view.addSubview(webView)
         let questionDetail = questionJson["detail"] as! String
-        let urlS = StringConstants.DOC_URL + questionDetail
+        var urlS = StringConstants.DOC_URL + questionDetail
+        urlS = urlS.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let url = URL(string: urlS)
         let request = URLRequest(url: url!)
         webView.loadRequest(request)
@@ -266,8 +277,10 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         if(moduleType == StringConstants.LESSION_TYPE_MODULE){
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, answerText:answerText, score: 0, startDate: Date.init(), isTimeUp: false)
         }else if(questionType == StringConstants.LONG_TYPE_QUESTION){
+            feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
             answerText = longQuestionTextView.text
-            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, answerText:answerText, score: 0, startDate: Date.init(), isTimeUp: false)
+            let score = questionJson["maxMarks"] as! String;
+            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, answerText:answerText, score: Double(score)!, startDate: Date.init(), isTimeUp: false)
         }else{
             scores = getScoreForSelectedOption()
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, ansSeqs: selectedAnsSeqs, scores: scores, startDate: Date.init())
@@ -276,6 +289,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         if(itemIndex + 1 == totalQuestion){
             executeSubmitModuleCall()
         }
+        parentController.createPageViewController(itemIndex: itemIndex)
     }
     
     func executeSubmitModuleCall(){
@@ -295,8 +309,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         ModuleProgressMgr.sharedInstance.deleteModuleProgress(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
+                        self.performSegue(withIdentifier: "showTrainingView", sender: self)
                         self.showAlert(message: message!)
-                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             } catch let parseError as NSError {

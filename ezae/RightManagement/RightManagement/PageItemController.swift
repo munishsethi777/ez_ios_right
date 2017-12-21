@@ -14,6 +14,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     var radioButtonController: SSRadioButtonsController?
    
     
+    @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var feebackErrorLabel: UILabel!
     @IBOutlet weak var feedbackSuccessLabel: UILabel!
     @IBOutlet weak var submitProgress: UIButton!
@@ -40,6 +41,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     var isActivitySaved:Bool = false
     var feedback_success_arr:[String]!
     var feedback_error_arr:[String]!
+    var isShowFeedback:Bool = false
     @IBAction func submitProgressAction(_ sender: UIButton) {
         submit(sender: sender)
     }
@@ -57,6 +59,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         options = questionJson["answers"] as! [Any];
         moduleType = moduleJson["moduletype"] as! String
         moduleProgress = questionJson["progress"] as! [Any]
+        let showFeedback = moduleJson["isshowfeedback"] as! String
+        isShowFeedback =  Int(showFeedback)! > 0
         if(!moduleProgress.isEmpty){
             isProgressExist = true
         }
@@ -84,7 +88,10 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         if(!moduleProgress.isEmpty){
             handleViews()
         }
+        
     }
+    
+    
     
     func handleWithExistingProgress(){
         let questionSeq = Int(questionJson["seq"] as! String)!
@@ -92,11 +99,28 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         let learningPlanseq = Int(questionJson["learningPlanSeq"] as! String)!
         let existingProgress = ModuleProgressMgr.sharedInstance.getExistingProgressArray(questionSeq: questionSeq, moduleSeq: moduleSeq, learningPlanSeq: learningPlanseq)
         moduleProgress = existingProgress + moduleProgress
-        if(moduleProgress.count != 0){
-            submitProgress.isEnabled = false
+        handleViews()
+//        if(moduleProgress.count != 0){
+//            submitProgress.isEnabled = false
+//        }else{
+//            submitProgress.isEnabled = true
+//        }
+    }
+    
+    @IBAction func clickOnButton(_ sender: Any) {
+        goToNextPage()
+    }
+    
+    private func goToNextPage(){
+        if(isLastPage()){
+            self.performSegue(withIdentifier: "showTrainings", sender: self)
         }else{
-            submitProgress.isEnabled = true
+            parentController.goNextPage(index:itemIndex+1)
         }
+    }
+    
+    private func isLastPage()->Bool{
+        return itemIndex+1 == totalQuestion
     }
     
     func addRadioViews(){
@@ -290,6 +314,9 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             executeSubmitModuleCall()
         }
         parentController.createPageViewController(itemIndex: itemIndex)
+        if(!isShowFeedback){
+            goToNextPage()
+        }
     }
     
     func executeSubmitModuleCall(){
@@ -309,7 +336,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         ModuleProgressMgr.sharedInstance.deleteModuleProgress(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
-                        self.performSegue(withIdentifier: "showTrainingView", sender: self)
+                        self.performSegue(withIdentifier: "showTrainings", sender: self)
                         self.showAlert(message: message!)
                     }
                 }
@@ -320,7 +347,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     }
     
     func executeSaveActivityCall(){
-        if(!isProgressExist && itemIndex == 0 && !isActivitySaved){
+        if(moduleProgress.isEmpty && itemIndex == 0 && !isActivitySaved){
             let randomQuestionKeys:[String: Any] = [:]
             let moduleSeq = Int(questionJson["moduleSeq"] as! String)!;
             let learningPlanSeq = Int(questionJson["learningPlanSeq"] as! String)!;
@@ -442,13 +469,19 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     }
     
     private func handleViews(){
-        submitProgress.isEnabled = false
+        if(!moduleProgress.isEmpty){
+           submitProgress.isEnabled = false
+           okButton.isHidden = false
+        }else{
+           submitProgress.isEnabled = true
+           okButton.isHidden = true
+        }
+        
         showFeedback()
     }
     
     private func showFeedback(){
-        let isShowFeedback = moduleJson["isshowfeedback"] as! String
-        if(Int(isShowFeedback)! > 0){
+        if(isShowFeedback){
             var successText:String = "";
             for feedback in feedback_success_arr {
                 successText += feedback + "\n"
@@ -469,5 +502,4 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             }
         }
     }
-
 }

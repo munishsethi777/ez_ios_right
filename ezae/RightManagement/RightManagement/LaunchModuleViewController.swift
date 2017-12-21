@@ -27,8 +27,10 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getModuleDetail()
         setupPageControl()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
     var pageViewController: UIPageViewController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -186,5 +188,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    func goNextPage(index:Int) {
+        let viewController = self.pageViewController?.viewControllers
+        let nextViewController =  self.pageViewController?.dataSource?.pageViewController( self.pageViewController!, viewControllerAfter: viewController![0] )
+        self.pageViewController?.setViewControllers([nextViewController!], direction:
+            UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        setPaggerLabel(page: index+1)
     }
 }

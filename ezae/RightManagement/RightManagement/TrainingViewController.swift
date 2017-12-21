@@ -27,8 +27,12 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
        getLearningPlanAndModules()
+       navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
     }
-    
+    func backAction(){
+        //print("Back Button Clicked")
+        dismiss(animated: true, completion: nil)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let lpJsonArr = lpDetailArr[section] as! [String: Any]
         let lpModuleArr = lpJsonArr["modules"] as! [Any]

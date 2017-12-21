@@ -56,6 +56,7 @@
 		F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F692B70A1FDFD42100AD8745 /* ic_check_box.png */; };
 		F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */; };
 		F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */; };
+		F6B63D491FEBC7CC00886264 /* TrainingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		F692B70A1FDFD42100AD8745 /* ic_check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box.png; sourceTree = "<group>"; };
 		F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box_outline_blank.png; sourceTree = "<group>"; };
 		F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProgressMgr.swift; sourceTree = "<group>"; };
+		F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTabController.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */,
 				F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */,
 				F6C85C2A1FDA929000BF4987 /* PageItemController.swift */,
+				F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */,
+				F6B63D491FEBC7CC00886264 /* TrainingTabController.swift in Sources */,
 				F64A98731FD01A00001858DE /* MessageFormat.swift in Sources */,
 				F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */,
 				F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */,

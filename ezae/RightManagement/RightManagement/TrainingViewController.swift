@@ -136,10 +136,11 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         progress.setProgress(value: CGFloat(percentCompleted), animationDuration: 2)
         progress.innerRingColor = UIColor.orange
         progress.outerRingColor = UIColor.darkGray
-        progress.innerRingWidth = 3
-        progress.outerRingWidth = 3
+        progress.innerRingWidth = 4
+        progress.outerRingWidth = 5
         progress.font = UIFont(name: "Helvetica Neue", size: 10)!
         progress.fontColor = UIColor.white
+        progress.viewStyle = 5
         for subview in headerView.subviews {
             if subview is UICircularProgressRingView || subview is UILabel {
                 subview.removeFromSuperview()

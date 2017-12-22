@@ -10,15 +10,14 @@ import UIKit
 class TrainingTabController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
         // Do any additional setup if required.
     }
     
     func backAction(){
         //print("Back Button Clicked")
-        self.performSegue(withIdentifier: "showDashboard", sender: nil)
+        //self.performSegue(withIdentifier: "showDashboard", sender: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }

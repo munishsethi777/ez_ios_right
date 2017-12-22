@@ -94,12 +94,15 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     func loadAchievementData(response: [String: Any]){
         let responseJson = response["dashboardData"] as! [String:Any]
         let totalScore = responseJson["totalScores"] as! Int
-        let userRank = responseJson["userRank"] as! Int
+        var userRankStr = responseJson["userRank"] as? String
+        if(userRankStr == nil){
+            userRankStr = "0"
+        }
         let trainings = responseJson["pendingTrainings"] as! [String: Any]
         let maxScore = trainings["maxScore"] as! Int
         let points = responseJson["points"] as! Int
         let totalScoreStr = String(totalScore) + "/" + String(maxScore)
-        rankLabel.text = String(userRank)
+        rankLabel.text = userRankStr
         pointsLabel.text = String(points)
         scoreLabel.text = totalScoreStr
     }

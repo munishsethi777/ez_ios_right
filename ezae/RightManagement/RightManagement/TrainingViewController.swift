@@ -16,10 +16,6 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var selectedModuleSeq: Int = 0
     var selectedLpSeq: Int = 0
     @IBOutlet weak var trainingTableView: UITableView!
-    var array = [ ["LearningPlan1","Module1", "Module2", "Module3", "Module3"],
-                  ["LearningPlan2","Module1", "Module2", "Module3", "Module3","Module4"],
-                  ["LearningPlan3","Module1", "Module2", "Module3", "Module3","Module4","Module5"]
-                ]
     override func viewDidLoad() {
         super.viewDidLoad()
        trainingTableView.delegate = self
@@ -30,7 +26,6 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
     }
     func backAction(){
-        //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

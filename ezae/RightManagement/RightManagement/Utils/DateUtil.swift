@@ -15,6 +15,7 @@ class DateUtil{
     func stringToDate(dateStr: String)-> Date{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.init(identifier: "IST")
         let date = dateFormatter.date(from: dateStr)
         return date!;
     }

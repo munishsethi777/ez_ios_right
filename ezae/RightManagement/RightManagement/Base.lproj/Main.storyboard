@@ -1188,11 +1188,11 @@
         <image name="ico_trainings.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="slG-kK-TIN"/>
+        <segue reference="23j-8i-jHr"/>
         <segue reference="KnN-Xr-rt8"/>
         <segue reference="PkI-zp-FOV"/>
-        <segue reference="faa-MJ-kWz"/>
-        <segue reference="hjb-oW-7Um"/>
+        <segue reference="8lc-aI-ght"/>
+        <segue reference="hZ2-xb-bK4"/>
         <segue reference="tjH-Ox-yXu"/>
     </inferredMetricsTieBreakers>
 </document>

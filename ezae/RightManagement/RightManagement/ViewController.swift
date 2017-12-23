@@ -24,7 +24,7 @@ class ViewController: UIViewController {
          super.viewDidAppear(false)
         let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         if(loggedInUserSeq > 0){
-            self.performSegue(withIdentifier: "DashboardController", sender: nil)
+            self.performSegue(withIdentifier: "DashboardTabController", sender: nil)
         }
     }
     

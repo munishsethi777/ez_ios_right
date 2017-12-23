@@ -11,6 +11,13 @@
 		E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */; };
 		E6335DB11FE918C30090B7AD /* ic_gift.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAD1FE918C20090B7AD /* ic_gift.png */; };
 		E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */ = {isa = PBXBuildFile; fileRef = E6335DAE1FE918C30090B7AD /* ic_gamepad.png */; };
+		E6377CB21FEE435100289F4E /* ico_trainings.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CAB1FEE435000289F4E /* ico_trainings.png */; };
+		E6377CB31FEE435100289F4E /* ico_learningplans.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CAC1FEE435000289F4E /* ico_learningplans.png */; };
+		E6377CB41FEE435100289F4E /* ico_achievements.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CAD1FEE435000289F4E /* ico_achievements.png */; };
+		E6377CB51FEE435100289F4E /* ico_chatroom.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CAE1FEE435100289F4E /* ico_chatroom.png */; };
+		E6377CB61FEE435100289F4E /* ico_dashboard.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CAF1FEE435100289F4E /* ico_dashboard.png */; };
+		E6377CB71FEE435100289F4E /* ico_messages.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CB01FEE435100289F4E /* ico_messages.png */; };
+		E6377CB81FEE435100289F4E /* ico_modules.png in Resources */ = {isa = PBXBuildFile; fileRef = E6377CB11FEE435100289F4E /* ico_modules.png */; };
 		E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B281F8B7C220063EDEC /* AppDelegate.swift */; };
 		E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B2A1F8B7C220063EDEC /* ViewController.swift */; };
 		E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2C1F8B7C220063EDEC /* Main.storyboard */; };
@@ -68,6 +75,13 @@
 		E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bar_chart.png; sourceTree = "<group>"; };
 		E6335DAD1FE918C20090B7AD /* ic_gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_gift.png; sourceTree = "<group>"; };
 		E6335DAE1FE918C30090B7AD /* ic_gamepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_gamepad.png; sourceTree = "<group>"; };
+		E6377CAB1FEE435000289F4E /* ico_trainings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_trainings.png; sourceTree = "<group>"; };
+		E6377CAC1FEE435000289F4E /* ico_learningplans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_learningplans.png; sourceTree = "<group>"; };
+		E6377CAD1FEE435000289F4E /* ico_achievements.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_achievements.png; sourceTree = "<group>"; };
+		E6377CAE1FEE435100289F4E /* ico_chatroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_chatroom.png; sourceTree = "<group>"; };
+		E6377CAF1FEE435100289F4E /* ico_dashboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_dashboard.png; sourceTree = "<group>"; };
+		E6377CB01FEE435100289F4E /* ico_messages.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_messages.png; sourceTree = "<group>"; };
+		E6377CB11FEE435100289F4E /* ico_modules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_modules.png; sourceTree = "<group>"; };
 		E66D5B251F8B7C220063EDEC /* RightManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66D5B281F8B7C220063EDEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66D5B2A1F8B7C220063EDEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +148,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6377CAA1FEE433700289F4E /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				E6377CAD1FEE435000289F4E /* ico_achievements.png */,
+				E6377CAE1FEE435100289F4E /* ico_chatroom.png */,
+				E6377CAF1FEE435100289F4E /* ico_dashboard.png */,
+				E6377CAC1FEE435000289F4E /* ico_learningplans.png */,
+				E6377CB01FEE435100289F4E /* ico_messages.png */,
+				E6377CB11FEE435100289F4E /* ico_modules.png */,
+				E6377CAB1FEE435000289F4E /* ico_trainings.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		E66D5B1C1F8B7C220063EDEC = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +286,7 @@
 		F692B7091FDFD42100AD8745 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6377CAA1FEE433700289F4E /* icons */,
 				E6821D5D1FEA6F380001E7C9 /* login_logo.png */,
 				E6821D5F1FEA6F730001E7C9 /* background2.jpg */,
 				E6335DAC1FE918C20090B7AD /* ic_bar_chart.png */,
@@ -331,16 +360,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E66D5B301F8B7C220063EDEC /* Assets.xcassets in Resources */,
+				E6377CB21FEE435100289F4E /* ico_trainings.png in Resources */,
+				E6377CB71FEE435100289F4E /* ico_messages.png in Resources */,
+				E6377CB61FEE435100289F4E /* ico_dashboard.png in Resources */,
 				E66D5B471F8B98350063EDEC /* ic_training_blue-web.png in Resources */,
+				E6377CB81FEE435100289F4E /* ico_modules.png in Resources */,
 				E66D5B421F8B98350063EDEC /* ic_chatroom_blue-web.png in Resources */,
 				E66D5B451F8B98350063EDEC /* ic_notes_blue-web.png in Resources */,
+				E6377CB41FEE435100289F4E /* ico_achievements.png in Resources */,
 				E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */,
 				E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */,
 				E66D5B411F8B98350063EDEC /* ic_achievement-web.png in Resources */,
 				E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */,
 				E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */,
 				E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */,
+				E6377CB51FEE435100289F4E /* ico_chatroom.png in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
+				E6377CB31FEE435100289F4E /* ico_learningplans.png in Resources */,
 				E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */,
 				F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */,
 				E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */,

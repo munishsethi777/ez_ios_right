@@ -43,7 +43,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     var feedback_error_arr:[String]!
     var isShowFeedback:Bool = false
     @IBAction func submitProgressAction(_ sender: UIButton) {
-        submit(sender: sender)
+        submit(question:questionJson,isTimeUp: false)
     }
     
     override func viewDidLoad() {
@@ -133,7 +133,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             existingAnswerSeq = existingProgress?["answerSeq"] as! String
             selectedAnsSeqs.append(Int(existingAnswerSeq)!)
         }
-        for var i in (0..<options.count).reversed(){
+        for i in 0..<options.count{
             let option = options[i] as! [String: Any]
             let title = option["title"] as! String
             let seq = option["seq"] as! String
@@ -162,7 +162,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     func addCheckboxViews(){
         var y:Int = 130
         var button: CheckBox!
-        for var i in (0..<options.count).reversed(){
+        for i in 0..<options.count{
             let option = options[i] as! [String: Any]
             let title = option["title"] as! String
             let seq = option["seq"] as! String
@@ -217,13 +217,16 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             let existingProgress = moduleProgress[0] as? [String: Any]
             let answerSeq = existingProgress?["answerSeq"] as! String
             let selectedAnsBySeq = getAnswerBySeq(ansSeq: Int(answerSeq)!)
-            let ansTitle = selectedAnsBySeq!["title"] as! String
+            var ansTitle = "no"
+            if(selectedAnsBySeq != nil){
+                ansTitle = selectedAnsBySeq!["title"] as! String
+                selectedAnsSeqs.append(Int(answerSeq)!)
+            }
             if(ansTitle == "no"){
                 switcher.isOn = false
             }else{
                 switcher.isOn = true
             }
-            selectedAnsSeqs.append(Int(answerSeq)!)
         }
         switcher.addTarget(self, action:#selector(changeSwitcher), for: .valueChanged)
         view.addSubview(switcher)
@@ -295,28 +298,38 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         // Do something else with the value
     }
     
-    func submit(sender: UIButton){
+    func submit(question:[String: Any],isTimeUp:Bool){
         var answerText = ""
         var scores:[Int: Double] = [:]
-        if(moduleType == StringConstants.LESSION_TYPE_MODULE){
-            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, answerText:answerText, score: 0, startDate: Date.init(), isTimeUp: false)
+        let questionType = question["type"] as! String;
+        if(moduleType == StringConstants.LESSION_TYPE_MODULE || isTimeUp){
+            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, answerText:answerText, score: 0, startDate: parentController.startDate, isTimeUp: isTimeUp)
         }else if(questionType == StringConstants.LONG_TYPE_QUESTION){
             feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
             answerText = longQuestionTextView.text
-            let score = questionJson["maxMarks"] as! String;
-            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, answerText:answerText, score: Double(score)!, startDate: Date.init(), isTimeUp: false)
+            let score = question["maxMarks"] as! String;
+            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, answerText:answerText, score: Double(score)!, startDate: parentController.startDate, isTimeUp: false)
         }else{
+            if (questionType == StringConstants.YES_NO_TYPE_QUESTION) {
+                changeSwitcher(sender:switcher)
+            }
             scores = getScoreForSelectedOption()
-            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: questionJson, ansSeqs: selectedAnsSeqs, scores: scores, startDate: Date.init())
+            ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, ansSeqs: selectedAnsSeqs, scores: scores, startDate: parentController.startDate)
         }
         self.handleViews()
-        if(itemIndex + 1 == totalQuestion){
+        if((!isTimeUp && itemIndex + 1 == totalQuestion) ||
+                (parentController.submittedQuestionCount+1 == totalQuestion)){
             executeSubmitModuleCall()
         }
-        parentController.createPageViewController(itemIndex: itemIndex)
-        if(!isShowFeedback){
+        if(!isTimeUp){
+            parentController.createPageViewController(itemIndex: itemIndex)
+        }
+         parentController.submittedQuestionCount =  parentController.submittedQuestionCount + 1
+        if(!isShowFeedback && !isTimeUp){
             goToNextPage()
         }
+        parentController.startDate = Date.init()
+       
     }
     
     func executeSubmitModuleCall(){
@@ -376,8 +389,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     
     func getScoreForSelectedOption()->[Int:Double]{
         var scores:[Int:Double] = [:];
-        for selectedAns in selectedAnsSeqs{
-            let selectedAns = getAnswerBySeq(ansSeq: selectedAns)
+        for ans in selectedAnsSeqs{
+            let selectedAns = getAnswerBySeq(ansSeq: ans)
+            if(selectedAns == nil){
+                return scores
+            }
             let scoreStr = selectedAns!["marks"] as! String
             let seq = selectedAns!["seq"] as! String
             var score:Double = 0
@@ -406,7 +422,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     }
     
     func getAnswerBySeq(ansSeq:Int)->[String: Any]?{
-        for var i in (0..<options.count).reversed(){
+        for i in 0..<options.count{
             let option = options[i] as! [String: Any]
             let optionSeq = option["seq"] as! String
             if(String(ansSeq) == optionSeq){
@@ -416,7 +432,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         return nil
     }
     func getAnswerByTitle(ansTitle:String)->[String: Any]?{
-        for var i in (0..<options.count).reversed(){
+        for i in 0..<options.count{
             let option = options[i] as! [String: Any]
             let title = option["title"] as! String
             if(title == ansTitle){
@@ -445,7 +461,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     
     private func isOptionSeqExistsInAnwers(optionSeq: String)->Bool{
         var flag:Bool = false
-        for var i in (0..<moduleProgress.count).reversed(){
+        for i in 0..<moduleProgress.count{
             let existingProgress = moduleProgress[i] as? [String: Any]
             let existingAnswerSeq = existingProgress?["answerSeq"] as! String
             if(existingAnswerSeq == optionSeq ){
@@ -457,7 +473,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     }
     private func isOptionTitleExistsInAnwers(optionSeq: String)->Bool{
         var flag:Bool = false
-        for var i in (0..<moduleProgress.count).reversed(){
+        for i in 0..<moduleProgress.count {
             let existingProgress = moduleProgress[i] as? [String: Any]
             let existingAnswerSeq = existingProgress?["answerSeq"] as! String
             if(existingAnswerSeq == optionSeq ){

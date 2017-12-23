@@ -13,6 +13,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     @IBOutlet weak var pageNoLabel: UILabel!
     @IBOutlet weak var marksLabel: UILabel!
     
+    @IBOutlet weak var timerLabel: UILabel!
     var moduleSeq: Int = 0
     var lpSeq: Int = 0
     var jsonResponse: [String: Any] = [:]
@@ -21,29 +22,40 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     var isNext:Bool = false;
     var activityData:[String: Any] = [:]
     var currentQuestion:[String: Any] = [:]
+    var timeAllowed:String = ""
+    var seconds = 60 //This variable will hold a starting value of seconds. It could be any amount above 0.
+    var timer = Timer()
+    var isTimerRunning = false //This will be used to make sure only one timer is created at a time.
+    var resumeTapped = false
+    var childItemController: PageItemController!
+    var progress: Int = 0
+    var startDate: Date!
+    var submittedQuestionCount:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getModuleDetail()
         setupPageControl()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     var pageViewController: UIPageViewController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
         // Dispose of any resources that can be recreated.
     }
     
     func createPageViewController(itemIndex:Int) {
         moduleJson = jsonResponse["module"] as! [String: Any]
-        if let activity = moduleJson["activity"] {
-            self.activityData = activity as! [String: Any]
-        }
         questionJsonArr = moduleJson["questions"] as! [Any]
+        let activity = moduleJson["activityData"] as? [String: Any]
+        if(activity != nil){
+            self.activityData = activity!
+            let progressStr = activityData["progress"] as! String
+            progress = Int(progressStr)!
+        }
+        
         moduleTitle.text = moduleJson["title"] as! String
         let pageController = self.storyboard!.instantiateViewController(withIdentifier: "PageController") as! UIPageViewController
         pageController.dataSource = self
@@ -61,6 +73,44 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         childView.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-20);
         self.view.addSubview(childView)
         pageViewController!.didMove(toParentViewController: self)
+    }
+    func runTimer() {
+        if(timeAllowed != "0" && progress < 100){
+            timerLabel.isHidden = false
+            var time = Int(Double(timeAllowed)! * 60)
+            time -= ModuleProgressMgr.sharedInstance.getTimeConsumed(questions: questionJsonArr)
+            seconds = Int(time) // min to seconds
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        }else{
+            timerLabel.isHidden = true
+        }
+    }
+    
+    @objc func updateTimer() {
+        if(seconds > 0){
+            seconds -= 1     //This will decrement(count down)the seconds.
+            timerLabel.text = timeString(time: TimeInterval(seconds)) //This will update the label.
+        }else{
+            timer.invalidate()
+            submitPendingQuestions()
+        }
+    }
+    
+    func submitPendingQuestions(){
+        submittedQuestionCount = ModuleProgressMgr.sharedInstance.getTotalSubmittedProgressByModule(questions:questionJsonArr)
+        let totalQuestionCount = questionJsonArr.count
+        let count = submittedQuestionCount
+        for i in count..<totalQuestionCount {
+            let questionJson = questionJsonArr[i] as! [String: Any];
+            childItemController.submit(question: questionJson, isTimeUp: true)
+        }
+    }
+    
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
     private func setupPageControl() {
@@ -101,7 +151,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     func pageViewController(_ pageViewController: UIPageViewController,
                             willTransitionTo pendingViewControllers: [UIViewController]){
         let itemController = pendingViewControllers[0] as! PageItemController
-        var count = itemController.pageNo
+        let count = itemController.pageNo
         setPaggerLabel(page: count)
     }
     
@@ -111,7 +161,6 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                             transitionCompleted completed: Bool){
         
     }
-    
     
     func setPaggerLabel(page: Int){
         let questionJson = moduleJson["questions"] as! [Any]
@@ -147,6 +196,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                 marks = "0"
             }
             marksLabel.text = "Marks:" + marks!
+            childItemController = pageItemController
             return pageItemController
         }
         return nil
@@ -173,7 +223,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.jsonResponse = json
+                        self.moduleJson =  json["module"] as! [String: Any]
+                        self.timeAllowed = (self.moduleJson["timeallowed"] as? String)!
+                        self.questionJsonArr = self.moduleJson["questions"] as! [Any]
                         self.createPageViewController(itemIndex:0)
+                        self.startDate = Date.init()
+                        self.runTimer()
                     }else{
                         self.showAlert(message: message!)
                     }

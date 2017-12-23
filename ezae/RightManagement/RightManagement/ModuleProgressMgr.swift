@@ -25,6 +25,7 @@ class ModuleProgressMgr{
         moduleProgress.questionseq = Int32(questionSeq)!
         moduleProgress.learningplanseq = Int32(learningPlanSeq)!
         moduleProgress.isuploaded = false
+        moduleProgress.istimeup = isTimeUp
         moduleProgress.score = score
         moduleProgress.userseq = Int32(userSeq)
         do {
@@ -44,7 +45,8 @@ class ModuleProgressMgr{
             let seq:Int = ansSeq as! Int
             moduleProgress.ansseq = Int32(seq)
             moduleProgress.startdate = startDate as NSDate
-            moduleProgress.enddate = NSDate.init()
+            let now = NSDate.init()
+            moduleProgress.enddate = now
             moduleProgress.moduleseq = Int32(moduleSeq)!
             moduleProgress.questionseq = Int32(questionSeq)!
             moduleProgress.learningplanseq = Int32(learningPlanSeq)!
@@ -111,7 +113,7 @@ class ModuleProgressMgr{
     func getExistingProgressArray(questionSeq: Int,moduleSeq: Int ,learningPlanSeq: Int)->[Any]{
         var progressArr:[Any] = []
         let moduleProgressList = getExistingProgressForQuestion(questionSeq:questionSeq,moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
-        for var i in (0..<moduleProgressList.count).reversed(){
+        for i in 0..<moduleProgressList.count{
             let moduleProgress = moduleProgressList[i]
             let moduleProgressArr = getArray(moduleProgress: moduleProgress)
             progressArr.append(moduleProgressArr)
@@ -127,7 +129,7 @@ class ModuleProgressMgr{
     
     func getJsonString(progressArr:[ModuleProgress])->String{
         var jsonString:String = ""
-        for var i in (0..<progressArr.count).reversed(){
+        for i in 0..<progressArr.count {
             var progressJson:[String: Any] = [:]
             let moduleProgress = progressArr[i]
             progressJson = getArray(moduleProgress: moduleProgress)
@@ -146,7 +148,7 @@ class ModuleProgressMgr{
         progressJson["answerText"] = moduleProgress.anstext
         progressJson["questionSeq"] = moduleProgress.questionseq
         progressJson["progress"] = 100
-        progressJson["dated"] = DateUtil.sharedInstance.dateToString(date: moduleProgress.startdate! as Date,format:
+        progressJson["dated"] = DateUtil.sharedInstance.dateToString(date: moduleProgress.enddate! as Date,format:
             DateUtil.format1)
         progressJson["startDate"] = DateUtil.sharedInstance.dateToString(date: moduleProgress.startdate! as Date,format: DateUtil.format1)
         progressJson["isTimeUp"]  = moduleProgress.istimeup
@@ -181,5 +183,59 @@ class ModuleProgressMgr{
             jsonString = ""
         }
         return jsonString!
+    }
+    
+    func getTotalSubmittedProgressByModule(questions:[Any])->Int{
+        var totalSubmittedProgress = 0
+        for q in questions{
+            let question = q as! [String: Any]
+            let moduleSeq = question["moduleSeq"] as! String
+            let seq = question["seq"] as! String
+            let learningPlanSeq = question["learningPlanSeq"] as! String
+            let progress = question["progress"] as! [Any]
+            if(!progress.isEmpty){
+                totalSubmittedProgress = totalSubmittedProgress + 1
+            }
+            let localProgress = getExistingProgressArray(questionSeq: Int(seq)!, moduleSeq: Int(moduleSeq)!, learningPlanSeq: Int(learningPlanSeq)!)
+            if(!localProgress.isEmpty){
+                totalSubmittedProgress = totalSubmittedProgress + 1
+            }
+        }
+        return totalSubmittedProgress
+    }
+    
+    func getTimeConsumed(questions:[Any])->Int{
+        var diffInSeconds = 0;
+        for q in questions {
+            let question = q as! [String: Any]
+            let moduleSeq = question["moduleSeq"] as! String
+            let seq = question["seq"] as! String
+            let learningPlanSeq = question["learningPlanSeq"] as! String
+            let progress = question["progress"] as! [Any]
+            if(!progress.isEmpty){
+                let progJson = progress[0] as! [String: Any];
+                diffInSeconds += getTimeDiffFromQuesProg(progressJson:progJson);
+            }
+            let localProgress = getExistingProgressArray(questionSeq: Int(seq)!, moduleSeq: Int(moduleSeq)!, learningPlanSeq: Int(learningPlanSeq)!)
+            if(!localProgress.isEmpty){
+                let localProgJson = localProgress[0] as! [String: Any];
+                diffInSeconds += getTimeDiffFromQuesProg(progressJson:localProgJson);
+            }
+        }
+        return diffInSeconds;
+    }
+    
+    func getTimeDiffFromQuesProg(progressJson:[String: Any])->Int{
+        let startDateStr = progressJson["startDate"] as! String;
+        let endDateStr = progressJson["dated"] as! String;
+        let startDate = DateUtil.sharedInstance.stringToDate(dateStr: startDateStr)
+        let endDate = DateUtil.sharedInstance.stringToDate(dateStr: endDateStr)
+        let timeInterval = currentTimeInMiliseconds(date: endDate) - currentTimeInMiliseconds(date: startDate)
+        return timeInterval;
+    }
+    
+    func currentTimeInMiliseconds(date:Date) -> Int {
+        let since1970 = date.timeIntervalSince1970
+        return Int(since1970)
     }
 }

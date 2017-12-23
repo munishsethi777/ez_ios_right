@@ -66,6 +66,7 @@
 		F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */; };
 		F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */; };
 		F6B63D491FEBC7CC00886264 /* TrainingTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */; };
+		F6B63D881FEE551700886264 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D871FEE551700886264 /* MainTabController.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,7 @@
 		F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box_outline_blank.png; sourceTree = "<group>"; };
 		F692B70E1FE23D2800AD8745 /* ModuleProgressMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProgressMgr.swift; sourceTree = "<group>"; };
 		F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTabController.swift; sourceTree = "<group>"; };
+		F6B63D871FEE551700886264 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 				F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */,
 				F6C85C2A1FDA929000BF4987 /* PageItemController.swift */,
 				F6B63D481FEBC7CC00886264 /* TrainingTabController.swift */,
+				F6B63D871FEE551700886264 /* MainTabController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				F64A98871FD16AF0001858DE /* LaunchModuleViewController.swift in Sources */,
 				F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
+				F6B63D881FEE551700886264 /* MainTabController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,
 				F64A986B1FD01782001858DE /* CoreDataManager.swift in Sources */,

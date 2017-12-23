@@ -113,7 +113,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     
     private func goToNextPage(){
         if(isLastPage()){
-            self.performSegue(withIdentifier: "showTrainings", sender: self)
+            self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
         }else{
             parentController.goNextPage(index:itemIndex+1)
         }
@@ -349,7 +349,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         ModuleProgressMgr.sharedInstance.deleteModuleProgress(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
-                        self.performSegue(withIdentifier: "showTrainings", sender: self)
+                        self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
                         self.showAlert(message: message!)
                     }
                 }
@@ -516,6 +516,16 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
                 feebackErrorLabel.isHidden = false
                 feebackErrorLabel.text = errorText
             }
+        }
+    }
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if (segue.identifier == "showTrainingTabs") {
+            //get a reference to the destination view controller
+            let destinationVC:MainTabController = segue.destination as! MainTabController
+            //set properties on the destination view controller
+            destinationVC.isTraining = true
+            //etc...
         }
     }
 }

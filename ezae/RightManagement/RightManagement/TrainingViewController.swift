@@ -26,6 +26,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
     }
     func backAction(){
+        //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -624,46 +624,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-1W-iks">
-                                <rect key="frame" x="0.0" y="86" width="120" height="21"/>
+                                <rect key="frame" x="0.0" y="104" width="120" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khb-dU-Stf">
-                                <rect key="frame" x="254" y="86" width="121" height="21"/>
+                                <rect key="frame" x="254" y="104" width="121" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 : 00 : 00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzp-t2-rlr">
-                                <rect key="frame" x="301" y="64" width="74" height="21"/>
+                                <rect key="frame" x="301" y="82" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et1-cM-61C">
-                                <rect key="frame" x="0.0" y="64" width="293" height="21"/>
+                                <rect key="frame" x="0.0" y="82" width="293" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqT-k2-DHz">
+                                <rect key="frame" x="0.0" y="38" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Lhk-IT-ckf">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Hul-BZ-Kbb">
+                                            <connections>
+                                                <action selector="backTapped:" destination="PAO-ns-RNC" id="aOa-fs-zTf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="Reg-o2-Kay"/>
+                        <barButtonItem title="Item" id="7Zf-Gh-LsT"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="kZ0-eX-FL2"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="marksLabel" destination="khb-dU-Stf" id="5D0-Q3-MJV"/>
                         <outlet property="moduleTitle" destination="et1-cM-61C" id="N7B-YX-vv5"/>
                         <outlet property="pageNoLabel" destination="7YX-1W-iks" id="SnD-ZL-PP6"/>
                         <outlet property="timerLabel" destination="pzp-t2-rlr" id="2og-l6-4il"/>
+                        <segue destination="krr-2b-sIX" kind="show" identifier="showMainTabs" id="tjH-Ox-yXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqk-gA-sDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="907"/>
+            <point key="canvasLocation" x="1800.8" y="906.6502463054187"/>
         </scene>
         <!--Modules-->
         <scene sceneID="HTu-Hf-lyq">
@@ -901,7 +921,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1k-ke-PA0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                                 <connections>
                                     <segue destination="28k-0F-ZKl" kind="embed" id="dOd-MQ-Iz0"/>
                                 </connections>
@@ -990,7 +1010,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26p-7x-dji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="1049"/>
+            <point key="canvasLocation" x="3287" y="907"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="SBY-5f-1mG">
@@ -998,7 +1018,7 @@
                 <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5rb-YZ-UKN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMx-g5-CGi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2366" y="1049"/>
+            <point key="canvasLocation" x="2500" y="907"/>
         </scene>
         <!--Messages-->
         <scene sceneID="9Bz-do-Jrn">
@@ -1168,11 +1188,11 @@
         <image name="ico_trainings.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="23j-8i-jHr"/>
-        <segue reference="8ce-L1-4uF"/>
-        <segue reference="M1E-zR-ffA"/>
-        <segue reference="8lc-aI-ght"/>
-        <segue reference="hZ2-xb-bK4"/>
-        <segue reference="26S-pN-GFy"/>
+        <segue reference="slG-kK-TIN"/>
+        <segue reference="KnN-Xr-rt8"/>
+        <segue reference="PkI-zp-FOV"/>
+        <segue reference="faa-MJ-kWz"/>
+        <segue reference="hjb-oW-7Um"/>
+        <segue reference="tjH-Ox-yXu"/>
     </inferredMetricsTieBreakers>
 </document>

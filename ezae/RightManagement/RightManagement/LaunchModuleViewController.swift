@@ -35,11 +35,16 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+       
         getModuleDetail()
         setupPageControl()
         // Do any additional setup after loading the view, typically from a nib.
     }
+ 
     
+    @IBAction func backTapped(_ sender: Any) {
+       self.performSegue(withIdentifier: "showMainTabs", sender: self)
+    }
     var pageViewController: UIPageViewController?
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -250,5 +255,14 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         self.pageViewController?.setViewControllers([nextViewController!], direction:
             UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         setPaggerLabel(page: index+1)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if (segue.identifier == "showMainTabs") {
+            //get a reference to the destination view controller
+            let destinationVC:MainTabController = segue.destination as! MainTabController
+            //set properties on the destination view controller
+            destinationVC.isTraining = true
+            //etc...
+        }
     }
 }

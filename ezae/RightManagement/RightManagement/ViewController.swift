@@ -52,7 +52,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         UserMgr.sharedInstance.saveUser(response: json)
-                        self.performSegue(withIdentifier: "DashboardController", sender: nil)
+                        self.performSegue(withIdentifier: "DashboardTabController", sender: nil)
                     }else{
                         self.showAlert(message: message!)
                     }

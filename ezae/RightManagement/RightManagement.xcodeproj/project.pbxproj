@@ -70,6 +70,9 @@
 		F6B63D881FEE551700886264 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D871FEE551700886264 /* MainTabController.swift */; };
 		F6B63D8C1FEF6A1D00886264 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D8B1FEF6A1D00886264 /* SettingsTableViewController.swift */; };
 		F6B63D8E1FEF72A200886264 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D8D1FEF72A200886264 /* ChangePasswordViewController.swift */; };
+		F6B63D901FEF895B00886264 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D8F1FEF895B00886264 /* NotesViewController.swift */; };
+		F6B63D921FEF8A3400886264 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D911FEF8A3400886264 /* Notes.swift */; };
+		F6B63D961FF20A1800886264 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
 /* End PBXBuildFile section */
@@ -141,6 +144,9 @@
 		F6B63D871FEE551700886264 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		F6B63D8B1FEF6A1D00886264 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6B63D8D1FEF72A200886264 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		F6B63D8F1FEF895B00886264 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		F6B63D911FEF8A3400886264 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +246,8 @@
 				F6B63D871FEE551700886264 /* MainTabController.swift */,
 				F6B63D8B1FEF6A1D00886264 /* SettingsTableViewController.swift */,
 				F6B63D8D1FEF72A200886264 /* ChangePasswordViewController.swift */,
+				F6B63D8F1FEF895B00886264 /* NotesViewController.swift */,
+				F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				F64A98791FD01ADF001858DE /* Badge.swift */,
 				F64A987A1FD01ADF001858DE /* Message.swift */,
 				F64A987B1FD01ADF001858DE /* Notification.swift */,
+				F6B63D911FEF8A3400886264 /* Notes.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 				F64A986E1FD019DD001858DE /* PreferencesUtil.swift in Sources */,
 				F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */,
 				E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */,
+				F6B63D901FEF895B00886264 /* NotesViewController.swift in Sources */,
 				F64A98671FD016AD001858DE /* UICircularProgressRingView.swift in Sources */,
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
 				F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */,
@@ -434,6 +444,7 @@
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,
 				F64A986B1FD01782001858DE /* CoreDataManager.swift in Sources */,
 				E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */,
+				F6B63D921FEF8A3400886264 /* Notes.swift in Sources */,
 				E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */,
 				F692B7071FDFAFEE00AD8745 /* SSRadioButton.swift in Sources */,
 				F64A98721FD01A00001858DE /* StringConstants.swift in Sources */,
@@ -445,6 +456,7 @@
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
 				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,
+				F6B63D961FF20A1800886264 /* NotesTableViewCell.swift in Sources */,
 				F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

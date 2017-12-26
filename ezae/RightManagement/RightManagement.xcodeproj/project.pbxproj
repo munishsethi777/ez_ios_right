@@ -37,6 +37,9 @@
 		E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */; };
 		E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5D1FEA6F380001E7C9 /* login_logo.png */; };
 		E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5F1FEA6F730001E7C9 /* background2.jpg */; };
+		E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */; };
+		E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */; };
+		E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */; };
 		F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */; };
 		F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A98591FCEDC8B001858DE /* MyAchievements.swift */; };
 		F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */; };
@@ -107,6 +110,9 @@
 		E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveLearningPlanCollectionViewCell.swift; path = ViewControllers/ActiveLearningPlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6821D5D1FEA6F380001E7C9 /* login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_logo.png; sourceTree = "<group>"; };
 		E6821D5F1FEA6F730001E7C9 /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
+		E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout.png; sourceTree = "<group>"; };
+		E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepassword.png; sourceTree = "<group>"; };
+		E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_updateprofile.png; sourceTree = "<group>"; };
 		F63982201FBB0B9200DA61B1 /* right.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = right.xcdatamodel; sourceTree = "<group>"; };
 		F64A98591FCEDC8B001858DE /* MyAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAchievements.swift; sourceTree = "<group>"; };
 		F64A985B1FCFCEA2001858DE /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +173,9 @@
 				E6377CB01FEE435100289F4E /* ico_messages.png */,
 				E6377CB11FEE435100289F4E /* ico_modules.png */,
 				E6377CAB1FEE435000289F4E /* ico_trainings.png */,
+				E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */,
+				E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */,
+				E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 				E6377CB81FEE435100289F4E /* ico_modules.png in Resources */,
 				E66D5B421F8B98350063EDEC /* ic_chatroom_blue-web.png in Resources */,
 				E66D5B451F8B98350063EDEC /* ic_notes_blue-web.png in Resources */,
+				E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */,
 				E6377CB41FEE435100289F4E /* ico_achievements.png in Resources */,
 				E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */,
 				E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */,
@@ -386,11 +396,13 @@
 				E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */,
 				E6377CBA1FEE6BC100289F4E /* ico_settings.png in Resources */,
 				E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */,
+				E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */,
 				E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */,
 				E6377CB51FEE435100289F4E /* ico_chatroom.png in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E6377CB31FEE435100289F4E /* ico_learningplans.png in Resources */,
 				E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */,
+				E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */,
 				F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */,
 				E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */,
 				F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */,

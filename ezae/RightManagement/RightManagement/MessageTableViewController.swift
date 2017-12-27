@@ -15,6 +15,7 @@ class MessageTableViewController: UITableViewController {
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
     var messageCount: Int = 0
+    var selectedMessageSeq:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -45,6 +46,11 @@ class MessageTableViewController: UITableViewController {
         return messages.count
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = messages[indexPath.row]
+        selectedMessageSeq = message.seq
+        self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
@@ -149,6 +155,7 @@ class MessageTableViewController: UITableViewController {
         messageCount = messageJsonArr.count
         for var i in (0..<messageJsonArr.count).reversed(){
             let messageJson = messageJsonArr[i] as! [String: Any]
+            let seq = messageJson["seq"] as! String
             let title = messageJson["messageText"] as! String
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
@@ -156,10 +163,16 @@ class MessageTableViewController: UITableViewController {
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as? Int
-            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated)
+            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,messageSeq:Int(seq)!)
             messages.append(msg)
         }
         messageTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if (segue.identifier == "MessageDetailViewController") {
+            let destinationVC:CreateNoteViewController = segue.destination as! CreateNoteViewController
+        }
     }
 
 }

@@ -12,14 +12,22 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var notes:[Notes]=[]
+    var selectedNoteSeq:Int = 0
     
    
     @IBOutlet weak var notesTableView: UITableView!
     override func viewDidLoad() {
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        notesTableView.dataSource = self
+        notesTableView.delegate = self
+        //getNotes()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         getNotes()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notesCount
     }
@@ -32,10 +40,15 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         cell?.dateTime.text = note.dateTime
         return cell!
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let note = notes[indexPath.row]
+        selectedNoteSeq = note.seq
+        self.performSegue(withIdentifier: "NotesViewController", sender: nil)
+    }
     
     func getNotes(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
-        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATION, args: args)
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTES, args: args)
         var success : Int = 0
         var message : String? = nil
         ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
@@ -59,6 +72,7 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func loadNotes(response:[String: Any]){
         let notesArr = response["notes"] as! [Any]
         self.notesCount = notesArr.count
+        notes = []
         for i in 0..<notesArr.count{
             let note = notesArr[i] as! [String: Any]
             let noteSeq = note["seq"] as! String;
@@ -66,14 +80,21 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let noteCreatedOn = note["createdon"] as! String;
             let noteObj = Notes.init(seq: Int(noteSeq)!, title: noteDetails, dateTime: noteCreatedOn)
             notes.append(noteObj)
-            notesTableView.reloadData()
         }
+        notesTableView.reloadData()
     }
     
     func showAlert(message: String,title:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if (segue.identifier == "NotesViewController") {
+            let destinationVC:CreateNoteViewController = segue.destination as! CreateNoteViewController
+            destinationVC.noteSeq = self.selectedNoteSeq
+        }
     }
     
     

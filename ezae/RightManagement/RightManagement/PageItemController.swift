@@ -431,6 +431,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         }
         return nil
     }
+    
     func getAnswerByTitle(ansTitle:String)->[String: Any]?{
         for i in 0..<options.count{
             let option = options[i] as! [String: Any]

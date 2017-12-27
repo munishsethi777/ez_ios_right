@@ -8,5 +8,5 @@
 
 import UIKit
 class MessageDetailViewController:UIViewController{
-    
+        
 }

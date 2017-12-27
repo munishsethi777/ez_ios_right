@@ -8,7 +8,9 @@
 
 import UIKit
 import CoreData
-class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
+class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITableViewDataSource, UITableViewDelegate{
+    
+    
     func didSelectButton(selectedButton: UIButton?) {
     }
     var radioButtonController: SSRadioButtonsController?
@@ -42,6 +44,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     var feedback_success_arr:[String]!
     var feedback_error_arr:[String]!
     var isShowFeedback:Bool = false
+    var seqOptions:[Any] = []
     @IBAction func submitProgressAction(_ sender: UIButton) {
         submit(question:questionJson,isTimeUp: false)
     }
@@ -83,6 +86,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             addWebViewforDoc()
         }else if(questionType == StringConstants.LIKART_SCALE_TYPE_QUESTION){
             addSliderView()
+        }else if(questionType == StringConstants.SEQUENCING){
+            addTableView()
         }
         executeSaveActivityCall()
         if(!moduleProgress.isEmpty){
@@ -207,6 +212,67 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             getScoreForSelectedOption()
         }
     }
+   
+    private var tableView: UITableView!
+    func addTableView(){
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        var displayHeight: CGFloat = self.view.frame.height
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: 400 - barHeight))
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.setEditing(true, animated: true)
+        view.addSubview(tableView)
+        seqOptions = options
+        if(!moduleProgress.isEmpty){
+            var savedOptions:[Any] = []
+             for i in 0..<moduleProgress.count{
+                let progress = moduleProgress[i] as! [String: Any];
+                let answerSeq = progress["answerSeq"] as! String
+                let ansJson = getAnswerBySeq(ansSeq: Int(answerSeq)!)
+                savedOptions.append(ansJson as Any);
+            }
+//            if self.options != savedOptions {
+//                feedback_success_arr.append("Correct Sequence");
+//            }else{
+//                feedback_error_arr.append("Incorrect Sequence");
+//            }
+            seqOptions = savedOptions;
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let option = seqOptions[sourceIndexPath.row]
+        seqOptions.remove(at: sourceIndexPath.row)
+        seqOptions.insert(option, at: destinationIndexPath.row)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let option = seqOptions[indexPath.row] as! [String: Any]
+        let title = option["title"] as! String
+        let seq = option["seq"] as! String
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        cell.textLabel!.text = title
+        cell.textLabel!.tag = Int(seq)!
+        return cell
+    }
     
     func addSwitchView(){
         let y:Int = 130
@@ -301,6 +367,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
     func submit(question:[String: Any],isTimeUp:Bool){
         var answerText = ""
         var scores:[Int: Double] = [:]
+        let score:Double = 0
         let questionType = question["type"] as! String;
         if(moduleType == StringConstants.LESSION_TYPE_MODULE || isTimeUp){
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, answerText:answerText, score: 0, startDate: parentController.startDate, isTimeUp: isTimeUp)
@@ -313,7 +380,20 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             if (questionType == StringConstants.YES_NO_TYPE_QUESTION) {
                 changeSwitcher(sender:switcher)
             }
-            scores = getScoreForSelectedOption()
+            if(questionType == StringConstants.SEQUENCING){
+                let isInRightOrder = addSelectedSequenceOrderSeq()
+                if (isInRightOrder) {
+                    let score = question["maxMarks"] as! String;
+                    feedback_success_arr.append("Correct Sequence");
+                }else{
+                    feedback_error_arr.append("Incorrect Sequence");
+                }
+                let ansSeq = selectedAnsSeqs.first
+                scores[ansSeq!] = score;
+            }else{
+                 scores = getScoreForSelectedOption()
+            }
+           
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, ansSeqs: selectedAnsSeqs, scores: scores, startDate: parentController.startDate)
         }
         self.handleViews()
@@ -443,6 +523,25 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
         return nil
     }
     
+    func addSelectedSequenceOrderSeq()->Bool{
+        var flag = false;
+        var isInRightOrder = true;
+        for i in 0..<seqOptions.count{
+            let option = seqOptions[i] as! [String: Any]
+            let optionSeq = option["seq"] as! String
+            selectedAnsSeqs.append(Int(optionSeq)!);
+            let ansJson = options[i] as! [String: Any];
+            let seq = ansJson["seq"] as! String;
+            if (!flag){
+                if (seq != optionSeq) {
+                    isInRightOrder = false;
+                    flag = true;
+                }
+            }
+        }
+        return isInRightOrder;
+    }
+    
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -529,4 +628,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate{
             //etc...
         }
     }
+    
+    
 }

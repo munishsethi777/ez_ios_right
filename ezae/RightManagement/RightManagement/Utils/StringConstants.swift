@@ -15,6 +15,7 @@ struct StringConstants {
     static let MEDIA_TYPE_QUESTION = "media"
     static let DOC_TYPE_QUESTION = "doc"
     static let LIKART_SCALE_TYPE_QUESTION = "likartScale"
+    static let SEQUENCING = "sequencing"
     static let WEB_PAGE_TYPE_QUESTION = "web_page"
     static var ACTION_API_URL = "http://www.ezae.in/Actions/Mobile/"
     static let WEB_API_URL = "http://www.ezae.in/"

@@ -155,7 +155,7 @@ class MessageTableViewController: UITableViewController {
         messageCount = messageJsonArr.count
         for var i in (0..<messageJsonArr.count).reversed(){
             let messageJson = messageJsonArr[i] as! [String: Any]
-            let seq = messageJson["seq"] as! String
+            //let seq = messageJson["seq"] as! String
             let title = messageJson["messageText"] as! String
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
@@ -163,7 +163,7 @@ class MessageTableViewController: UITableViewController {
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as? Int
-            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,messageSeq:Int(seq)!)
+            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,messageSeq:1)
             messages.append(msg)
         }
         messageTableView.reloadData()

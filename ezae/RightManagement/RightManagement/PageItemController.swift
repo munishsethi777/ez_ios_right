@@ -232,11 +232,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
                 let ansJson = getAnswerBySeq(ansSeq: Int(answerSeq)!)
                 savedOptions.append(ansJson as Any);
             }
-//            if self.options != savedOptions {
-//                feedback_success_arr.append("Correct Sequence");
-//            }else{
-//                feedback_error_arr.append("Incorrect Sequence");
-//            }
+            if isAnsEquals(options1: options, options2: savedOptions) {
+                feedback_success_arr.append("Correct Sequence");
+            }else{
+                feedback_error_arr.append("Incorrect Sequence");
+            }
             seqOptions = savedOptions;
         }
         
@@ -627,6 +627,19 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             destinationVC.isTraining = true
             //etc...
         }
+    }
+    
+    func isAnsEquals(options1:[Any],options2:[Any])->Bool{
+        for i in 0..<options1.count{
+            let option1 = options1[i] as! [String: Any]
+            let option2 = options2[i] as! [String: Any]
+            let seq1 = option1["seq"] as! String
+            let seq2 = option2["seq"] as! String
+            if(seq1 != seq2){
+                return false
+            }
+        }
+        return true
     }
     
     

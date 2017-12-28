@@ -45,6 +45,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     var feedback_error_arr:[String]!
     var isShowFeedback:Bool = false
     var seqOptions:[Any] = []
+    var sliderLabel:UILabel!
     @IBAction func submitProgressAction(_ sender: UIButton) {
         submit(question:questionJson,isTimeUp: false)
     }
@@ -85,18 +86,17 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         }else if(questionType == StringConstants.DOC_TYPE_QUESTION){
             addWebViewforDoc()
         }else if(questionType == StringConstants.LIKART_SCALE_TYPE_QUESTION){
-            addSliderView()
+            addRadioViews()
         }else if(questionType == StringConstants.SEQUENCING){
             addTableView()
+        }else if(questionType == StringConstants.ESTIMATE_PERCENT_TYPE_QUESTION){
+            addSliderView()
         }
         executeSaveActivityCall()
         if(!moduleProgress.isEmpty){
             handleViews()
         }
-        
     }
-    
-    
     
     func handleWithExistingProgress(){
         let questionSeq = Int(questionJson["seq"] as! String)!
@@ -105,11 +105,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         let existingProgress = ModuleProgressMgr.sharedInstance.getExistingProgressArray(questionSeq: questionSeq, moduleSeq: moduleSeq, learningPlanSeq: learningPlanseq)
         moduleProgress = existingProgress + moduleProgress
         handleViews()
-//        if(moduleProgress.count != 0){
-//            submitProgress.isEnabled = false
-//        }else{
-//            submitProgress.isEnabled = true
-//        }
     }
     
     @IBAction func clickOnButton(_ sender: Any) {
@@ -334,10 +329,21 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addSliderView(){
-        let slider = UISlider(frame: self.view.frame)
+        let slider = UISlider(frame: CGRect(x:16,y:120,width:350,height:80))
+        sliderLabel = UILabel.init()
+        sliderLabel.text = "0 %"
+        sliderLabel.frame = CGRect(x:16,y:80,width:50,height:50)
         view.addSubview(slider)
         slider.minimumValue = 0
-        slider.maximumValue = Float(options.count)
+        slider.maximumValue = 100
+        view.addSubview(sliderLabel)
+        if(!moduleProgress.isEmpty){
+            let existingProgress = moduleProgress[0] as? [String: Any]
+            var answerText = (existingProgress?["answerText"] as? String)!
+            sliderLabel.text = answerText + " %"
+            slider.setValue(Float(answerText)!, animated: true)
+            feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
+        }
         slider.addTarget(self, action:#selector(sliderValueChanged), for: .valueChanged)
     }
     
@@ -362,6 +368,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         //let value = options[Int(sender.value)]
         //sender.value = value
         // Do something else with the value
+        let currentValue = Int(sender.value)
+        sliderLabel.text = "\(currentValue) %"
     }
     
     func submit(question:[String: Any],isTimeUp:Bool){
@@ -371,9 +379,15 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         let questionType = question["type"] as! String;
         if(moduleType == StringConstants.LESSION_TYPE_MODULE || isTimeUp){
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, answerText:answerText, score: 0, startDate: parentController.startDate, isTimeUp: isTimeUp)
-        }else if(questionType == StringConstants.LONG_TYPE_QUESTION){
+        }else if(questionType == StringConstants.LONG_TYPE_QUESTION || questionType == StringConstants.ESTIMATE_PERCENT_TYPE_QUESTION){
             feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
-            answerText = longQuestionTextView.text
+            if(questionType == StringConstants.ESTIMATE_PERCENT_TYPE_QUESTION){
+                sliderLabel.text?.removeLast()
+                answerText = sliderLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            }else{
+                answerText = longQuestionTextView.text
+            }
+            
             let score = question["maxMarks"] as! String;
             ModuleProgressMgr.sharedInstance.saveModuleProgress(response: question, answerText:answerText, score: Double(score)!, startDate: parentController.startDate, isTimeUp: false)
         }else{

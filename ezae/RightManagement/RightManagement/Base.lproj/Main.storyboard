@@ -598,7 +598,8 @@
                         <viewControllerLayoutGuide type="bottom" id="7Tq-LM-d41"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0jf-ND-liB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-1W-iks">
@@ -668,7 +669,8 @@
             <objects>
                 <viewController id="CPt-M1-cx8" customClass="ModuleViewController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GzF-10-MhS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -874,11 +876,13 @@
                         <viewControllerLayoutGuide type="bottom" id="QgN-t0-2Ia"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uLg-U6-Vx2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="15" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-Ze-3AO">
-                                <rect key="frame" x="0.0" y="64" width="320" height="406"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="699"/>
+
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -1480,10 +1484,10 @@
         <image name="icons_notes.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dOd-MQ-Iz0"/>
+        <segue reference="8ce-L1-4uF"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="PkI-zp-FOV"/>
         <segue reference="hZ2-xb-bK4"/>
-        <segue reference="AVW-CC-bvd"/>
+        <segue reference="26S-pN-GFy"/>
     </inferredMetricsTieBreakers>
 </document>

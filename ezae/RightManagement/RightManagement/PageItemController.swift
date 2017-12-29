@@ -96,6 +96,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         if(!moduleProgress.isEmpty){
             handleViews()
         }
+        
     }
     
     func handleWithExistingProgress(){
@@ -124,7 +125,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addRadioViews(){
-        var y:Int = 130
+        var y:CGFloat = quesTitle.frame.height
         var button: SSRadioButton!
         radioButtonController = SSRadioButtonsController()
         var existingAnswerSeq:String = ""
@@ -138,8 +139,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             let title = option["title"] as! String
             let seq = option["seq"] as! String
             button = SSRadioButton(type: .system)
-            button.frame = CGRect(x:100,y:y,width:100,height:30)
-            y = y + 40
+            button.frame = CGRect(x:20,y:y,width:100,height:30)
+            y = y + 30
             button.circleRadius = CGFloat(10)
             button.circleColor = UIColor.black
             button.setTitle(title, for: .normal)
@@ -160,7 +161,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addCheckboxViews(){
-        var y:Int = 130
+        var y:CGFloat = quesTitle.frame.height
         var button: CheckBox!
         for i in 0..<options.count{
             let option = options[i] as! [String: Any]
@@ -169,15 +170,15 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             button = CheckBox(type: .system)
             button.awakeFromNib()
             button.tintColor = UIColor.darkGray
-            button.titleEdgeInsets.left = 30
+            button.titleEdgeInsets.left = 0
             button.tag = Int(seq)!
-            button.frame = CGRect(x:100,y:y,width:100,height:30)
+            button.frame = CGRect(x:20,y:y,width:100,height:30)
             let isChecked = isOptionSeqExistsInAnwers(optionSeq: seq)
             if(isChecked){
                 selectedAnsSeqs.append(Int(seq)!)
             }
             button.isChecked = isChecked
-            y = y + 40
+            y = y + 30
             button.setTitle(title, for: .normal)
             button.addTarget(self, action:#selector(addMultiSelectedAnsSeq), for: .touchUpInside)
             view.addSubview(button)
@@ -194,9 +195,9 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             answerText = (existingProgress?["answerText"] as? String)!
             feedback_success_arr.append(StringConstants.SUBMITTED_SUCCESSFULLY)
         }
-        let y:Int = 130
+        let y:CGFloat = quesTitle.frame.height
         longQuestionTextView = UITextView.init()
-        longQuestionTextView.frame = CGRect(x:30,y:y,width:300,height:128)
+        longQuestionTextView.frame = CGRect(x:10,y:y,width:self.view.frame.width-20,height:128)
         longQuestionTextView.textAlignment = NSTextAlignment.justified
         let borderColor = UIColor.lightGray
         longQuestionTextView.layer.borderColor = borderColor.cgColor
@@ -212,8 +213,10 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     func addTableView(){
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
-        var displayHeight: CGFloat = self.view.frame.height
-        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: 400 - barHeight))
+        var height: CGFloat = CGFloat(moduleProgress.count) * 40.00
+        let y:CGFloat = quesTitle.frame.height
+        tableView = UITableView(frame: CGRect(x: 0, y: y, width: displayWidth, height: height))
+        tableView.rowHeight = 40
         tableView.dataSource = self
         tableView.delegate = self
         tableView.setEditing(true, animated: true)
@@ -270,7 +273,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addSwitchView(){
-        let y:Int = 130
+        let y:CGFloat = quesTitle.frame.height + 20
         switcher = UISwitch.init()
         switcher.frame = CGRect(x:30,y:y,width:300,height:128)
         changeSwitcher(sender: switcher)
@@ -308,7 +311,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addWebView(){
-        let y:Int = 130
+        let y:CGFloat = quesTitle.frame.height
         let webView: UIWebView = UIWebView.init()
         webView.frame = CGRect(x:16,y:y,width:350,height:300)
         let questionDetail = questionJson["detail"] as! String
@@ -317,7 +320,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
 
     func addWebViewforDoc(){
-        let webView = UIWebView(frame: CGRect(x:16,y:130,width:350,height:300))
+        let webView = UIWebView(frame: CGRect(x:16,y:50,width:350,height:300))
         webView.scalesPageToFit = true
         view.addSubview(webView)
         let questionDetail = questionJson["detail"] as! String
@@ -329,10 +332,10 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func addSliderView(){
-        let slider = UISlider(frame: CGRect(x:16,y:120,width:350,height:80))
+        let slider = UISlider(frame: CGRect(x:10,y:quesTitle.frame.height,width:self.view.frame.width-20,height:80))
         sliderLabel = UILabel.init()
         sliderLabel.text = "0 %"
-        sliderLabel.frame = CGRect(x:16,y:80,width:50,height:50)
+        sliderLabel.frame = CGRect(x:10,y:80,width:50,height:50)
         view.addSubview(slider)
         slider.minimumValue = 0
         slider.maximumValue = 100

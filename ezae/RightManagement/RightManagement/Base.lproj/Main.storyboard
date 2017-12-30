@@ -1002,7 +1002,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1k-ke-PA0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <connections>
                                     <segue destination="28k-0F-ZKl" kind="embed" id="dOd-MQ-Iz0"/>
                                 </connections>
@@ -1035,10 +1035,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-wp-Tkb">
-                                <rect key="frame" x="16" y="0.0" width="343" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-wp-Tkb">
+                                <rect key="frame" x="16" y="0.0" width="343" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1480,6 +1480,6 @@
         <segue reference="rRV-pc-Utm"/>
         <segue reference="PkI-zp-FOV"/>
         <segue reference="hZ2-xb-bK4"/>
-        <segue reference="tjH-Ox-yXu"/>
+        <segue reference="26S-pN-GFy"/>
     </inferredMetricsTieBreakers>
 </document>

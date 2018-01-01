@@ -12,7 +12,7 @@ class MainTabController: UITabBarController{
     override func viewDidLoad() {
        super.viewDidLoad()
        if(isTraining){
-         self.selectedIndex = 2
+         self.selectedIndex = 1
        }
     }
 }

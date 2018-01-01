@@ -8,23 +8,23 @@
 
 import UIKit
 
-class MessageTableViewController: UITableViewController {
+class MessageTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var messageTableView: UITableView!
     var messages = [Message]()
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
     var messageCount: Int = 0
-    var selectedMessageSeq:Int = 0
+    var selectedMessageUserSeq:Int = 0
+    var selectedMessageUserName:String!
+    var selectedMessageUserType:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -36,23 +36,25 @@ class MessageTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return messages.count
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = messages[indexPath.row]
-        selectedMessageSeq = message.seq
+        selectedMessageUserSeq = message.chattingUserSeq
+        selectedMessageUserType = message.chattingUserType
+        selectedMessageUserName = message.messageTitle
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
         let message = messages[indexPath.row]
@@ -81,7 +83,7 @@ class MessageTableViewController: UITableViewController {
 
 
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         // action one
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
@@ -153,17 +155,19 @@ class MessageTableViewController: UITableViewController {
     private func loadMessages(response: [String: Any]){
         let messageJsonArr = response["messages"] as! [Any];
         messageCount = messageJsonArr.count
-        for var i in (0..<messageJsonArr.count).reversed(){
+        for i in 0..<messageJsonArr.count{
             let messageJson = messageJsonArr[i] as! [String: Any]
-            let seq = messageJson["seq"] as! String
+
             let title = messageJson["messageText"] as! String
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
             let userImage = messageJson["userImage"] as! String
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
-            let userSeq = messageJson["userSeq"] as? Int
-            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,messageSeq:Int(seq)!)
+
+            let userSeq = messageJson["userSeq"] as! String
+            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType)
+
             messages.append(msg)
         }
         messageTableView.reloadData()
@@ -171,8 +175,13 @@ class MessageTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if (segue.identifier == "MessageDetailViewController") {
-            let destinationVC:CreateNoteViewController = segue.destination as! CreateNoteViewController
+            let destinationVC:MessageChatController = segue.destination as! MessageChatController
+            destinationVC.chatUserSeq = selectedMessageUserSeq
+            destinationVC.charUserType = selectedMessageUserType
+            destinationVC.chattingUserName = selectedMessageUserName
         }
     }
+    
+    
 
 }

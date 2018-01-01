@@ -43,6 +43,8 @@ struct StringConstants {
     
     //Message Actions
     static let GET_MESSSAGES = ACTION_API_URL + "MessageAction.php?call=getMessages&userSeq={0}&companySeq={1}"
+    static let GET_MESSAGE_DETAIL = ACTION_API_URL + "MessageAction.php?call=getMessageDetails&userSeq={0}&companySeq={1}&chattingWithUserSeq={2}&chattingWithUserType={3}&afterMessageSeq={4}"
+    static let SEND_MESSAGE = ACTION_API_URL + "MessageAction.php?call=sendMessageChat&userSeq={0}&companySeq={1}&chattingWithUserSeq={2}&chattingWithUserType={3}&message={4}&chatLoadedTillSeq={5}"
     
     //Module Actions
     static let GET_MODULES = ACTION_API_URL + "ModuleAction.php?&call=getDirectModules&userSeq={0}&companySeq={1}"

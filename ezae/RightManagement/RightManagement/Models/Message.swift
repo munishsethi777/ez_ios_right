@@ -9,17 +9,18 @@
 import UIKit
 
 class Message{
-    var seq: Int
     var messageTitle: String
     var messageDescription : String
     var userImageUrl: String
     var date: String
-    
-    init(messageTitle:String,messageDescription:String,userImageUrl: String,date: String,messageSeq:Int){
+    var chattingUserSeq:Int
+    var chattingUserType:String
+    init(messageTitle:String,messageDescription:String,userImageUrl: String,date: String,chattingUserSeq:Int,chattingUserType:String){
         self.messageTitle = messageTitle
         self.messageDescription = messageDescription
         self.userImageUrl = userImageUrl
         self.date = date
-        self.seq = messageSeq
+        self.chattingUserSeq = chattingUserSeq
+        self.chattingUserType = chattingUserType
     }
 }

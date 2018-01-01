@@ -80,6 +80,19 @@
 		F6B63D981FF2533100886264 /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D971FF2533000886264 /* CreateNoteViewController.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
+		F6DBB5661FF4F7C900386125 /* MessageChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5651FF4F7C900386125 /* MessageChatController.swift */; };
+		F6DBB56B1FF4F96200386125 /* Inputbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5681FF4F96200386125 /* Inputbar.swift */; };
+		F6DBB56C1FF4F96200386125 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5691FF4F96200386125 /* LocalStorage.swift */; };
+		F6DBB56D1FF4F96200386125 /* TableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB56A1FF4F96200386125 /* TableArray.swift */; };
+		F6DBB5751FF4F97C00386125 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5701FF4F97C00386125 /* DAKeyboardControl.m */; };
+		F6DBB5761FF4F97C00386125 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5721FF4F97C00386125 /* HPGrowingTextView.m */; };
+		F6DBB5771FF4F97C00386125 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5741FF4F97C00386125 /* HPTextViewInternal.m */; };
+		F6DBB5821FF50A3200386125 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB57F1FF50A3100386125 /* Chat.swift */; };
+		F6DBB5831FF50A3200386125 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5801FF50A3200386125 /* Contact.swift */; };
+		F6DBB5841FF50A3200386125 /* MessageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5811FF50A3200386125 /* MessageDetail.swift */; };
+		F6DBB5891FF50DBB00386125 /* MessageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5881FF50DBB00386125 /* MessageGateway.swift */; };
+		F6DBB58D1FF50FC000386125 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58B1FF50FC000386125 /* ChatCell.swift */; };
+		F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58C1FF50FC000386125 /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +116,7 @@
 		E66D5B341F8B7C220063EDEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E66D5B3A1F8B98350063EDEC /* ic_achievement-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_achievement-web.png"; path = "Resources/ic_achievement-web.png"; sourceTree = SOURCE_ROOT; };
 		E66D5B3B1F8B98350063EDEC /* ic_chatroom_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_chatroom_blue-web.png"; path = "Resources/ic_chatroom_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_learningplan_blue-web.png"; path = "Resources/ic_learningplan_blue-web.png"; sourceTree = SOURCE_ROOT; };
+		E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_learningplan_blue-web.png"; path = "RightManagement/ic_learningplan_blue-web.png"; sourceTree = SOURCE_ROOT; };
 		E66D5B3D1F8B98350063EDEC /* ic_messages_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_messages_blue-web.png"; path = "Resources/ic_messages_blue-web.png"; sourceTree = SOURCE_ROOT; };
 		E66D5B3E1F8B98350063EDEC /* ic_notes_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_notes_blue-web.png"; path = "Resources/ic_notes_blue-web.png"; sourceTree = SOURCE_ROOT; };
 		E66D5B3F1F8B98350063EDEC /* ic_tools_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_tools_blue-web.png"; path = "Resources/ic_tools_blue-web.png"; sourceTree = SOURCE_ROOT; };
@@ -159,6 +172,23 @@
 		F6B63D971FF2533000886264 /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
+		F6DBB5651FF4F7C900386125 /* MessageChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatController.swift; sourceTree = "<group>"; };
+		F6DBB5681FF4F96200386125 /* Inputbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputbar.swift; sourceTree = "<group>"; };
+		F6DBB5691FF4F96200386125 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		F6DBB56A1FF4F96200386125 /* TableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableArray.swift; sourceTree = "<group>"; };
+		F6DBB56F1FF4F97C00386125 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		F6DBB5701FF4F97C00386125 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
+		F6DBB5711FF4F97C00386125 /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
+		F6DBB5721FF4F97C00386125 /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
+		F6DBB5731FF4F97C00386125 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		F6DBB5741FF4F97C00386125 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
+		F6DBB5781FF5074800386125 /* RightManagement-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RightManagement-Bridging-Header.h"; sourceTree = "<group>"; };
+		F6DBB57F1FF50A3100386125 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chat.swift; path = Models/Chat.swift; sourceTree = "<group>"; };
+		F6DBB5801FF50A3200386125 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Models/Contact.swift; sourceTree = "<group>"; };
+		F6DBB5811FF50A3200386125 /* MessageDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageDetail.swift; path = Models/MessageDetail.swift; sourceTree = "<group>"; };
+		F6DBB5881FF50DBB00386125 /* MessageGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageGateway.swift; sourceTree = "<group>"; };
+		F6DBB58B1FF50FC000386125 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		F6DBB58C1FF50FC000386125 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +223,7 @@
 		E66D5B1C1F8B7C220063EDEC = {
 			isa = PBXGroup;
 			children = (
+				F6DBB5781FF5074800386125 /* RightManagement-Bridging-Header.h */,
 				E66D5B271F8B7C220063EDEC /* RightManagement */,
 				E66D5B261F8B7C220063EDEC /* Products */,
 			);
@@ -217,9 +248,9 @@
 				E66D5B281F8B7C220063EDEC /* AppDelegate.swift */,
 				E66D5B2A1F8B7C220063EDEC /* ViewController.swift */,
 				E66D5B2C1F8B7C220063EDEC /* Main.storyboard */,
+				E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */,
 				E66D5B3A1F8B98350063EDEC /* ic_achievement-web.png */,
 				E66D5B3B1F8B98350063EDEC /* ic_chatroom_blue-web.png */,
-				E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */,
 				E66D5B3D1F8B98350063EDEC /* ic_messages_blue-web.png */,
 				E66D5B3E1F8B98350063EDEC /* ic_notes_blue-web.png */,
 				E66D5B3F1F8B98350063EDEC /* ic_tools_blue-web.png */,
@@ -236,6 +267,7 @@
 		E66D5B4B1F8CA3990063EDEC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6DBB5581FF4F5ED00386125 /* MessageChat */,
 				F692B7021FDFAFEE00AD8745 /* SSRadioButtonController */,
 				F64A98661FD016AD001858DE /* UICircularProgressRing.h */,
 				F64A98641FD016AD001858DE /* UICircularProgressRingDelegate.swift */,
@@ -270,6 +302,9 @@
 		E66D5B581F8DFDC10063EDEC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F6DBB57F1FF50A3100386125 /* Chat.swift */,
+				F6DBB5801FF50A3200386125 /* Contact.swift */,
+				F6DBB5811FF50A3200386125 /* MessageDetail.swift */,
 				F64A98781FD01ADF001858DE /* ActiveLearningPlan.swift */,
 				F64A98791FD01ADF001858DE /* Badge.swift */,
 				F64A987A1FD01ADF001858DE /* Message.swift */,
@@ -333,6 +368,59 @@
 				F692B70B1FDFD42100AD8745 /* ic_check_box_outline_blank.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		F6DBB5581FF4F5ED00386125 /* MessageChat */ = {
+			isa = PBXGroup;
+			children = (
+				F6DBB58A1FF50FC000386125 /* Cell */,
+				F6DBB5871FF50DBB00386125 /* Gateway */,
+				F6DBB56E1FF4F97C00386125 /* Third-Party */,
+				F6DBB5671FF4F96200386125 /* Helpers */,
+				F6DBB5651FF4F7C900386125 /* MessageChatController.swift */,
+			);
+			name = MessageChat;
+			path = ViewControllers/MessageChat;
+			sourceTree = "<group>";
+		};
+		F6DBB5671FF4F96200386125 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F6DBB5681FF4F96200386125 /* Inputbar.swift */,
+				F6DBB5691FF4F96200386125 /* LocalStorage.swift */,
+				F6DBB56A1FF4F96200386125 /* TableArray.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F6DBB56E1FF4F97C00386125 /* Third-Party */ = {
+			isa = PBXGroup;
+			children = (
+				F6DBB56F1FF4F97C00386125 /* DAKeyboardControl.h */,
+				F6DBB5701FF4F97C00386125 /* DAKeyboardControl.m */,
+				F6DBB5711FF4F97C00386125 /* HPGrowingTextView.h */,
+				F6DBB5721FF4F97C00386125 /* HPGrowingTextView.m */,
+				F6DBB5731FF4F97C00386125 /* HPTextViewInternal.h */,
+				F6DBB5741FF4F97C00386125 /* HPTextViewInternal.m */,
+			);
+			path = "Third-Party";
+			sourceTree = "<group>";
+		};
+		F6DBB5871FF50DBB00386125 /* Gateway */ = {
+			isa = PBXGroup;
+			children = (
+				F6DBB5881FF50DBB00386125 /* MessageGateway.swift */,
+			);
+			path = Gateway;
+			sourceTree = "<group>";
+		};
+		F6DBB58A1FF50FC000386125 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F6DBB58B1FF50FC000386125 /* ChatCell.swift */,
+				F6DBB58C1FF50FC000386125 /* MessageCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,14 +521,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6DBB5831FF50A3200386125 /* Contact.swift in Sources */,
 				F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */,
 				F6B63D491FEBC7CC00886264 /* TrainingTabController.swift in Sources */,
 				F62F587F1FF37B2200EDFEF1 /* MessageDetailViewController.swift in Sources */,
 				F64A98731FD01A00001858DE /* MessageFormat.swift in Sources */,
 				F64A985C1FCFCEA3001858DE /* BadgeTableViewCell.swift in Sources */,
+				F6DBB5891FF50DBB00386125 /* MessageGateway.swift in Sources */,
 				F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */,
 				E66D5B531F8CBB560063EDEC /* MessageTableViewCell.swift in Sources */,
+				F6DBB5751FF4F97C00386125 /* DAKeyboardControl.m in Sources */,
 				F64A987D1FD01ADF001858DE /* Badge.swift in Sources */,
+				F6DBB5761FF4F97C00386125 /* HPGrowingTextView.m in Sources */,
 				F64A986E1FD019DD001858DE /* PreferencesUtil.swift in Sources */,
 				F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */,
 				E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */,
@@ -449,6 +541,8 @@
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
 				F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */,
 				F64A987C1FD01ADF001858DE /* ActiveLearningPlan.swift in Sources */,
+				F6DBB5821FF50A3200386125 /* Chat.swift in Sources */,
+				F6DBB5841FF50A3200386125 /* MessageDetail.swift in Sources */,
 				F6B63D8C1FEF6A1D00886264 /* SettingsTableViewController.swift in Sources */,
 				E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */,
 				F64A98681FD016AD001858DE /* UICircularProgressRingDelegate.swift in Sources */,
@@ -462,22 +556,29 @@
 				F6B63D881FEE551700886264 /* MainTabController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,
+				F6DBB56D1FF4F96200386125 /* TableArray.swift in Sources */,
 				F64A986B1FD01782001858DE /* CoreDataManager.swift in Sources */,
 				E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */,
 				F6B63D921FEF8A3400886264 /* Notes.swift in Sources */,
 				E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */,
 				F692B7071FDFAFEE00AD8745 /* SSRadioButton.swift in Sources */,
+				F6DBB58D1FF50FC000386125 /* ChatCell.swift in Sources */,
 				F64A98721FD01A00001858DE /* StringConstants.swift in Sources */,
 				F692B7061FDFAFEE00AD8745 /* Checkbox.swift in Sources */,
 				F64A987E1FD01ADF001858DE /* Message.swift in Sources */,
 				F6B63D8E1FEF72A200886264 /* ChangePasswordViewController.swift in Sources */,
 				F64A988F1FD5548B001858DE /* TrainingTableViewCell.swift in Sources */,
+				F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */,
 				F64A98851FD15E18001858DE /* PageViewController.swift in Sources */,
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
+				F6DBB5771FF4F97C00386125 /* HPTextViewInternal.m in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
 				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,
 				F6B63D961FF20A1800886264 /* NotesTableViewCell.swift in Sources */,
 				F692B70F1FE23D2800AD8745 /* ModuleProgressMgr.swift in Sources */,
+				F6DBB56C1FF4F96200386125 /* LocalStorage.swift in Sources */,
+				F6DBB5661FF4F7C900386125 /* MessageChatController.swift in Sources */,
+				F6DBB56B1FF4F96200386125 /* Inputbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +700,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ezae.RightManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RightManagement-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -612,6 +714,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ezae.RightManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RightManagement-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -54,7 +54,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         
     }
     func resetScrollHeight(){
-        var scrollheight: CGFloat = 70
+        var scrollheight: CGFloat = 90
         scrollheight += self.notificationTableViewHeightConstraint.constant
         scrollheight += self.activeLearningPlansHeightConstraint.constant
         scrollheight += self.topView.frame.height

@@ -157,17 +157,14 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         messageCount = messageJsonArr.count
         for i in 0..<messageJsonArr.count{
             let messageJson = messageJsonArr[i] as! [String: Any]
-
             let title = messageJson["messageText"] as! String
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
             let userImage = messageJson["userImage"] as! String
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
-
             let userSeq = messageJson["userSeq"] as! String
             let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType)
-
             messages.append(msg)
         }
         messageTableView.reloadData()

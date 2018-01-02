@@ -75,7 +75,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         pageViewController = pageController
         addChildViewController(pageViewController!)
         let childView:UIView = pageViewController!.view
-        childView.frame = CGRect(x: 0, y: 90, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-20);
+        childView.frame = CGRect(x: 0, y: 60, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-20);
         self.view.addSubview(childView)
         pageViewController!.didMove(toParentViewController: self)
     }

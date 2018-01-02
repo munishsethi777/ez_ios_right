@@ -25,11 +25,16 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getNotes()
+         getNotes()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notesCount
+        return notes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,12 +45,64 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         cell?.dateTime.text = note.dateTime
         return cell!
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notes[indexPath.row]
         selectedNoteSeq = note.seq
         self.performSegue(withIdentifier: "NotesViewController", sender: nil)
     }
     
+     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // action two
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.delete(tableView:tableView,index:indexPath)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        return [deleteAction]
+    }
+    
+    private func delete(tableView:UITableView,index:IndexPath){
+        let refreshAlert = UIAlertController(title: "Delete Notes", message: "Are you realy want to delete this Note?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+             self.deleteNote(tableView:tableView,index:index)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    
+    
+    func deleteNote(tableView:UITableView,index:IndexPath){
+        let note = notes[index.row]
+        let noteSeq = note.seq
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,noteSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.DELETE_NOTES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.notes.remove(at: index.row)
+                        tableView.deleteRows(at: [index], with: .fade)
+                        self.showAlert(message: message!,title:"Success")
+                    }else{
+                        self.showAlert(message: message!,title:"Failed")
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description,title:"Exception")
+            }
+        })
+    }
     func getNotes(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTES, args: args)
@@ -89,6 +146,8 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if (segue.identifier == "NotesViewController") {

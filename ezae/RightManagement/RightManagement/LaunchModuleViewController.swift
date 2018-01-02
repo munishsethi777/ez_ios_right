@@ -53,6 +53,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     
     func createPageViewController(itemIndex:Int) {
         moduleJson = jsonResponse["module"] as! [String: Any]
+        let moduleType = moduleJson["moduletype"] as! String
+        if(moduleType == "quiz"){
+           marksLabel.isHidden = false
+        }else{
+            marksLabel.isHidden = true
+        }
         questionJsonArr = moduleJson["questions"] as! [Any]
         let activity = moduleJson["activityData"] as? [String: Any]
         if(activity != nil){
@@ -60,7 +66,6 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             let progressStr = activityData["progress"] as! String
             progress = Int(progressStr)!
         }
-        
         moduleTitle.text = moduleJson["title"] as! String
         let pageController = self.storyboard!.instantiateViewController(withIdentifier: "PageController") as! UIPageViewController
         pageController.dataSource = self
@@ -196,7 +201,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             pageItemController.questionJson = questionJsonArr[itemIndex] as! [String: Any]
             let questionJson = moduleJson["questions"] as! [Any]
             let question = questionJson[itemIndex] as! [String: Any]
-            var marks = question["marks"] as? String
+            var marks = question["maxMarks"] as? String
             if(marks == nil){
                 marks = "0"
             }

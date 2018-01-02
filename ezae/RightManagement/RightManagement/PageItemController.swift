@@ -622,7 +622,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
            submitProgress.isEnabled = true
            okButton.isHidden = true
         }
-        
         showFeedback()
     }
     

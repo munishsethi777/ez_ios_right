@@ -1298,7 +1298,7 @@
                                                         <segue destination="bEn-ef-Zaz" kind="show" id="QWw-mf-Mh3"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons_notes.png" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-MS-rFO">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_notes.png" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-MS-rFO">
                                                     <rect key="frame" x="16" y="7" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1489,10 +1489,10 @@
         <image name="ico_logout.png" width="25" height="25"/>
         <image name="ico_messages.png" width="30" height="30"/>
         <image name="ico_modules.png" width="30" height="30"/>
+        <image name="ico_notes.png" width="25" height="25"/>
         <image name="ico_settings.png" width="30" height="30"/>
         <image name="ico_trainings.png" width="30" height="30"/>
         <image name="ico_updateprofile.png" width="25" height="25"/>
-        <image name="icons_notes.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8ce-L1-4uF"/>

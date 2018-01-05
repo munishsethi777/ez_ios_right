@@ -1102,7 +1102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cYh-LM-z7J">
-                                <rect key="frame" x="0.0" y="56" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="8Ic-xE-HcQ" kind="embed" id="j8N-O7-rB4"/>
@@ -1117,7 +1117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kO-2s-kiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="-364"/>
+            <point key="canvasLocation" x="1132" y="-364.7676161919041"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kmN-Ng-dTI">
@@ -1141,7 +1141,7 @@
             <objects>
                 <tableViewController id="ru2-qC-wPH" customClass="MessageTableViewController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Z6-qF-wvl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1214,21 +1214,21 @@
                         <viewControllerLayoutGuide type="bottom" id="wRn-pv-JI7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7v5-od-Zfd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="chat background" translatesAutoresizingMaskIntoConstraints="NO" id="5kp-vm-lat">
-                                <rect key="frame" x="0.0" y="44" width="375" height="485"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="533"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-i2-71m">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="521"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-i2-71m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpK-9V-xfs" customClass="Inputbar" customModule="RightManagement" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="521" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="577" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>

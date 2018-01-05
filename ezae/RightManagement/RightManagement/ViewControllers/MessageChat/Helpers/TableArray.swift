@@ -21,6 +21,7 @@ class TableArray {
         self.formatter.timeStyle = .none
         self.formatter.dateStyle = .short
         self.formatter.doesRelativeDateFormatting = false
+        //self.formatter.dateFormat = "MM/dd/yyyy"
     }
 
     func addObject(message:MessageDetail) {
@@ -145,15 +146,26 @@ class TableArray {
     func cacheTitles() {
         let array = self.mapTitleToMessages.keys
         
-        
+
         let orderedArray = array.sorted { (dateString1, dateString2) -> Bool in
             let d1 = self.formatter.date(from: dateString1)
             let d2 = self.formatter.date(from: dateString2)
             
             return d1 == d2
         }
+        var convertedArray: [Date] = []
+        for dat in array {
+            let date = self.formatter.date(from: dat)
+            convertedArray.append(date!)
+        }
         
-        self.orderedTitles = orderedArray
+        let sortedDateArr = convertedArray.sorted(){$0 < $1}
+        var sortedArr: [String] = []
+        for dat in sortedDateArr {
+            let date = self.formatter.string(from: dat)
+            sortedArr.append(date)
+        }
+        self.orderedTitles = sortedArr
     }
     
     func keyForMessage(message:MessageDetail) -> String {

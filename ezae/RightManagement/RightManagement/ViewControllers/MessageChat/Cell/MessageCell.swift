@@ -13,6 +13,7 @@ class MessageCell:UITableViewCell {
     
     private var timeLabel:UILabel!
     private var textView:UITextView!
+    private var nameTextView:UITextView!
     private var bubbleImage:UIImageView!
     private var statusIcon:UIImageView!
     
@@ -63,13 +64,14 @@ class MessageCell:UITableViewCell {
         self.accessoryType = .none
         
         self.textView = UITextView()
+        self.nameTextView = UITextView()
         self.bubbleImage = UIImageView()
         self.timeLabel = UILabel()
         self.statusIcon = UIImageView()
         self.resendButton = UIButton()
         self.resendButton.isHidden = true
-        
         self.contentView.addSubview(self.bubbleImage)
+        self.contentView.addSubview(self.nameTextView)
         self.contentView.addSubview(self.textView)
         self.contentView.addSubview(self.timeLabel)
         self.contentView.addSubview(self.statusIcon)
@@ -79,6 +81,7 @@ class MessageCell:UITableViewCell {
         super.prepareForReuse()
         
         self.textView.text = ""
+        self.nameTextView.text = ""
         self.timeLabel.text = ""
         self.statusIcon.image = nil
         self.bubbleImage.image = nil
@@ -86,6 +89,7 @@ class MessageCell:UITableViewCell {
     }
 
     func buildCell() {
+        self.setNameTextView()
         self.setTextView()
         self.setTimeLabel()
         self.setBubble()
@@ -103,10 +107,9 @@ class MessageCell:UITableViewCell {
     func setTextView() {
         let maxWitdh = 0.7*self.contentView.frame.size.width
         self.textView.frame = CGRect(x:0,y: 0,width: maxWitdh,height: CGFloat(MAXFLOAT))
-        self.textView.font = UIFont(name:"Helvetica", size:17)
+        self.textView.font = UIFont(name:"Helvetica", size:15)
         self.textView.backgroundColor = UIColor.clear
         self.textView.isUserInteractionEnabled = false
-        
         self.textView.text = self.message.text
         self.textView.sizeToFit()
         
@@ -128,20 +131,48 @@ class MessageCell:UITableViewCell {
         }
         else {
             textViewX = 20
-            textViewY = -1
+            textViewY = 10
             autoresizing = .flexibleRightMargin;
         }
         
         self.textView.autoresizingMask = autoresizing
         self.textView.frame = CGRect(x:textViewX,y: textViewY,width: textViewW,height: textViewH)
     }
-
+    
+    func setNameTextView() {
+        if self.message.sender == .Myself {
+            return
+        }
+        let maxWitdh = 0.7*self.contentView.frame.size.width
+        self.nameTextView.frame = CGRect(x:0,y: 0,width: maxWitdh,height: CGFloat(MAXFLOAT))
+        self.nameTextView.font = UIFont(name:"Helvetica", size:10)
+        self.nameTextView.backgroundColor = UIColor.clear
+        self.nameTextView.isUserInteractionEnabled = false
+        self.nameTextView.text = message.username
+        self.nameTextView.alpha = 0.7
+        //self.nameTextView.sizeToFit()
+        
+        var textViewX:CGFloat
+        var textViewY:CGFloat
+        let textViewW = self.nameTextView.frame.size.width
+        let textViewH = self.nameTextView.frame.size.height
+        
+        var autoresizing:UIViewAutoresizing
+        
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textViewX = 20
+        textViewY = -20
+        autoresizing = .flexibleRightMargin;
+        self.nameTextView.autoresizingMask = autoresizing
+        self.nameTextView.frame = CGRect(x:textViewX,y: textViewY,width: textViewW,height: textViewH)
+    }
+    
     // MARK - TimeLabel
 
     func setTimeLabel() {
         self.timeLabel.frame = CGRect(x:0,y: 0,width: 52,height: 14)
         self.timeLabel.textColor = UIColor.lightGray
-        self.timeLabel.font = UIFont(name:"Helvetica", size:12)
+        self.timeLabel.font = UIFont(name:"Helvetica", size:8)
         self.timeLabel.isUserInteractionEnabled = false
         self.timeLabel.alpha = 0.7
         self.timeLabel.textAlignment = .right
@@ -169,7 +200,7 @@ class MessageCell:UITableViewCell {
         
         if self.isSingleLineCase() {
             timeX = self.textView.frame.origin.x + self.textView.frame.size.width - 5
-            timeY -= 10
+            timeY -= 8
         }
         
         self.timeLabel.frame = CGRect(x:timeX,y: timeY,width: self.timeLabel.frame.size.width, height:self.timeLabel.frame.size.height);
@@ -219,7 +250,7 @@ class MessageCell:UITableViewCell {
                                self.timeLabel.frame.origin.x + self.timeLabel.frame.size.width + 2*marginLeft)
         }
         
-        self.bubbleImage.frame = CGRect(x:bubbleX,y: bubbleY,width: bubbleWidth, height: bubbleHeight)
+        self.bubbleImage.frame = CGRect(x:bubbleX,y: bubbleY,width: bubbleWidth, height: bubbleHeight + 10)
         self.bubbleImage.autoresizingMask = self.textView.autoresizingMask
     }
 

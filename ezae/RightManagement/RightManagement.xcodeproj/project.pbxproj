@@ -94,6 +94,10 @@
 		F6DBB5891FF50DBB00386125 /* MessageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5881FF50DBB00386125 /* MessageGateway.swift */; };
 		F6DBB58D1FF50FC000386125 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58B1FF50FC000386125 /* ChatCell.swift */; };
 		F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58C1FF50FC000386125 /* MessageCell.swift */; };
+		F6F078231FFDF17600120DA7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078221FFDF17600120DA7 /* ChatViewController.swift */; };
+		F6F078251FFE054400120DA7 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078241FFE054400120DA7 /* ChatModel.swift */; };
+		F6F078271FFE0A6700120DA7 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */; };
+		F6F078291FFE27B900120DA7 /* ChatDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078281FFE27B900120DA7 /* ChatDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +195,10 @@
 		F6DBB5881FF50DBB00386125 /* MessageGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageGateway.swift; sourceTree = "<group>"; };
 		F6DBB58B1FF50FC000386125 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		F6DBB58C1FF50FC000386125 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F6F078221FFDF17600120DA7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F6F078241FFE054400120DA7 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
+		F6F078281FFE27B900120DA7 /* ChatDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +306,8 @@
 				F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */,
 				F6B63D971FF2533000886264 /* CreateNoteViewController.swift */,
 				F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */,
+				F6F078221FFDF17600120DA7 /* ChatViewController.swift */,
+				F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -313,6 +323,7 @@
 				F64A987A1FD01ADF001858DE /* Message.swift */,
 				F64A987B1FD01ADF001858DE /* Notification.swift */,
 				F6B63D911FEF8A3400886264 /* Notes.swift */,
+				F6F078241FFE054400120DA7 /* ChatModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -381,6 +392,7 @@
 				F6DBB56E1FF4F97C00386125 /* Third-Party */,
 				F6DBB5671FF4F96200386125 /* Helpers */,
 				F6DBB5651FF4F7C900386125 /* MessageChatController.swift */,
+				F6F078281FFE27B900120DA7 /* ChatDetailController.swift */,
 			);
 			name = MessageChat;
 			path = ViewControllers/MessageChat;
@@ -540,6 +552,8 @@
 				F64A986E1FD019DD001858DE /* PreferencesUtil.swift in Sources */,
 				F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */,
 				E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */,
+				F6F078271FFE0A6700120DA7 /* ChatRoomTableViewCell.swift in Sources */,
+				F6F078231FFDF17600120DA7 /* ChatViewController.swift in Sources */,
 				F6B63D901FEF895B00886264 /* NotesViewController.swift in Sources */,
 				F64A98671FD016AD001858DE /* UICircularProgressRingView.swift in Sources */,
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
@@ -559,7 +573,9 @@
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				F6B63D881FEE551700886264 /* MainTabController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,
+				F6F078251FFE054400120DA7 /* ChatModel.swift in Sources */,
 				F64A987F1FD01ADF001858DE /* Notification.swift in Sources */,
+				F6F078291FFE27B900120DA7 /* ChatDetailController.swift in Sources */,
 				F6DBB56D1FF4F96200386125 /* TableArray.swift in Sources */,
 				F64A986B1FD01782001858DE /* CoreDataManager.swift in Sources */,
 				E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */,

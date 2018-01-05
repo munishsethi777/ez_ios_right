@@ -1,14 +1,13 @@
 //
-//  MessageChatController.swift
+//  ChatDetailController.swift
 //  RightManagement
 //
-//  Created by Baljeet Gaheer on 28/12/17.
-//  Copyright © 2017 Munish Sethi. All rights reserved.
+//  Created by Baljeet Gaheer on 04/01/18.
+//  Copyright © 2018 Munish Sethi. All rights reserved.
 //
 
 import UIKit
-class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDelegate,UITableViewDataSource, UITableViewDelegate{
-    
+class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDelegate,UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var inputbar: Inputbar!
     @IBOutlet weak var tableView: UITableView!
@@ -17,19 +16,18 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
             self.title = self.chat.contact.name
         }
     }
-    
-    var chatUserSeq:Int = 0
-    var charUserType:String!
-    var chattingUserName:String!
+    var chatRoomId:Int = 0
+    var chatRoomName:String!
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
+    var loggedInUserName:String!
     private var tableArray:TableArray!
     private var gateway:MessageGateway!
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-        
+        loggedInUserName = PreferencesUtil.sharedInstance.getLoggedInUserName()
         //Where tableview is the IBOutlet for your storyboard tableview.
         
         getMessages()
@@ -43,7 +41,6 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
             /*
              self.view.removeKeyboardControl()
              */
-            
             var toolBarFrame = self.inputbar.frame
             let tabbarFrame = self.parent?.tabBarController?.tabBar.frame
             let toolbarY = keyboardFrameInView.origin.y - toolBarFrame.size.height
@@ -177,7 +174,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         let message = MessageDetail()
         message.text = inputbar.text
         message.date = NSDate()
-        message.chatId = String(chatUserSeq)
+        message.chatId = String(chatRoomId)
         //Store Message in memory
         self.tableArray.addObject(message: message)
         
@@ -219,8 +216,8 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     }
     
     func getMessages(){
-        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatUserSeq,self.charUserType,0]
-        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MESSAGE_DETAIL, args: args)
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatRoomId,0]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CHATROOM_DETAIL, args: args)
         var success : Int = 0
         var message : String? = nil
         ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
@@ -246,8 +243,8 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     
     func sendMessage(messageDetail: MessageDetail){
         let messageText = messageDetail.text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatUserSeq,self.charUserType,messageText,0]
-        let apiUrl: String = MessageFormat.format(pattern: StringConstants.SEND_MESSAGE, args: args)
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatRoomId,"user",loggedInUserName,0,messageText]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.SEND_CHAT_MESSAGE, args: args)
         var success : Int = 0
         var message : String? = nil
         ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
@@ -273,32 +270,42 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         LocalStorage.sharedInstance.refreshStorage()
         let messageDetailArr = response["messages"] as! [Any];
         let contact = Contact()
-        contact.name = chattingUserName
-        contact.identifier = String(chatUserSeq)
+        contact.name = chatRoomName
+        contact.identifier = String(chatRoomId)
         let chat = Chat()
         chat.contact = contact
         for i in 0..<messageDetailArr.count{
             let messageDetailJson = messageDetailArr[i] as! [String: Any]
-            let chatSeq = messageDetailJson["seq"] as! String
-            let datedStr = messageDetailJson["dated"] as! String
-            let date = DateUtil.sharedInstance.stringToDate(dateStr: datedStr)
-            let messagetext = messageDetailJson["messagetext"] as! String
-            let fromUserSeqStr = messageDetailJson["fromuserseq"] as? String
-            var fromUserSeq = 0
-            if(fromUserSeqStr != nil){
-                fromUserSeq = Int(fromUserSeqStr!)!
-            }
-            let isSent = loggedInUserSeq == fromUserSeq;
+            let chatSeq = messageDetailJson["post_id"] as! String
+            let datedStr = messageDetailJson["post_time"] as! String
+            let postDate = messageDetailJson["post_date"] as! String + "000"
+            var name = messageDetailJson["uname"] as? String;
+            let milisecond = postDate
+            let date = Date.init(timeIntervalSince1970: TimeInterval(milisecond)!/1000)
+            let messagetext = messageDetailJson["post_message"] as! String
+            let fromUserName = messageDetailJson["post_user"] as! String
+            let type = messageDetailJson["user_type"] as! String
+            
+            let isSent = loggedInUserName == fromUserName;
             let message = MessageDetail()
             message.text = messagetext
             message.sender = .Someone
-            message.username = chattingUserName
+            if(type == "admin"){
+                name = messageDetailJson["aname"] as? String;
+            }else {
+                if(name == nil || name == "" || name == "null"){
+                    name =   fromUserName;
+                }
+            }
+            message.username = name!
             message.date = date as NSDate
             if(isSent){
                 message.status = .Received
                 message.sender = .Myself
+            }else{
+                message.status = .Received
             }
-            message.chatId = String(chatUserSeq)
+            message.chatId = String(chatRoomId)
             LocalStorage.sharedInstance.storeMessage(message: message)
         }
         self.chat = chat
@@ -314,4 +321,5 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     
     
 }
+
 

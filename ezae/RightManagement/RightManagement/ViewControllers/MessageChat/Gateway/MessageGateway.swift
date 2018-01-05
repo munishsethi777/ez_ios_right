@@ -79,9 +79,9 @@ class MessageGateway:NSObject {
         // Remove this when connect to your server
         // fake update message
         //
-        if message.status != .Read {
-            self.fakeMessageUpdate(message: message)
-        }
+        //if message.status != .Read {
+            //self.fakeMessageUpdate(message: message)
+        //}
     }
 
     // MARK - Exchange data with API

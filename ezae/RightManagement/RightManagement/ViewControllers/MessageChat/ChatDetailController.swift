@@ -21,6 +21,7 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var loggedInUserName:String!
+    var syncMessageScheduler = Timer()
     private var tableArray:TableArray!
     private var gateway:MessageGateway!
     override func viewDidLoad() {
@@ -29,9 +30,8 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserName = PreferencesUtil.sharedInstance.getLoggedInUserName()
         //Where tableview is the IBOutlet for your storyboard tableview.
-        
         getMessages()
-        
+        syncMessages()
     }
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
@@ -55,6 +55,8 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
             self.tableViewScrollToBottomAnimated(animated: false)
         }
     }
+    
+    
     
     override func viewDidDisappear(_ animated:Bool) {
         super.viewDidDisappear(animated)
@@ -94,6 +96,7 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         self.gateway.delegate = self
         self.gateway.chat = self.chat
         self.gateway.loadOldMessages()
+        tableViewScrollToBottomAnimated(animated: false)
     }
     
     // MARK - Actions
@@ -190,7 +193,8 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         self.tableView.scrollToRow(at: self.tableArray.indexPathForLastMessage() as IndexPath, at:.bottom, animated:true)
         
         //Send message to server
-        self.gateway.sendMessage(message: message)
+        
+        
         sendMessage(messageDetail: message)
     }
     func inputbarDidPressLeftButton(inputbar:Inputbar) {
@@ -254,11 +258,13 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        messageDetail.status = .Sent
-                        self.gateway.updateMessageStatus(message: messageDetail)
+                        messageDetail.status = .Received
+                        self.gateway.sendMessage(message: messageDetail)
                     }else{
                         self.showAlert(message: message!)
                     }
+                    
+                    
                 }
             } catch let parseError as NSError {
                 self.showAlert(message: parseError.description)
@@ -279,7 +285,7 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
             let chatSeq = messageDetailJson["post_id"] as! String
             let datedStr = messageDetailJson["post_time"] as! String
             let postDate = messageDetailJson["post_date"] as! String + "000"
-            var name = messageDetailJson["uname"] as? String;
+            var name = messageDetailJson["uname"] as? String
             let milisecond = postDate
             let date = Date.init(timeIntervalSince1970: TimeInterval(milisecond)!/1000)
             let messagetext = messageDetailJson["post_message"] as! String
@@ -312,7 +318,9 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         self.chat.numberOfUnreadMessages = messageDetailArr.count
         //self.tableViewScrollToBottomAnimated(animated: false)
     }
-    
+    func syncMessages(){
+        syncMessageScheduler = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
+    }
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

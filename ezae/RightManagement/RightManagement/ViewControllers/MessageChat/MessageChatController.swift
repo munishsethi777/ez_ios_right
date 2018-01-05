@@ -23,6 +23,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     var chattingUserName:String!
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
+    var syncMessageScheduler = Timer()
     private var tableArray:TableArray!
     private var gateway:MessageGateway!
     override func viewDidLoad() {
@@ -33,7 +34,11 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         //Where tableview is the IBOutlet for your storyboard tableview.
         
         getMessages()
+        syncMessages()
         
+    }
+    func syncMessages(){
+        syncMessageScheduler = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
     }
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)

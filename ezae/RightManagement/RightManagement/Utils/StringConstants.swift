@@ -35,6 +35,7 @@ struct StringConstants {
     static let SAVE_NOTES = ACTION_API_URL + "NoteAction.php?call=saveNote&userSeq={0}&companySeq={1}&seq={2}&details={3}"
     static let DELETE_NOTES = ACTION_API_URL + "NoteAction.php?call=deleteNote&userSeq={0}&companySeq={1}&noteSeq={2}"
     static let GET_USER_DETAIL = ACTION_API_URL + "UserAction.php?call=getUserDetail&userSeq={0}&companySeq={1}";
+    static let UPDATE_USER_PROFILE = ACTION_API_URL + "UserAction.php?call=updateUserProfile&userSeq={0}&companySeq={1}&userProfileDetail={2}";
     
     //Learning Plan Actions
     static let GET_LEARNING_PLAN = ACTION_API_URL + "LearningPlanAction.php?call=getLearningPlans&userSeq={0}&companySeq={1}"

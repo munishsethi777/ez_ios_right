@@ -24,13 +24,6 @@
 		E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B2A1F8B7C220063EDEC /* ViewController.swift */; };
 		E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2C1F8B7C220063EDEC /* Main.storyboard */; };
 		E66D5B301F8B7C220063EDEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2F1F8B7C220063EDEC /* Assets.xcassets */; };
-		E66D5B411F8B98350063EDEC /* ic_achievement-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3A1F8B98350063EDEC /* ic_achievement-web.png */; };
-		E66D5B421F8B98350063EDEC /* ic_chatroom_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3B1F8B98350063EDEC /* ic_chatroom_blue-web.png */; };
-		E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */; };
-		E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3D1F8B98350063EDEC /* ic_messages_blue-web.png */; };
-		E66D5B451F8B98350063EDEC /* ic_notes_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3E1F8B98350063EDEC /* ic_notes_blue-web.png */; };
-		E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B3F1F8B98350063EDEC /* ic_tools_blue-web.png */; };
-		E66D5B471F8B98350063EDEC /* ic_training_blue-web.png in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B401F8B98350063EDEC /* ic_training_blue-web.png */; };
 		E66D5B4D1F8CADDA0063EDEC /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B4C1F8CADDA0063EDEC /* DashboardVC.swift */; };
 		E66D5B531F8CBB560063EDEC /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B521F8CBB560063EDEC /* MessageTableViewCell.swift */; };
 		E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B541F8CBDF20063EDEC /* MessageTableViewController.swift */; };
@@ -38,6 +31,7 @@
 		E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */; };
 		E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5D1FEA6F380001E7C9 /* login_logo.png */; };
 		E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5F1FEA6F730001E7C9 /* background2.jpg */; };
+		E69A6FC91FFE23EE00BBF31D /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */; };
 		E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */; };
 		E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */; };
 		E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */; };
@@ -120,13 +114,6 @@
 		E66D5B2D1F8B7C220063EDEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E66D5B2F1F8B7C220063EDEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E66D5B341F8B7C220063EDEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E66D5B3A1F8B98350063EDEC /* ic_achievement-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_achievement-web.png"; path = "Resources/ic_achievement-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3B1F8B98350063EDEC /* ic_chatroom_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_chatroom_blue-web.png"; path = "Resources/ic_chatroom_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_learningplan_blue-web.png"; path = "RightManagement/ic_learningplan_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3D1F8B98350063EDEC /* ic_messages_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_messages_blue-web.png"; path = "Resources/ic_messages_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3E1F8B98350063EDEC /* ic_notes_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_notes_blue-web.png"; path = "Resources/ic_notes_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B3F1F8B98350063EDEC /* ic_tools_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_tools_blue-web.png"; path = "Resources/ic_tools_blue-web.png"; sourceTree = SOURCE_ROOT; };
-		E66D5B401F8B98350063EDEC /* ic_training_blue-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_training_blue-web.png"; path = "Resources/ic_training_blue-web.png"; sourceTree = SOURCE_ROOT; };
 		E66D5B4C1F8CADDA0063EDEC /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		E66D5B521F8CBB560063EDEC /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewCell.swift; path = ViewControllers/MessageTableViewCell.swift; sourceTree = "<group>"; };
 		E66D5B541F8CBDF20063EDEC /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +121,7 @@
 		E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveLearningPlanCollectionViewCell.swift; path = ViewControllers/ActiveLearningPlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6821D5D1FEA6F380001E7C9 /* login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_logo.png; sourceTree = "<group>"; };
 		E6821D5F1FEA6F730001E7C9 /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
+		E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout.png; sourceTree = "<group>"; };
 		E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepassword.png; sourceTree = "<group>"; };
 		E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_updateprofile.png; sourceTree = "<group>"; };
@@ -259,13 +247,6 @@
 				E66D5B281F8B7C220063EDEC /* AppDelegate.swift */,
 				E66D5B2A1F8B7C220063EDEC /* ViewController.swift */,
 				E66D5B2C1F8B7C220063EDEC /* Main.storyboard */,
-				E66D5B3C1F8B98350063EDEC /* ic_learningplan_blue-web.png */,
-				E66D5B3A1F8B98350063EDEC /* ic_achievement-web.png */,
-				E66D5B3B1F8B98350063EDEC /* ic_chatroom_blue-web.png */,
-				E66D5B3D1F8B98350063EDEC /* ic_messages_blue-web.png */,
-				E66D5B3E1F8B98350063EDEC /* ic_notes_blue-web.png */,
-				E66D5B3F1F8B98350063EDEC /* ic_tools_blue-web.png */,
-				E66D5B401F8B98350063EDEC /* ic_training_blue-web.png */,
 				E66D5B2F1F8B7C220063EDEC /* Assets.xcassets */,
 				E66D5B341F8B7C220063EDEC /* Info.plist */,
 				E66D5B581F8DFDC10063EDEC /* Models */,
@@ -308,6 +289,7 @@
 				F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */,
 				F6F078221FFDF17600120DA7 /* ChatViewController.swift */,
 				F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */,
+				E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -503,27 +485,20 @@
 				E6377CB21FEE435100289F4E /* ico_trainings.png in Resources */,
 				E6377CB71FEE435100289F4E /* ico_messages.png in Resources */,
 				E6377CB61FEE435100289F4E /* ico_dashboard.png in Resources */,
-				E66D5B471F8B98350063EDEC /* ic_training_blue-web.png in Resources */,
 				E6377CB81FEE435100289F4E /* ico_modules.png in Resources */,
-				E66D5B421F8B98350063EDEC /* ic_chatroom_blue-web.png in Resources */,
-				E66D5B451F8B98350063EDEC /* ic_notes_blue-web.png in Resources */,
 				E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */,
 				E6377CB41FEE435100289F4E /* ico_achievements.png in Resources */,
 				E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */,
 				E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */,
-				E66D5B411F8B98350063EDEC /* ic_achievement-web.png in Resources */,
 				E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */,
 				E6377CBA1FEE6BC100289F4E /* ico_settings.png in Resources */,
-				E66D5B431F8B98350063EDEC /* ic_learningplan_blue-web.png in Resources */,
 				E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */,
-				E66D5B441F8B98350063EDEC /* ic_messages_blue-web.png in Resources */,
 				E6377CB51FEE435100289F4E /* ico_chatroom.png in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E6377CB31FEE435100289F4E /* ico_learningplans.png in Resources */,
 				E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */,
 				E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */,
 				F692B70D1FDFD42100AD8745 /* ic_check_box_outline_blank.png in Resources */,
-				E66D5B461F8B98350063EDEC /* ic_tools_blue-web.png in Resources */,
 				F692B70C1FDFD42100AD8745 /* ic_check_box.png in Resources */,
 				E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */,
 				E6335DB11FE918C30090B7AD /* ic_gift.png in Resources */,
@@ -591,6 +566,7 @@
 				F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */,
 				F64A98851FD15E18001858DE /* PageViewController.swift in Sources */,
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
+				E69A6FC91FFE23EE00BBF31D /* UpdateProfileViewController.swift in Sources */,
 				F6DBB5771FF4F97C00386125 /* HPTextViewInternal.m in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
 				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,

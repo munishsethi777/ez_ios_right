@@ -3,6 +3,31 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "UpdateProfileViewController.loadControls(json:):UpdateProfileViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "_kernelrpc_mach_vm_deallocate_trap:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UpdateProfileViewController.editingChanged(textField:):UpdateProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "editingTextField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in UpdateProfileViewController.getUserFields():UpdateProfileViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UpdateProfileViewController.getUserFields():UpdateProfileViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "DashboardVC.loadActiveLearningPlans(response:):DashboardVC.swift">
          <PersistentStrings>
             <PersistentString

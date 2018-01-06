@@ -1340,6 +1340,9 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Update Profile"/>
+                                                    <connections>
+                                                        <segue destination="NaD-SW-Xf4" kind="show" id="EPj-kR-Nfq"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_updateprofile.png" translatesAutoresizingMaskIntoConstraints="NO" id="6lT-OJ-tKU">
                                                     <rect key="frame" x="15" y="7" width="22" height="22"/>
@@ -1472,7 +1475,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ow-i5-bHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070.625" y="-1024.6478873239437"/>
+            <point key="canvasLocation" x="964" y="-1382"/>
+        </scene>
+        <!--Update Profile-->
+        <scene sceneID="vMY-M4-yGb">
+            <objects>
+                <viewController id="NaD-SW-Xf4" customClass="UpdateProfileViewController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MRo-cs-7vR"/>
+                        <viewControllerLayoutGuide type="bottom" id="n7l-6j-xVH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kN0-uL-3lS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeK-tZ-jaa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update Profile" id="QEg-Dz-vM8">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ihC-ns-K0r"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainScrollView" destination="QeK-tZ-jaa" id="PuZ-4p-Qfo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3M-47-XQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952.79999999999995" y="-642.72863568215894"/>
         </scene>
     </scenes>
     <resources>
@@ -1499,6 +1532,6 @@
         <segue reference="rRV-pc-Utm"/>
         <segue reference="PkI-zp-FOV"/>
         <segue reference="hZ2-xb-bK4"/>
-        <segue reference="26S-pN-GFy"/>
+        <segue reference="AVW-CC-bvd"/>
     </inferredMetricsTieBreakers>
 </document>

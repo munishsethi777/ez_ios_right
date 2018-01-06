@@ -63,6 +63,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         
         questionType = questionJson["type"] as! String;
         options = questionJson["answers"] as! [Any];
+        seqOptions = options
         moduleType = moduleJson["moduletype"] as! String
         moduleProgress = questionJson["progress"] as! [Any]
         let showFeedback = moduleJson["isshowfeedback"] as! String
@@ -223,7 +224,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     func addTableView(){
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
-        var height: CGFloat = CGFloat(moduleProgress.count) * 40.00
+        var height: CGFloat = CGFloat(options.count) * 40.00
         let y:CGFloat = quesTitle.frame.height
         tableView = UITableView(frame: CGRect(x: 0, y: y, width: displayWidth, height: height))
         tableView.rowHeight = 40
@@ -247,7 +248,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             }
             seqOptions = savedOptions;
         }
-        
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -269,7 +269,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return options.count
+        return seqOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -622,7 +622,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
            submitProgress.isEnabled = true
            okButton.isHidden = true
         }
-        
         showFeedback()
     }
     

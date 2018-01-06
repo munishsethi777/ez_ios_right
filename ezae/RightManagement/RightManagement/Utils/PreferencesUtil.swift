@@ -27,6 +27,12 @@ class PreferencesUtil{
         return getValueInt(key: PreferencesUtil.LOGGED_IN_COMPANY_SEQ_KEY)
     }
     
+    func getLoggedInUserName()->String?{
+        let userSeq = getLoggedInUserSeq()
+        let user = UserMgr.sharedInstance.getUserByUserSeq(userSeq:userSeq)
+        return user?.username
+    }
+    
     func getValueInt(key: String)->Int{
         let userDefaults = UserDefaults.standard
         return userDefaults.integer(forKey:key)

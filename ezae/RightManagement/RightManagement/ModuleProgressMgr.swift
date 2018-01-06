@@ -110,6 +110,22 @@ class ModuleProgressMgr{
         }
     }
     
+    func isProgressForModule(moduleSeq: Int ,learningPlanSeq: Int)->Bool{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ModuleProgress")
+        let userSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
+        let p1 = NSPredicate(format: "userseq == %d", userSeq)
+        let p2 = NSPredicate(format: "moduleseq == %d", moduleSeq)
+        let p3 = NSPredicate(format: "learningplanseq == %d", learningPlanSeq)
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [p1, p2,p3])
+        fetchRequest.predicate = predicate
+        do {
+            let fetchedProgress = try coreDataManager.managedObjectContext.count(for: fetchRequest)
+            return fetchedProgress > 0
+        } catch {
+            fatalError("Failure to get context: \(error)")
+        }
+    }
+    
     func getExistingProgressArray(questionSeq: Int,moduleSeq: Int ,learningPlanSeq: Int)->[Any]{
         var progressArr:[Any] = []
         let moduleProgressList = getExistingProgressForQuestion(questionSeq:questionSeq,moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)

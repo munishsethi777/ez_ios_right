@@ -53,6 +53,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     
     func createPageViewController(itemIndex:Int) {
         moduleJson = jsonResponse["module"] as! [String: Any]
+        let moduleType = moduleJson["moduletype"] as! String
+        if(moduleType == "quiz"){
+           marksLabel.isHidden = false
+        }else{
+            marksLabel.isHidden = true
+        }
         questionJsonArr = moduleJson["questions"] as! [Any]
         let activity = moduleJson["activityData"] as? [String: Any]
         if(activity != nil){
@@ -60,7 +66,6 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             let progressStr = activityData["progress"] as! String
             progress = Int(progressStr)!
         }
-        
         moduleTitle.text = moduleJson["title"] as! String
         let pageController = self.storyboard!.instantiateViewController(withIdentifier: "PageController") as! UIPageViewController
         pageController.dataSource = self
@@ -79,6 +84,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         self.view.addSubview(childView)
         pageViewController!.didMove(toParentViewController: self)
     }
+    
     func runTimer() {
         if(timeAllowed != "0" && progress < 100){
             timerLabel.isHidden = false
@@ -164,7 +170,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                             didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController],
                             transitionCompleted completed: Bool){
-        
+        let p = 0
     }
     
     func setPaggerLabel(page: Int){
@@ -176,6 +182,12 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             countStr = " Questions"
         }
         pageNoLabel.text = String(page) + " of " + String(totalQuesCount) + countStr
+        let question = questionJson[page-1] as! [String: Any]
+        var marks = question["maxMarks"] as? String
+        if(marks == nil){
+            marks = "0"
+        }
+        marksLabel.text = "Marks:" + marks!
     }
     
     private func getItemController(itemIndex: Int) -> PageItemController? {
@@ -194,13 +206,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             pageItemController.parentController = self
             pageItemController.pageNo = pageNo
             pageItemController.questionJson = questionJsonArr[itemIndex] as! [String: Any]
-            let questionJson = moduleJson["questions"] as! [Any]
-            let question = questionJson[itemIndex] as! [String: Any]
-            var marks = question["marks"] as? String
-            if(marks == nil){
-                marks = "0"
-            }
-            marksLabel.text = "Marks:" + marks!
+           
             childItemController = pageItemController
             return pageItemController
         }

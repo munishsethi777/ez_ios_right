@@ -90,7 +90,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.pointLabel.text = points
         cell?.scoreLabel.text = score
         var buttonTitle: String = "Launch"
-        if(progress > 0 && progress < 100){
+        let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
+        if((progress > 0 && progress < 100) || (progress < 100 && isLocalProgressExists)){
             buttonTitle = "In Progress"
         }
         if(progress == 100){
@@ -100,7 +101,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.launchModuleButton.tag = seq
         cell?.launchModuleButton.titleLabel?.tag = lpSeq
         cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-        if(moduleType == "quiz" && rank > 0){
+        if(moduleType == "quiz" && rank > 0 && progress == 100){
             cell?.leaderboardLabel.text = String(rank) + "\nLeaderboard"
         }else{
             cell?.leaderboardLabel.isHidden = true

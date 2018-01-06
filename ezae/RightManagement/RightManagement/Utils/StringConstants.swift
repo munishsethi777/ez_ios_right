@@ -64,4 +64,9 @@ struct StringConstants {
     static let DASHBOARD_DATA_ACTION = "getDashboardData"
     static let NOTIFICATION_ACTION = "getNotifications"
     static let LEARNING_PLAN_ACTION = "getLearningPlans"
+    
+    //Chat Action
+    static let GET_CHATROOMS = ACTION_API_URL + "ChatroomAction.php?call=getChatrooms&userSeq={0}&companySeq={1}"
+    static let GET_CHATROOM_DETAIL = ACTION_API_URL + "ChatroomAction.php?call=getChatroomDetails&userSeq={0}&companySeq={1}&chatroomId={2}&afterMessageSeq={3}"
+    static let SEND_CHAT_MESSAGE = ACTION_API_URL + "ChatroomAction.php?call=sendMessageChat&userSeq={0}&companySeq={1}&chatroomId={2}&userType={3}&userName={4}&afterMessageSeq={5}&message={6}"
 }

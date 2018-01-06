@@ -29,7 +29,7 @@ class MessageDetail:NSObject {
     var text:String = ""
     var date:NSDate = NSDate()
     var height:CGFloat = 44
-
+    var username:String = ""
     func messageFromDictionary(dictionary:NSDictionary) -> MessageDetail {
         let message = MessageDetail()
         message.text = dictionary["text"] as! String

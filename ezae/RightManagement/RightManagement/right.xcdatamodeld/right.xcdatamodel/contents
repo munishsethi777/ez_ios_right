@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CompanyUsers" representedClassName="CompanyUsers" syncable="YES" codeGenerationType="class">
+        <attribute name="companyseq" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fullname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userimage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userseq" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="usertype" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ModuleProgress" representedClassName="ModuleProgress" syncable="YES" codeGenerationType="class">
         <attribute name="ansseq" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="anstext" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,7 +32,8 @@
         <attribute name="userseq" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Users" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="ModuleProgress" positionX="-63" positionY="45" width="128" height="210"/>
+        <element name="Users" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="CompanyUsers" positionX="-63" positionY="99" width="128" height="135"/>
     </elements>
 </model>

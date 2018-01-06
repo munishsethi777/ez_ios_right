@@ -66,6 +66,9 @@ class TableArray {
     }
     
     func objectAtIndexPath(indexPath:NSIndexPath) -> MessageDetail {
+        if(self.orderedTitles.count == 0){
+            return MessageDetail()
+        }
         let key = self.orderedTitles[indexPath.section]
         let array = self.mapTitleToMessages[key]
         

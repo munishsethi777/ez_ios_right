@@ -17,12 +17,22 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var selectedLpSeq: Int = 0
     var moduleCount: Int = 0
     var moduleArr: [Any] = []
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
         moduleTrainingView.delegate = self
         moduleTrainingView.dataSource = self
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        getModules()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        moduleTrainingView.refreshControl = refreshControl
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+    }
+    func refreshView(refreshControl: UIRefreshControl) {
         getModules()
     }
     
@@ -128,6 +138,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func loadModules(response: [String: Any]){
         moduleArr = response["modules"] as! [Any]
         moduleCount = moduleArr.count
+        progressHUD.hide()
+        refreshControl.endRefreshing()
         moduleTrainingView.reloadData()
     }
     

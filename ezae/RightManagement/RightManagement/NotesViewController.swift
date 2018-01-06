@@ -13,8 +13,8 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     var loggedInCompanySeq:Int = 0
     var notes:[Notes]=[]
     var selectedNoteSeq:Int = 0
-    
-   
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
     @IBOutlet weak var notesTableView: UITableView!
     override func viewDidLoad() {
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -22,6 +22,15 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         notesTableView.dataSource = self
         notesTableView.delegate = self
         //getNotes()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        notesTableView.refreshControl = refreshControl
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+    }
+    
+    func refreshView(refreshControl: UIRefreshControl) {
+        getNotes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +74,7 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let refreshAlert = UIAlertController(title: "Delete Notes", message: "Are you realy want to delete this Note?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+             self.progressHUD.show()
              self.deleteNote(tableView:tableView,index:index)
         }))
         
@@ -92,6 +102,7 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.notes.remove(at: index.row)
+                        self.progressHUD.hide()
                         tableView.deleteRows(at: [index], with: .fade)
                         self.showAlert(message: message!,title:"Success")
                     }else{
@@ -138,6 +149,8 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let noteObj = Notes.init(seq: Int(noteSeq)!, title: noteDetails, dateTime: noteCreatedOn)
             notes.append(noteObj)
         }
+        self.progressHUD.hide()
+        refreshControl.endRefreshing()
         notesTableView.reloadData()
     }
     

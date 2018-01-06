@@ -198,7 +198,6 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.tableView.scrollToRow(at: self.tableArray.indexPathForLastMessage() as IndexPath, at:.bottom, animated:true)
         
         //Send message to server
-        self.gateway.sendMessage(message: message)
         sendMessage(messageDetail: message)
     }
     func inputbarDidPressLeftButton(inputbar:Inputbar) {
@@ -262,8 +261,8 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        messageDetail.status = .Sent
-                        self.gateway.updateMessageStatus(message: messageDetail)
+                        messageDetail.status = .Received
+                        self.gateway.sendMessage(message: messageDetail)
                     }else{
                         self.showAlert(message: message!)
                     }

@@ -15,12 +15,24 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var messageCount: Int = 0
     var selectedChatroomId:Int = 0
     var selctedChatroomName:String!
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
+    var isCalledFromDashboard:Bool = false
     override func viewDidLoad(){
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         tableView.dataSource = self
         tableView.delegate = self
+        getChatRooms()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+    }
+    
+    func refreshView(refreshControl: UIRefreshControl) {
         getChatRooms()
     }
     
@@ -122,7 +134,12 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let chatRoom = ChatModel.init(seq: Int(seq)!, title: title, imageUrl: userImageUrl)
             chatRoomModel.append(chatRoom)
         }
+        progressHUD.hide()
+        refreshControl.endRefreshing()
         tableView.reloadData()
+        if(isCalledFromDashboard){
+            self.performSegue(withIdentifier: "ChatroomDetailViewController", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){

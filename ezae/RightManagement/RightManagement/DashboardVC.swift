@@ -25,6 +25,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     @IBOutlet weak var completedCountLabel: UILabel!
     @IBOutlet weak var pendingCountLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
+    var selectedChatroomId:Int!
+    var selctedChatroomName:String!
+    
     var notifications = [Notification]()
     var activeLearningPlans = [ActiveLearningPlan]()
     var loggedInUserSeq: Int = 0
@@ -32,6 +35,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var notificationsCount: Int = 0
     var activeLpCount: Int = 0
     var action_name: String = ""
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8
@@ -48,11 +53,22 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         getDashboardStates()
         getNotifications()
         getActiveLearningPlans()
-        
-        
-        
-        
+        synchCompanyUsers()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+        // Create and add the view to the screen.
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+        // All done!
     }
+    
+    func refreshDashboard(refreshControl: UIRefreshControl) {
+        getDashboardStates()
+        getNotifications()
+        getActiveLearningPlans()
+    }
+    
     func resetScrollHeight(){
         var scrollheight: CGFloat = 90
         scrollheight += self.notificationTableViewHeightConstraint.constant
@@ -81,9 +97,18 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
         cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
+        cell?.notificationButton.tag = indexPath.row
+        cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         return cell!
     }
     
+    func launchChatroom(sender:UIButton){
+        let index = sender.tag
+        let notification = notifications[index]
+        selectedChatroomId = notification.seq
+        selctedChatroomName = notification.title
+        self.tabBarController?.selectedIndex = 3
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.activeLpCount
@@ -168,6 +193,29 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         })
     }
     
+    func synchCompanyUsers(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.SYNCH_USERS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        CompanyUserMgr.sharedInstance.saveUsersFromResponse(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
     func getNotifications(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATION, args: args)
@@ -204,6 +252,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.loadActiveLearningPlans(response: json)
+                        self.refreshControl.endRefreshing()
+                        self.progressHUD.hide()
                     }else{
                         self.showAlert(message: message!)
                     }
@@ -238,7 +288,5 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
+
 }

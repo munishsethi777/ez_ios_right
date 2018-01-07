@@ -15,6 +15,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var lpDetailArr: [Any] = []
     var selectedModuleSeq: Int = 0
     var selectedLpSeq: Int = 0
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,17 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
        getLearningPlanAndModules()
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        trainingTableView.refreshControl = refreshControl
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
     }
+    
+    func refreshView(refreshControl: UIRefreshControl) {
+        getLearningPlanAndModules()
+    }
+    
     func backAction(){
         //print("Back Button Clicked")
         dismiss(animated: true, completion: nil)
@@ -36,7 +48,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lpModuleArr.count
+        return lpDetailArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,6 +189,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.loadLearningPlanAndModule(response: json)
+                        self.progressHUD.hide()
                     }else{
                         self.showAlert(message: message!)
                     }
@@ -204,6 +217,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             }
             lpModuleArr.append(jsonArr)
         }
+        self.refreshControl.endRefreshing()
+        progressHUD.hide()
         trainingTableView.reloadData()
     }
     

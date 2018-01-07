@@ -11,7 +11,7 @@ class CreateNoteViewController: UIViewController{
     var noteSeq:Int = 0
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
-    
+    var  progressHUD: ProgressHUD!
     @IBOutlet weak var detailTextView: UITextView!
     
     override func viewDidLoad() {
@@ -19,6 +19,8 @@ class CreateNoteViewController: UIViewController{
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         if(noteSeq > 0){
             getNoteDetail()
+            progressHUD = ProgressHUD(text: "Loading")
+            self.view.addSubview(progressHUD)
         }
     }
     @IBAction func saveNoteTapped(_ sender: Any) {
@@ -48,6 +50,8 @@ class CreateNoteViewController: UIViewController{
     }
     
     func saveNote(){
+        progressHUD.text = "Saving"
+        progressHUD.show()
         var detailText = detailTextView.text as! String
         detailText = detailText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.noteSeq,detailText]
@@ -61,6 +65,7 @@ class CreateNoteViewController: UIViewController{
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
+                        self.progressHUD.hide()
                         self.navigationController?.popViewController(animated: true)
                     }else{
                         self.showAlert(message: message!,title:"Failed")
@@ -77,6 +82,7 @@ class CreateNoteViewController: UIViewController{
         let noteSeq = notes["seq"] as! String;
         let noteDetails = notes["details"] as! String
         detailTextView.text = noteDetails
+        progressHUD.hide()
     }
     
     func showAlert(message: String,title:String){

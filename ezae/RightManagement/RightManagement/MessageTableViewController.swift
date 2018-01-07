@@ -18,17 +18,22 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     var selectedMessageUserSeq:Int = 0
     var selectedMessageUserName:String!
     var selectedMessageUserType:String = ""
+    var refreshControl:UIRefreshControl!
+    var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        messageTableView.refreshControl = refreshControl
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
     }
-
+    func refreshView(refreshControl: UIRefreshControl) {
+        getMessages()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,16 +77,6 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         return cell!
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -167,6 +162,8 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType)
             messages.append(msg)
         }
+        progressHUD.hide()
+        refreshControl.endRefreshing()
         messageTableView.reloadData()
     }
     

@@ -31,7 +31,6 @@
 		E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */; };
 		E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5D1FEA6F380001E7C9 /* login_logo.png */; };
 		E6821D601FEA6F730001E7C9 /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5F1FEA6F730001E7C9 /* background2.jpg */; };
-		E69A6FC91FFE23EE00BBF31D /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */; };
 		E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */; };
 		E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */; };
 		E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */; };
@@ -125,7 +124,6 @@
 		E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveLearningPlanCollectionViewCell.swift; path = ViewControllers/ActiveLearningPlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6821D5D1FEA6F380001E7C9 /* login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_logo.png; sourceTree = "<group>"; };
 		E6821D5F1FEA6F730001E7C9 /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
-		E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout.png; sourceTree = "<group>"; };
 		E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepassword.png; sourceTree = "<group>"; };
 		E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_updateprofile.png; sourceTree = "<group>"; };
@@ -288,6 +286,7 @@
 				F64A98881FD2B630001858DE /* TrainingViewController.swift */,
 				F64A988A1FD2CFCD001858DE /* ModuleViewController.swift */,
 				F64A988E1FD5548B001858DE /* TrainingTableViewCell.swift */,
+				F6F078221FFDF17600120DA7 /* ChatViewController.swift */,
 				F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */,
 				E66D5B521F8CBB560063EDEC /* MessageTableViewCell.swift */,
 				F6C85C2A1FDA929000BF4987 /* PageItemController.swift */,
@@ -299,9 +298,7 @@
 				F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */,
 				F6B63D971FF2533000886264 /* CreateNoteViewController.swift */,
 				F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */,
-				F6F078221FFDF17600120DA7 /* ChatViewController.swift */,
 				F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */,
-				E69A6FC81FFE23EE00BBF31D /* UpdateProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -582,7 +579,6 @@
 				F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */,
 				F64A98851FD15E18001858DE /* PageViewController.swift in Sources */,
 				F64A986F1FD019DD001858DE /* DateUtil.swift in Sources */,
-				E69A6FC91FFE23EE00BBF31D /* UpdateProfileViewController.swift in Sources */,
 				F6DBB5771FF4F97C00386125 /* HPTextViewInternal.m in Sources */,
 				F64A985A1FCEDC8B001858DE /* MyAchievements.swift in Sources */,
 				F64A988B1FD2CFCD001858DE /* ModuleViewController.swift in Sources */,

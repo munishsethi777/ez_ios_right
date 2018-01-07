@@ -17,6 +17,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var selctedChatroomName:String!
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    var isCalledFromDashboard:Bool = false
     override func viewDidLoad(){
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -136,6 +137,9 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         progressHUD.hide()
         refreshControl.endRefreshing()
         tableView.reloadData()
+        if(isCalledFromDashboard){
+            self.performSegue(withIdentifier: "ChatroomDetailViewController", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){

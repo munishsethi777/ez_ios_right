@@ -25,6 +25,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     @IBOutlet weak var completedCountLabel: UILabel!
     @IBOutlet weak var pendingCountLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
+    var selectedChatroomId:Int!
+    var selctedChatroomName:String!
+    
     var notifications = [Notification]()
     var activeLearningPlans = [ActiveLearningPlan]()
     var loggedInUserSeq: Int = 0
@@ -94,9 +97,18 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
         cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
+        cell?.notificationButton.tag = indexPath.row
+        cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         return cell!
     }
     
+    func launchChatroom(sender:UIButton){
+        let index = sender.tag
+        let notification = notifications[index]
+        selectedChatroomId = notification.seq
+        selctedChatroomName = notification.title
+        self.tabBarController?.selectedIndex = 3
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.activeLpCount
@@ -276,7 +288,5 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
+
 }

@@ -108,6 +108,14 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         selectedChatroomId = notification.seq
         selctedChatroomName = notification.title
         self.tabBarController?.selectedIndex = 3
+        let controller = self.tabBarController?.viewControllers![3]
+        let navigationController = controller?.childViewControllers[0] as! UINavigationController
+        let chatController = navigationController.viewControllers[0] as! ChatViewController
+        chatController.selectedChatroomId = selectedChatroomId
+        chatController.selctedChatroomName = selctedChatroomName
+        chatController.isCalledFromDashboard = true
+        self.tabBarController?.selectedIndex = 3
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -126,7 +134,6 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         cell?.learningPlanTitle.text = learningPlan.learningPlanName
         let progress = Float(learningPlan.percentageCompleted)
         cell?.ring.setProgress(value: CGFloat(progress), animationDuration: 2)
-        
         return cell!
     }
     

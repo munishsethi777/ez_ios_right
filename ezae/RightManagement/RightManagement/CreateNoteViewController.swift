@@ -14,6 +14,9 @@ class CreateNoteViewController: UIViewController{
     var  progressHUD: ProgressHUD!
     @IBOutlet weak var detailTextView: UITextView!
     
+    @IBAction func saveNoteAction(_ sender: Any) {
+        saveNote()
+    }
     override func viewDidLoad() {
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()

@@ -102,6 +102,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.gateway.delegate = self
         self.gateway.chat = self.chat
         self.gateway.loadOldMessages()
+        self.tableViewScrollToBottomAnimated(animated: false)
     }
     
     // MARK - Actions

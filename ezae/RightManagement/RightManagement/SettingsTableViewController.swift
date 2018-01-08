@@ -17,7 +17,8 @@ class SettingsTableViewController : UITableViewController {
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             PreferencesUtil.sharedInstance.resetDefaults()
-            self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
+            //self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in

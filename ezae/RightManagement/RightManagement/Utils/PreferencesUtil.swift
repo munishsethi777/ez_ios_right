@@ -47,9 +47,9 @@ class PreferencesUtil{
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
-            if(key == PreferencesUtil.LOGGED_IN_USER_SEQ_KEY || key == PreferencesUtil.LOGGED_IN_COMPANY_SEQ_KEY){
+            //if(key == PreferencesUtil.LOGGED_IN_USER_SEQ_KEY || key == PreferencesUtil.LOGGED_IN_COMPANY_SEQ_KEY){
                 defaults.removeObject(forKey: key)
-            }
+           // }
         }
     }
 }

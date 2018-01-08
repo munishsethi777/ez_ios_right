@@ -19,7 +19,10 @@ class ViewController: UIViewController {
         
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
     override func viewDidAppear(_ animated: Bool) {
          super.viewDidAppear(false)
         let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()

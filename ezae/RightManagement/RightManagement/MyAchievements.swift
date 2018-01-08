@@ -31,7 +31,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.view.addSubview(progressHUD)
         getMyAchievements()
         getBadges()
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+235)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
         scrollView.refreshControl = refreshControl

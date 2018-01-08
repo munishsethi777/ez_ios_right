@@ -61,11 +61,12 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         selectedMessageUserName = message.messageTitle
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
+    
     var rowCount = 1
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
-        if(rowCount <= messages.count){
+        //if(rowCount <= messages.count){
             let message = messages[indexPath.row]
             cell?.messageTitle.text = message.messageTitle
             cell?.messageDescription.text = message.messageDescription
@@ -79,7 +80,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
                 }
             }
             rowCount = rowCount + 1
-        }
+        //}
         return cell!
     }
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {

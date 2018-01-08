@@ -91,6 +91,7 @@ class UpdateProfileViewController:UIViewController{
         var y:CGFloat = 10
         let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
         label.text = "Email"
+        label.font = UIFont(name:"Arial",size:12.00)
         mainScrollView.addSubview(label)
         let textField = UITextField(frame: CGRect(x:110,y:y + 10,width:screenWidth - 120,height:30))
         textField.font = UIFont(name:"Arial",size:12.00)

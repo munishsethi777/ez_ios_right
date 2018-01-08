@@ -21,6 +21,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     var badges = [Badge]()
     var badgesCount: Int = 0
     var progressHUD: ProgressHUD!
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -31,6 +32,13 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         getMyAchievements()
         getBadges()
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+235)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+    }
+    func refreshDashboard(refreshControl: UIRefreshControl) {
+        getMyAchievements()
+        getBadges()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.badgesCount
@@ -75,6 +83,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         })
     }
     
+    
     func getBadges(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_ACHIEVEMENT_BADGES, args: args)
@@ -101,15 +110,15 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     func loadAchievementData(response: [String: Any]){
         let responseJson = response["dashboardData"] as! [String:Any]
         let totalScore = responseJson["totalScores"] as! Int
-        var userRankStr = responseJson["userRank"] as? String
+        var userRankStr = responseJson["userRank"] as? Int
         if(userRankStr == nil){
-            userRankStr = "0"
+            userRankStr = 0
         }
         let trainings = responseJson["pendingTrainings"] as! [String: Any]
         let maxScore = trainings["maxScore"] as! Int
         let points = responseJson["points"] as! Int
         let totalScoreStr = String(totalScore) + "/" + String(maxScore)
-        rankLabel.text = userRankStr
+        rankLabel.text = String(userRankStr!)
         pointsLabel.text = String(points)
         scoreLabel.text = totalScoreStr
     }
@@ -117,7 +126,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     func loadBadges(response: [String: Any]){
         let badgesJsonArr = response["badges"] as! [Any]
         badgesCount = badgesJsonArr.count
-        for var i in (0..<badgesJsonArr.count).reversed(){
+        for i in 0..<badgesJsonArr.count{
             let badgeJson = badgesJsonArr[i] as! [String:Any]
             let title = badgeJson["title"] as! String
             let detail = badgeJson["detail"] as! String
@@ -128,6 +137,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
         progressHUD.hide()
         badgeTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func showAlert(message: String){

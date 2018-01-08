@@ -20,10 +20,12 @@ class CreateNoteViewController: UIViewController{
     override func viewDidLoad() {
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        progressHUD = ProgressHUD(text: "Loading")
+        progressHUD.hide()
+        self.view.addSubview(progressHUD)
         if(noteSeq > 0){
+            progressHUD.show()
             getNoteDetail()
-            progressHUD = ProgressHUD(text: "Loading")
-            self.view.addSubview(progressHUD)
         }
     }
     @IBAction func saveNoteTapped(_ sender: Any) {

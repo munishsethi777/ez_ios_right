@@ -87,7 +87,6 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         self.tableView.tableFooterView = UIView(frame: CGRect(x:0, y:0,width:self.view.frame.size.width,height:10))
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
-        
         self.tableView.register(MessageCell.self, forCellReuseIdentifier:"MessageCell")
     }
     

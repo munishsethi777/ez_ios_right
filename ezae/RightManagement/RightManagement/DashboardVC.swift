@@ -88,7 +88,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,8 +97,10 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
         cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
-        cell?.notificationButton.tag = indexPath.row
-        cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
+        if(notification.notificationType == "Chatroom"){
+            cell?.notificationButton.tag = indexPath.row
+            cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
+        }
         return cell!
     }
     
@@ -140,6 +142,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     func loadNotificaitons(response: [String: Any]){
         let notificationJsonArr = response["notifications"] as! [Any]
         self.notificationsCount = notificationJsonArr.count
+        notifications = []
         for var i in (0..<notificationJsonArr.count).reversed(){
             let notificationJson = notificationJsonArr[i] as! [String:Any]
             let title = notificationJson["title"] as? String

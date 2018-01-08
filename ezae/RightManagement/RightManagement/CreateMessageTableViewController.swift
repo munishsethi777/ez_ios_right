@@ -30,6 +30,7 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
     var filteredData = [CompanyUsers]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        rowCount = 1
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         messageTableView.dataSource = self
@@ -68,26 +69,29 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
         selectedMessageUserName = companyuser.fullname
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
-    
+    var rowCount = 1
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
-        let companyuser = filteredData[indexPath.row]
-        cell?.messageTitle.text = companyuser.fullname
-        var imageDirName = "UserImages/";
-        if(companyuser.usertype != "user"){
-            imageDirName = "AdminImages/";
-        }
-        if(companyuser.userimage == nil){
-            companyuser.userimage = "dummy.png"
-        }
-        let imagePath = StringConstants.IMAGE_URL + imageDirName + companyuser.userimage!
-        if let url = NSURL(string: imagePath) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.messageImageView.image = UIImage(data: data as Data)
-                cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
-                cell?.messageImageView.clipsToBounds = true
+        if(rowCount <= filteredData.count){
+            let companyuser = filteredData[indexPath.row]
+            cell?.messageTitle.text = companyuser.fullname
+            var imageDirName = "UserImages/";
+            if(companyuser.usertype != "user"){
+                imageDirName = "AdminImages/";
             }
+            if(companyuser.userimage == nil){
+                companyuser.userimage = "dummy.png"
+            }
+            let imagePath = StringConstants.IMAGE_URL + imageDirName + companyuser.userimage!
+            if let url = NSURL(string: imagePath) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell?.messageImageView.image = UIImage(data: data as Data)
+                    cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
+                    cell?.messageImageView.clipsToBounds = true
+                }
+            }
+            rowCount = rowCount + 1
         }
         return cell!
     }

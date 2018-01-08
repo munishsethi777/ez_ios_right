@@ -21,7 +21,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       rowCount = 0
+       rowCount = 1
        trainingTableView.delegate = self
        trainingTableView.dataSource = self
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -36,7 +36,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func refreshView(refreshControl: UIRefreshControl) {
-        rowCount = 0
+        rowCount = 1
         getLearningPlanAndModules()
     }
     

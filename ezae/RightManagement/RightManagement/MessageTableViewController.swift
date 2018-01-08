@@ -20,8 +20,10 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     var selectedMessageUserType:String = ""
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        rowCount = 1
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
@@ -32,6 +34,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         self.view.addSubview(progressHUD)
     }
     func refreshView(refreshControl: UIRefreshControl) {
+        rowCount = 1
         getMessages()
     }
     override func didReceiveMemoryWarning() {
@@ -58,21 +61,24 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         selectedMessageUserName = message.messageTitle
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
-    
+    var rowCount = 1
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
-        let message = messages[indexPath.row]
-        cell?.messageTitle.text = message.messageTitle
-        cell?.messageDescription.text = message.messageDescription
-        cell?.messageDateLabel.text = message.date
-        let imagePath = message.userImageUrl
-        if let url = NSURL(string: imagePath) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.messageImageView.image = UIImage(data: data as Data)
-                cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
-                cell?.messageImageView.clipsToBounds = true
+        if(rowCount <= messages.count){
+            let message = messages[indexPath.row]
+            cell?.messageTitle.text = message.messageTitle
+            cell?.messageDescription.text = message.messageDescription
+            cell?.messageDateLabel.text = message.date
+            let imagePath = message.userImageUrl
+            if let url = NSURL(string: imagePath) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell?.messageImageView.image = UIImage(data: data as Data)
+                    cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
+                    cell?.messageImageView.clipsToBounds = true
+                }
             }
+            rowCount = rowCount + 1
         }
         return cell!
     }
@@ -136,6 +142,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     private func loadMessages(response: [String: Any]){
         let messageJsonArr = response["messages"] as! [Any];
         messageCount = messageJsonArr.count
+        messages.removeAll()
         for i in 0..<messageJsonArr.count{
             let messageJson = messageJsonArr[i] as! [String: Any]
             let title = messageJson["messageText"] as! String

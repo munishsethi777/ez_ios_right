@@ -21,7 +21,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
-        rowCount = 0;
+        rowCount = 1;
         moduleTrainingView.delegate = self
         moduleTrainingView.dataSource = self
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -34,7 +34,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(progressHUD)
     }
     func refreshView(refreshControl: UIRefreshControl) {
-        rowCount = 0
+        rowCount = 1
         getModules()
     }
     

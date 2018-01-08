@@ -16,6 +16,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
     var loggedInCompanySeq: Int = 0
     var badges = [Badge]()
     var badgesCount: Int = 0
@@ -29,6 +30,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.view.addSubview(progressHUD)
         getMyAchievements()
         getBadges()
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+235)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.badgesCount

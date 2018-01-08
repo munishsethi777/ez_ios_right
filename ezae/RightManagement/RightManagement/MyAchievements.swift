@@ -19,17 +19,21 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     var loggedInCompanySeq: Int = 0
     var badges = [Badge]()
     var badgesCount: Int = 0
+    var progressHUD: ProgressHUD!
     override func viewDidLoad() {
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         badgeTableView.delegate = self
         badgeTableView.dataSource = self
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
         getMyAchievements()
         getBadges()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.badgesCount
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "BadgeTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? BadgeTableViewCell
@@ -45,6 +49,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
         return cell!
     }
+    
     func getMyAchievements(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_ACHIEVEMENTS, args: args)
@@ -119,6 +124,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
             let badge = Badge(title: title, detail: detail, date: date, imagepath: imagePath)
             badges.append(badge)
         }
+        progressHUD.hide()
         badgeTableView.reloadData()
     }
     

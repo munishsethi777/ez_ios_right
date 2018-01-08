@@ -76,24 +76,10 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         return cell!
     }
-    
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        // action one
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            print("Edit tapped")
-        })
-        editAction.backgroundColor = UIColor.blue
-        
-        // action two
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.messages.remove(at:indexPath.row)
-            tableView.deleteRows(at: [indexPath], with:.fade)
-        })
-        deleteAction.backgroundColor = UIColor.red
-        return [editAction, deleteAction]
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.none
     }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

@@ -21,6 +21,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
+        rowCount = 0;
         moduleTrainingView.delegate = self
         moduleTrainingView.dataSource = self
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -33,6 +34,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(progressHUD)
     }
     func refreshView(refreshControl: UIRefreshControl) {
+        rowCount = 0
         getModules()
     }
     
@@ -43,71 +45,74 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    var rowCount = 1
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ModuleTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ModuleTableViewCell
         let section: Int = indexPath.row
-        let moduleJson = moduleArr[section] as! [String: Any]
-        var moduleImageUrl = moduleJson["imagepath"] as? String
-        var progressStr = moduleJson["progress"] as? String
-        var moduleType = moduleJson["moduletype"] as! String
-        var leaderboardRankStr = moduleJson["leaderboard"] as? String
-        var lpSeqStr = moduleJson["learningPlanSeq"] as? String
-        var seqStr = moduleJson["seq"] as? String
-        var lpSeq = 0
-        if(lpSeqStr != nil){
-             lpSeq = Int(lpSeqStr!)!
-        }
-        let seq = Int(seqStr!)!
-        if(leaderboardRankStr == nil){
-            leaderboardRankStr = "0"
-        }
-        let rank: Int = Int(leaderboardRankStr!)!
-        let rankStr = String(rank) + "\nLeaderboard"
-        if(progressStr == nil){
-            progressStr = "0"
-        }
-        let progress: Int = Int(progressStr!)!
-        if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
-            moduleImageUrl = "dummy.jpg"
-        }
-        moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
-        if let url = NSURL(string: moduleImageUrl!) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.moduleImageView.image = UIImage(data: data as Data)
+        if(rowCount <= moduleArr.count){
+            let moduleJson = moduleArr[section] as! [String: Any]
+            var moduleImageUrl = moduleJson["imagepath"] as? String
+            var progressStr = moduleJson["progress"] as? String
+            var moduleType = moduleJson["moduletype"] as! String
+            var leaderboardRankStr = moduleJson["leaderboard"] as? String
+            var lpSeqStr = moduleJson["learningPlanSeq"] as? String
+            var seqStr = moduleJson["seq"] as? String
+            var lpSeq = 0
+            if(lpSeqStr != nil){
+                 lpSeq = Int(lpSeqStr!)!
             }
-        }
-        cell?.moduleTitleLabel.text = moduleJson["title"] as? String
-        var points = moduleJson["points"] as? String
-        if(points == nil){
-            points = "0"
-        }
-        var score = moduleJson["score"] as? String
-        if(score == nil){
-            score = "0"
-        }
-        cell?.pointsLabel.text = points
-        cell?.scoreLabel.text = score
-        var buttonTitle: String = "Launch"
-        if(progress > 0 && progress < 100){
-            buttonTitle = "In Progress"
-        }
-        if(progress == 100){
-            buttonTitle = "Review"
-        }
-        cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
-        cell?.lauchModuleButton.tag = seq
-        cell?.lauchModuleButton.titleLabel?.tag = lpSeq
-        cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-        if(moduleType == "quiz" && rank > 0 && progress == 100){
-            cell?.leaderboardLabel.text = rankStr
-        }else{
-            if(progress > 0){
-                cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
+            let seq = Int(seqStr!)!
+            if(leaderboardRankStr == nil){
+                leaderboardRankStr = "0"
+            }
+            let rank: Int = Int(leaderboardRankStr!)!
+            let rankStr = String(rank) + "\nLeaderboard"
+            if(progressStr == nil){
+                progressStr = "0"
+            }
+            let progress: Int = Int(progressStr!)!
+            if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
+                moduleImageUrl = "dummy.jpg"
+            }
+            moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+            if let url = NSURL(string: moduleImageUrl!) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell?.moduleImageView.image = UIImage(data: data as Data)
+                }
+            }
+            cell?.moduleTitleLabel.text = moduleJson["title"] as? String
+            var points = moduleJson["points"] as? String
+            if(points == nil){
+                points = "0"
+            }
+            var score = moduleJson["score"] as? String
+            if(score == nil){
+                score = "0"
+            }
+            cell?.pointsLabel.text = points
+            cell?.scoreLabel.text = score
+            var buttonTitle: String = "Launch"
+            if(progress > 0 && progress < 100){
+                buttonTitle = "In Progress"
+            }
+            if(progress == 100){
+                buttonTitle = "Review"
+            }
+            cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
+            cell?.lauchModuleButton.tag = seq
+            cell?.lauchModuleButton.titleLabel?.tag = lpSeq
+            cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+            if(moduleType == "quiz" && rank > 0 && progress == 100){
+                cell?.leaderboardLabel.text = rankStr
             }else{
-                cell?.leaderboardLabel.isHidden = true
+                if(progress > 0){
+                    cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
+                }else{
+                    cell?.leaderboardLabel.isHidden = true
+                }
             }
+            rowCount = rowCount + 1
         }
         return cell!
     }

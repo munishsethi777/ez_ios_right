@@ -17,9 +17,11 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var selectedLpSeq: Int = 0
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    var cell:TrainingTableViewCell!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       rowCount = 0
        trainingTableView.delegate = self
        trainingTableView.dataSource = self
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -34,6 +36,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func refreshView(refreshControl: UIRefreshControl) {
+        rowCount = 0
         getLearningPlanAndModules()
     }
     
@@ -50,74 +53,78 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return lpDetailArr.count
     }
-    
+    var rowCount = 1
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "TrainingTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrainingTableViewCell
-        let section: Int = indexPath.section
         let row: Int = indexPath.row
-        let lpJsonArr = lpDetailArr[section] as! [String: Any]
-        let moduleJsonArr = lpJsonArr["modules"] as! [Any]
-        let moduleJson = moduleJsonArr[row] as! [String: Any]
-        var moduleImageUrl = moduleJson["imagepath"] as? String
-        var lpSeqStr = moduleJson["learningPlanSeq"] as? String
-        var seqStr = moduleJson["seq"] as? String
-        if(lpSeqStr == nil){
-            lpSeqStr = "0"
-        }
-        if(seqStr == nil){
-            seqStr = "0"
-        }
-        var lpSeq = Int(lpSeqStr!)!
-        var seq = Int(seqStr!)!
-        var progressStr = moduleJson["progress"] as? String
-        var moduleType = moduleJson["moduletype"] as! String
-        var leaderboardRankStr = moduleJson["leaderboard"] as? String
-        if(leaderboardRankStr == nil){
-            leaderboardRankStr = "0"
-        }
-        let rank: Int = Int(leaderboardRankStr!)!
-        if(progressStr == nil){
-            progressStr = "0"
-        }
-        let progress: Int = Int(progressStr!)!
-        if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
-            moduleImageUrl = "dummy.jpg"
-        }
-        moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
-        if let url = NSURL(string: moduleImageUrl!) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.moduleImageView.image = UIImage(data: data as Data)
+        let cellIdentifier = "TrainingTableViewCell"
+        cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrainingTableViewCell
+        if(rowCount <= lpDetailArr.count){
+            let section: Int = indexPath.section
+            let lpJsonArr = lpDetailArr[section] as! [String: Any]
+            let moduleJsonArr = lpJsonArr["modules"] as! [Any]
+            let moduleJson = moduleJsonArr[row] as! [String: Any]
+            var moduleImageUrl = moduleJson["imagepath"] as? String
+            var lpSeqStr = moduleJson["learningPlanSeq"] as? String
+            var seqStr = moduleJson["seq"] as? String
+            if(lpSeqStr == nil){
+                lpSeqStr = "0"
             }
+            if(seqStr == nil){
+                seqStr = "0"
+            }
+            var lpSeq = Int(lpSeqStr!)!
+            var seq = Int(seqStr!)!
+            var progressStr = moduleJson["progress"] as? String
+            var moduleType = moduleJson["moduletype"] as! String
+            var leaderboardRankStr = moduleJson["leaderboard"] as? String
+            if(leaderboardRankStr == nil){
+                leaderboardRankStr = "0"
+            }
+            let rank: Int = Int(leaderboardRankStr!)!
+            if(progressStr == nil){
+                progressStr = "0"
+            }
+            let progress: Int = Int(progressStr!)!
+            if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
+                moduleImageUrl = "dummy.jpg"
+            }
+            moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+            if let url = NSURL(string: moduleImageUrl!) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell?.moduleImageView.image = UIImage(data: data as Data)
+                }
+            }
+            cell?.moduleTitle.text = moduleJson["title"] as? String
+            var points = moduleJson["points"] as? String
+            if(points == nil){
+                points = "0"
+            }
+            var score = moduleJson["score"] as? String
+            if(score == nil){
+                score = "0"
+            }
+            cell?.pointLabel.text = points
+            cell?.scoreLabel.text = score
+            var buttonTitle: String = "Launch"
+            let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
+            if((progress > 0 && progress < 100) || (progress < 100 && isLocalProgressExists)){
+                buttonTitle = "In Progress"
+            }
+            if(progress == 100){
+                buttonTitle = "Review"
+            }
+            cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)
+            cell?.launchModuleButton.tag = seq
+            cell?.launchModuleButton.titleLabel?.tag = lpSeq
+            cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+            if(moduleType == "quiz" && rank > 0 && progress == 100){
+                cell?.leaderboardLabel.text = String(rank) + "\nLeaderboard"
+            }else{
+                cell?.leaderboardLabel.isHidden = true
+            }
+            rowCount = rowCount + 1
         }
-        cell?.moduleTitle.text = moduleJson["title"] as? String
-        var points = moduleJson["points"] as? String
-        if(points == nil){
-            points = "0"
-        }
-        var score = moduleJson["score"] as? String
-        if(score == nil){
-            score = "0"
-        }
-        cell?.pointLabel.text = points
-        cell?.scoreLabel.text = score
-        var buttonTitle: String = "Launch"
-        let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
-        if((progress > 0 && progress < 100) || (progress < 100 && isLocalProgressExists)){
-            buttonTitle = "In Progress"
-        }
-        if(progress == 100){
-            buttonTitle = "Review"
-        }
-        cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)
-        cell?.launchModuleButton.tag = seq
-        cell?.launchModuleButton.titleLabel?.tag = lpSeq
-        cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-        if(moduleType == "quiz" && rank > 0 && progress == 100){
-            cell?.leaderboardLabel.text = String(rank) + "\nLeaderboard"
-        }else{
-            cell?.leaderboardLabel.isHidden = true
-        }
+        
         return cell!
     }
     

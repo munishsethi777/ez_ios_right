@@ -20,10 +20,10 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     var selectedMessageUserType:String = ""
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
-    
+    var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        rowCount = 1
+        cache  = NSCache()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
@@ -34,7 +34,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         self.view.addSubview(progressHUD)
     }
     func refreshView(refreshControl: UIRefreshControl) {
-        rowCount = 1
+        cache  = NSCache()
         getMessages()
     }
     override func didReceiveMemoryWarning() {
@@ -62,25 +62,28 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
     
-    var rowCount = 1
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
-        //if(rowCount <= messages.count){
-            let message = messages[indexPath.row]
-            cell?.messageTitle.text = message.messageTitle
-            cell?.messageDescription.text = message.messageDescription
-            cell?.messageDateLabel.text = message.date
+        let message = messages[indexPath.row]
+        cell?.messageTitle.text = message.messageTitle
+        cell?.messageDescription.text = message.messageDescription
+        cell?.messageDateLabel.text = message.date
+        if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
+            cell?.messageImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
+        }else {
             let imagePath = message.userImageUrl
             if let url = NSURL(string: imagePath) {
                 if let data = NSData(contentsOf: url as URL) {
-                    cell?.messageImageView.image = UIImage(data: data as Data)
+                    let img = UIImage(data: data as Data)
+                    cell?.messageImageView.image = img
                     cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
                     cell?.messageImageView.clipsToBounds = true
+                    self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
                 }
             }
-            rowCount = rowCount + 1
-        //}
+        }
         return cell!
     }
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {

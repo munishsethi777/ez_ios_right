@@ -17,8 +17,10 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var selctedChatroomName:String!
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    var cache:NSCache<AnyObject, AnyObject>!
     var isCalledFromDashboard:Bool = false
     override func viewDidLoad(){
+        cache = NSCache()
         super.viewDidLoad()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -33,10 +35,12 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        cache = NSCache()
         getChatRooms()
     }
     
     func refreshView(refreshControl: UIRefreshControl) {
+        cache = NSCache()
         getChatRooms()
     }
     
@@ -69,12 +73,18 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChatRoomTableViewCell
         let chatroom = chatRoomModel[indexPath.row]
         cell?.chatroomTitle.text = chatroom.title
-        let imageUrl = chatroom.imageUrl
-        if let url = NSURL(string: imageUrl) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.chatroomImageView.image = UIImage(data: data as Data)
-                cell?.chatroomImageView.layer.cornerRadius = (cell?.chatroomImageView.frame.height)! / 2
-                cell?.chatroomImageView.clipsToBounds = true
+        if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
+            cell?.chatroomImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
+        }else {
+            let imageUrl = chatroom.imageUrl
+            if let url = NSURL(string: imageUrl) {
+                if let data = NSData(contentsOf: url as URL) {
+                    let img = UIImage(data: data as Data)
+                    cell?.chatroomImageView.image = UIImage(data: data as Data)
+                    cell?.chatroomImageView.layer.cornerRadius = (cell?.chatroomImageView.frame.height)! / 2
+                    cell?.chatroomImageView.clipsToBounds = true
+                    self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
+                }
             }
         }
         return cell!

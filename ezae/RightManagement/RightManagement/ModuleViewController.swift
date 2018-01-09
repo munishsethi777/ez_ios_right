@@ -19,9 +19,10 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var moduleArr: [Any] = []
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
         super.viewDidLoad()
-        rowCount = 1;
+        cache = NSCache()
         moduleTrainingView.delegate = self
         moduleTrainingView.dataSource = self
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -34,7 +35,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(progressHUD)
     }
     func refreshView(refreshControl: UIRefreshControl) {
-        rowCount = 1
+        cache = NSCache()
         getModules()
     }
     
@@ -45,12 +46,11 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    var rowCount = 1
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ModuleTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ModuleTableViewCell
         let section: Int = indexPath.row
-        if(rowCount <= moduleArr.count){
             let moduleJson = moduleArr[section] as! [String: Any]
             var moduleImageUrl = moduleJson["imagepath"] as? String
             var progressStr = moduleJson["progress"] as? String
@@ -75,10 +75,16 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
                 moduleImageUrl = "dummy.jpg"
             }
-            moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
-            if let url = NSURL(string: moduleImageUrl!) {
-                if let data = NSData(contentsOf: url as URL) {
-                    cell?.moduleImageView.image = UIImage(data: data as Data)
+            if (self.cache.object(forKey: seqStr as AnyObject) != nil){
+                cell?.moduleImageView?.image = self.cache.object(forKey: seqStr as AnyObject) as? UIImage
+            }else {
+                moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+                if let url = NSURL(string: moduleImageUrl!) {
+                    if let data = NSData(contentsOf: url as URL) {
+                        let img = UIImage(data: data as Data)
+                        cell?.moduleImageView.image = UIImage(data: data as Data)
+                        self.cache.setObject(img!, forKey: seqStr as AnyObject)
+                    }
                 }
             }
             cell?.moduleTitleLabel.text = moduleJson["title"] as? String
@@ -112,8 +118,6 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     cell?.leaderboardLabel.isHidden = true
                 }
             }
-            rowCount = rowCount + 1
-        }
         return cell!
     }
     

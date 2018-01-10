@@ -54,12 +54,16 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         getNotifications()
         getActiveLearningPlans()
         synchCompanyUsers()
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
-        scrollView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
         // Create and add the view to the screen.
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+        showAlert(message: UIDevice.current.identifierForVendor!.uuidString)
+        
         // All done!
     }
     
@@ -262,7 +266,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.loadActiveLearningPlans(response: json)
-                        self.refreshControl.endRefreshing()
+                        if #available(iOS 10.0, *) {
+                            self.refreshControl.endRefreshing()
+                        }
                         self.progressHUD.hide()
                     }else{
                         self.showAlert(message: message!)

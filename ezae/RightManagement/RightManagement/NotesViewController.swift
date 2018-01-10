@@ -22,9 +22,12 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         notesTableView.dataSource = self
         notesTableView.delegate = self
         //getNotes()
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-        notesTableView.refreshControl = refreshControl
+        
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            notesTableView.refreshControl = refreshControl
+        }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -150,7 +153,9 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
             notes.append(noteObj)
         }
         self.progressHUD.hide()
-        refreshControl.endRefreshing()
+        if #available(iOS 10.0, *) {
+            refreshControl.endRefreshing()
+        }
         notesTableView.reloadData()
     }
     

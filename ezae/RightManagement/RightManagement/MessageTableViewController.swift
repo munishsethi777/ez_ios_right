@@ -27,9 +27,11 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-        messageTableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            messageTableView.refreshControl = refreshControl
+        }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -160,7 +162,9 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             messages.append(msg)
         }
         progressHUD.hide()
-        refreshControl.endRefreshing()
+        if #available(iOS 10.0, *) {
+            refreshControl.endRefreshing()
+        }
         messageTableView.reloadData()
     }
     

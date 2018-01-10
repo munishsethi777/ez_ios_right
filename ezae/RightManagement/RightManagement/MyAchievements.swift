@@ -32,9 +32,11 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         getMyAchievements()
         getBadges()
         scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
-        scrollView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
     }
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()

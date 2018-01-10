@@ -27,9 +27,11 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.dataSource = self
         tableView.delegate = self
         //getChatRooms()
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-        tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -138,7 +140,9 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             chatRoomModel.append(chatRoom)
         }
         progressHUD.hide()
-        refreshControl.endRefreshing()
+        if #available(iOS 10.0, *) {
+            refreshControl.endRefreshing()
+        }
         tableView.reloadData()
         if(isCalledFromDashboard){
             self.performSegue(withIdentifier: "ChatroomDetailViewController", sender: nil)

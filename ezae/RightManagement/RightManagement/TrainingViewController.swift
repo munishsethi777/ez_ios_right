@@ -31,9 +31,11 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
        getLearningPlanAndModules()
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-        trainingTableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            trainingTableView.refreshControl = refreshControl
+        }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -242,7 +244,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             lpModuleArr.append(jsonArr)
             totalModuleCount = totalModuleCount + modulesJsonArr.count
         }
-        self.refreshControl.endRefreshing()
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
+        }
         progressHUD.hide()
         trainingTableView.reloadData()
     }

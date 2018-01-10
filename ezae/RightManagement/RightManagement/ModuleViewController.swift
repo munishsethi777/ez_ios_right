@@ -28,9 +28,11 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getModules()
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-        moduleTrainingView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            moduleTrainingView.refreshControl = refreshControl
+        }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -148,7 +150,9 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         moduleArr = response["modules"] as! [Any]
         moduleCount = moduleArr.count
         progressHUD.hide()
-        refreshControl.endRefreshing()
+        if #available(iOS 10.0, *) {
+            refreshControl.endRefreshing()
+        }
         moduleTrainingView.reloadData()
     }
     

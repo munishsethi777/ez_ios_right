@@ -36,4 +36,29 @@ class MessageFormat{
         }
         return url
     }
+    
+    
+    static func indexOf(string:String,substring:String)->Int{
+        var index = 0
+        for char in string.characters {
+            if substring.characters.first == char {
+                // Create a start and end index to ultimately creata range
+                //
+                // Hello Agnosticdev, I love Tutorials
+                //       6   ->   17 - rage of substring from 7 to 18
+                //
+                let startOfFoundCharacter = string.index(string.startIndex, offsetBy: index)
+                let lengthOfFoundCharacter = string.index(string.startIndex, offsetBy: (substring.characters.count + index))
+                let range = startOfFoundCharacter..<lengthOfFoundCharacter
+                
+                // Grab the substring from the parent string and compare it against substring
+                // Essentially, looking for the needle in a haystack
+                if string.substring(with: range) == substring {
+                    break
+                }
+            }
+            index += 1
+        }
+        return index;
+    }
 }

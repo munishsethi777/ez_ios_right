@@ -83,10 +83,12 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             addTextView()
         }else if(questionType == StringConstants.YES_NO_TYPE_QUESTION){
             addSwitchView()
-        }else if(questionType == StringConstants.WEB_PAGE_TYPE_QUESTION
-            || questionType == StringConstants.MEDIA_TYPE_QUESTION){
+        }else if(questionType == StringConstants.WEB_PAGE_TYPE_QUESTION){
             addWebView()
-        }else if(questionType == StringConstants.DOC_TYPE_QUESTION){
+        }else if(questionType == StringConstants.MEDIA_TYPE_QUESTION){
+            addWebViewForVideo()
+        }
+        else if(questionType == StringConstants.DOC_TYPE_QUESTION){
             addWebViewforDoc()
         }else if(questionType == StringConstants.LIKART_SCALE_TYPE_QUESTION){
             addRadioViews()
@@ -329,10 +331,28 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         webView.loadHTMLString(questionDetail, baseURL: nil)
         view.addSubview(webView)
     }
-
+    
+    func addWebViewForVideo(){
+        let y:CGFloat = quesTitle.frame.height
+        let webView: UIWebView = UIWebView.init()
+        webView.frame = CGRect(x:0,y:y,width:view.frame.width,height:350)
+        let questionDetail = questionJson["detail"] as! String
+        var str = questionDetail.trimmingCharacters(in: .whitespacesAndNewlines)
+        if(str.hasPrefix("<iframe")){
+            let fromIndex = questionDetail.index(questionDetail.startIndex, offsetBy: 7)
+            str = questionDetail.substring(from: fromIndex)
+            str = "<iframe style=\"width:100%;\" " + str
+        }
+        webView.loadHTMLString(str, baseURL: nil)
+        view.addSubview(webView)
+    }
+    
+    
     func addWebViewforDoc(){
-        let webView = UIWebView(frame: CGRect(x:16,y:50,width:350,height:300))
+        let y:CGFloat = quesTitle.frame.height
+        let webView = UIWebView(frame: CGRect(x:0,y:y,width:view.frame.width,height:350))
         webView.scalesPageToFit = true
+        webView.contentMode = UIViewContentMode.scaleAspectFit
         view.addSubview(webView)
         let questionDetail = questionJson["detail"] as! String
         var urlS = StringConstants.DOC_URL + questionDetail

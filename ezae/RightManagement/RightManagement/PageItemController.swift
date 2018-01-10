@@ -667,7 +667,9 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             }
         }
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
      override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if (segue.identifier == "showTrainingTabs") {
             //get a reference to the destination view controller

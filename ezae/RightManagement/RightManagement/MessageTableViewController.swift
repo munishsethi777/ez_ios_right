@@ -10,7 +10,8 @@ import UIKit
 
 class MessageTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet var messageTableView: UITableView!
+    
+    @IBOutlet weak var messageTableView: UITableView!
     var messages = [Message]()
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
@@ -27,6 +28,8 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getMessages()
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)

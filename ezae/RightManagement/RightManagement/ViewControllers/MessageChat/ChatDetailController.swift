@@ -9,6 +9,7 @@
 import UIKit
 class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDelegate,UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var chatBackgroundImage: UIImageView!
     @IBOutlet weak var inputbar: Inputbar!
     @IBOutlet weak var tableView: UITableView!
     var chat:Chat! {
@@ -43,8 +44,11 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
              */
             var toolBarFrame = self.inputbar.frame
             let tabbarFrame = self.parent?.tabBarController?.tabBar.frame
-            let toolbarY = keyboardFrameInView.origin.y - toolBarFrame.size.height
-            toolBarFrame.origin.y = toolbarY - (tabbarFrame?.size.height)!
+            var toolbarY = keyboardFrameInView.origin.y - toolBarFrame.size.height
+            if(closing == true){
+                toolbarY -= (tabbarFrame?.size.height)!
+            }
+            toolBarFrame.origin.y = toolbarY
             self.inputbar.frame = toolBarFrame
             
             var tableViewFrame = self.tableView.frame
@@ -56,7 +60,9 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         }
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     override func viewDidDisappear(_ animated:Bool) {
         super.viewDidDisappear(animated)

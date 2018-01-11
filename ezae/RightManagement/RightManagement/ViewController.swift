@@ -10,14 +10,45 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var workingAreaView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.isEnabled = false
         usernameTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        
+        let windowHeight = self.view.frame.height
+        self.workingAreaView.frame.origin.y = (windowHeight/2) - 135
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                if self.view.frame.height - keyboardSize.height < 350{
+                    let shiftingHeight = keyboardSize.height - 100
+                    self.view.frame.origin.y -= shiftingHeight
+                }
+            }
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                if self.view.frame.height - keyboardSize.height < 350{
+                    let shiftingHeight = keyboardSize.height - 100
+                    self.view.frame.origin.y += shiftingHeight
+                }
+            }
+        }
+        self.view.endEditing(true)
     }
     override func viewWillAppear(_ animated: Bool) {
         usernameTextField.text = ""
@@ -30,9 +61,7 @@ class ViewController: UIViewController {
             self.performSegue(withIdentifier: "DashboardTabController", sender: nil)
         }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

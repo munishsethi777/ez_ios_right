@@ -51,10 +51,12 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
             
             var toolBarFrame = self.inputbar.frame
             let tabbarFrame = self.parent?.tabBarController?.tabBar.frame
-            let toolbarY = keyboardFrameInView.origin.y - toolBarFrame.size.height
-            toolBarFrame.origin.y = toolbarY - (tabbarFrame?.size.height)!
+            var toolbarY = keyboardFrameInView.origin.y - toolBarFrame.size.height
+            if(closing == true){
+                toolbarY -= (tabbarFrame?.size.height)!
+            }
+            toolBarFrame.origin.y = toolbarY
             self.inputbar.frame = toolBarFrame
-            
             var tableViewFrame = self.tableView.frame
             let tableViewY = toolBarFrame.origin.y + (tabbarFrame?.size.height)!
             

@@ -139,7 +139,9 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
         progressHUD.hide()
         badgeTableView.reloadData()
-        refreshControl.endRefreshing()
+        if #available(iOS 10.0, *){
+            refreshControl.endRefreshing()
+        }
     }
     
     func showAlert(message: String){

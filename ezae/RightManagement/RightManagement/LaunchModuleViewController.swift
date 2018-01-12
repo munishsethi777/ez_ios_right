@@ -6,6 +6,7 @@
 //  Copyright © 2017 Munish Sethi. All rights reserved.
 //
 import UIKit
+import GameKit
 class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
@@ -31,6 +32,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     var progress: Int = 0
     var startDate: Date!
     var submittedQuestionCount:Int = 0
+    var randomQuestionKeys:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -54,13 +56,13 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     }
     
     func createPageViewController(itemIndex:Int) {
-        moduleJson = jsonResponse["module"] as! [String: Any]
         let moduleType = moduleJson["moduletype"] as! String
         if(moduleType == "quiz"){
            marksLabel.isHidden = false
         }else{
             marksLabel.isHidden = true
         }
+       
         questionJsonArr = moduleJson["questions"] as! [Any]
         let activity = moduleJson["activityData"] as? [String: Any]
         if(activity != nil){
@@ -192,6 +194,49 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         marksLabel.text = "Marks:" + marks!
     }
     
+    private func applyMaxQuestionCondition(){
+        let maxQuestionCountStr = moduleJson["maxquestions"] as! String
+        let maxQuestionCount = Int(maxQuestionCountStr)!
+        let activity = moduleJson["activityData"] as? [String: Any]
+        if(maxQuestionCount > 0 && maxQuestionCount < questionJsonArr.count) {
+            var randomQuestions:[Any] = []
+            if(activity != nil){
+                let existingRandomQues = activity!["randomquestionkeys"] as? String;
+                if(existingRandomQues != nil){
+                    let quesSeqArr = existingRandomQues!.components(separatedBy: ",")
+                    for quesSeq in quesSeqArr{
+                        for question in questionJsonArr {
+                            let questionJson = question as! [String: Any]
+                            let seq = questionJson["seq"] as! String;
+                            if (quesSeq == seq) {
+                                randomQuestionKeys.append(seq)
+                                randomQuestions.append(questionJson)
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    randomQuestions = getRandomQuestions(maxQuestion: maxQuestionCount, questions: questionJsonArr)
+                }
+            }else{
+                randomQuestions = getRandomQuestions(maxQuestion: maxQuestionCount, questions: questionJsonArr)
+            }
+            moduleJson["questions"] = randomQuestions
+        }
+    }
+    
+    private func getRandomQuestions(maxQuestion:Int,questions:[Any])->[Any]{
+        var randomQuestions:[Any] = []
+        for i in 0..<maxQuestion {
+            let randomNumber = GKRandomSource.sharedRandom().nextInt(upperBound: questions.count)
+            let randomQuestion = questions[randomNumber] as! [String:Any]
+            let questionSeq = randomQuestion["seq"] as! String
+            randomQuestions.append(randomQuestion)
+            randomQuestionKeys.append(questionSeq)
+        }
+        return randomQuestions
+    }
+    
     private func getItemController(itemIndex: Int) -> PageItemController? {
         if itemIndex < questionJsonArr.count {
             if(itemIndex > 0){
@@ -239,6 +284,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
                         self.moduleJson =  json["module"] as! [String: Any]
                         self.timeAllowed = (self.moduleJson["timeallowed"] as? String)!
                         self.questionJsonArr = self.moduleJson["questions"] as! [Any]
+                        self.applyMaxQuestionCondition()
                         self.createPageViewController(itemIndex:0)
                         self.startDate = Date.init()
                         self.runTimer()
@@ -273,4 +319,5 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             //etc...
         }
     }
+    
 }

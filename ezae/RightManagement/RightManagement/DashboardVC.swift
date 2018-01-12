@@ -62,7 +62,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         // Create and add the view to the screen.
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
-        showAlert(message: UIDevice.current.identifierForVendor!.uuidString)
+        let token = UIDevice.current.identifierForVendor!.uuidString
+        showAlert(message: token)
         
         // All done!
     }

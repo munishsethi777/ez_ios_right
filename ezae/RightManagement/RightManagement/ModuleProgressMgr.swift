@@ -65,14 +65,18 @@ class ModuleProgressMgr{
         }
     }
     
-    func getActivityJsonString(moduleSeq:Int,learningPlanSeq:Int,randomQuesitionKeys:[String: Any])->String{
+    func getActivityJsonString(moduleSeq:Int,learningPlanSeq:Int,randomQuesitionKeys:[String])->String{
         var activityJson:[String: Any] = [:]
         activityJson["moduleSeq"] = moduleSeq
         activityJson["learningPlanSeq"] = learningPlanSeq
         activityJson["userSeq"] = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         activityJson["score"] = 0
         activityJson["progress"] = 0
-        activityJson["randomQuestionKeys"] = randomQuesitionKeys
+        var randomQuestionKeysStr = ""
+        if(!randomQuesitionKeys.isEmpty){
+            randomQuestionKeysStr = randomQuesitionKeys.joined(separator: ",")
+        }
+        activityJson["randomQuestionKeys"] = randomQuestionKeysStr
         let jsonString = toJsonString(jsonObject: activityJson)
         return jsonString
     }

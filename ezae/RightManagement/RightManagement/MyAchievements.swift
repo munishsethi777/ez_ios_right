@@ -31,7 +31,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.view.addSubview(progressHUD)
         getMyAchievements()
         getBadges()
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
+        //scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
@@ -139,6 +139,9 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
         progressHUD.hide()
         badgeTableView.reloadData()
+        badgeTableView.frame.size.height = CGFloat(badgesCount*100)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 200)
+
         if #available(iOS 10.0, *){
             refreshControl.endRefreshing()
         }

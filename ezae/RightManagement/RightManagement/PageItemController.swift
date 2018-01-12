@@ -491,7 +491,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     
     func executeSaveActivityCall(){
         if(moduleProgress.isEmpty && itemIndex == 0 && !isActivitySaved){
-            let randomQuestionKeys:[String: Any] = [:]
+            let randomQuestionKeys:[String] = parentController.randomQuestionKeys
             let moduleSeq = Int(questionJson["moduleSeq"] as! String)!;
             let learningPlanSeq = Int(questionJson["learningPlanSeq"] as! String)!;
             var jsonString = ModuleProgressMgr.sharedInstance.getActivityJsonString(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq,randomQuesitionKeys: randomQuestionKeys)

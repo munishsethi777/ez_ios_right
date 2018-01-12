@@ -127,6 +127,19 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         if(progress == 100){
             buttonTitle = "Review"
         }
+        let isLockSequence = lpJsonArr["lockSequence"] as! Bool;
+        cell?.launchModuleButton.isEnabled = true
+        if(row > 0 && isLockSequence){
+            let previousModuleJson = moduleJsonArr[row-1] as! [String: Any]
+            let lastProgressStr = previousModuleJson["progress"] as? String
+            var lastProgress = 0;
+            if(lastProgressStr != nil){
+                lastProgress =  Int(lastProgressStr!)!
+            }
+            if(lastProgress < 100){
+                cell?.launchModuleButton.isEnabled = false
+            }
+        }
         cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)
         cell?.launchModuleButton.tag = seq
         cell?.launchModuleButton.titleLabel?.tag = lpSeq

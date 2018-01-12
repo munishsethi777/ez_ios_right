@@ -8,6 +8,7 @@
 
 import UIKit
 class SettingsTableViewController : UITableViewController {
+    
     @IBAction func logoutTapped(_ sender: Any) {
         logout()
     }

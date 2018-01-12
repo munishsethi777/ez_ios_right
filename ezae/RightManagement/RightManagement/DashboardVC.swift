@@ -287,13 +287,13 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let completedTrainings = responseJson["completedTrainings"] as! Int
         let pendingTrainings = responseJson["pendingTrainings"] as! [String:Any]
         let maxScore = pendingTrainings["maxScore"] as! Int
-        var userRankStr = responseJson["userRank"] as? String
+        var userRankStr = responseJson["userRank"] as? Int
         if(userRankStr == nil){
-            userRankStr = "0"
+            userRankStr = 0
         }
         let pendingCount = pendingTrainings["pendingCount"] as! Int
         let totalScoreStr = String(totalScore) + "/" + String(maxScore)
-        rankLabel.text = userRankStr
+        rankLabel.text = String(userRankStr!)
         totalScoreLabel.text = totalScoreStr
         pendingCountLabel.text = String(pendingCount)
         completedCountLabel.text = String(completedTrainings)

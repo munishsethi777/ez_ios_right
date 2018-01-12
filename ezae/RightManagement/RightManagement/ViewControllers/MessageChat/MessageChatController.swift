@@ -33,7 +33,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         
         //Where tableview is the IBOutlet for your storyboard tableview.
         
-        getMessages()
+        getMessages(isScroll: true)
         syncMessages()
         
     }
@@ -99,12 +99,14 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.tableView.register(MessageCell.self, forCellReuseIdentifier:"MessageCell")
     }
     
-    func setGateway() {
+    func setGateway(scroll:Bool) {
         self.gateway = MessageGateway.sharedInstance
         self.gateway.delegate = self
         self.gateway.chat = self.chat
         self.gateway.loadOldMessages()
-        self.tableViewScrollToBottomAnimated(animated: false)
+        if(scroll){
+            self.tableViewScrollToBottomAnimated(animated: false)
+        }
     }
     
     // MARK - Actions
@@ -225,7 +227,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.tableView.reloadData()
     }
     
-    func getMessages(){
+    func getMessages(isScroll:Bool){
         let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatUserSeq,self.charUserType,0]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MESSAGE_DETAIL, args: args)
         var success : Int = 0
@@ -240,7 +242,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
                         self.loadMessageDetail(response: json)
                         self.setInputbar()
                         self.setTableView()
-                        self.setGateway()
+                        self.setGateway(scroll:isScroll)
                     }else{
                         self.showAlert(message: message!)
                     }

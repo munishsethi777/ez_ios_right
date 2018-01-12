@@ -11,6 +11,15 @@ class PreferencesUtil{
     static let sharedInstance = PreferencesUtil()
     static let LOGGED_IN_USER_SEQ_KEY = "loggedInUserSeq"
     static let LOGGED_IN_COMPANY_SEQ_KEY = "loggedInCompanySeq"
+    static let LOGGED_IN_DEVICE_ID = "deviceId"
+    
+    func setDeviceId(deviceId:String){
+        setValue(key: PreferencesUtil.LOGGED_IN_DEVICE_ID,value: deviceId)
+    }
+    func getDeviceId()->String?{
+        return getValue(key: PreferencesUtil.LOGGED_IN_DEVICE_ID)
+    }
+    
     func setLoggedInUserSeq(userSeq:Int){
         setValue(key: PreferencesUtil.LOGGED_IN_USER_SEQ_KEY,value: userSeq)
     }
@@ -42,6 +51,11 @@ class PreferencesUtil{
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(value, forKey: key)
     }
+    func getValue(key: String)->String?{
+        let userDefaults = UserDefaults.standard
+        return userDefaults.string(forKey:key)
+    }
+    
     
     func resetDefaults() {
         let defaults = UserDefaults.standard

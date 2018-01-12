@@ -74,7 +74,8 @@ class ViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         let username: String = usernameTextField.text!;
         let password: String = passwordTextField.text!;
-        let args: [String] = [username,password,"testgcm"]
+        let deviceId = PreferencesUtil.sharedInstance.getDeviceId()!
+        let args: [String] = [username,password,deviceId]
         let url: String = MessageFormat.format(pattern: StringConstants.LOGIN_URL, args: args)
         var success : Int = 0
         var message : String? = nil

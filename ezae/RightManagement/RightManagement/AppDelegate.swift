@@ -64,11 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        
         // Print it to console
         print("APNs device token: \(deviceTokenString)")
         PreferencesUtil.sharedInstance.setDeviceId(deviceId: deviceTokenString)
-        
         // Persist it in your backend in case it's new
     }
     
@@ -77,12 +75,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Print the error to console (you should alert the user that registration failed)
         print("APNs registration failed: \(error)")
     }
-
+    
     // Push notification received
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
         // Print notification payload data
         print("Push notification received: \(data)")
+        let notificationData = data["data"] as! [String:Any]
+        let entitySeq = notificationData["entitySeq"] as! String
+        let entityType = notificationData["entityType"] as! String
+        let prefUtil = PreferencesUtil.sharedInstance
+        prefUtil.setNotificationState(flag: true)
+        prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "Login") as UIViewController
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
     }
-
 }
 

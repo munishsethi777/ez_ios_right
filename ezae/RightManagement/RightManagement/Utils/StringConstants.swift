@@ -24,11 +24,13 @@ struct StringConstants {
     static let DOC_URL = WEB_API_URL + "docs/moduledocs/";
     static let LESSION_TYPE_MODULE = "lesson"
     static let SUBMITTED_SUCCESSFULLY = "Submitted Successfully"
+    static let NOMINATE_TRAINING_CONFIRM = "Are you sure you want to nominate this training?"
     //User Actions
     static let LOGIN_URL = ACTION_API_URL + "UserAction.php?call=login&username={0}&password={1}&deviceid={2}"
     static let GET_DASHBOARD_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardStats&userSeq={0}&companySeq={1}";
     static let GET_NOTIFICATION = ACTION_API_URL+"UserAction.php?call=getNotifications&userSeq={0}&companySeq={1}";
     static let CHANGE_PASSWORD = ACTION_API_URL + "UserAction.php?call=changePassword&userSeq={0}&companySeq={1}&earlierPassword={2}&newPassword={3}"
+    static let NOMINATE_TRAINING = ACTION_API_URL+"UserAction.php?call=nominateCT&userSeq={0}&companySeq={1}&trainingSeq={2}&lpSeq={3}"
     static let GET_NOTES = ACTION_API_URL + "NoteAction.php?call=getAllNotes&userSeq={0}&companySeq={1}"
     static let GET_NOTE_DETAIL = ACTION_API_URL + "NoteAction.php?call=getNoteDetails&userSeq={0}&companySeq={1}&noteSeq={2}"
     static let GET_ACHIEVEMENTS = ACTION_API_URL + "UserAction.php?call=myAchievements&userSeq={0}&companyseq={1}"

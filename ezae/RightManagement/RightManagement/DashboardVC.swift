@@ -37,6 +37,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var action_name: String = ""
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
+    var moduleSeq = 0
     override func viewDidLoad() {
         rankView.layer.cornerRadius = 8
         scoreView.layer.cornerRadius = 8
@@ -66,7 +67,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         
         // All done!
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        handleNotificationData()
+    }
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getDashboardStates()
         getNotifications()
@@ -101,13 +104,72 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
         cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
+        cell?.notificationButton.tag = indexPath.row
+        cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         if(notification.notificationType == "Chatroom"){
-            cell?.notificationButton.tag = indexPath.row
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
+        }else if(notification.notificationType == "Nominate"){
+            cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         }
         return cell!
     }
+    func refresh(){
     
+    }
+    private func handleNotificationData(){
+        let isNotificationState = PreferencesUtil.sharedInstance.isNotificationState()
+        if(isNotificationState){
+            let data = PreferencesUtil.sharedInstance.getNotificationData()
+            let entityType = data["entityType"]
+            if(entityType == "module"){
+                self.tabBarController?.selectedIndex = 1
+            }else{
+                PreferencesUtil.sharedInstance.resetNotificationData()
+                let controller = self.tabBarController?.viewControllers![4]
+                let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+                settingController.isGotoAchivement = true
+                self.tabBarController?.selectedIndex = 4
+            }
+        }
+    }
+    func nominateTraining(sender:UIButton){
+        let index = sender.tag
+        let notification = notifications[index]
+        let tSeq = notification.seq
+        let lpSeq = 0
+        let refreshAlert = UIAlertController(title: "Nominate", message: StringConstants.NOMINATE_TRAINING_CONFIRM, preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.excuteNominateTraining(trainingSeq:tSeq,lpSeq: lpSeq)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    func excuteNominateTraining(trainingSeq:Int,lpSeq:Int){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq,trainingSeq,lpSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.NOMINATE_TRAINING, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.getNotifications()
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
     func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
@@ -149,19 +211,28 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         notifications = []
         for var i in (0..<notificationJsonArr.count).reversed(){
             let notificationJson = notificationJsonArr[i] as! [String:Any]
+            let seq = notificationJson["seq"] as! String
             let title = notificationJson["title"] as? String
             let from = notificationJson["from"] as? String
+            let type = notificationJson["type"] as! String
+            let status = notificationJson["status"] as? String
             let fromDate = DateUtil.sharedInstance.stringToDate(dateStr: from!)
             let fromDateInFormat = DateUtil.sharedInstance.dateToString(date: fromDate, format: DateUtil.format)
             let Detail = title! + " on " + fromDateInFormat
             var notificationType = "Nominate"
-            if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
-            {
-                notificationType = "Chatroom"
+            if(type == "currentlyActiveEvent"){
+                if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
+                {
+                    notificationType = "Chatroom"
+                }else{
+                    notificationType = "Classroom"
+                }
             }else{
-                notificationType = "Classroom"
+                if(status == "unapproved"){
+                    notificationType = "Nominated"
+                }
             }
-            let not1 = Notification(seq:1,title:Detail,notificationType: notificationType)
+            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType)
             notifications.append(not1)
         }
         self.notificationsTableView.reloadData()

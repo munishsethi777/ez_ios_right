@@ -11,12 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var workingAreaView: UIView!
+    var moduleSeq = 0
+    var lpSeq = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.isEnabled = false
         usernameTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        
         let windowHeight = self.view.frame.height
         self.workingAreaView.frame.origin.y = (windowHeight/2) - 135
         
@@ -26,6 +27,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -55,12 +58,15 @@ class ViewController: UIViewController {
         passwordTextField.text = ""
     }
     override func viewDidAppear(_ animated: Bool) {
-         super.viewDidAppear(false)
+        super.viewDidAppear(false)
         let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         if(loggedInUserSeq > 0){
             self.performSegue(withIdentifier: "DashboardTabController", sender: nil)
         }
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,8 +80,11 @@ class ViewController: UIViewController {
     @IBAction func loginButton(_ sender: UIButton) {
         let username: String = usernameTextField.text!;
         let password: String = passwordTextField.text!;
-        let deviceId = PreferencesUtil.sharedInstance.getDeviceId()!
-        let args: [String] = [username,password,deviceId]
+        var deviceId = PreferencesUtil.sharedInstance.getDeviceId()
+        if(deviceId == nil){
+            deviceId = ""
+        }
+        let args: [String] = [username,password,deviceId!]
         let url: String = MessageFormat.format(pattern: StringConstants.LOGIN_URL, args: args)
         var success : Int = 0
         var message : String? = nil
@@ -120,5 +129,7 @@ class ViewController: UIViewController {
         }
         loginBtn.isEnabled = true
     }
+    
+    
 }
 

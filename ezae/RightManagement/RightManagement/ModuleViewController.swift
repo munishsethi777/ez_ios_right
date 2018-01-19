@@ -20,6 +20,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
     var cache:NSCache<AnyObject, AnyObject>!
+    var isLaunch = false
     override func viewDidLoad() {
         super.viewDidLoad()
         cache = NSCache()
@@ -36,6 +37,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
+    
+    
     func refreshView(refreshControl: UIRefreshControl) {
         cache = NSCache()
         getModules()
@@ -154,6 +157,10 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             refreshControl.endRefreshing()
         }
         moduleTrainingView.reloadData()
+        if(isLaunch){
+            isLaunch = false
+            launch()
+        }
     }
     
     func launchModule(sender:UIButton){
@@ -162,6 +169,9 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
     }
     
+    func launch(){
+        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+    }
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

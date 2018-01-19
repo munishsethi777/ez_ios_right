@@ -12,6 +12,9 @@ class PreferencesUtil{
     static let LOGGED_IN_USER_SEQ_KEY = "loggedInUserSeq"
     static let LOGGED_IN_COMPANY_SEQ_KEY = "loggedInCompanySeq"
     static let LOGGED_IN_DEVICE_ID = "deviceId"
+    static let NOTIFICATION_STATE = "notificationState"
+    static let NOTIFICATION_ENTITY_SEQ = "notificationEntitySeq"
+    static let NOTIFICATION_ENTITY_TYPE = "notificationEntityType"
     
     func setDeviceId(deviceId:String){
         setValue(key: PreferencesUtil.LOGGED_IN_DEVICE_ID,value: deviceId)
@@ -56,6 +59,44 @@ class PreferencesUtil{
         return userDefaults.string(forKey:key)
     }
     
+    func isNotificationState()->Bool{
+        return getValueBool(key: PreferencesUtil.NOTIFICATION_STATE);
+    }
+    
+    func setNotificationState(flag:Bool){
+        setValue(key: PreferencesUtil.NOTIFICATION_STATE,value: flag);
+    }
+    
+    func setNotificationData(entityType:String,entitySeq:String){
+        setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ, value: entitySeq)
+        setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE, value: entityType)
+    }
+    
+    func getNotificationData()->[String: String]{
+        let entityType = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE)!
+        let entitySeq = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ)!
+        var notificationData:[String:String] = [:]
+        notificationData["entityType"] = entityType
+        notificationData["entitySeq"] = entitySeq
+        return notificationData
+    }
+    
+    func getValueBool(key: String)->Bool{
+        let userDefaults = UserDefaults.standard
+        return userDefaults.bool(forKey:key)
+    }
+    
+    
+    func resetNotificationData(){
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            if(key == PreferencesUtil.NOTIFICATION_ENTITY_TYPE || key == PreferencesUtil.NOTIFICATION_ENTITY_SEQ || key == PreferencesUtil.NOTIFICATION_STATE){
+                defaults.removeObject(forKey: key)
+            }
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+    }
     
     func resetDefaults() {
         let defaults = UserDefaults.standard

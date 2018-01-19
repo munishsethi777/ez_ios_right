@@ -39,7 +39,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     func refreshView(refreshControl: UIRefreshControl) {
         cache = NSCache()
         getLearningPlanAndModules()

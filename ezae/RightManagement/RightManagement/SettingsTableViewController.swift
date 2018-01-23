@@ -9,11 +9,17 @@
 import UIKit
 class SettingsTableViewController : UITableViewController {
     var isGotoAchivement:Bool = false
+    var isGotoEvents:Bool = false
     override func viewWillAppear(_ animated: Bool){
         if(isGotoAchivement){
             isGotoAchivement = false
             self.performSegue(withIdentifier: "Achievements", sender: self)
         }
+        if(isGotoEvents){
+            isGotoEvents = false
+            self.performSegue(withIdentifier: "Events", sender: self)
+        }
+        
     }
     @IBAction func logoutTapped(_ sender: Any) {
         logout()

@@ -48,16 +48,6 @@ class EventViewController :UIViewController{
         self.present(navigationController, animated: true, completion: nil)
     }
     
-//    fileprivate func generateEvents(eventsJson:[String: Any]) -> [SSEvent] {
-//        var events: [SSEvent] = []
-//        let eventsArr = eventsJson["chatrooms"] as! [Any]
-//        for i in 0..<eventsArr.count{
-//            let event = eventsArr[i] as! [String: Any]
-//            events = generateEvent(eventsJson: event)
-//         }
-//        return events
-//    }
-    
     fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {
         var events: [SSEvent] = []
         let eventsArr = eventsJson["chatrooms"] as! [Any]

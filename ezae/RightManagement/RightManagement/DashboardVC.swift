@@ -110,11 +110,16 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         }else if(notification.notificationType == "Nominate"){
             cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
+        }else if (notification.notificationType == "Classroom"){
+            cell?.notificationButton.addTarget(self, action:#selector(goToEvents), for: .touchUpInside)
         }
         return cell!
     }
-    func refresh(){
-    
+    func goToEvents(){
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGotoEvents = true
+        self.tabBarController?.selectedIndex = 4
     }
     private func handleNotificationData(){
         let isNotificationState = PreferencesUtil.sharedInstance.isNotificationState()

@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ServiceHandler.makeAPICallImage(url:method:chosenImage:completionHandler:):ServiceHandler.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "request">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "_kernelrpc_mach_vm_deallocate_trap:(null)">
          <PersistentStrings>
             <PersistentString
@@ -30,7 +38,29 @@
          contextName = "closure #1 in UpdateProfileViewController.getUserFields():UpdateProfileViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "MyAchievements.tableView(_:cellForRowAt:):MyAchievements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.badgesCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "UpdateProfileViewController.loadControls(json:):UpdateProfileViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MyAchievements.loadBadges(response:):MyAchievements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "badgesCount">
+            </PersistentString>
+            <PersistentString
+               value = "self.badgeTableView.contentSize.height">
+            </PersistentString>
+            <PersistentString
+               value = "badges">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "UpdateProfileViewController.getUserFields():UpdateProfileViewController.swift">

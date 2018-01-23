@@ -1,0 +1,982 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01C7755EF95BE0F62C99F8CC6306ED2B /* SSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 86145F605DE66BB626B68AA62F95F153 /* SSCache.m */; };
+		060DB83D0FDC2A893848DD3BA697C692 /* SSCalendarWeekViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F54E51FE3F9B7DEE3D0FD5C0C36328 /* SSCalendarWeekViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C68C1CE1DA6449EF6D6E39C92A0E421 /* SSMonthNode.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4E12876F1DCA5D63ADEB07135F646D /* SSMonthNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DE3518F919A8A1D2F8AACA54C4767B9 /* SSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AEBE22FB7B4AE8D26AEFBC9F10CF44 /* SSEvent.m */; };
+		118790A52FF4139477110497AEAD5BB5 /* SSCalendarEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA10476ECEFC319D470A7378EA623BBF /* SSCalendarEventsCell.xib */; };
+		12E58D30C261334C52929CA7CE35643F /* SSCalendarAnnualDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DE81914E64745E727EA6A60EBB73F995 /* SSCalendarAnnualDataSource.m */; };
+		131B0485F09AA5BBF36DCC3678831C5B /* UIColor+StellarAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C1B290290DF390F80EA9216765BCB95 /* UIColor+StellarAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1691C2DA56605795E22258CFE4C0125D /* SSCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 81AC66AF24E83F7060FF17C925CD76C3 /* SSCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17CF4A395AF48084C7ABF840374A3553 /* SSCalendarAnnualCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426F7ACE560660F69131E9261F569F24 /* SSCalendarAnnualCell.xib */; };
+		1862A68123D3E38467BFF9E0ABC52CE6 /* SSCalendarDailyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FFDC11AF9C0643B7D0C17FA6A8393 /* SSCalendarDailyViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19F8EBEAFFA9EF5581695E6834D573AC /* SSStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1475621B89DB1F70A9A16852E9D71 /* SSStyles.m */; };
+		1A6C9788D2FA60497E2BA65362DF615E /* SSCalendarEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B536BE3E1D1FA744366BF969B6D3 /* SSCalendarEventsCell.m */; };
+		1D7282F231084CCBE476ED50D0D3E05C /* SSCalendarWeekHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = F556C7F8E549F4B55C86DADF4839AA96 /* SSCalendarWeekHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FDC3C0751AF86EF0B3D2B0CBF87EA1B /* SSCalendarDailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 345EDEBFC2CD66B69EE86A1122924AA6 /* SSCalendarDailyViewController.xib */; };
+		222A0698A658A62DEA4BA11C4CE983F7 /* SSCalendarMonthlyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0D99886BAE7B2CA32C321631464EFD /* SSCalendarMonthlyHeaderView.m */; };
+		32D6640DECA8BB13439B5C4052247C1E /* SSCalendarAnnualCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 426F7ACE560660F69131E9261F569F24 /* SSCalendarAnnualCell.xib */; };
+		3823AC304AF244B949432E57CCC5400A /* SSCalendarMonthlyViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEEB4E5EF4B65F4E580E7890A171D /* SSCalendarMonthlyViewController.xib */; };
+		3AF37FDA2143175A6C57D8A4BFDABE9B /* SSCalendarAnnualViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AFCCA3DC8D8287F656FF7FCBCCF7C1C8 /* SSCalendarAnnualViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3AFAAA7131F6AB7162561C3EBC89B8CB /* SSCalendarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 322807956121D62D77FCAC0733102E18 /* SSCalendarUtils.m */; };
+		3CD9910E0E187AECC455E6FFBE9E9731 /* SSCalendarEventsCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = DA10476ECEFC319D470A7378EA623BBF /* SSCalendarEventsCell.xib */; };
+		3DF7415D18E0938A460A4B8CEBADF01C /* SSMonthNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C88709989590A05833522B03D646 /* SSMonthNode.m */; };
+		4ECE48B9A6382E4EF187C234F0C40A26 /* SSCalendarCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0594CABC7334A19469B49BF036C500FA /* SSCalendarCache.m */; };
+		4FA1A0B934109879E5C8C071D0F759EF /* Pods-RightManagement-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 620DDEA1075238C7FE47BB2BD49DD0E8 /* Pods-RightManagement-dummy.m */; };
+		5C9DFA4CE0641A19FD64DC400CE82E61 /* SSDataController.h in Headers */ = {isa = PBXBuildFile; fileRef = A394C80A1164DF64C43853DB36CF5CBF /* SSDataController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DADFCDC2E0E14E98041EB8F5C847089 /* SSCalendarCountCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 5887627FEE7D1FE9CF71AD936FB8650D /* SSCalendarCountCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65FEE7574531A82CB5275E3961AA97EE /* SSCalendarAnnualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1E1778D7CC70258658F63EE965BBC4 /* SSCalendarAnnualViewController.m */; };
+		6716CA1624AB08730268A93FCA1B97F0 /* SSYearNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C858A81121E6DD7A9D7570D014C371F /* SSYearNode.m */; };
+		6918E9B13096581D5C963EE8175906B0 /* SSCalendarAnnualHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40810325273AE469C095FF301AE87DA4 /* SSCalendarAnnualHeaderView.xib */; };
+		6D05169A99B76227327790DA84C7599A /* SSCalendarMonthlyHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4475F3C60C010E37B89347F7C0329F0C /* SSCalendarMonthlyHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D12DD2675DDDEDFA069D4B93D2C571A /* SSEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 4812FFAD5BB7C04D8002A6B67717E9F6 /* SSEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F7A131F1302DA5F40B6311440E5854B /* SSCalendarEventsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E5249695B09C655CA82CC478ADEE527 /* SSCalendarEventsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		721D2464FEF5ADC987517C6034AF1CB8 /* SSCalendarWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2746C5D02193BE4BBE4E5A0F8F292F6 /* SSCalendarWeekViewController.m */; };
+		72606FFCF2DA3B6357900745BE7B9874 /* SSCalendarAnnualHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB6766A34ADF10FAB615B4A4DA99AA9 /* SSCalendarAnnualHeaderView.m */; };
+		74F07CAA0DC5DBEE70EFFE72B1A8A96C /* SSCalendarCountCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E696EA708D8D0B4623A00FDC63EC31E5 /* SSCalendarCountCache.m */; };
+		76B64BBFCF0FA4BCC151B16B9784FB4D /* SSColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 174BBC0D2D882B6433616B3B2351D8CB /* SSColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78FB09D21D9BBCE3D385304D0F25B348 /* SSCalendarWeekLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A1FD78E576880B36A92677B8C4447F /* SSCalendarWeekLayout.m */; };
+		7DBA46FFBB30F446BF7E83DB3C35A8AF /* SSStyles.h in Headers */ = {isa = PBXBuildFile; fileRef = E29DAC4DC81C9221C0EA2229C43EDA76 /* SSStyles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E893575FCC36819BE6D89E279A0A6A7 /* SSCalendarAnnualViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06488E7ABFF632FB8DB736128B9C82FF /* SSCalendarAnnualViewController.xib */; };
+		80C6B487A27108C39EF95BA6BCE53343 /* SSCalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1139EEF52BCD5D9314CFB609ED5C7485 /* SSCalendarDayViewController.m */; };
+		8308783920922F1567894C9B226C7B38 /* SSCalendarDayLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 770EAEF54F3597717096820A0F15FC12 /* SSCalendarDayLayout.m */; };
+		83E9699FC26A357582C159D8A3F1BB84 /* StellarConversionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AD240E23C9079EB30782026B9C0D8485 /* StellarConversionUtils.m */; };
+		85003DC4C655416FA1FAD4440FA82514 /* SSCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D7EA2B68937AFCD1B1D250989360CAD6 /* SSCalendarDayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8654650C7BF8BC82EDC4D8276FDA022C /* SSCalendarMonthlyDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 42E7C429C7DE24B4920AB6076087799E /* SSCalendarMonthlyDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		886560BD7BE457D64E80CE6543EF84AA /* SSDayNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8161395086F19400A04EE03B37BF670A /* SSDayNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BCD568BEEA610FFD6D188EAAA860643 /* SSCalendarWeekLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B339B9A431E1A16E43AC3BD65DB611F /* SSCalendarWeekLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C123BFC5E7F4911826262618891FB94 /* SSCalendarEventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C7184723FFD250F2B140E160111A05 /* SSCalendarEventsTableViewController.m */; };
+		903CC5C342641202A2646ACC22FF2775 /* SSDayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F2CC4F7621A60D4D04CAE6C56946F7 /* SSDayNode.m */; };
+		95CB967CE4C742A655D0BC4EE749D633 /* Pods-RightManagement-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E8A7D765365989CC2B7EAF103FB0241 /* Pods-RightManagement-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		962D16D5006077B80D073631C71C2F35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		991B4670172B46D1383A8D8E90EF89EA /* SSCalendarMonthlyLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 41FB977960B0C9C7D144886A6417B265 /* SSCalendarMonthlyLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EF9B6C55069AA471E5E112D4882C38F /* SSCalendarMonthlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7DEEEB4E5EF4B65F4E580E7890A171D /* SSCalendarMonthlyViewController.xib */; };
+		AAF1A30203E683F1608A9D2B8EF08F88 /* SSConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6D0CF4FB1989BA7142526FAD6C8065 /* SSConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC1F0B5F03C6E4AE07DE198FC351D6C6 /* SSCalendarMonthlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78025EC86B303133FA5C334074CDA365 /* SSCalendarMonthlyViewController.m */; };
+		B00E280E685B364D5490C043F6DCF9D9 /* SSCalendarCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B57EE85A0ECC94BF94A2B2C74685D5B /* SSCalendarCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B22CF8A8CE05DCCB0F7DE7E7F5F5EDDD /* SSCalendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 434B2DDA8FB4482AB87F90E412E0A483 /* SSCalendar.bundle */; };
+		B3542C887806BA436AF6358AD4172306 /* SSCalendarAnnualHeaderView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 40810325273AE469C095FF301AE87DA4 /* SSCalendarAnnualHeaderView.xib */; };
+		B67A43E1F1F71FA08CC7EED644A21280 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		B9D578110090DCECAD1CBCC1C8A5F844 /* SSCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 768477B81B258C3BF24543DBC50A8AAE /* SSCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC93D63A14982A70912B7C6D2D2897E3 /* SSDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B155FB76508D86E37FF49330D67BA881 /* SSDataController.m */; };
+		BEC71B08562904AAF2C00ECECEA02FE6 /* SSCalendarAnnualCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA54C5A5FE81437920D4E002C3D7FB /* SSCalendarAnnualCell.m */; };
+		BFF1FE3C577AAC2F80701CD810E68D69 /* SSCalendarMonthlyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E065A87ACD42DD870135758C125FE4DD /* SSCalendarMonthlyViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0C93D917535E39427A76297F13633A8 /* SSCalendarWeekHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDC59E5B698462D82E74FCD9CFF3BD /* SSCalendarWeekHeaderView.m */; };
+		C13C0EFCB43CFDBB3FD15FA35F46E9AD /* SSCalendarMonthlyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 95776CAEC5FCE9D8F7A603C082ED1F3E /* SSCalendarMonthlyDataSource.m */; };
+		C31C80850E9CF59343B54669638F7439 /* SSCalendarAnnualLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 88073CF595C7B13FB8389B098FC28CA6 /* SSCalendarAnnualLayout.m */; };
+		C44812FB6AC063812CBD0D492E4F0967 /* SSCalendarMonthlyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB100FF709FD6BF66AEB195DBD047A4 /* SSCalendarMonthlyHeaderView.xib */; };
+		C5BDFEBDAE910CA73939189E176BC2A2 /* SSCalendarEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DC371F0A75AEE9F40218FC0E20DF6 /* SSCalendarEventTableViewCell.m */; };
+		C8CF69D23A4E6E4A8897DFC6C9E338EF /* SSCalendarAnnualLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D3A713B9DF5F20AC485CE0D551F0A33 /* SSCalendarAnnualLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D280A9EC21BB4CCE414463FD3895DF7F /* StellarConversionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 85363F11930925A9E73B29D511EEB3AA /* StellarConversionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D43AFE5A06D9D1D1495F778FC39BA344 /* SSCalendarMonthlyHeaderView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0CB100FF709FD6BF66AEB195DBD047A4 /* SSCalendarMonthlyHeaderView.xib */; };
+		D4C06E23875EE242385F0A7E8145875C /* SSCalendarDayCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9A2DA56ABD93EEFA2C6A309AF00508 /* SSCalendarDayCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4E4D28E2F97C2A36B1F54D3848CCE7B /* SSCalendarDayCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 4871FAA948DE13672E1E8B50798B2058 /* SSCalendarDayCell.xib */; };
+		D5FCFF266AC5942AC7098706D4DDDCAE /* SSDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C92C0C75D712B215083F1B76C8836 /* SSDimensions.m */; };
+		D664B999A9A138FF15CFC026EB09E646 /* SSCalendarAnnualDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = B23DCB228EF6A2DB3D10AD31F636C274 /* SSCalendarAnnualDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA224B38DA11A44860705DA4B135FFC4 /* SSCalendarDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4871FAA948DE13672E1E8B50798B2058 /* SSCalendarDayCell.xib */; };
+		DE507EB3DA2B36B7B055D683ADA510C6 /* SSCalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4201CF9D50D49E85C4D909D0683E954 /* SSCalendarDayCell.m */; };
+		DE896567D29CC33DFC56F38CF6E9081B /* SSDimensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 283CFAD7F4EC031FB874EE59F6B6716B /* SSDimensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6EA473F4C19C2C7B7ADDA8799411B2E /* SSCalendarDailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD96D208409F67534D715AB673F510EE /* SSCalendarDailyViewController.m */; };
+		E730C8FD3CE133E23C3BD424AAF5199E /* SSCalendarDayLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 47587DCC56602DDA01DFD8AA6B9507C6 /* SSCalendarDayLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8B3C36B95B10CB028385135B458DD04 /* SSCalendarUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 78FF1CB5947B9E05521FE00440FB8C1F /* SSCalendarUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9BAEB825B1A234024172602AE03C244 /* SSCalendarAnnualCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B2C00C846BBA73C605DEBDC18C45AA1 /* SSCalendarAnnualCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9E963D4106D11E250E614D694033476 /* SSYearNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 86AA0477C01B425E514219A1152CB823 /* SSYearNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA7B38F881BC45960AEFB6D656007FF0 /* SSCalendarEventTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 16991F96A537B7C4A88AA773C8716BE2 /* SSCalendarEventTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC9A7ECAEC3311B63E9D57D2FE0E5FA2 /* SSCalendarEventsCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E8545671DEB2D2BB881DD0EF70327F1 /* SSCalendarEventsCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0E2172C3FE953F8E2E0271E3B278206 /* SSCalendarMonthlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B4FC1D9A816CE8BACBD38F76D3412E /* SSCalendarMonthlyLayout.m */; };
+		F0FEA7A6A2338E9692EEDD25C75F3958 /* UIColor+StellarAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C8AFE909CB8EC4991B61B4F7AE145 /* UIColor+StellarAdditions.m */; };
+		F700BF2E02EF54296CEC34800427086D /* SSCalendarAnnualViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 06488E7ABFF632FB8DB736128B9C82FF /* SSCalendarAnnualViewController.xib */; };
+		F76BBDB17CBA4FC27BA68BC3E62A3A5C /* SSCalendarDailyViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 345EDEBFC2CD66B69EE86A1122924AA6 /* SSCalendarDailyViewController.xib */; };
+		FE807F1400280012B8D2927C3467D4B6 /* SSCalendarAnnualHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34777D128B849D8525B90A4B7644A051 /* SSCalendarAnnualHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF316F7A718B5AB74282288077372C3A /* SSCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A16DBDA1D18B123E01E886163CD047 /* SSCalendar-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3992EA8A10F717202F6EC1CA1D858BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 209BB5E560EBF7D1B73FF1A7489A26FE;
+			remoteInfo = SSCalendar;
+		};
+		FE589DF88F3FD09321756372D80B0870 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88690293CC796E018A7E7D11497F0F57;
+			remoteInfo = "SSCalendar-SSCalendar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00AEBE22FB7B4AE8D26AEFBC9F10CF44 /* SSEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSEvent.m; path = SSCalendar/Classes/Models/SSEvent.m; sourceTree = "<group>"; };
+		014177081B862EC282D24DAC4C1A6978 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0594CABC7334A19469B49BF036C500FA /* SSCalendarCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarCache.m; path = SSCalendar/Classes/Models/SSCalendarCache.m; sourceTree = "<group>"; };
+		06488E7ABFF632FB8DB736128B9C82FF /* SSCalendarAnnualViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarAnnualViewController.xib; path = SSCalendar/Classes/Controllers/Year/ViewControllers/SSCalendarAnnualViewController.xib; sourceTree = "<group>"; };
+		0B57EE85A0ECC94BF94A2B2C74685D5B /* SSCalendarCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarCache.h; path = SSCalendar/Classes/Models/SSCalendarCache.h; sourceTree = "<group>"; };
+		0C1B290290DF390F80EA9216765BCB95 /* UIColor+StellarAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+StellarAdditions.h"; path = "SSCalendar/Classes/Base/UIColor+StellarAdditions.h"; sourceTree = "<group>"; };
+		0CA4D275996CE8BE05AAD14C6E08C2F6 /* SSCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSCalendar-prefix.pch"; sourceTree = "<group>"; };
+		0CB100FF709FD6BF66AEB195DBD047A4 /* SSCalendarMonthlyHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarMonthlyHeaderView.xib; path = SSCalendar/Classes/Controllers/Month/Views/SSCalendarMonthlyHeaderView.xib; sourceTree = "<group>"; };
+		0E5249695B09C655CA82CC478ADEE527 /* SSCalendarEventsTableViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarEventsTableViewController.h; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarEventsTableViewController.h; sourceTree = "<group>"; };
+		0E8A7D765365989CC2B7EAF103FB0241 /* Pods-RightManagement-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RightManagement-umbrella.h"; sourceTree = "<group>"; };
+		1139EEF52BCD5D9314CFB609ED5C7485 /* SSCalendarDayViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarDayViewController.m; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarDayViewController.m; sourceTree = "<group>"; };
+		16991F96A537B7C4A88AA773C8716BE2 /* SSCalendarEventTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarEventTableViewCell.h; path = SSCalendar/Classes/Controllers/Day/Cells/SSCalendarEventTableViewCell.h; sourceTree = "<group>"; };
+		16CDC4BD2D80BC5AB36277D7980A84FE /* SSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SSCalendar.framework; path = SSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174BBC0D2D882B6433616B3B2351D8CB /* SSColors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSColors.h; path = SSCalendar/Classes/Base/SSColors.h; sourceTree = "<group>"; };
+		1D3A713B9DF5F20AC485CE0D551F0A33 /* SSCalendarAnnualLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarAnnualLayout.h; path = SSCalendar/Classes/Controllers/Year/Layouts/SSCalendarAnnualLayout.h; sourceTree = "<group>"; };
+		1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SSCalendar.xcconfig; sourceTree = "<group>"; };
+		251D7E2ACF5CF994BB397DC6381D0A09 /* Pods-RightManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RightManagement.release.xcconfig"; sourceTree = "<group>"; };
+		283CFAD7F4EC031FB874EE59F6B6716B /* SSDimensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSDimensions.h; path = SSCalendar/Classes/Base/SSDimensions.h; sourceTree = "<group>"; };
+		29A1FD78E576880B36A92677B8C4447F /* SSCalendarWeekLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarWeekLayout.m; path = SSCalendar/Classes/Controllers/Day/Layouts/SSCalendarWeekLayout.m; sourceTree = "<group>"; };
+		2B339B9A431E1A16E43AC3BD65DB611F /* SSCalendarWeekLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarWeekLayout.h; path = SSCalendar/Classes/Controllers/Day/Layouts/SSCalendarWeekLayout.h; sourceTree = "<group>"; };
+		2CBFFA124C410ECCE2FF48A6339D8CF7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CCDC59E5B698462D82E74FCD9CFF3BD /* SSCalendarWeekHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarWeekHeaderView.m; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarWeekHeaderView.m; sourceTree = "<group>"; };
+		322807956121D62D77FCAC0733102E18 /* SSCalendarUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarUtils.m; path = SSCalendar/Classes/Base/SSCalendarUtils.m; sourceTree = "<group>"; };
+		345EDEBFC2CD66B69EE86A1122924AA6 /* SSCalendarDailyViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarDailyViewController.xib; path = SSCalendar/Classes/Controllers/Day/ViewControllers/SSCalendarDailyViewController.xib; sourceTree = "<group>"; };
+		34777D128B849D8525B90A4B7644A051 /* SSCalendarAnnualHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarAnnualHeaderView.h; path = SSCalendar/Classes/Controllers/Year/Views/SSCalendarAnnualHeaderView.h; sourceTree = "<group>"; };
+		3B2C00C846BBA73C605DEBDC18C45AA1 /* SSCalendarAnnualCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarAnnualCell.h; path = SSCalendar/Classes/Controllers/Year/Cells/SSCalendarAnnualCell.h; sourceTree = "<group>"; };
+		3C1E1778D7CC70258658F63EE965BBC4 /* SSCalendarAnnualViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarAnnualViewController.m; path = SSCalendar/Classes/Controllers/Year/ViewControllers/SSCalendarAnnualViewController.m; sourceTree = "<group>"; };
+		3D9A2DA56ABD93EEFA2C6A309AF00508 /* SSCalendarDayCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarDayCell.h; path = "SSCalendar/Classes/Collection View Cells/SSCalendarDayCell.h"; sourceTree = "<group>"; };
+		3F8DC371F0A75AEE9F40218FC0E20DF6 /* SSCalendarEventTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarEventTableViewCell.m; path = SSCalendar/Classes/Controllers/Day/Cells/SSCalendarEventTableViewCell.m; sourceTree = "<group>"; };
+		40810325273AE469C095FF301AE87DA4 /* SSCalendarAnnualHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarAnnualHeaderView.xib; path = SSCalendar/Classes/Controllers/Year/Views/SSCalendarAnnualHeaderView.xib; sourceTree = "<group>"; };
+		417C92C0C75D712B215083F1B76C8836 /* SSDimensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSDimensions.m; path = SSCalendar/Classes/Base/SSDimensions.m; sourceTree = "<group>"; };
+		41FB977960B0C9C7D144886A6417B265 /* SSCalendarMonthlyLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarMonthlyLayout.h; path = SSCalendar/Classes/Controllers/Month/Layouts/SSCalendarMonthlyLayout.h; sourceTree = "<group>"; };
+		426F7ACE560660F69131E9261F569F24 /* SSCalendarAnnualCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarAnnualCell.xib; path = SSCalendar/Classes/Controllers/Year/Cells/SSCalendarAnnualCell.xib; sourceTree = "<group>"; };
+		42E7C429C7DE24B4920AB6076087799E /* SSCalendarMonthlyDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarMonthlyDataSource.h; path = SSCalendar/Classes/Controllers/Month/Controllers/SSCalendarMonthlyDataSource.h; sourceTree = "<group>"; };
+		434B2DDA8FB4482AB87F90E412E0A483 /* SSCalendar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SSCalendar.bundle; path = SSCalendar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		4475F3C60C010E37B89347F7C0329F0C /* SSCalendarMonthlyHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarMonthlyHeaderView.h; path = SSCalendar/Classes/Controllers/Month/Views/SSCalendarMonthlyHeaderView.h; sourceTree = "<group>"; };
+		44B4FC1D9A816CE8BACBD38F76D3412E /* SSCalendarMonthlyLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarMonthlyLayout.m; path = SSCalendar/Classes/Controllers/Month/Layouts/SSCalendarMonthlyLayout.m; sourceTree = "<group>"; };
+		453FFDC11AF9C0643B7D0C17FA6A8393 /* SSCalendarDailyViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarDailyViewController.h; path = SSCalendar/Classes/Controllers/Day/ViewControllers/SSCalendarDailyViewController.h; sourceTree = "<group>"; };
+		47587DCC56602DDA01DFD8AA6B9507C6 /* SSCalendarDayLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarDayLayout.h; path = SSCalendar/Classes/Controllers/Day/Layouts/SSCalendarDayLayout.h; sourceTree = "<group>"; };
+		4812FFAD5BB7C04D8002A6B67717E9F6 /* SSEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEvent.h; path = SSCalendar/Classes/Models/SSEvent.h; sourceTree = "<group>"; };
+		4871FAA948DE13672E1E8B50798B2058 /* SSCalendarDayCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarDayCell.xib; path = "SSCalendar/Classes/Collection View Cells/SSCalendarDayCell.xib"; sourceTree = "<group>"; };
+		5887627FEE7D1FE9CF71AD936FB8650D /* SSCalendarCountCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarCountCache.h; path = SSCalendar/Classes/Models/SSCalendarCountCache.h; sourceTree = "<group>"; };
+		620DDEA1075238C7FE47BB2BD49DD0E8 /* Pods-RightManagement-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RightManagement-dummy.m"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6C858A81121E6DD7A9D7570D014C371F /* SSYearNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSYearNode.m; path = SSCalendar/Classes/Models/SSYearNode.m; sourceTree = "<group>"; };
+		6E8545671DEB2D2BB881DD0EF70327F1 /* SSCalendarEventsCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarEventsCell.h; path = SSCalendar/Classes/Controllers/Day/Cells/SSCalendarEventsCell.h; sourceTree = "<group>"; };
+		7352CE7677B6951C15061AFD1A6F8A8F /* Pods-RightManagement-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RightManagement-frameworks.sh"; sourceTree = "<group>"; };
+		768477B81B258C3BF24543DBC50A8AAE /* SSCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SSCalendar-umbrella.h"; sourceTree = "<group>"; };
+		770EAEF54F3597717096820A0F15FC12 /* SSCalendarDayLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarDayLayout.m; path = SSCalendar/Classes/Controllers/Day/Layouts/SSCalendarDayLayout.m; sourceTree = "<group>"; };
+		77A16DBDA1D18B123E01E886163CD047 /* SSCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SSCalendar-dummy.m"; sourceTree = "<group>"; };
+		78025EC86B303133FA5C334074CDA365 /* SSCalendarMonthlyViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarMonthlyViewController.m; path = SSCalendar/Classes/Controllers/Month/ViewControllers/SSCalendarMonthlyViewController.m; sourceTree = "<group>"; };
+		78FF1CB5947B9E05521FE00440FB8C1F /* SSCalendarUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarUtils.h; path = SSCalendar/Classes/Base/SSCalendarUtils.h; sourceTree = "<group>"; };
+		7AE1475621B89DB1F70A9A16852E9D71 /* SSStyles.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSStyles.m; path = SSCalendar/Classes/Base/SSStyles.m; sourceTree = "<group>"; };
+		8161395086F19400A04EE03B37BF670A /* SSDayNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSDayNode.h; path = SSCalendar/Classes/Models/SSDayNode.h; sourceTree = "<group>"; };
+		81AC66AF24E83F7060FF17C925CD76C3 /* SSCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCache.h; path = SSCalendar/Classes/Models/SSCache.h; sourceTree = "<group>"; };
+		84F3B536BE3E1D1FA744366BF969B6D3 /* SSCalendarEventsCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarEventsCell.m; path = SSCalendar/Classes/Controllers/Day/Cells/SSCalendarEventsCell.m; sourceTree = "<group>"; };
+		85363F11930925A9E73B29D511EEB3AA /* StellarConversionUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StellarConversionUtils.h; path = SSCalendar/Classes/Base/StellarConversionUtils.h; sourceTree = "<group>"; };
+		86145F605DE66BB626B68AA62F95F153 /* SSCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCache.m; path = SSCalendar/Classes/Models/SSCache.m; sourceTree = "<group>"; };
+		86AA0477C01B425E514219A1152CB823 /* SSYearNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSYearNode.h; path = SSCalendar/Classes/Models/SSYearNode.h; sourceTree = "<group>"; };
+		88073CF595C7B13FB8389B098FC28CA6 /* SSCalendarAnnualLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarAnnualLayout.m; path = SSCalendar/Classes/Controllers/Year/Layouts/SSCalendarAnnualLayout.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95776CAEC5FCE9D8F7A603C082ED1F3E /* SSCalendarMonthlyDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarMonthlyDataSource.m; path = SSCalendar/Classes/Controllers/Month/Controllers/SSCalendarMonthlyDataSource.m; sourceTree = "<group>"; };
+		9B957E9762043974C8B43D47DA0BF5C7 /* ResourceBundle-SSCalendar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SSCalendar-Info.plist"; sourceTree = "<group>"; };
+		9C6D0CF4FB1989BA7142526FAD6C8065 /* SSConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSConstants.h; path = SSCalendar/Classes/Base/SSConstants.h; sourceTree = "<group>"; };
+		A02E114280F7C0573BC986B462956572 /* Pods_RightManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RightManagement.framework; path = "Pods-RightManagement.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A394C80A1164DF64C43853DB36CF5CBF /* SSDataController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSDataController.h; path = SSCalendar/Classes/Base/SSDataController.h; sourceTree = "<group>"; };
+		ACB6766A34ADF10FAB615B4A4DA99AA9 /* SSCalendarAnnualHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarAnnualHeaderView.m; path = SSCalendar/Classes/Controllers/Year/Views/SSCalendarAnnualHeaderView.m; sourceTree = "<group>"; };
+		AD240E23C9079EB30782026B9C0D8485 /* StellarConversionUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StellarConversionUtils.m; path = SSCalendar/Classes/Base/StellarConversionUtils.m; sourceTree = "<group>"; };
+		AFCCA3DC8D8287F656FF7FCBCCF7C1C8 /* SSCalendarAnnualViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarAnnualViewController.h; path = SSCalendar/Classes/Controllers/Year/ViewControllers/SSCalendarAnnualViewController.h; sourceTree = "<group>"; };
+		B0F2CC4F7621A60D4D04CAE6C56946F7 /* SSDayNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSDayNode.m; path = SSCalendar/Classes/Models/SSDayNode.m; sourceTree = "<group>"; };
+		B155FB76508D86E37FF49330D67BA881 /* SSDataController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSDataController.m; path = SSCalendar/Classes/Base/SSDataController.m; sourceTree = "<group>"; };
+		B1EA54C5A5FE81437920D4E002C3D7FB /* SSCalendarAnnualCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarAnnualCell.m; path = SSCalendar/Classes/Controllers/Year/Cells/SSCalendarAnnualCell.m; sourceTree = "<group>"; };
+		B23DCB228EF6A2DB3D10AD31F636C274 /* SSCalendarAnnualDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarAnnualDataSource.h; path = SSCalendar/Classes/Controllers/Year/Controllers/SSCalendarAnnualDataSource.h; sourceTree = "<group>"; };
+		B8F54E51FE3F9B7DEE3D0FD5C0C36328 /* SSCalendarWeekViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarWeekViewController.h; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarWeekViewController.h; sourceTree = "<group>"; };
+		BBC389A694887C1D6B70B7E5146B2AA1 /* Pods-RightManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RightManagement.debug.xcconfig"; sourceTree = "<group>"; };
+		BD96D208409F67534D715AB673F510EE /* SSCalendarDailyViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarDailyViewController.m; path = SSCalendar/Classes/Controllers/Day/ViewControllers/SSCalendarDailyViewController.m; sourceTree = "<group>"; };
+		C027C88709989590A05833522B03D646 /* SSMonthNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSMonthNode.m; path = SSCalendar/Classes/Models/SSMonthNode.m; sourceTree = "<group>"; };
+		C35C8AFE909CB8EC4991B61B4F7AE145 /* UIColor+StellarAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+StellarAdditions.m"; path = "SSCalendar/Classes/Base/UIColor+StellarAdditions.m"; sourceTree = "<group>"; };
+		CAF0B014CBA28C9C75CFCAC067103616 /* Pods-RightManagement.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RightManagement.modulemap"; sourceTree = "<group>"; };
+		D3C7184723FFD250F2B140E160111A05 /* SSCalendarEventsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarEventsTableViewController.m; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarEventsTableViewController.m; sourceTree = "<group>"; };
+		D567D29D331455999A6399D7657EB3C6 /* Pods-RightManagement-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RightManagement-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D7DEEEB4E5EF4B65F4E580E7890A171D /* SSCalendarMonthlyViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarMonthlyViewController.xib; path = SSCalendar/Classes/Controllers/Month/ViewControllers/SSCalendarMonthlyViewController.xib; sourceTree = "<group>"; };
+		D7EA2B68937AFCD1B1D250989360CAD6 /* SSCalendarDayViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarDayViewController.h; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarDayViewController.h; sourceTree = "<group>"; };
+		DA10476ECEFC319D470A7378EA623BBF /* SSCalendarEventsCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SSCalendarEventsCell.xib; path = SSCalendar/Classes/Controllers/Day/Cells/SSCalendarEventsCell.xib; sourceTree = "<group>"; };
+		DE81914E64745E727EA6A60EBB73F995 /* SSCalendarAnnualDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarAnnualDataSource.m; path = SSCalendar/Classes/Controllers/Year/Controllers/SSCalendarAnnualDataSource.m; sourceTree = "<group>"; };
+		E065A87ACD42DD870135758C125FE4DD /* SSCalendarMonthlyViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarMonthlyViewController.h; path = SSCalendar/Classes/Controllers/Month/ViewControllers/SSCalendarMonthlyViewController.h; sourceTree = "<group>"; };
+		E29DAC4DC81C9221C0EA2229C43EDA76 /* SSStyles.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSStyles.h; path = SSCalendar/Classes/Base/SSStyles.h; sourceTree = "<group>"; };
+		E4201CF9D50D49E85C4D909D0683E954 /* SSCalendarDayCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarDayCell.m; path = "SSCalendar/Classes/Collection View Cells/SSCalendarDayCell.m"; sourceTree = "<group>"; };
+		E696EA708D8D0B4623A00FDC63EC31E5 /* SSCalendarCountCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarCountCache.m; path = SSCalendar/Classes/Models/SSCalendarCountCache.m; sourceTree = "<group>"; };
+		E7262A85026D691F38AADC963AD89F34 /* Pods-RightManagement-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RightManagement-resources.sh"; sourceTree = "<group>"; };
+		EE44E0AC0B45B10940A054ADD78DF6E9 /* Pods-RightManagement-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RightManagement-acknowledgements.plist"; sourceTree = "<group>"; };
+		EF0D99886BAE7B2CA32C321631464EFD /* SSCalendarMonthlyHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarMonthlyHeaderView.m; path = SSCalendar/Classes/Controllers/Month/Views/SSCalendarMonthlyHeaderView.m; sourceTree = "<group>"; };
+		F2746C5D02193BE4BBE4E5A0F8F292F6 /* SSCalendarWeekViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SSCalendarWeekViewController.m; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarWeekViewController.m; sourceTree = "<group>"; };
+		F556C7F8E549F4B55C86DADF4839AA96 /* SSCalendarWeekHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSCalendarWeekHeaderView.h; path = SSCalendar/Classes/Controllers/Day/Controllers/SSCalendarWeekHeaderView.h; sourceTree = "<group>"; };
+		F66ECBA0721D43924F17CE1EC43B3298 /* SSCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SSCalendar.modulemap; sourceTree = "<group>"; };
+		FA4E12876F1DCA5D63ADEB07135F646D /* SSMonthNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSMonthNode.h; path = SSCalendar/Classes/Models/SSMonthNode.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5255EC22A640B70733F7015236CA8C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				962D16D5006077B80D073631C71C2F35 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C90DC1C8BC31E7796D446210BE0BA94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		888BEEFB138DBC148638D1640D947D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B67A43E1F1F71FA08CC7EED644A21280 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1052E535DEA102D84F2EEA60B75B4DD3 /* SSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				81AC66AF24E83F7060FF17C925CD76C3 /* SSCache.h */,
+				86145F605DE66BB626B68AA62F95F153 /* SSCache.m */,
+				3B2C00C846BBA73C605DEBDC18C45AA1 /* SSCalendarAnnualCell.h */,
+				B1EA54C5A5FE81437920D4E002C3D7FB /* SSCalendarAnnualCell.m */,
+				426F7ACE560660F69131E9261F569F24 /* SSCalendarAnnualCell.xib */,
+				B23DCB228EF6A2DB3D10AD31F636C274 /* SSCalendarAnnualDataSource.h */,
+				DE81914E64745E727EA6A60EBB73F995 /* SSCalendarAnnualDataSource.m */,
+				34777D128B849D8525B90A4B7644A051 /* SSCalendarAnnualHeaderView.h */,
+				ACB6766A34ADF10FAB615B4A4DA99AA9 /* SSCalendarAnnualHeaderView.m */,
+				40810325273AE469C095FF301AE87DA4 /* SSCalendarAnnualHeaderView.xib */,
+				1D3A713B9DF5F20AC485CE0D551F0A33 /* SSCalendarAnnualLayout.h */,
+				88073CF595C7B13FB8389B098FC28CA6 /* SSCalendarAnnualLayout.m */,
+				AFCCA3DC8D8287F656FF7FCBCCF7C1C8 /* SSCalendarAnnualViewController.h */,
+				3C1E1778D7CC70258658F63EE965BBC4 /* SSCalendarAnnualViewController.m */,
+				06488E7ABFF632FB8DB736128B9C82FF /* SSCalendarAnnualViewController.xib */,
+				0B57EE85A0ECC94BF94A2B2C74685D5B /* SSCalendarCache.h */,
+				0594CABC7334A19469B49BF036C500FA /* SSCalendarCache.m */,
+				5887627FEE7D1FE9CF71AD936FB8650D /* SSCalendarCountCache.h */,
+				E696EA708D8D0B4623A00FDC63EC31E5 /* SSCalendarCountCache.m */,
+				453FFDC11AF9C0643B7D0C17FA6A8393 /* SSCalendarDailyViewController.h */,
+				BD96D208409F67534D715AB673F510EE /* SSCalendarDailyViewController.m */,
+				345EDEBFC2CD66B69EE86A1122924AA6 /* SSCalendarDailyViewController.xib */,
+				3D9A2DA56ABD93EEFA2C6A309AF00508 /* SSCalendarDayCell.h */,
+				E4201CF9D50D49E85C4D909D0683E954 /* SSCalendarDayCell.m */,
+				4871FAA948DE13672E1E8B50798B2058 /* SSCalendarDayCell.xib */,
+				47587DCC56602DDA01DFD8AA6B9507C6 /* SSCalendarDayLayout.h */,
+				770EAEF54F3597717096820A0F15FC12 /* SSCalendarDayLayout.m */,
+				D7EA2B68937AFCD1B1D250989360CAD6 /* SSCalendarDayViewController.h */,
+				1139EEF52BCD5D9314CFB609ED5C7485 /* SSCalendarDayViewController.m */,
+				6E8545671DEB2D2BB881DD0EF70327F1 /* SSCalendarEventsCell.h */,
+				84F3B536BE3E1D1FA744366BF969B6D3 /* SSCalendarEventsCell.m */,
+				DA10476ECEFC319D470A7378EA623BBF /* SSCalendarEventsCell.xib */,
+				0E5249695B09C655CA82CC478ADEE527 /* SSCalendarEventsTableViewController.h */,
+				D3C7184723FFD250F2B140E160111A05 /* SSCalendarEventsTableViewController.m */,
+				16991F96A537B7C4A88AA773C8716BE2 /* SSCalendarEventTableViewCell.h */,
+				3F8DC371F0A75AEE9F40218FC0E20DF6 /* SSCalendarEventTableViewCell.m */,
+				42E7C429C7DE24B4920AB6076087799E /* SSCalendarMonthlyDataSource.h */,
+				95776CAEC5FCE9D8F7A603C082ED1F3E /* SSCalendarMonthlyDataSource.m */,
+				4475F3C60C010E37B89347F7C0329F0C /* SSCalendarMonthlyHeaderView.h */,
+				EF0D99886BAE7B2CA32C321631464EFD /* SSCalendarMonthlyHeaderView.m */,
+				0CB100FF709FD6BF66AEB195DBD047A4 /* SSCalendarMonthlyHeaderView.xib */,
+				41FB977960B0C9C7D144886A6417B265 /* SSCalendarMonthlyLayout.h */,
+				44B4FC1D9A816CE8BACBD38F76D3412E /* SSCalendarMonthlyLayout.m */,
+				E065A87ACD42DD870135758C125FE4DD /* SSCalendarMonthlyViewController.h */,
+				78025EC86B303133FA5C334074CDA365 /* SSCalendarMonthlyViewController.m */,
+				D7DEEEB4E5EF4B65F4E580E7890A171D /* SSCalendarMonthlyViewController.xib */,
+				78FF1CB5947B9E05521FE00440FB8C1F /* SSCalendarUtils.h */,
+				322807956121D62D77FCAC0733102E18 /* SSCalendarUtils.m */,
+				F556C7F8E549F4B55C86DADF4839AA96 /* SSCalendarWeekHeaderView.h */,
+				2CCDC59E5B698462D82E74FCD9CFF3BD /* SSCalendarWeekHeaderView.m */,
+				2B339B9A431E1A16E43AC3BD65DB611F /* SSCalendarWeekLayout.h */,
+				29A1FD78E576880B36A92677B8C4447F /* SSCalendarWeekLayout.m */,
+				B8F54E51FE3F9B7DEE3D0FD5C0C36328 /* SSCalendarWeekViewController.h */,
+				F2746C5D02193BE4BBE4E5A0F8F292F6 /* SSCalendarWeekViewController.m */,
+				174BBC0D2D882B6433616B3B2351D8CB /* SSColors.h */,
+				9C6D0CF4FB1989BA7142526FAD6C8065 /* SSConstants.h */,
+				A394C80A1164DF64C43853DB36CF5CBF /* SSDataController.h */,
+				B155FB76508D86E37FF49330D67BA881 /* SSDataController.m */,
+				8161395086F19400A04EE03B37BF670A /* SSDayNode.h */,
+				B0F2CC4F7621A60D4D04CAE6C56946F7 /* SSDayNode.m */,
+				283CFAD7F4EC031FB874EE59F6B6716B /* SSDimensions.h */,
+				417C92C0C75D712B215083F1B76C8836 /* SSDimensions.m */,
+				4812FFAD5BB7C04D8002A6B67717E9F6 /* SSEvent.h */,
+				00AEBE22FB7B4AE8D26AEFBC9F10CF44 /* SSEvent.m */,
+				FA4E12876F1DCA5D63ADEB07135F646D /* SSMonthNode.h */,
+				C027C88709989590A05833522B03D646 /* SSMonthNode.m */,
+				E29DAC4DC81C9221C0EA2229C43EDA76 /* SSStyles.h */,
+				7AE1475621B89DB1F70A9A16852E9D71 /* SSStyles.m */,
+				86AA0477C01B425E514219A1152CB823 /* SSYearNode.h */,
+				6C858A81121E6DD7A9D7570D014C371F /* SSYearNode.m */,
+				85363F11930925A9E73B29D511EEB3AA /* StellarConversionUtils.h */,
+				AD240E23C9079EB30782026B9C0D8485 /* StellarConversionUtils.m */,
+				0C1B290290DF390F80EA9216765BCB95 /* UIColor+StellarAdditions.h */,
+				C35C8AFE909CB8EC4991B61B4F7AE145 /* UIColor+StellarAdditions.m */,
+				358245ED05A1C214A0F040149EBCB23E /* Resources */,
+				E589086337C696C59207C59C7E8BA52B /* Support Files */,
+			);
+			name = SSCalendar;
+			path = SSCalendar;
+			sourceTree = "<group>";
+		};
+		358245ED05A1C214A0F040149EBCB23E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				888B06AF772610D627C0852B877E5F5C /* Pods */,
+				E9300E2016F7A9E45895874D90C5CA97 /* Products */,
+				BCA59C9931165D72A8B4AE55155E9509 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		888B06AF772610D627C0852B877E5F5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1052E535DEA102D84F2EEA60B75B4DD3 /* SSCalendar */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BA3EACB4ECE336741E324405A9E4C11B /* Pods-RightManagement */ = {
+			isa = PBXGroup;
+			children = (
+				2CBFFA124C410ECCE2FF48A6339D8CF7 /* Info.plist */,
+				CAF0B014CBA28C9C75CFCAC067103616 /* Pods-RightManagement.modulemap */,
+				D567D29D331455999A6399D7657EB3C6 /* Pods-RightManagement-acknowledgements.markdown */,
+				EE44E0AC0B45B10940A054ADD78DF6E9 /* Pods-RightManagement-acknowledgements.plist */,
+				620DDEA1075238C7FE47BB2BD49DD0E8 /* Pods-RightManagement-dummy.m */,
+				7352CE7677B6951C15061AFD1A6F8A8F /* Pods-RightManagement-frameworks.sh */,
+				E7262A85026D691F38AADC963AD89F34 /* Pods-RightManagement-resources.sh */,
+				0E8A7D765365989CC2B7EAF103FB0241 /* Pods-RightManagement-umbrella.h */,
+				BBC389A694887C1D6B70B7E5146B2AA1 /* Pods-RightManagement.debug.xcconfig */,
+				251D7E2ACF5CF994BB397DC6381D0A09 /* Pods-RightManagement.release.xcconfig */,
+			);
+			name = "Pods-RightManagement";
+			path = "Target Support Files/Pods-RightManagement";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCA59C9931165D72A8B4AE55155E9509 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA3EACB4ECE336741E324405A9E4C11B /* Pods-RightManagement */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		E589086337C696C59207C59C7E8BA52B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				014177081B862EC282D24DAC4C1A6978 /* Info.plist */,
+				9B957E9762043974C8B43D47DA0BF5C7 /* ResourceBundle-SSCalendar-Info.plist */,
+				F66ECBA0721D43924F17CE1EC43B3298 /* SSCalendar.modulemap */,
+				1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */,
+				77A16DBDA1D18B123E01E886163CD047 /* SSCalendar-dummy.m */,
+				0CA4D275996CE8BE05AAD14C6E08C2F6 /* SSCalendar-prefix.pch */,
+				768477B81B258C3BF24543DBC50A8AAE /* SSCalendar-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SSCalendar";
+			sourceTree = "<group>";
+		};
+		E9300E2016F7A9E45895874D90C5CA97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A02E114280F7C0573BC986B462956572 /* Pods_RightManagement.framework */,
+				434B2DDA8FB4482AB87F90E412E0A483 /* SSCalendar.bundle */,
+				16CDC4BD2D80BC5AB36277D7980A84FE /* SSCalendar.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2F58EB4DB3FF28BA6F9FCF641CC95203 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1691C2DA56605795E22258CFE4C0125D /* SSCache.h in Headers */,
+				B9D578110090DCECAD1CBCC1C8A5F844 /* SSCalendar-umbrella.h in Headers */,
+				E9BAEB825B1A234024172602AE03C244 /* SSCalendarAnnualCell.h in Headers */,
+				D664B999A9A138FF15CFC026EB09E646 /* SSCalendarAnnualDataSource.h in Headers */,
+				FE807F1400280012B8D2927C3467D4B6 /* SSCalendarAnnualHeaderView.h in Headers */,
+				C8CF69D23A4E6E4A8897DFC6C9E338EF /* SSCalendarAnnualLayout.h in Headers */,
+				3AF37FDA2143175A6C57D8A4BFDABE9B /* SSCalendarAnnualViewController.h in Headers */,
+				B00E280E685B364D5490C043F6DCF9D9 /* SSCalendarCache.h in Headers */,
+				5DADFCDC2E0E14E98041EB8F5C847089 /* SSCalendarCountCache.h in Headers */,
+				1862A68123D3E38467BFF9E0ABC52CE6 /* SSCalendarDailyViewController.h in Headers */,
+				D4C06E23875EE242385F0A7E8145875C /* SSCalendarDayCell.h in Headers */,
+				E730C8FD3CE133E23C3BD424AAF5199E /* SSCalendarDayLayout.h in Headers */,
+				85003DC4C655416FA1FAD4440FA82514 /* SSCalendarDayViewController.h in Headers */,
+				EC9A7ECAEC3311B63E9D57D2FE0E5FA2 /* SSCalendarEventsCell.h in Headers */,
+				6F7A131F1302DA5F40B6311440E5854B /* SSCalendarEventsTableViewController.h in Headers */,
+				EA7B38F881BC45960AEFB6D656007FF0 /* SSCalendarEventTableViewCell.h in Headers */,
+				8654650C7BF8BC82EDC4D8276FDA022C /* SSCalendarMonthlyDataSource.h in Headers */,
+				6D05169A99B76227327790DA84C7599A /* SSCalendarMonthlyHeaderView.h in Headers */,
+				991B4670172B46D1383A8D8E90EF89EA /* SSCalendarMonthlyLayout.h in Headers */,
+				BFF1FE3C577AAC2F80701CD810E68D69 /* SSCalendarMonthlyViewController.h in Headers */,
+				E8B3C36B95B10CB028385135B458DD04 /* SSCalendarUtils.h in Headers */,
+				1D7282F231084CCBE476ED50D0D3E05C /* SSCalendarWeekHeaderView.h in Headers */,
+				8BCD568BEEA610FFD6D188EAAA860643 /* SSCalendarWeekLayout.h in Headers */,
+				060DB83D0FDC2A893848DD3BA697C692 /* SSCalendarWeekViewController.h in Headers */,
+				76B64BBFCF0FA4BCC151B16B9784FB4D /* SSColors.h in Headers */,
+				AAF1A30203E683F1608A9D2B8EF08F88 /* SSConstants.h in Headers */,
+				5C9DFA4CE0641A19FD64DC400CE82E61 /* SSDataController.h in Headers */,
+				886560BD7BE457D64E80CE6543EF84AA /* SSDayNode.h in Headers */,
+				DE896567D29CC33DFC56F38CF6E9081B /* SSDimensions.h in Headers */,
+				6D12DD2675DDDEDFA069D4B93D2C571A /* SSEvent.h in Headers */,
+				0C68C1CE1DA6449EF6D6E39C92A0E421 /* SSMonthNode.h in Headers */,
+				7DBA46FFBB30F446BF7E83DB3C35A8AF /* SSStyles.h in Headers */,
+				E9E963D4106D11E250E614D694033476 /* SSYearNode.h in Headers */,
+				D280A9EC21BB4CCE414463FD3895DF7F /* StellarConversionUtils.h in Headers */,
+				131B0485F09AA5BBF36DCC3678831C5B /* UIColor+StellarAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF0C871FD0918EE60751CF7D805EC678 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95CB967CE4C742A655D0BC4EE749D633 /* Pods-RightManagement-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		209BB5E560EBF7D1B73FF1A7489A26FE /* SSCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82B82E51D126DA628CFABB8789BA4DBA /* Build configuration list for PBXNativeTarget "SSCalendar" */;
+			buildPhases = (
+				17C25AB1DC9D902AF212E56D3AC22D21 /* Sources */,
+				5255EC22A640B70733F7015236CA8C41 /* Frameworks */,
+				78F4459257E4051749BDC31853ADA9CF /* Resources */,
+				2F58EB4DB3FF28BA6F9FCF641CC95203 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F4D4DB45C4A686942A345FD3E20F1BE /* PBXTargetDependency */,
+			);
+			name = SSCalendar;
+			productName = SSCalendar;
+			productReference = 16CDC4BD2D80BC5AB36277D7980A84FE /* SSCalendar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		88690293CC796E018A7E7D11497F0F57 /* SSCalendar-SSCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B423D5BEB9C04B7BA1E7F8C1C333845 /* Build configuration list for PBXNativeTarget "SSCalendar-SSCalendar" */;
+			buildPhases = (
+				CB354E80ECDE31DA6881111BC737C87D /* Sources */,
+				5C90DC1C8BC31E7796D446210BE0BA94 /* Frameworks */,
+				4570A9F5BB5654A5E29CDCFC49C93210 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SSCalendar-SSCalendar";
+			productName = "SSCalendar-SSCalendar";
+			productReference = 434B2DDA8FB4482AB87F90E412E0A483 /* SSCalendar.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8F214371370209CDA44A9E262C3D181E /* Pods-RightManagement */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E74D465400CD57CD23D29ACFE292827 /* Build configuration list for PBXNativeTarget "Pods-RightManagement" */;
+			buildPhases = (
+				FC3070393C367B51D11530E512A3E661 /* Sources */,
+				888BEEFB138DBC148638D1640D947D80 /* Frameworks */,
+				EF0C871FD0918EE60751CF7D805EC678 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA2C8403B7DD39EE86061A27071A0410 /* PBXTargetDependency */,
+			);
+			name = "Pods-RightManagement";
+			productName = "Pods-RightManagement";
+			productReference = A02E114280F7C0573BC986B462956572 /* Pods_RightManagement.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E9300E2016F7A9E45895874D90C5CA97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F214371370209CDA44A9E262C3D181E /* Pods-RightManagement */,
+				209BB5E560EBF7D1B73FF1A7489A26FE /* SSCalendar */,
+				88690293CC796E018A7E7D11497F0F57 /* SSCalendar-SSCalendar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4570A9F5BB5654A5E29CDCFC49C93210 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CF4A395AF48084C7ABF840374A3553 /* SSCalendarAnnualCell.xib in Resources */,
+				6918E9B13096581D5C963EE8175906B0 /* SSCalendarAnnualHeaderView.xib in Resources */,
+				7E893575FCC36819BE6D89E279A0A6A7 /* SSCalendarAnnualViewController.xib in Resources */,
+				1FDC3C0751AF86EF0B3D2B0CBF87EA1B /* SSCalendarDailyViewController.xib in Resources */,
+				DA224B38DA11A44860705DA4B135FFC4 /* SSCalendarDayCell.xib in Resources */,
+				118790A52FF4139477110497AEAD5BB5 /* SSCalendarEventsCell.xib in Resources */,
+				C44812FB6AC063812CBD0D492E4F0967 /* SSCalendarMonthlyHeaderView.xib in Resources */,
+				9EF9B6C55069AA471E5E112D4882C38F /* SSCalendarMonthlyViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78F4459257E4051749BDC31853ADA9CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B22CF8A8CE05DCCB0F7DE7E7F5F5EDDD /* SSCalendar.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17C25AB1DC9D902AF212E56D3AC22D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01C7755EF95BE0F62C99F8CC6306ED2B /* SSCache.m in Sources */,
+				FF316F7A718B5AB74282288077372C3A /* SSCalendar-dummy.m in Sources */,
+				BEC71B08562904AAF2C00ECECEA02FE6 /* SSCalendarAnnualCell.m in Sources */,
+				32D6640DECA8BB13439B5C4052247C1E /* SSCalendarAnnualCell.xib in Sources */,
+				12E58D30C261334C52929CA7CE35643F /* SSCalendarAnnualDataSource.m in Sources */,
+				72606FFCF2DA3B6357900745BE7B9874 /* SSCalendarAnnualHeaderView.m in Sources */,
+				B3542C887806BA436AF6358AD4172306 /* SSCalendarAnnualHeaderView.xib in Sources */,
+				C31C80850E9CF59343B54669638F7439 /* SSCalendarAnnualLayout.m in Sources */,
+				65FEE7574531A82CB5275E3961AA97EE /* SSCalendarAnnualViewController.m in Sources */,
+				F700BF2E02EF54296CEC34800427086D /* SSCalendarAnnualViewController.xib in Sources */,
+				4ECE48B9A6382E4EF187C234F0C40A26 /* SSCalendarCache.m in Sources */,
+				74F07CAA0DC5DBEE70EFFE72B1A8A96C /* SSCalendarCountCache.m in Sources */,
+				E6EA473F4C19C2C7B7ADDA8799411B2E /* SSCalendarDailyViewController.m in Sources */,
+				F76BBDB17CBA4FC27BA68BC3E62A3A5C /* SSCalendarDailyViewController.xib in Sources */,
+				DE507EB3DA2B36B7B055D683ADA510C6 /* SSCalendarDayCell.m in Sources */,
+				D4E4D28E2F97C2A36B1F54D3848CCE7B /* SSCalendarDayCell.xib in Sources */,
+				8308783920922F1567894C9B226C7B38 /* SSCalendarDayLayout.m in Sources */,
+				80C6B487A27108C39EF95BA6BCE53343 /* SSCalendarDayViewController.m in Sources */,
+				1A6C9788D2FA60497E2BA65362DF615E /* SSCalendarEventsCell.m in Sources */,
+				3CD9910E0E187AECC455E6FFBE9E9731 /* SSCalendarEventsCell.xib in Sources */,
+				8C123BFC5E7F4911826262618891FB94 /* SSCalendarEventsTableViewController.m in Sources */,
+				C5BDFEBDAE910CA73939189E176BC2A2 /* SSCalendarEventTableViewCell.m in Sources */,
+				C13C0EFCB43CFDBB3FD15FA35F46E9AD /* SSCalendarMonthlyDataSource.m in Sources */,
+				222A0698A658A62DEA4BA11C4CE983F7 /* SSCalendarMonthlyHeaderView.m in Sources */,
+				D43AFE5A06D9D1D1495F778FC39BA344 /* SSCalendarMonthlyHeaderView.xib in Sources */,
+				F0E2172C3FE953F8E2E0271E3B278206 /* SSCalendarMonthlyLayout.m in Sources */,
+				AC1F0B5F03C6E4AE07DE198FC351D6C6 /* SSCalendarMonthlyViewController.m in Sources */,
+				3823AC304AF244B949432E57CCC5400A /* SSCalendarMonthlyViewController.xib in Sources */,
+				3AFAAA7131F6AB7162561C3EBC89B8CB /* SSCalendarUtils.m in Sources */,
+				C0C93D917535E39427A76297F13633A8 /* SSCalendarWeekHeaderView.m in Sources */,
+				78FB09D21D9BBCE3D385304D0F25B348 /* SSCalendarWeekLayout.m in Sources */,
+				721D2464FEF5ADC987517C6034AF1CB8 /* SSCalendarWeekViewController.m in Sources */,
+				BC93D63A14982A70912B7C6D2D2897E3 /* SSDataController.m in Sources */,
+				903CC5C342641202A2646ACC22FF2775 /* SSDayNode.m in Sources */,
+				D5FCFF266AC5942AC7098706D4DDDCAE /* SSDimensions.m in Sources */,
+				0DE3518F919A8A1D2F8AACA54C4767B9 /* SSEvent.m in Sources */,
+				3DF7415D18E0938A460A4B8CEBADF01C /* SSMonthNode.m in Sources */,
+				19F8EBEAFFA9EF5581695E6834D573AC /* SSStyles.m in Sources */,
+				6716CA1624AB08730268A93FCA1B97F0 /* SSYearNode.m in Sources */,
+				83E9699FC26A357582C159D8A3F1BB84 /* StellarConversionUtils.m in Sources */,
+				F0FEA7A6A2338E9692EEDD25C75F3958 /* UIColor+StellarAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB354E80ECDE31DA6881111BC737C87D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC3070393C367B51D11530E512A3E661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FA1A0B934109879E5C8C071D0F759EF /* Pods-RightManagement-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F4D4DB45C4A686942A345FD3E20F1BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SSCalendar-SSCalendar";
+			target = 88690293CC796E018A7E7D11497F0F57 /* SSCalendar-SSCalendar */;
+			targetProxy = FE589DF88F3FD09321756372D80B0870 /* PBXContainerItemProxy */;
+		};
+		EA2C8403B7DD39EE86061A27071A0410 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SSCalendar;
+			target = 209BB5E560EBF7D1B73FF1A7489A26FE /* SSCalendar */;
+			targetProxy = 3992EA8A10F717202F6EC1CA1D858BC2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		38E2DE0B9E8F4E8300F7247BEC4F8869 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SSCalendar";
+				INFOPLIST_FILE = "Target Support Files/SSCalendar/ResourceBundle-SSCalendar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = SSCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		5F163B9BB55D86F9F14C62C5CF4EB66D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SSCalendar/SSCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SSCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SSCalendar/SSCalendar.modulemap";
+				PRODUCT_NAME = SSCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6F9224530522DD3C735EC96CF142642E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		715D4D2F59B807AFC1872432BC1BBD55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SSCalendar/SSCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SSCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SSCalendar/SSCalendar.modulemap";
+				PRODUCT_NAME = SSCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F73BBDE25F347754414D27F9C67C74C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251D7E2ACF5CF994BB397DC6381D0A09 /* Pods-RightManagement.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RightManagement/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RightManagement/Pods-RightManagement.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RightManagement;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B57951D085A1B98A97F8A1062A5E5C5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C3089DF33E351E4B91ED7A201F04C826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBC389A694887C1D6B70B7E5146B2AA1 /* Pods-RightManagement.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RightManagement/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RightManagement/Pods-RightManagement.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RightManagement;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F8342BAD5EC7A46AA1EAEFDEF91D9723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA2805D578B8DB63CB864FF47CAEB02 /* SSCalendar.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SSCalendar";
+				INFOPLIST_FILE = "Target Support Files/SSCalendar/ResourceBundle-SSCalendar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = SSCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B57951D085A1B98A97F8A1062A5E5C5B /* Debug */,
+				6F9224530522DD3C735EC96CF142642E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E74D465400CD57CD23D29ACFE292827 /* Build configuration list for PBXNativeTarget "Pods-RightManagement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3089DF33E351E4B91ED7A201F04C826 /* Debug */,
+				9F73BBDE25F347754414D27F9C67C74C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82B82E51D126DA628CFABB8789BA4DBA /* Build configuration list for PBXNativeTarget "SSCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				715D4D2F59B807AFC1872432BC1BBD55 /* Debug */,
+				5F163B9BB55D86F9F14C62C5CF4EB66D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B423D5BEB9C04B7BA1E7F8C1C333845 /* Build configuration list for PBXNativeTarget "SSCalendar-SSCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8342BAD5EC7A46AA1EAEFDEF91D9723 /* Debug */,
+				38E2DE0B9E8F4E8300F7247BEC4F8869 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

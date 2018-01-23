@@ -7,23 +7,72 @@
 //
 
 import UIKit
-class UpdateProfileViewController:UIViewController{
+class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    @IBOutlet weak var userImageView: UIImageView!
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var editingTextField:UITextField!
     var customFields:[Any]!
-    var  progressHUD: ProgressHUD!
+    var progressHUD: ProgressHUD!
+    var picker:UIImagePickerController?=UIImagePickerController()
+    var isImageSet:Bool = false
     @IBOutlet weak var mainScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         getUserFields()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UpdateProfileViewController.tapGesture(gesture:)))
+        userImageView.addGestureRecognizer(tapGesture)
+        userImageView.isUserInteractionEnabled = true
+        picker?.delegate = self
     }
+    func tapGesture(gesture: UIGestureRecognizer) {
+        let alert:UIAlertController = UIAlertController(title: "Profile Picture Options", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let gallaryAction = UIAlertAction(title: "Open Gallary", style: UIAlertActionStyle.default) {
+            UIAlertAction in self.openGallary()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in self.cancel()
+        }
+        
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+
+    func openGallary() {
+        picker!.allowsEditing = false
+        picker!.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        present(picker!, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            userImageView.contentMode = .scaleAspectFit
+            userImageView.image = pickedImage
+            isImageSet = true
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    func cancel(){
+        print("Cancel Clicked")
+    }
+    
+    
     @IBAction func updateProfileAction(_ sender: Any) {
         progressHUD.text = "Updating"
         progressHUD.show()
+        
+        //var imageData = UIImageJPEGRepresentation(userImageView.image!, 1.0)
+        //let encodedImageData = imageData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         var customFieldValues = [String:Any]()
         var emailId = ""
         for view in mainScrollView.subviews{
@@ -44,7 +93,8 @@ class UpdateProfileViewController:UIViewController{
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.UPDATE_USER_PROFILE, args: args)
         var success : Int = 0
         var message : String? = nil
-        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+        
+        ServiceHandler.instance().makeAPICallImage(url: apiUrl, method: HttpMethod.POST,chosenImage:userImageView.image!, completionHandler: { (data, response, error) in
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
                 success = json["success"] as! Int
@@ -61,6 +111,28 @@ class UpdateProfileViewController:UIViewController{
                 self.showAlert(message: parseError.description,title:"Exception")
             }
         })
+        
+        
+//        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+//                success = json["success"] as! Int
+//                message = json["message"] as? String
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                    if(success == 1){
+//                        self.progressHUD.hide()
+//                        self.showAlert(message: message!,title:"Success")
+//                    }else{
+//                        self.showAlert(message: message!,title:"Failed")
+//                    }
+//                }
+//            } catch let parseError as NSError {
+//                self.showAlert(message: parseError.description,title:"Exception")
+//            }
+//        })
+        
+        
+        
     }
     func getUserFields(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
@@ -88,7 +160,7 @@ class UpdateProfileViewController:UIViewController{
         let userDetail = json["userDetail"] as! [String : Any]
         customFields = userDetail["customFields"] as! [Any]
         let screenWidth = UIScreen.main.bounds.width
-        var y:CGFloat = 10
+        var y:CGFloat = 130
         let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
         label.text = "Email"
         label.font = UIFont(name:"Arial",size:12.00)

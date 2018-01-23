@@ -70,9 +70,6 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
     @IBAction func updateProfileAction(_ sender: Any) {
         progressHUD.text = "Updating"
         progressHUD.show()
-        
-        //var imageData = UIImageJPEGRepresentation(userImageView.image!, 1.0)
-        //let encodedImageData = imageData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         var customFieldValues = [String:Any]()
         var emailId = ""
         for view in mainScrollView.subviews{
@@ -112,27 +109,6 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
             }
         })
         
-        
-//        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
-//                success = json["success"] as! Int
-//                message = json["message"] as? String
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                    if(success == 1){
-//                        self.progressHUD.hide()
-//                        self.showAlert(message: message!,title:"Success")
-//                    }else{
-//                        self.showAlert(message: message!,title:"Failed")
-//                    }
-//                }
-//            } catch let parseError as NSError {
-//                self.showAlert(message: parseError.description,title:"Exception")
-//            }
-//        })
-        
-        
-        
     }
     func getUserFields(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
@@ -170,6 +146,16 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.text = userDetail["emailid"] as? String
         mainScrollView.addSubview(textField)
+        let userImageName = userDetail["userimage"] as? String
+        if(userImageName != nil){
+            let userImageUrl = StringConstants.USER_IMAGE_URL + userImageName!
+            if let url = NSURL(string: userImageUrl) {
+                if let data = NSData(contentsOf: url as URL) {
+                    let img = UIImage(data: data as Data)
+                    userImageView.image = img
+                }
+            }
+        }
         y = y + 50
         for customField in customFields {
             let fieldJson = customField as! [String:Any]

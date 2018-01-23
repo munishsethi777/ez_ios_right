@@ -48,18 +48,15 @@ class ServiceHandler:NSObject {
     func makeAPICallImage(url: String,method: HttpMethod,chosenImage:UIImage, completionHandler:@escaping (Data? ,HTTPURLResponse?  , NSError? ) -> Void) {
         
         request = URLRequest(url: URL(string: url)!)
-        request?.httpMethod = method.rawValue
+        request?.httpMethod = "POST"
         let boundary = "Boundary-\(UUID().uuidString)"
-        request?.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        let contentType: String = "multipart/form-data; boundary=\(boundary)"
+        request?.setValue(contentType, forHTTPHeaderField: "Content-Type")
         request?.httpBody = createBody(
                                 boundary: boundary,
-                                data: UIImageJPEGRepresentation(chosenImage, 0.7)!,
+                                data: UIImagePNGRepresentation(chosenImage)!,
                                 mimeType: "image/jpg",
                                 filename: "userImage.jpg")
-        
-        request = URLRequest(url: URL(string: url)!)
-        request?.httpMethod = method.rawValue
-        
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30
         configuration.timeoutIntervalForResource = 30
@@ -83,19 +80,20 @@ class ServiceHandler:NSObject {
         let body = NSMutableData()
         
         let boundaryPrefix = "--\(boundary)\r\n"
-        
-        //for (key, value) in parameters {
-            //body.appendString(boundaryPrefix)
-            //body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-            //body.appendString("\(value)\r\n")
-        //}
-        
-        body.appendString(boundaryPrefix)
-        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
-        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        let fileName: String = "imagefile"
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition: form-data; name=\"\(fileName)\"; filename=\"image.png\"\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Type:image/png\r\n\r\n".data(using: String.Encoding.utf8)!)
         body.append(data)
-        body.appendString("\r\n")
-        body.appendString("--".appending(boundary.appending("--")))
+        body.append("\r\n".data(using: String.Encoding.utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
+        
+//        body.appendString(boundaryPrefix)
+//        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
+//        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+//        body.append(data)
+//        body.appendString("\r\n")
+//        body.appendString("--".appending(boundary.appending("--")))
         
         return body as Data
     }

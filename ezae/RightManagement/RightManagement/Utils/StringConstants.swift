@@ -21,6 +21,7 @@ struct StringConstants {
     static var ACTION_API_URL = "http://www.ezae.in/Actions/Mobile/"
     static let WEB_API_URL = "http://www.ezae.in/"
     static let IMAGE_URL = "http://www.ezae.in/images/"
+    static let USER_IMAGE_URL = "http://www.ezae.in/images/UserImages/"
     static let DOC_URL = WEB_API_URL + "docs/moduledocs/";
     static let LESSION_TYPE_MODULE = "lesson"
     static let SUBMITTED_SUCCESSFULLY = "Submitted Successfully"

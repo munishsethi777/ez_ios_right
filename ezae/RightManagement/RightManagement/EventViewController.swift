@@ -63,7 +63,6 @@ class EventViewController :UIViewController{
         let eventsArr = eventsJson["chatrooms"] as! [Any]
         for i in 0..<eventsArr.count{
             let eventJson = eventsArr[i] as! [String: Any]
-            let seq = eventJson["seq"] as! String
             let title = eventJson["title"] as! String
             let detail = eventJson["detail"] as! String
             let startDateStr = eventJson["from"] as! String

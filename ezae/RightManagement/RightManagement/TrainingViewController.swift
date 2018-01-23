@@ -244,7 +244,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         lpDetailArr = response["learningPlanDetails"] as! [Any]
         lpDetailCount = lpDetailArr.count
         totalModuleCount = 0
-        for var i in (0..<lpDetailArr.count).reversed(){
+        for var i in 0..<lpDetailArr.count{
             var jsonArr: [String] = []
             let lpDetailJson = lpDetailArr[i] as! [String: Any]
             let percentCompleted = lpDetailJson["percentCompleted"] as? Int

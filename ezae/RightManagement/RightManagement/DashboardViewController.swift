@@ -9,43 +9,20 @@
 import UIKit
 class DashboardViewController:UIViewController{
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var topView: UIView!
-    
-    @IBOutlet weak var trainingsView: UIView!
-    @IBOutlet weak var achievementsView: UIView!
-    @IBOutlet weak var eventsView: UIView!
-    @IBOutlet weak var notesView: UIView!
-    @IBOutlet weak var updateProfileView: UIView!
-    @IBOutlet weak var changePasswordView: UIView!
-    @IBOutlet weak var chatroomsView: UIView!
-    @IBOutlet weak var messagesView: UIView!
-    @IBOutlet weak var logoutView: UIView!
     @IBOutlet weak var notificationsView: UIView!
-    @IBOutlet weak var leaderboardsView: UIView!
-    @IBOutlet weak var activePlansView: UIView!
-    
+    @IBOutlet weak var trainingsView: UIView!
+    @IBOutlet weak var messagesView: UIView!
+    @IBOutlet weak var achievementsView: UIView!
+    @IBOutlet weak var notesView: UIView!
+    @IBOutlet weak var eventsView: UIView!
+    @IBOutlet weak var chatroomsView: UIView!
+    @IBOutlet weak var updateProfileView: UIView!
     
     override func viewDidLoad() {
-        userImageView.layer.borderWidth = 3
-        userImageView.layer.borderColor = UIColor.white.cgColor
-        userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
-        userImageView.clipsToBounds = true
-        activePlansView.layer.cornerRadius = 2
-        activePlansView.layer.borderWidth = 0.5
-        activePlansView.layer.borderColor = UIColor.lightGray.cgColor
-        activePlansView.layer.shadowColor = UIColor.lightGray.cgColor
-        activePlansView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        activePlansView.layer.shadowOpacity = 0.5
-        activePlansView.layer.shadowRadius = 4.0
-        
-        leaderboardsView.layer.cornerRadius = 2
-        leaderboardsView.layer.borderWidth = 0.5
-        leaderboardsView.layer.borderColor = UIColor.lightGray.cgColor
-        leaderboardsView.layer.shadowColor = UIColor.lightGray.cgColor
-        leaderboardsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        leaderboardsView.layer.shadowOpacity = 0.5
-        leaderboardsView.layer.shadowRadius = 4.0
-        
+            userImageView.layer.borderWidth = 3
+            userImageView.layer.borderColor = UIColor.white.cgColor
+            userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
+            userImageView.clipsToBounds = true
         notificationsView.layer.cornerRadius = 2
         notificationsView.layer.borderWidth = 0.5
         notificationsView.layer.borderColor = UIColor.lightGray.cgColor
@@ -53,14 +30,6 @@ class DashboardViewController:UIViewController{
         notificationsView.layer.shadowOffset = CGSize(width: 1, height: 1)
         notificationsView.layer.shadowOpacity = 0.5
         notificationsView.layer.shadowRadius = 4.0
-        
-        logoutView.layer.cornerRadius = 2
-        logoutView.layer.borderWidth = 0.5
-        logoutView.layer.borderColor = UIColor.lightGray.cgColor
-        logoutView.layer.shadowColor = UIColor.lightGray.cgColor
-        logoutView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        logoutView.layer.shadowOpacity = 0.5
-        logoutView.layer.shadowRadius = 4.0
         
         messagesView.layer.cornerRadius = 2
         messagesView.layer.borderWidth = 0.5
@@ -77,14 +46,6 @@ class DashboardViewController:UIViewController{
         chatroomsView.layer.shadowOffset = CGSize(width: 1, height: 1)
         chatroomsView.layer.shadowOpacity = 0.5
         chatroomsView.layer.shadowRadius = 4.0
-        
-        changePasswordView.layer.cornerRadius = 2
-        changePasswordView.layer.borderWidth = 0.5
-        changePasswordView.layer.borderColor = UIColor.lightGray.cgColor
-        changePasswordView.layer.shadowColor = UIColor.lightGray.cgColor
-        changePasswordView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        changePasswordView.layer.shadowOpacity = 0.5
-        changePasswordView.layer.shadowRadius = 4.0
         
         updateProfileView.layer.cornerRadius = 2
         updateProfileView.layer.borderWidth = 0.5

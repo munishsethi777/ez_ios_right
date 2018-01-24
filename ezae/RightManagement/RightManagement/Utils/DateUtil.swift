@@ -12,6 +12,7 @@ class DateUtil{
     static let sharedInstance = DateUtil()
     static let format = "MMM d, yyyy HH:mm a"
     static let format1 = "yyyy-MM-dd HH:mm:ss"
+    static let format2 = "dd/MM/yyyy"
     static let time_format = "HH:mm"
     func stringToDate(dateStr: String)-> Date{
         let dateFormatter = DateFormatter()

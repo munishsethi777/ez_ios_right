@@ -86,6 +86,7 @@
 		F6B63D981FF2533100886264 /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D971FF2533000886264 /* CreateNoteViewController.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
+		F6D3FC91201755BC008E0C11 /* LearningPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */; };
 		F6DBB5661FF4F7C900386125 /* MessageChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5651FF4F7C900386125 /* MessageChatController.swift */; };
 		F6DBB56B1FF4F96200386125 /* Inputbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5681FF4F96200386125 /* Inputbar.swift */; };
 		F6DBB56C1FF4F96200386125 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5691FF4F96200386125 /* LocalStorage.swift */; };
@@ -99,6 +100,7 @@
 		F6DBB5891FF50DBB00386125 /* MessageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5881FF50DBB00386125 /* MessageGateway.swift */; };
 		F6DBB58D1FF50FC000386125 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58B1FF50FC000386125 /* ChatCell.swift */; };
 		F6DBB58E1FF50FC000386125 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB58C1FF50FC000386125 /* MessageCell.swift */; };
+		F6ED788820175310006D931D /* LearningPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ED788720175310006D931D /* LearningPlanViewController.swift */; };
 		F6F078231FFDF17600120DA7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078221FFDF17600120DA7 /* ChatViewController.swift */; };
 		F6F078251FFE054400120DA7 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078241FFE054400120DA7 /* ChatModel.swift */; };
 		F6F078271FFE0A6700120DA7 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */; };
@@ -191,6 +193,7 @@
 		F6B63D971FF2533000886264 /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
+		F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPlanTableViewCell.swift; sourceTree = "<group>"; };
 		F6DBB5651FF4F7C900386125 /* MessageChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatController.swift; sourceTree = "<group>"; };
 		F6DBB5681FF4F96200386125 /* Inputbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputbar.swift; sourceTree = "<group>"; };
 		F6DBB5691FF4F96200386125 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 		F6DBB5881FF50DBB00386125 /* MessageGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageGateway.swift; sourceTree = "<group>"; };
 		F6DBB58B1FF50FC000386125 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		F6DBB58C1FF50FC000386125 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		F6ED788720175310006D931D /* LearningPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPlanViewController.swift; sourceTree = "<group>"; };
 		F6F078221FFDF17600120DA7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F6F078241FFE054400120DA7 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 				F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */,
 				F69F9FF42015E4DB00EE2591 /* EventViewController.swift */,
 				E6AC96412015EDE0007D5637 /* DashboardViewController.swift */,
+				F6ED788720175310006D931D /* LearningPlanViewController.swift */,
+				F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			files = (
 				F6DBB5831FF50A3200386125 /* Contact.swift in Sources */,
 				F63EE2742000E71200403994 /* CreateMessageTableViewController.swift in Sources */,
+				F6D3FC91201755BC008E0C11 /* LearningPlanTableViewCell.swift in Sources */,
 				F64A98811FD01B57001858DE /* ServiceHandler.swift in Sources */,
 				F6B63D491FEBC7CC00886264 /* TrainingTabController.swift in Sources */,
 				F62F587F1FF37B2200EDFEF1 /* MessageDetailViewController.swift in Sources */,
@@ -656,6 +663,7 @@
 				F6B63D901FEF895B00886264 /* NotesViewController.swift in Sources */,
 				F64A98671FD016AD001858DE /* UICircularProgressRingView.swift in Sources */,
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
+				F6ED788820175310006D931D /* LearningPlanViewController.swift in Sources */,
 				F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */,
 				F64A987C1FD01ADF001858DE /* ActiveLearningPlan.swift in Sources */,
 				F6DBB5821FF50A3200386125 /* Chat.swift in Sources */,

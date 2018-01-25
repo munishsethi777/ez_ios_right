@@ -13,6 +13,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     var loggedInUserSeq:Int!
     var loggedInCompanySeq:Int!
     var learningPlanArr:[Any]!
+    var selectedRowIndex:Int!
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var lpTableView: UITableView!
     
@@ -127,7 +128,16 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
                 x = x + 25
             }
         }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(launch))
+        cell?.launchPlanImageView.tag = indexPath.row
+        cell?.launchPlanImageView.addGestureRecognizer(tap)
+        cell?.launchPlanImageView.isUserInteractionEnabled = true
         return cell!
+    }
+    
+    func launch(sender:UITapGestureRecognizer){
+        selectedRowIndex = sender.view?.tag
+        self.performSegue(withIdentifier: "LearningPlanDetail", sender: nil)
     }
     
     func getLearningPlans(){
@@ -163,5 +173,11 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let secondController = segue.destination as? TrainingViewController {
+            secondController.learningPlanJson = learningPlanArr[selectedRowIndex] as! [String: Any]
+        }
     }
 }

@@ -19,7 +19,12 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
     var totalModuleCount:Int = 0
+    var learningPlanJson:[String: Any] = [:]
     var cell:TrainingTableViewCell!
+    
+    @IBAction func backTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
@@ -29,14 +34,15 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        trainingTableView.dataSource = self
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-       getLearningPlanAndModules()
+       progressHUD = ProgressHUD(text: "Loading")
+       loadLearningPlanAndModule()
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             trainingTableView.refreshControl = refreshControl
         }
-        progressHUD = ProgressHUD(text: "Loading")
+        
         self.view.addSubview(progressHUD)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -52,13 +58,13 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         dismiss(animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let lpJsonArr = lpDetailArr[section] as! [String: Any]
-        let lpModuleArr = lpJsonArr["modules"] as! [Any]
+        //let lpJsonArr = lpDetailArr[section] as! [String: Any]
+        let lpModuleArr = learningPlanJson["modules"] as! [Any]
         return  lpModuleArr.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return lpDetailArr.count
+        return 1
     }
   
     
@@ -66,8 +72,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row: Int = indexPath.row
         let section: Int = indexPath.section
-        let lpJsonArr = lpDetailArr[section] as! [String: Any]
-        let moduleJsonArr = lpJsonArr["modules"] as! [Any]
+        let lpJsonArr = learningPlanJson //lpDetailArr[section] as! [String: Any]
+        let moduleJsonArr = learningPlanJson["modules"] as! [Any]
         let moduleJson = moduleJsonArr[row] as! [String: Any]
         let moduleSeq = moduleJson["seq"] as! String
         let cellIdentifier = "TrainingTableViewCell"
@@ -155,8 +161,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)->String?{
-        let lpJsonArr = lpDetailArr[section] as! [String: Any]
-        let sectionHeader = lpJsonArr["title"] as? String
+       // let lpJsonArr = lpDetailArr[section] as! [String: Any]
+        let sectionHeader = learningPlanJson["title"] as? String
         return sectionHeader
     }
     
@@ -174,7 +180,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         let headerView =  UIView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
         //headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
         headerView.backgroundColor = UIColor.gray
-        let lpJsonArr = lpDetailArr[section] as! [String: Any]
+        let lpJsonArr = learningPlanJson//lpDetailArr[section] as! [String: Any]
         let percentCompleted = lpJsonArr["percentCompleted"] as! CGFloat
         let modulesJsonArr = lpJsonArr["modules"] as! [Any]
         let progress = UICircularProgressRingView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
@@ -224,7 +230,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        self.loadLearningPlanAndModule(response: json)
+                        self.loadLearningPlanAndModule()
                         self.progressHUD.hide()
                     }else{
                         self.showAlert(message: message!)
@@ -236,17 +242,14 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         })
     }
     
-    func loadLearningPlanAndModule(response: [String: Any]){
+    func loadLearningPlanAndModule(){
         lpDetailArr = []
         lpModuleArr = []
         lpDetailCount = 0
         trainingTableView.reloadData()
-        lpDetailArr = response["learningPlanDetails"] as! [Any]
-        lpDetailCount = lpDetailArr.count
         totalModuleCount = 0
-        for var i in 0..<lpDetailArr.count{
             var jsonArr: [String] = []
-            let lpDetailJson = lpDetailArr[i] as! [String: Any]
+            let lpDetailJson = learningPlanJson
             let percentCompleted = lpDetailJson["percentCompleted"] as? Int
             let title = lpDetailJson["title"] as! String
             jsonArr.append(title)
@@ -258,7 +261,6 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             }
             lpModuleArr.append(jsonArr)
             totalModuleCount = totalModuleCount + modulesJsonArr.count
-        }
         if #available(iOS 10.0, *) {
             self.refreshControl.endRefreshing()
         }

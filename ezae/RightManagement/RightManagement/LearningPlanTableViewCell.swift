@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 class LearningPlanTableViewCell: UITableViewCell{
     
+    
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var continueLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var percentLabel: UILabel!

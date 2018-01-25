@@ -35,15 +35,15 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
        progressHUD = ProgressHUD(text: "Loading")
-       loadLearningPlanAndModule()
-       navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             trainingTableView.refreshControl = refreshControl
         }
-        
         self.view.addSubview(progressHUD)
+       loadLearningPlanAndModule()
+       navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         

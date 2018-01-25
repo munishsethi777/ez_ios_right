@@ -20,10 +20,19 @@ class DashboardViewController:UIViewController{
     @IBOutlet weak var chatroomsView: UIView!
     @IBOutlet weak var updateProfileView: UIView!
     
+    @IBOutlet weak var messagesCount: UILabel!
+    @IBOutlet weak var pendingLpCount: UILabel!
+    @IBOutlet weak var notificationsCount: UILabel!
+    
     @IBAction func trainingsButton(_ sender: Any) {
         self.tabBarController?.selectedIndex = 1
     }
+    @IBOutlet weak var points: UILabel!
     
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var userProfileLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBAction func messagesButtonAction(_ sender: Any) {
         self.tabBarController?.selectedIndex = 2
     }
@@ -33,9 +42,35 @@ class DashboardViewController:UIViewController{
     }
     
     @IBAction func achievementAction(_ sender: Any) {
-        performSegue(withIdentifier: "Achievements", sender: sender)
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGotoAchivement = true
+        self.tabBarController?.selectedIndex = 4
     }
+    
+    @IBAction func notesAction(_ sender: Any) {
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGoToNotes = true
+        self.tabBarController?.selectedIndex = 4
+    }
+    @IBAction func eventsAction(_ sender: Any) {
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGotoEvents = true
+        self.tabBarController?.selectedIndex = 4
+    }
+    @IBAction func profileAction(_ sender: Any) {
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGoToProfile = true
+        self.tabBarController?.selectedIndex = 4
+    }
+    var loggedInUserSeq:Int = 0
+    var loggedInCompanySeq:Int = 0
     override func viewDidLoad() {
+        loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         userImageView.layer.borderWidth = 3
         userImageView.layer.borderColor = UIColor.white.cgColor
         userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
@@ -108,7 +143,109 @@ class DashboardViewController:UIViewController{
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = 680
         self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
+        populateUserInfoFromLocal()
+        getDashboardCounts()
+        getDashboardStates()
         
     }
-
+    func populateUserInfoFromLocal(){
+       let user =  UserMgr.sharedInstance.getUserByUserSeq(userSeq: loggedInUserSeq)
+       let userName = user?.fullname
+       var userImageName = user?.imagename
+       if(userImageName == nil){
+           userImageName = "dummy.jpg"
+       }
+       let imageUrl = StringConstants.USER_IMAGE_URL + userImageName!
+       let userProfiles = user?.profiles
+       if let url = NSURL(string: imageUrl) {
+            if let data = NSData(contentsOf: url as URL) {
+                userImageView.image = UIImage(data: data as Data)
+            }
+        }
+        userNameLabel.text = userName
+        userProfileLabel.text = userProfiles
+        
+    }
+    func getDashboardCounts(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_COUNTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.populateDashboardCounts(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    func getDashboardStates(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_DASHBOARD_COUNTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.populateDashboardStats(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    func populateDashboardCounts(response: [String: Any]){
+        let responseJson = response["dashboardCounts"] as! [String:Any]
+        let pendingLpCount = responseJson["pendingLpCount"] as! Int
+        let notificationCount = responseJson["notificationCount"] as! Int
+        let mesasgeCount = responseJson["messages"] as! Int
+        if(pendingLpCount > 0){
+            self.pendingLpCount.text =  "+" + String(pendingLpCount)
+        }
+        if(notificationCount > 0){
+            self.notificationsCount.text = "+" + String(notificationCount)
+        }
+        if(mesasgeCount > 0){
+            self.messagesCount.text = "+" + String(mesasgeCount)
+        }
+    }
+    
+    func populateDashboardStats(response: [String: Any]){
+        let responseJson = response["dashboardData"] as! [String:Any]
+        let totalScore = responseJson["totalScores"] as! Int
+        let point = responseJson["points"] as! Int
+        let pendingTrainings = responseJson["pendingTrainings"] as! [String:Any]
+        let maxScore = pendingTrainings["maxScore"] as! Int
+        var userRankStr = responseJson["userRank"] as? Int
+        if(userRankStr == nil){
+            userRankStr = 0
+        }
+        let pendingCount = pendingTrainings["pendingCount"] as! Int
+        let totalScoreStr = String(totalScore) + "/" + String(maxScore)
+        rankLabel.text = String(userRankStr!)
+        scoreLabel.text = totalScoreStr
+        self.points.text = String(point)
+    }
+    
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

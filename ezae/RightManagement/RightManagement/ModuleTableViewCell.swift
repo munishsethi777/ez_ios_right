@@ -10,6 +10,8 @@ import UIKit
 class ModuleTableViewCell : UITableViewCell{
     @IBOutlet weak var lauchModuleButton: UIButton!
     
+    @IBOutlet weak var pointsCaptionLabel: UILabel!
+    @IBOutlet weak var scoreCaptionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var leaderboardLabel: UILabel!

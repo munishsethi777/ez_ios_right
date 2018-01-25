@@ -21,6 +21,7 @@ class UserMgr{
             user = existingUser!;
         }
         user.username = userName
+        user.fullname = userJson["fullName"] as? String
         user.userseq = Int16(userJson["id"] as! String)!
         user.companyseq = Int16(userJson["companyseq"] as! String)!
         user.emailid = userJson["email"] as? String

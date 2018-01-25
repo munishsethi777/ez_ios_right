@@ -10,6 +10,8 @@ import UIKit
 class SettingsTableViewController : UITableViewController {
     var isGotoAchivement:Bool = false
     var isGotoEvents:Bool = false
+    var isGoToNotes:Bool=false
+    var isGoToProfile = false;
     override func viewWillAppear(_ animated: Bool){
         if(isGotoAchivement){
             isGotoAchivement = false
@@ -18,6 +20,16 @@ class SettingsTableViewController : UITableViewController {
         if(isGotoEvents){
             isGotoEvents = false
             self.performSegue(withIdentifier: "Events", sender: self)
+        }
+        if(isGoToNotes){
+            isGoToNotes = false
+            self.performSegue(withIdentifier: "Notes", sender: self)
+            
+        }
+        if(isGoToProfile){
+            isGoToProfile = false
+            self.performSegue(withIdentifier: "UpdateProfile", sender: self)
+            
         }
         
     }

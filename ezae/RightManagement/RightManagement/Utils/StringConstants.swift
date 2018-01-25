@@ -29,6 +29,7 @@ struct StringConstants {
     //User Actions
     static let LOGIN_URL = ACTION_API_URL + "UserAction.php?call=login&username={0}&password={1}&deviceid={2}"
     static let GET_DASHBOARD_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardStats&userSeq={0}&companySeq={1}";
+    static let GET_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardCounts&userSeq={0}&companySeq={1}";
     static let GET_NOTIFICATION = ACTION_API_URL+"UserAction.php?call=getNotifications&userSeq={0}&companySeq={1}";
     static let CHANGE_PASSWORD = ACTION_API_URL + "UserAction.php?call=changePassword&userSeq={0}&companySeq={1}&earlierPassword={2}&newPassword={3}"
     static let NOMINATE_TRAINING = ACTION_API_URL+"UserAction.php?call=nominateCT&userSeq={0}&companySeq={1}&trainingSeq={2}&lpSeq={3}"

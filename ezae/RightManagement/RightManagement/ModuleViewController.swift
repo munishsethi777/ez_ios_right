@@ -63,6 +63,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             var leaderboardRankStr = moduleJson["leaderboard"] as? String
             var lpSeqStr = moduleJson["learningPlanSeq"] as? String
             var seqStr = moduleJson["seq"] as? String
+            let badges = moduleJson["badges"] as? [Any]
             var lpSeq = 0
             if(lpSeqStr != nil){
                  lpSeq = Int(lpSeqStr!)!
@@ -114,8 +115,20 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell?.lauchModuleButton.tag = seq
             cell?.lauchModuleButton.titleLabel?.tag = lpSeq
             cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-            if(moduleType == "quiz" && rank > 0 && progress == 100){
-                cell?.leaderboardLabel.text = rankStr
+            cell?.scoreLabel.isHidden = true
+            cell?.pointsLabel.isHidden = true
+            cell?.scoreCaptionLabel.isHidden = true
+            cell?.pointsCaptionLabel.isHidden = true
+            if(moduleType == "quiz" && progress == 100){
+                cell?.scoreLabel.text = score
+                cell?.pointsLabel.text = points
+                cell?.scoreLabel.isHidden = false
+                cell?.pointsLabel.isHidden = false
+                cell?.scoreCaptionLabel.isHidden = false
+                cell?.pointsCaptionLabel.isHidden = false
+                if(rank > 0){
+                    cell?.leaderboardLabel.text = rankStr
+                }
             }else{
                 if(progress > 0){
                     cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
@@ -123,6 +136,30 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     cell?.leaderboardLabel.isHidden = true
                 }
             }
+        if(badges != nil){
+            var  x = 160
+            for var i in 0..<badges!.count{
+                let imageView = UIImageView.init()
+                imageView.frame = CGRect(x:x,y:54,width:22,height:22)
+                let badgesJson = badges![i] as! [String: Any]
+                let badgeSeq = badgesJson["seq"] as! String
+                let imagePath = badgesJson["imagepath"] as! String
+                if (self.cache.object(forKey: badgeSeq as AnyObject) != nil){
+                    imageView.image = self.cache.object(forKey: badgeSeq as AnyObject) as? UIImage
+                }else{
+                    let imageUrl = StringConstants.WEB_API_URL + imagePath
+                    if let url = NSURL(string: imageUrl) {
+                        if let data = NSData(contentsOf: url as URL) {
+                            let img = UIImage(data: data as Data)
+                            imageView.image = UIImage(data: data as Data)
+                            self.cache.setObject(img!, forKey: badgeSeq as AnyObject)
+                        }
+                    }
+                }
+                cell?.contentView.addSubview(imageView)
+                x = x + 15
+            }
+        }
         return cell!
     }
     

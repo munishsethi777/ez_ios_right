@@ -8,6 +8,8 @@
 
 import UIKit
 class DashboardViewController:UIViewController{
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var notificationsView: UIView!
     @IBOutlet weak var trainingsView: UIView!
@@ -18,11 +20,27 @@ class DashboardViewController:UIViewController{
     @IBOutlet weak var chatroomsView: UIView!
     @IBOutlet weak var updateProfileView: UIView!
     
+    @IBAction func trainingsButton(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 1
+    }
+    
+    @IBAction func messagesButtonAction(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 2
+    }
+    
+    @IBAction func chatroomsAction(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 3
+    }
+    
+    @IBAction func achievementAction(_ sender: Any) {
+        performSegue(withIdentifier: "Achievements", sender: sender)
+    }
     override func viewDidLoad() {
-            userImageView.layer.borderWidth = 3
-            userImageView.layer.borderColor = UIColor.white.cgColor
-            userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
-            userImageView.clipsToBounds = true
+        userImageView.layer.borderWidth = 3
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
+        userImageView.clipsToBounds = true
+        
         notificationsView.layer.cornerRadius = 2
         notificationsView.layer.borderWidth = 0.5
         notificationsView.layer.borderColor = UIColor.lightGray.cgColor
@@ -87,6 +105,9 @@ class DashboardViewController:UIViewController{
         achievementsView.layer.shadowOpacity = 0.5
         achievementsView.layer.shadowRadius = 4.0
         
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize.height = 780
+        self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         
     }
 

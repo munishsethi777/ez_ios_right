@@ -127,9 +127,18 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
                 x = x + 25
             }
         }
+        cell?.progressView.sendSubview(toBack: (cell?.bottomView)!)
+        cell?.bottomView.layer.borderWidth = 0.3
+        cell?.bottomView.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell?.bottomView.layer.shadowOpacity = 0.5
+        cell?.bottomView.layer.shadowRadius = 4.0
         return cell!
     }
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
     func getLearningPlans(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_LEARNING_PLAN_DETAIL, args: args)

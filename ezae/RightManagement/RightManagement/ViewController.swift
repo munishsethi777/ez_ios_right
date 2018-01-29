@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var workingAreaView: UIView!
     var moduleSeq = 0
     var lpSeq = 0
+    var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.isEnabled = false

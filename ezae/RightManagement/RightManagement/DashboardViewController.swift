@@ -68,6 +68,7 @@ class DashboardViewController:UIViewController{
     }
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
+    var  progressHUD: ProgressHUD!
     override func viewDidLoad() {
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -143,7 +144,8 @@ class DashboardViewController:UIViewController{
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = 760
         self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
-        populateUserInfoFromLocal()
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
         getDashboardCounts()
         getDashboardStates()
         
@@ -224,6 +226,7 @@ class DashboardViewController:UIViewController{
         if(mesasgeCount > 0){
             self.messagesCount.text = "+" + String(mesasgeCount)
         }
+        progressHUD.hide()
     }
     
     func populateDashboardStats(response: [String: Any]){
@@ -241,6 +244,8 @@ class DashboardViewController:UIViewController{
         rankLabel.text = String(userRankStr!)
         scoreLabel.text = totalScoreStr
         self.points.text = String(point)
+        progressHUD.hide()
+        populateUserInfoFromLocal()
     }
     
     func showAlert(message: String){

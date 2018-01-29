@@ -8,7 +8,7 @@
 
 import UIKit
 import SSCalendar
-class EventViewController :UIViewController{
+class EventViewController :SSCalendarAnnualViewController{
     var loggedInUserSeq:Int!
     var loggedInCompanySeq:Int!
     override func viewDidLoad() {
@@ -41,11 +41,8 @@ class EventViewController :UIViewController{
     }
     
     func populateEvents(response:[String: Any]){
-        SSStyles.applyNavigationBarStyles()
         let annualViewController = SSCalendarAnnualViewController(events: generateEvents(eventsJson: response))
-        let navigationController = UINavigationController(rootViewController: annualViewController!)
-        navigationController.navigationBar.isTranslucent = false
-        self.present(navigationController, animated: true, completion: nil)
+        self.navigationController!.pushViewController(annualViewController!, animated: true)
     }
     
     fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {

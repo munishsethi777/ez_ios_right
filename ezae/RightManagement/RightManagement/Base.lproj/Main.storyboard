@@ -133,7 +133,7 @@
         <!--Dashboard-->
         <scene sceneID="b2h-WX-SMG">
             <objects>
-                <viewController id="Nyb-z1-AC7" customClass="DashboardVC" customModule="RightManagement" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Dashboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nyb-z1-AC7" customClass="DashboardVC" customModule="RightManagement" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2mu-tG-Tye"/>
                         <viewControllerLayoutGuide type="bottom" id="3Cn-ou-kxq"/>
@@ -815,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18h-mt-itl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="-1229"/>
+            <point key="canvasLocation" x="1602" y="-1229"/>
         </scene>
         <!--Notes-->
         <scene sceneID="WR2-lQ-lvP">
@@ -852,7 +852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCm-iK-S7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2609" y="-1229"/>
+            <point key="canvasLocation" x="2249" y="-1229"/>
         </scene>
         <!--Learning Plans-->
         <scene sceneID="jBe-Dt-3pz">
@@ -1791,7 +1791,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Events"/>
                                                     <connections>
-                                                        <segue destination="lcJ-CS-YxJ" kind="show" identifier="Events" id="Qa3-AQ-xyR"/>
+                                                        <action selector="eventTapped:" destination="la4-LP-mm0" eventType="touchUpInside" id="Qif-CZ-d1W"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_logout.png" translatesAutoresizingMaskIntoConstraints="NO" id="OZF-Jw-QTQ">
@@ -1846,7 +1846,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zt-2R-duy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uus-IR-fk6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-418.39999999999998" y="-1229.2353823088456"/>
+            <point key="canvasLocation" x="255" y="-1229"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="QKa-Ke-8ih">
@@ -1925,7 +1925,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ow-i5-bHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1017" y="-1229"/>
+            <point key="canvasLocation" x="940" y="-1229"/>
         </scene>
         <!--Update Profile-->
         <scene sceneID="vMY-M4-yGb">
@@ -1966,7 +1966,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3M-47-XQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3328.8000000000002" y="-1229.2353823088456"/>
+            <point key="canvasLocation" x="2903" y="-1229"/>
         </scene>
         <!--Events-->
         <scene sceneID="xqj-pp-STn">
@@ -1985,12 +1985,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ids-f5-u12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4111" y="-1229"/>
+            <point key="canvasLocation" x="3628" y="-1229"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="wdd-CM-yDi">
             <objects>
-                <viewController id="QGl-as-xxN" customClass="DashboardViewController" customModule="RightManagement" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QGl-as-xxN" customClass="DashboardViewController" customModule="RightManagement" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8n-Ao-L3H" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="780"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2375,12 +2375,12 @@
         <image name="user" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fqt-Th-R0z"/>
+        <segue reference="As4-hj-EBB"/>
         <segue reference="AlW-TL-44Y"/>
         <segue reference="8ce-L1-4uF"/>
         <segue reference="rRV-pc-Utm"/>
-        <segue reference="PkI-zp-FOV"/>
-        <segue reference="lPD-6z-cTJ"/>
+        <segue reference="Iya-jk-OBm"/>
+        <segue reference="kHq-gY-EtM"/>
         <segue reference="AVW-CC-bvd"/>
     </inferredMetricsTieBreakers>
 </document>

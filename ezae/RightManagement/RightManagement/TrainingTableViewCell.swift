@@ -13,6 +13,7 @@ class TrainingTableViewCell: UITableViewCell {
         // Initialization code
     }
    
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var pointsCaptionLabel: UILabel!
     @IBOutlet weak var scoreCaptionLabel: UILabel!
     @IBOutlet weak var leaderboardLabel: UILabel!

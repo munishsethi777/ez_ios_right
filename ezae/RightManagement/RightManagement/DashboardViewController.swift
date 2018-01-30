@@ -75,6 +75,7 @@ class DashboardViewController:UIViewController{
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var  progressHUD: ProgressHUD!
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -154,7 +155,16 @@ class DashboardViewController:UIViewController{
         self.view.addSubview(progressHUD)
         getDashboardCounts()
         getDashboardStates()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
+            scrollView.refreshControl = refreshControl
+        }
         
+    }
+    func refreshDashboard(refreshControl: UIRefreshControl) {
+        getDashboardCounts()
+        getDashboardStates()
     }
     func populateUserInfoFromLocal(){
        let user =  UserMgr.sharedInstance.getUserByUserSeq(userSeq: loggedInUserSeq)
@@ -174,6 +184,26 @@ class DashboardViewController:UIViewController{
         userProfileLabel.text = userProfiles
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        handleNotificationData()
+    }
+    private func handleNotificationData(){
+        let isNotificationState = PreferencesUtil.sharedInstance.isNotificationState()
+        if(isNotificationState){
+            let data = PreferencesUtil.sharedInstance.getNotificationData()
+            let entityType = data["entityType"]
+            if(entityType == "module"){
+                self.tabBarController?.selectedIndex = 1
+            }else{
+                PreferencesUtil.sharedInstance.resetNotificationData()
+                let controller = self.tabBarController?.viewControllers![4]
+                let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+                settingController.isGotoAchivement = true
+                self.tabBarController?.selectedIndex = 4
+            }
+        }
+    }
+    
     func getDashboardCounts(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_COUNTS, args: args)
@@ -252,6 +282,9 @@ class DashboardViewController:UIViewController{
         self.points.text = String(point)
         progressHUD.hide()
         populateUserInfoFromLocal()
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func showAlert(message: String){

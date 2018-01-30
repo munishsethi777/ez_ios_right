@@ -41,6 +41,12 @@ class DashboardViewController:UIViewController{
         self.tabBarController?.selectedIndex = 3
     }
     
+    @IBAction func notificationAction(_ sender: Any) {
+        let controller = self.tabBarController?.viewControllers![4]
+        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+        settingController.isGoToNotification = true
+        self.tabBarController?.selectedIndex = 4
+    }
     @IBAction func achievementAction(_ sender: Any) {
         let controller = self.tabBarController?.viewControllers![4]
         let settingController = controller?.childViewControllers[0] as! SettingsTableViewController

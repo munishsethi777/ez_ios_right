@@ -11,7 +11,9 @@ import UIKit
 class NotificationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var notificationTitle: UILabel!
+    
     @IBOutlet weak var notificationButton: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

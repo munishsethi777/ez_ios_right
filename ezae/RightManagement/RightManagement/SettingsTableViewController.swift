@@ -12,6 +12,7 @@ class SettingsTableViewController : UITableViewController {
     var isGotoAchivement:Bool = false
     var isGotoEvents:Bool = false
     var isGoToNotes:Bool=false
+    var isGoToNotification = false
     var isGoToProfile = false;
     var loggedInUserSeq:Int!
     var loggedInCompanySeq:Int!
@@ -101,7 +102,7 @@ class SettingsTableViewController : UITableViewController {
         }
         if(isGotoEvents){
             isGotoEvents = false
-            self.performSegue(withIdentifier: "Events", sender: self)
+            getEvents()
         }
         if(isGoToNotes){
             isGoToNotes = false
@@ -111,6 +112,12 @@ class SettingsTableViewController : UITableViewController {
         if(isGoToProfile){
             isGoToProfile = false
             self.performSegue(withIdentifier: "UpdateProfile", sender: self)
+            
+        }
+        
+        if(isGoToNotification){
+            isGoToNotification = false
+            self.performSegue(withIdentifier: "Notifications", sender: self)
             
         }
         

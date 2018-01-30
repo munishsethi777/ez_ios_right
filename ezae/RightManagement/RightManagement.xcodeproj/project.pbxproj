@@ -50,6 +50,7 @@
 		E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */; };
 		E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */; };
 		E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */; };
+		F610491B201F2AC400DFC66E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F610491A201F2AC400DFC66E /* NotificationViewController.swift */; };
 		F612B07420077FC80065C015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F612B07320077FC80065C015 /* UserNotifications.framework */; };
 		F62F587F1FF37B2200EDFEF1 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */; };
 		F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */; };
@@ -166,6 +167,7 @@
 		E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout.png; sourceTree = "<group>"; };
 		E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepassword.png; sourceTree = "<group>"; };
 		E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_updateprofile.png; sourceTree = "<group>"; };
+		F610491A201F2AC400DFC66E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		F612B07320077FC80065C015 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		F63982201FBB0B9200DA61B1 /* right.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = right.xcdatamodel; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				E6AC96412015EDE0007D5637 /* DashboardViewController.swift */,
 				F6ED788720175310006D931D /* LearningPlanViewController.swift */,
 				F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */,
+				F610491A201F2AC400DFC66E /* NotificationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				F6DBB5821FF50A3200386125 /* Chat.swift in Sources */,
 				F6DBB5841FF50A3200386125 /* MessageDetail.swift in Sources */,
 				F6B63D8C1FEF6A1D00886264 /* SettingsTableViewController.swift in Sources */,
+				F610491B201F2AC400DFC66E /* NotificationViewController.swift in Sources */,
 				E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */,
 				F64A98681FD016AD001858DE /* UICircularProgressRingDelegate.swift in Sources */,
 				F63EE2752000E71200403994 /* ProgressHUD.swift in Sources */,

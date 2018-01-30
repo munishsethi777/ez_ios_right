@@ -95,9 +95,11 @@
         <!--Item-->
         <scene sceneID="8lB-PB-U9E">
             <objects>
-                <navigationController toolbarHidden="NO" id="LKB-8r-dFA" sceneMemberID="viewController">
+                <navigationController id="LKB-8r-dFA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="avE-UL-gjD"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Nx-ej-jyk">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -854,7 +856,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9BK-yZ-Wuk">
-                                <rect key="frame" x="0.0" y="65" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.98999243974685669" green="0.98583796051215045" blue="0.91656339505398343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -876,7 +878,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCm-iK-S7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2249" y="-1229"/>
+            <point key="canvasLocation" x="2248.8000000000002" y="-1229.2353823088456"/>
         </scene>
         <!--Learning Plans-->
         <scene sceneID="jBe-Dt-3pz">
@@ -2485,7 +2487,7 @@
         <image name="userPlaceholder.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="As4-hj-EBB"/>
+        <segue reference="fqt-Th-R0z"/>
         <segue reference="AlW-TL-44Y"/>
         <segue reference="dOd-MQ-Iz0"/>
         <segue reference="rRV-pc-Utm"/>

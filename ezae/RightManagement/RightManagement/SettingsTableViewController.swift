@@ -24,7 +24,7 @@ class SettingsTableViewController : UITableViewController {
     }
     
     fileprivate func getEvents(){
-        progressHUD = ProgressHUD(text: "Wait")
+        progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_EVENTS, args: args)

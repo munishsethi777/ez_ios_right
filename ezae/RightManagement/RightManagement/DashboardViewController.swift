@@ -148,7 +148,7 @@ class DashboardViewController:UIViewController{
         achievementsView.layer.shadowRadius = 4.0
         
         scrollView.isScrollEnabled = true
-        scrollView.contentSize.height = 680
+        scrollView.contentSize.height = 760
         self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)

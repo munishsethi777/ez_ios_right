@@ -194,6 +194,13 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                 x = x + 15
             }
         }
+        cell?.contentView.sendSubview(toBack:(cell?.baseView)!)
+        cell?.baseView.layer.borderWidth = 0.3
+        cell?.baseView.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.baseView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell?.baseView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell?.baseView.layer.shadowOpacity = 0.5
+        cell?.baseView.layer.shadowRadius = 4.0
         return cell!
     }
     

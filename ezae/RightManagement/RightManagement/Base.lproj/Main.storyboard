@@ -784,10 +784,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-f8-Uta">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkJ-f8-Uta">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -802,14 +803,14 @@
                                                     <rect key="frame" x="15" y="10" width="176" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsJ-kG-zrn">
                                                     <rect key="frame" x="191" y="13" width="143" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1713,6 +1714,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="7oa-wN-13f">
@@ -1724,8 +1726,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_achievement_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="kh9-rq-VIv">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGO-zM-eXN">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="33"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Achievements"/>
@@ -1733,10 +1739,6 @@
                                                         <segue destination="H5H-DG-r1d" kind="show" identifier="Achievements" id="lPD-6z-cTJ"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_achievement.png" translatesAutoresizingMaskIntoConstraints="NO" id="kh9-rq-VIv">
-                                                    <rect key="frame" x="15" y="7" width="22" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1748,7 +1750,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YU6-al-vI8">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="34"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Notes"/>
@@ -1756,8 +1758,8 @@
                                                         <segue destination="bEn-ef-Zaz" kind="show" identifier="Notes" id="QWw-mf-Mh3"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_notes.png" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-MS-rFO">
-                                                    <rect key="frame" x="15" y="7" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_notes_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="UJ8-MS-rFO">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1771,7 +1773,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkg-Mk-YLc">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="35"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Change Password"/>
@@ -1779,8 +1781,8 @@
                                                         <segue destination="KNh-XY-bYL" kind="show" id="B2Y-6N-cWh"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_changepassword.png" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-FL-I6J">
-                                                    <rect key="frame" x="15" y="7" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_changepassword_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-FL-I6J">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1794,7 +1796,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iz-0n-ofT">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="35"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Update Profile"/>
@@ -1802,8 +1804,8 @@
                                                         <segue destination="NaD-SW-Xf4" kind="show" identifier="UpdateProfile" id="EPj-kR-Nfq"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_updateprofile.png" translatesAutoresizingMaskIntoConstraints="NO" id="6lT-OJ-tKU">
-                                                    <rect key="frame" x="15" y="7" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_profile_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="6lT-OJ-tKU">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1817,7 +1819,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iS-XI-bkw">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="34"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Events"/>
@@ -1825,8 +1827,8 @@
                                                         <action selector="eventTapped:" destination="la4-LP-mm0" eventType="touchUpInside" id="Qif-CZ-d1W"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_logout.png" translatesAutoresizingMaskIntoConstraints="NO" id="OZF-Jw-QTQ">
-                                                    <rect key="frame" x="16" y="6" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_events_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="OZF-Jw-QTQ">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1839,12 +1841,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_logout.png" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-Rx-P5X">
-                                                    <rect key="frame" x="16" y="6" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_notification_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-Rx-P5X">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytz-YS-U0w">
-                                                    <rect key="frame" x="43" y="2" width="332" height="30"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Notifications"/>
@@ -1863,7 +1865,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RyK-Mb-R2W">
-                                                    <rect key="frame" x="43" y="0.0" width="332" height="35"/>
+                                                    <rect key="frame" x="50" y="0.0" width="300" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Logout"/>
@@ -1872,8 +1874,8 @@
                                                         <action selector="logoutTapped:" destination="la4-LP-mm0" eventType="touchUpInside" id="bqN-CV-kAC"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_logout.png" translatesAutoresizingMaskIntoConstraints="NO" id="Taz-yP-pvI">
-                                                    <rect key="frame" x="15" y="7" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="more_ico_logout_24.png" translatesAutoresizingMaskIntoConstraints="NO" id="Taz-yP-pvI">
+                                                    <rect key="frame" x="15" y="7" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -2034,23 +2036,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vzc-uL-5oo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vzc-uL-5oo">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NotificationTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="39" id="uGg-gC-ggw" customClass="NotificationTableViewCell" customModule="RightManagement" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="39"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NotificationTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="50" id="uGg-gC-ggw" customClass="NotificationTableViewCell" customModule="RightManagement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uGg-gC-ggw" id="cXL-5B-Fuh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlh-a7-Dh5">
-                                                    <rect key="frame" x="15" y="11" width="270" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gd-Ab-rld">
@@ -2441,21 +2444,16 @@
         <image name="bubbleMine" width="38" height="34"/>
         <image name="chat background" width="320" height="461"/>
         <image name="ic_rocket.png" width="32" height="32"/>
-        <image name="ico_achievement.png" width="25" height="25"/>
         <image name="ico_achievements_64.png" width="64" height="64"/>
         <image name="ico_calendar_64.png" width="64" height="64"/>
-        <image name="ico_changepassword.png" width="25" height="25"/>
         <image name="ico_chatroom.png" width="30" height="30"/>
         <image name="ico_chatroom_64.png" width="64" height="64"/>
         <image name="ico_learningplans.png" width="30" height="30"/>
-        <image name="ico_logout.png" width="25" height="25"/>
         <image name="ico_messages_64.png" width="64" height="64"/>
-        <image name="ico_notes.png" width="25" height="25"/>
         <image name="ico_notes_64.png" width="64" height="64"/>
         <image name="ico_notifications_64.png" width="64" height="64"/>
         <image name="ico_profile_64.png" width="64" height="64"/>
         <image name="ico_training_64.png" width="64" height="64"/>
-        <image name="ico_updateprofile.png" width="25" height="25"/>
         <image name="icons8-black-board_24.png" width="24" height="24"/>
         <image name="icons8-chat_24.png" width="24" height="24"/>
         <image name="icons8-dashboard_24.png" width="24" height="24"/>
@@ -2464,6 +2462,13 @@
         <image name="icons8-more_24.png" width="24" height="24"/>
         <image name="icons8-sms_24.png" width="24" height="24"/>
         <image name="login_logo.png" width="250" height="78"/>
+        <image name="more_ico_achievement_24.png" width="24" height="24"/>
+        <image name="more_ico_changepassword_24.png" width="24" height="24"/>
+        <image name="more_ico_events_24.png" width="24" height="24"/>
+        <image name="more_ico_logout_24.png" width="24" height="24"/>
+        <image name="more_ico_notes_24.png" width="24" height="24"/>
+        <image name="more_ico_notification_24.png" width="24" height="24"/>
+        <image name="more_ico_profile_24.png" width="24" height="24"/>
         <image name="right_back_blue.jpg" width="750" height="1334"/>
         <image name="share" width="23" height="23"/>
         <image name="user" width="80" height="80"/>
@@ -2474,10 +2479,8 @@
         <segue reference="AlW-TL-44Y"/>
         <segue reference="dOd-MQ-Iz0"/>
         <segue reference="rRV-pc-Utm"/>
-        <segue reference="PkI-zp-FOV"/>
-        <segue reference="lPD-6z-cTJ"/>
         <segue reference="Iya-jk-OBm"/>
-        <segue reference="kHq-gY-EtM"/>
+        <segue reference="lPD-6z-cTJ"/>
         <segue reference="AVW-CC-bvd"/>
     </inferredMetricsTieBreakers>
 </document>

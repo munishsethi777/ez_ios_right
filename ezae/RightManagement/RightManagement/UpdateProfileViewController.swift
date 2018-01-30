@@ -25,8 +25,8 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         getUserFields()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UpdateProfileViewController.tapGesture(gesture:)))
-        userImageView.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UpdateProfileViewController.tapGesture(gesture:)))
+        //userImageView.addGestureRecognizer(tapGesture)
         userImageView.isUserInteractionEnabled = true
         picker?.delegate = self
     }
@@ -48,6 +48,19 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         
     }
 
+    @IBAction func updateImageTapped(_ sender: Any) {
+        let alert:UIAlertController = UIAlertController(title: "Profile Picture Options", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let gallaryAction = UIAlertAction(title: "Open Gallery", style: UIAlertActionStyle.default) {
+            UIAlertAction in self.openGallary()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in self.cancel()
+        }
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func openGallary() {
         picker!.allowsEditing = false
         picker!.sourceType = UIImagePickerControllerSourceType.photoLibrary
@@ -136,7 +149,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         let userDetail = json["userDetail"] as! [String : Any]
         customFields = userDetail["customFields"] as! [Any]
         let screenWidth = UIScreen.main.bounds.width
-        var y:CGFloat = 130
+        var y:CGFloat = 180
         let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
         label.text = "Email"
         label.font = UIFont(name:"Arial",size:12.00)

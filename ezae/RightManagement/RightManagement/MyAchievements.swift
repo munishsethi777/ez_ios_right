@@ -11,6 +11,9 @@ import UIKit
 class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     
+    @IBOutlet weak var pointsBackView: UIView!
+    @IBOutlet weak var scoreBackView: UIView!
+    @IBOutlet weak var rankBackView: UIView!
     @IBOutlet weak var badgeTableView: UITableView!
     var loggedInUserSeq: Int = 0
     @IBOutlet weak var scoreLabel: UILabel!
@@ -37,6 +40,31 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
             scrollView.refreshControl = refreshControl
         }
+        
+        pointsBackView.layer.cornerRadius = 8
+        pointsBackView.layer.borderWidth = 1
+        pointsBackView.layer.borderColor = UIColor.lightGray.cgColor
+        pointsBackView.layer.shadowColor = UIColor.lightGray.cgColor
+        pointsBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        pointsBackView.layer.shadowOpacity = 0.5
+        pointsBackView.layer.shadowRadius = 4.0
+        
+        scoreBackView.layer.cornerRadius = 8
+        scoreBackView.layer.borderWidth = 1
+        scoreBackView.layer.borderColor = UIColor.lightGray.cgColor
+        scoreBackView.layer.shadowColor = UIColor.lightGray.cgColor
+        scoreBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        scoreBackView.layer.shadowOpacity = 0.5
+        scoreBackView.layer.shadowRadius = 4.0
+        
+        rankBackView.layer.cornerRadius = 8
+        rankBackView.layer.borderWidth = 1
+        rankBackView.layer.borderColor = UIColor.lightGray.cgColor
+        rankBackView.layer.shadowColor = UIColor.lightGray.cgColor
+        rankBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        rankBackView.layer.shadowOpacity = 0.5
+        rankBackView.layer.shadowRadius = 4.0
+
     }
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()

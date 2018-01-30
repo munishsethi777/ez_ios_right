@@ -43,8 +43,10 @@
 		E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B611F8E0B2C0063EDEC /* NotificationTableViewCell.swift */; };
 		E66D5B661F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */; };
 		E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E6821D5D1FEA6F380001E7C9 /* login_logo.png */; };
+		E6A30625201F2ADE006D1E77 /* userPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E6A30624201F2ADD006D1E77 /* userPlaceholder.png */; };
 		E6AB50BD200350EB00F19825 /* ico_achievement.png in Resources */ = {isa = PBXBuildFile; fileRef = E6AB50BC200350EB00F19825 /* ico_achievement.png */; };
 		E6AC96422015EDE0007D5637 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AC96412015EDE0007D5637 /* DashboardViewController.swift */; };
+		E6C67CED201D5C0D00234C1E /* right_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6C67CEC201D5C0C00234C1E /* right_back_blue.jpg */; };
 		E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */; };
 		E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */; };
 		E6D8E1C11FEF93FF00F392DF /* ico_updateprofile.png in Resources */ = {isa = PBXBuildFile; fileRef = E6D8E1BE1FEF93FD00F392DF /* ico_updateprofile.png */; };
@@ -156,8 +158,10 @@
 		E66D5B611F8E0B2C0063EDEC /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = ViewControllers/NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		E66D5B651F8E33760063EDEC /* ActiveLearningPlanCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActiveLearningPlanCollectionViewCell.swift; path = ViewControllers/ActiveLearningPlanCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6821D5D1FEA6F380001E7C9 /* login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_logo.png; sourceTree = "<group>"; };
+		E6A30624201F2ADD006D1E77 /* userPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userPlaceholder.png; sourceTree = "<group>"; };
 		E6AB50BC200350EB00F19825 /* ico_achievement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_achievement.png; sourceTree = "<group>"; };
 		E6AC96412015EDE0007D5637 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		E6C67CEC201D5C0C00234C1E /* right_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = right_back_blue.jpg; path = ../../../../../../Downloads/right_back_blue.jpg; sourceTree = "<group>"; };
 		E6CA01EB2004AF370023D67D /* RightManagement.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RightManagement.entitlements; sourceTree = "<group>"; };
 		E6D8E1BC1FEF93FB00F392DF /* ico_logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout.png; sourceTree = "<group>"; };
 		E6D8E1BD1FEF93FC00F392DF /* ico_changepassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepassword.png; sourceTree = "<group>"; };
@@ -439,7 +443,9 @@
 		F692B7091FDFD42100AD8745 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E6C67CEC201D5C0C00234C1E /* right_back_blue.jpg */,
 				E647173D2018A6AA009381E9 /* topview_back_blue.jpg */,
+				E6A30624201F2ADD006D1E77 /* userPlaceholder.png */,
 				E613B4192016F29200CAD3F9 /* model1.jpg */,
 				E6377CAA1FEE433700289F4E /* icons */,
 				E6821D5D1FEA6F380001E7C9 /* login_logo.png */,
@@ -583,12 +589,14 @@
 				E624B55A1FFB8E140070D136 /* ico_notes.png in Resources */,
 				E6377CB81FEE435100289F4E /* ico_modules.png in Resources */,
 				E647174120198A72009381E9 /* icons8-learningplans-24.png in Resources */,
+				E6A30625201F2ADE006D1E77 /* userPlaceholder.png in Resources */,
 				E6D8E1C01FEF93FF00F392DF /* ico_changepassword.png in Resources */,
 				E613B45D20174DBD00CAD3F9 /* ico_achievements_64.png in Resources */,
 				E6335DB01FE918C30090B7AD /* ic_bar_chart.png in Resources */,
 				E613B46120174DBD00CAD3F9 /* ico_edit_64.png in Resources */,
 				E6471738201891C0009381E9 /* icons8-dashboard_24.png in Resources */,
 				E6335DB21FE918C30090B7AD /* ic_gamepad.png in Resources */,
+				E6C67CED201D5C0D00234C1E /* right_back_blue.jpg in Resources */,
 				E6471735201891C0009381E9 /* icons8-black-board_24.png in Resources */,
 				E6D8E1BF1FEF93FF00F392DF /* ico_logout.png in Resources */,
 				E613B45F20174DBD00CAD3F9 /* ico_notes_64.png in Resources */,

@@ -29,6 +29,8 @@
 		E647173E2018A6AA009381E9 /* topview_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E647173D2018A6AA009381E9 /* topview_back_blue.jpg */; };
 		E647174120198A72009381E9 /* icons8-learningplans-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E647173F20198A71009381E9 /* icons8-learningplans-24.png */; };
 		E647174220198A72009381E9 /* icons8-modules-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E647174020198A71009381E9 /* icons8-modules-24.png */; };
+		E66863712021B6210086C117 /* ico_changepass_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E668636F2021B61D0086C117 /* ico_changepass_40.png */; };
+		E66863722021B6210086C117 /* ico_logout_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E66863702021B61F0086C117 /* ico_logout_40.png */; };
 		E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B281F8B7C220063EDEC /* AppDelegate.swift */; };
 		E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B2A1F8B7C220063EDEC /* ViewController.swift */; };
 		E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2C1F8B7C220063EDEC /* Main.storyboard */; };
@@ -142,6 +144,8 @@
 		E647173D2018A6AA009381E9 /* topview_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topview_back_blue.jpg; sourceTree = "<group>"; };
 		E647173F20198A71009381E9 /* icons8-learningplans-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-learningplans-24.png"; sourceTree = "<group>"; };
 		E647174020198A71009381E9 /* icons8-modules-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-modules-24.png"; sourceTree = "<group>"; };
+		E668636F2021B61D0086C117 /* ico_changepass_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepass_40.png; sourceTree = "<group>"; };
+		E66863702021B61F0086C117 /* ico_logout_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout_40.png; sourceTree = "<group>"; };
 		E66D5B251F8B7C220063EDEC /* RightManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66D5B281F8B7C220063EDEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66D5B2A1F8B7C220063EDEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 		E6377CAA1FEE433700289F4E /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E668636F2021B61D0086C117 /* ico_changepass_40.png */,
+				E66863702021B61F0086C117 /* ico_logout_40.png */,
 				E6A3062C202031C6006D1E77 /* more_ico_achievement_24.png */,
 				E6A30627202031C4006D1E77 /* more_ico_changepassword_24.png */,
 				E6A3062A202031C5006D1E77 /* more_ico_events_24.png */,
@@ -599,6 +605,8 @@
 				E647173E2018A6AA009381E9 /* topview_back_blue.jpg in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E613B45A20174DBD00CAD3F9 /* ico_chatroom_64.png in Resources */,
+				E66863712021B6210086C117 /* ico_changepass_40.png in Resources */,
+				E66863722021B6210086C117 /* ico_logout_40.png in Resources */,
 				E6471736201891C0009381E9 /* icons8-sms_24.png in Resources */,
 				E613B45920174DBD00CAD3F9 /* ico_notifications_64.png in Resources */,
 				E6821D5E1FEA6F380001E7C9 /* login_logo.png in Resources */,

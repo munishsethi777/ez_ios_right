@@ -20,6 +20,8 @@ class DashboardViewController:UIViewController{
     @IBOutlet weak var eventsView: UIView!
     @IBOutlet weak var chatroomsView: UIView!
     @IBOutlet weak var updateProfileView: UIView!
+    @IBOutlet weak var changePasswordView: UIView!
+    @IBOutlet weak var logoutView: UIView!
     
     @IBOutlet weak var messagesCount: UILabel!
     @IBOutlet weak var pendingLpCount: UILabel!
@@ -151,8 +153,24 @@ class DashboardViewController:UIViewController{
         achievementsView.layer.shadowOpacity = 0.5
         achievementsView.layer.shadowRadius = 4.0
         
+        changePasswordView.layer.cornerRadius = 2
+        changePasswordView.layer.borderWidth = 0.5
+        changePasswordView.layer.borderColor = UIColor.lightGray.cgColor
+        changePasswordView.layer.shadowColor = UIColor.lightGray.cgColor
+        changePasswordView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        changePasswordView.layer.shadowOpacity = 0.5
+        changePasswordView.layer.shadowRadius = 4.0
+        
+        logoutView.layer.cornerRadius = 2
+        logoutView.layer.borderWidth = 0.5
+        logoutView.layer.borderColor = UIColor.lightGray.cgColor
+        logoutView.layer.shadowColor = UIColor.lightGray.cgColor
+        logoutView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        logoutView.layer.shadowOpacity = 0.5
+        logoutView.layer.shadowRadius = 4.0
+        
         scrollView.isScrollEnabled = true
-        scrollView.contentSize.height = 760
+        scrollView.contentSize.height = 880
         self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)

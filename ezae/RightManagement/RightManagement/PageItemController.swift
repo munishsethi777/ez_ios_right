@@ -119,7 +119,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     
     private func goToNextPage(){
         if(isLastPage()){
-            self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
+            //self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
+             dismiss(animated: true, completion: nil)
         }else{
             parentController.goNextPage(index:itemIndex+1)
         }

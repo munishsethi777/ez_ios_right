@@ -108,7 +108,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             var  x = 165
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:64,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:54,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 let imagePath = badgesJson["imagepath"] as! String

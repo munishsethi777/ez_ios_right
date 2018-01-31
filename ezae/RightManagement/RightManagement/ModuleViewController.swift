@@ -21,6 +21,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var  progressHUD: ProgressHUD!
     var cache:NSCache<AnyObject, AnyObject>!
     var isLaunch = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cache = NSCache()
@@ -109,8 +111,11 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 buttonTitle = "In Progress"
             }
             if(progress == 100){
+                cell?.launchModuleImage.isHidden = true
                 buttonTitle = "Review"
-            }
+            }else{
+                cell?.launchModuleImage.isHidden = false
+        }
             cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
             cell?.lauchModuleButton.tag = seq
             cell?.lauchModuleButton.titleLabel?.tag = lpSeq

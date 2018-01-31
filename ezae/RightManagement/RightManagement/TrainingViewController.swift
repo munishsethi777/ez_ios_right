@@ -134,7 +134,10 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             buttonTitle = "In Progress"
         }
         if(progress == 100){
+            cell.launchModuleImage.isHidden = true
             buttonTitle = "Review"
+        }else{
+            cell.launchModuleImage.isHidden = false
         }
         let isLockSequence = lpJsonArr["lockSequence"] as! Bool;
         cell?.launchModuleButton.isEnabled = true

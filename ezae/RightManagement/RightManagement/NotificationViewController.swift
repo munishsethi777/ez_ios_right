@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SSCalendar
 class NotificationViewController:UIViewController,UITableViewDataSource,UITableViewDelegate{
     var notifications = [Notification]()
     var loggedInUserSeq: Int = 0
@@ -55,26 +56,22 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         return cell!
     }
     func goToEvents(){
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGotoEvents = true
-        self.tabBarController?.selectedIndex = 4
+        getEvents()
     }
     func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         selectedChatroomId = notification.seq
         selctedChatroomName = notification.title
-        self.tabBarController?.selectedIndex = 3
-        let controller = self.tabBarController?.viewControllers![3]
-        let navigationController = controller?.childViewControllers[0] as! UINavigationController
-        let chatController = navigationController.viewControllers[0] as! ChatViewController
-        chatController.selectedChatroomId = selectedChatroomId
-        chatController.selctedChatroomName = selctedChatroomName
-        chatController.isCalledFromDashboard = true
-        self.tabBarController?.selectedIndex = 3
+        self.performSegue(withIdentifier: "ChatroomDetailView", sender: nil)
+//        self.tabBarController?.selectedIndex = 4
+//        let controller = self.tabBarController?.viewControllers![4]
+//        let navigationController = controller?.childViewControllers[0] as! UINavigationController
+//        let chatController = navigationController.viewControllers[0] as! ChatViewController
+//        chatController.selectedChatroomId = selectedChatroomId
+//        chatController.selctedChatroomName = selctedChatroomName
+//        chatController.isCalledFromDashboard = true
+//        self.tabBarController?.selectedIndex = 4
         
     }
     func nominateTraining(sender:UIButton){
@@ -172,10 +169,81 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         progressHUD.hide()
         self.notificationsTableView.reloadData()
     }
+    fileprivate func getEvents(){
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_EVENTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.progressHUD.hide()
+                        self.populateEvents(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func populateEvents(response:[String: Any]){
+        let annualViewController = SSCalendarAnnualViewController(events: generateEvents(eventsJson: response))
+        self.navigationController!.pushViewController(annualViewController!, animated: true)
+    }
+    
+    fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {
+        var events: [SSEvent] = []
+        let eventsArr = eventsJson["chatrooms"] as! [Any]
+        for i in 0..<eventsArr.count{
+            let eventJson = eventsArr[i] as! [String: Any]
+            let title = eventJson["title"] as! String
+            let detail = eventJson["detail"] as! String
+            let startDateStr = eventJson["from"] as! String
+            let endDateStr = eventJson["to"] as! String
+            let event = SSEvent()
+            let startDate = DateUtil.sharedInstance.stringToDate(dateStr: startDateStr)
+            event.startDate = startDate
+            event.startTime = DateUtil.sharedInstance.dateToString(date: startDate, format: DateUtil.time_format)
+            let endDate = DateUtil.sharedInstance.stringToDate(dateStr: endDateStr)
+            let dateDiffArr = DateUtil.sharedInstance.getDatesDiff(start: startDate, end: endDate)
+            event.name = title
+            event.desc = detail
+            events.append(event)
+            if(!dateDiffArr.isEmpty){
+                for date in dateDiffArr{
+                    let eventN = SSEvent()
+                    eventN.name = event.name
+                    eventN.desc = event.desc
+                    eventN.startTime = event.startTime
+                    eventN.startDate = date
+                    events.append(eventN)
+                }
+            }
+        }
+        return events
+    }
     
     func showAlert(message: String){
         let alert = UIAlertController(title: "MessageBox", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if (segue.identifier == "ChatroomDetailView") {
+            let destinationVC:ChatDetailController = segue.destination as! ChatDetailController
+            destinationVC.chatRoomId = selectedChatroomId
+            destinationVC.chatRoomName = selctedChatroomName
+            destinationVC.isCallFromNotification = true;
+        }
     }
 }

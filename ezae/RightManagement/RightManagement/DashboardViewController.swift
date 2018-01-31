@@ -37,11 +37,11 @@ class DashboardViewController:UIViewController{
     @IBOutlet weak var userProfileLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBAction func messagesButtonAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 2
+        self.tabBarController?.selectedIndex = 3
     }
     
     @IBAction func chatroomsAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 3
+        self.tabBarController?.selectedIndex = 4
     }
    
     
@@ -64,9 +64,26 @@ class DashboardViewController:UIViewController{
 //        settingController.isGoToNotes = true
 //        self.tabBarController?.selectedIndex = 4
 //    }
-   
+    private func logout(){
+        let refreshAlert = UIAlertController(title: "Logout", message: "Are you realy want to logout.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            PreferencesUtil.sharedInstance.resetDefaults()
+            //self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
     
-
+    @IBAction func logoutAction(_ sender: Any) {
+        logout()
+    }
+    
     @IBAction func eventAction(_ sender: Any) {
         getEvents()
     }
@@ -176,6 +193,7 @@ class DashboardViewController:UIViewController{
         self.view.addSubview(progressHUD)
         getDashboardCounts()
         getDashboardStates()
+        synchCompanyUsers()
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
@@ -229,6 +247,28 @@ class DashboardViewController:UIViewController{
                 self.tabBarController?.selectedIndex = 4
             }
         }
+    }
+    func synchCompanyUsers(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.SYNCH_USERS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        CompanyUserMgr.sharedInstance.saveUsersFromResponse(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
     }
     fileprivate func getEvents(){
         progressHUD = ProgressHUD(text: "Loading")

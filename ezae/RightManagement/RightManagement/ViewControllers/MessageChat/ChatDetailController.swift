@@ -22,6 +22,7 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var loggedInUserName:String!
+    var isCallFromNotification = false;
     var syncMessageScheduler = Timer()
     private var tableArray:TableArray!
     private var gateway:MessageGateway!
@@ -33,6 +34,16 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         //Where tableview is the IBOutlet for your storyboard tableview.
         getMessages(isScroll: true)
         syncMessages()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          if(isCallFromNotification){
+                var toolBarFrame = self.inputbar.frame
+                let toolBarY = toolBarFrame.origin.y
+                let viewHeight = self.parent?.view.frame.height
+                let y = toolBarY - (toolBarFrame.height + 5)
+                toolBarFrame.origin.y = y
+                self.inputbar.frame = toolBarFrame
+            }
     }
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)

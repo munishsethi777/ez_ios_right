@@ -52,7 +52,6 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getDashboardStates()
-        getNotifications()
         getActiveLearningPlans()
         synchCompanyUsers()
         if #available(iOS 10.0, *) {

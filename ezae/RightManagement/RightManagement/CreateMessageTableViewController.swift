@@ -28,6 +28,8 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
     var selectedMessageUserName:String!
     var selectedMessageUserType:String = ""
     var filteredData = [CompanyUsers]()
+     var  progressHUD: ProgressHUD!
+    var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
         super.viewDidLoad()
         rowCount = 1
@@ -36,6 +38,7 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
         messageTableView.dataSource = self
         messageTableView.delegate = self
         searchBar.delegate = self
+        cache  = NSCache()
         getCompanyUsers()
     }
     
@@ -73,26 +76,28 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
-        if(rowCount <= filteredData.count){
-            let companyuser = filteredData[indexPath.row]
-            cell?.messageTitle.text = companyuser.fullname
-            var imageDirName = "UserImages/";
-            if(companyuser.usertype != "user"){
-                imageDirName = "AdminImages/";
-            }
-            if(companyuser.userimage == nil){
-                companyuser.userimage = "dummy.png"
-            }
-            let imagePath = StringConstants.IMAGE_URL + imageDirName + companyuser.userimage!
-            if let url = NSURL(string: imagePath) {
-                if let data = NSData(contentsOf: url as URL) {
-                    cell?.messageImageView.image = UIImage(data: data as Data)
-                    cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
-                    cell?.messageImageView.clipsToBounds = true
-                }
-            }
-            rowCount = rowCount + 1
+        let companyuser = filteredData[indexPath.row]
+        cell?.messageTitle.text = companyuser.fullname
+        var imageDirName = "UserImages/"
+        if(companyuser.usertype != "user"){
+            imageDirName = "AdminImages/";
         }
+        if(companyuser.userimage == nil){
+            companyuser.userimage = "dummy.jpg"
+        }
+        let imagePath = StringConstants.IMAGE_URL + imageDirName + companyuser.userimage!
+        if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
+            cell?.messageImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
+        }else if let url = NSURL(string: imagePath) {
+            if let data = NSData(contentsOf: url as URL) {
+                let img = UIImage(data: data as Data)
+                cell?.messageImageView.image = img
+                cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
+                cell?.messageImageView.clipsToBounds = true
+                self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
+            }
+        }
+        
         return cell!
     }
 

@@ -2055,7 +2055,7 @@
             <objects>
                 <viewController storyboardIdentifier="DashboardTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QGl-as-xxN" customClass="DashboardViewController" customModule="RightManagement" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8n-Ao-L3H" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="780"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="890"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bnh-DZ-Hc4">
@@ -2370,6 +2370,47 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0b-td-62e">
+                                <rect key="frame" x="25" y="711" width="151" height="113"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHANGE PASSWORD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybI-pV-jLd">
+                                        <rect key="frame" x="0.0" y="73" width="151" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzF-hu-saf">
+                                        <rect key="frame" x="55" y="25" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ico_changepass_40.png"/>
+                                        <connections>
+                                            <action selector="chatroomsAction:" destination="QGl-as-xxN" eventType="touchUpInside" id="wTm-bL-XZ4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rCt-zc-xyw">
+                                <rect key="frame" x="200" y="711" width="151" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LOGOUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmy-YM-aQ6">
+                                        <rect key="frame" x="0.0" y="73" width="151" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJv-I9-9z7">
+                                        <rect key="frame" x="55" y="25" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="ico_logout_40.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2381,11 +2422,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="vBO-is-ZSq"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <size key="freeformSize" width="375" height="780"/>
+                    <size key="freeformSize" width="375" height="890"/>
                     <connections>
                         <outlet property="achievementsView" destination="HI4-Vm-7Lp" id="TpA-LJ-giH"/>
+                        <outlet property="changePasswordView" destination="r0b-td-62e" id="LOG-J2-ndY"/>
                         <outlet property="chatroomsView" destination="X5X-nL-VSr" id="cq3-60-HHz"/>
                         <outlet property="eventsView" destination="9Sa-2L-Hkb" id="hPu-st-QFy"/>
+                        <outlet property="logoutView" destination="rCt-zc-xyw" id="nlO-YX-Eh5"/>
                         <outlet property="messagesCount" destination="yP5-jz-U0u" id="wAP-pe-dx4"/>
                         <outlet property="messagesView" destination="ro1-yG-ZX2" id="wrz-pQ-OFW"/>
                         <outlet property="notesView" destination="rIa-Td-hAP" id="wlX-VL-MGU"/>
@@ -2414,10 +2457,12 @@
         <image name="ic_rocket.png" width="32" height="32"/>
         <image name="ico_achievements_64.png" width="64" height="64"/>
         <image name="ico_calendar_64.png" width="64" height="64"/>
+        <image name="ico_changepass_40.png" width="40" height="40"/>
         <image name="ico_chatroom.png" width="30" height="30"/>
         <image name="ico_chatroom_64.png" width="64" height="64"/>
         <image name="ico_edit_64.png" width="64" height="64"/>
         <image name="ico_learningplans.png" width="30" height="30"/>
+        <image name="ico_logout_40.png" width="40" height="40"/>
         <image name="ico_messages_64.png" width="64" height="64"/>
         <image name="ico_notes_64.png" width="64" height="64"/>
         <image name="ico_notifications_64.png" width="64" height="64"/>

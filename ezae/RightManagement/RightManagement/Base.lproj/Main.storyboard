@@ -622,7 +622,7 @@
                         <viewControllerLayoutGuide type="bottom" id="7Tq-LM-d41"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0jf-ND-liB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 of 10 Questions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-1W-iks">
@@ -1031,6 +1031,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-X1-mPj">
+                                                    <rect key="frame" x="6" y="5" width="363" height="85"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-rS-teh">
                                                     <rect key="frame" x="73" y="31" width="221" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1045,8 +1049,8 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bubbleMine" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-eB-2iA">
-                                                    <rect key="frame" x="12" y="13" width="56" height="55"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-eB-2iA">
+                                                    <rect key="frame" x="12" y="25" width="56" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjY-yI-Qwu">
@@ -1060,11 +1064,14 @@
                                                     <rect key="frame" x="318" y="32" width="30" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <progressView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="pG2-wl-eoH">
-                                                    <rect key="frame" x="6" y="5" width="363" height="2"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <progressView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="pG2-wl-eoH">
+                                                    <rect key="frame" x="6" y="5" width="363" height="5"/>
                                                     <color key="tintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="progressTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="4" id="Lv2-Ye-w1P"/>
+                                                        <constraint firstAttribute="width" constant="363" id="zMQ-EI-b43"/>
+                                                    </constraints>
+                                                    <color key="progressTintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tg-Da-Wyb">
@@ -1109,12 +1116,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-X1-mPj">
-                                                    <rect key="frame" x="6" y="5" width="363" height="85"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5DY-X1-mPj" firstAttribute="top" secondItem="boX-RR-4Eb" secondAttribute="top" constant="5" id="Iv1-1Y-l7X"/>
+                                                <constraint firstItem="pG2-wl-eoH" firstAttribute="width" secondItem="5DY-X1-mPj" secondAttribute="width" id="ORf-cV-byU"/>
+                                                <constraint firstAttribute="bottom" secondItem="5DY-X1-mPj" secondAttribute="bottom" constant="10" id="OyP-ng-TQM"/>
+                                                <constraint firstItem="5DY-X1-mPj" firstAttribute="leading" secondItem="boX-RR-4Eb" secondAttribute="leading" constant="6" id="X8X-6e-zJ5"/>
+                                                <constraint firstAttribute="trailing" secondItem="5DY-X1-mPj" secondAttribute="trailing" constant="6" id="n0e-xH-hMz"/>
+                                                <constraint firstItem="pG2-wl-eoH" firstAttribute="top" secondItem="5DY-X1-mPj" secondAttribute="top" id="swz-Jy-ov0"/>
+                                                <constraint firstItem="pG2-wl-eoH" firstAttribute="leading" secondItem="5DY-X1-mPj" secondAttribute="leading" id="vD6-Uz-umc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bottomView" destination="5DY-X1-mPj" id="nNj-qK-Tfg"/>
@@ -2452,7 +2463,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bubbleMine" width="38" height="34"/>
         <image name="chat background" width="320" height="461"/>
         <image name="ic_rocket.png" width="32" height="32"/>
         <image name="ico_achievements_64.png" width="64" height="64"/>
@@ -2491,7 +2501,7 @@
         <segue reference="AlW-TL-44Y"/>
         <segue reference="dOd-MQ-Iz0"/>
         <segue reference="rRV-pc-Utm"/>
-        <segue reference="Iya-jk-OBm"/>
+        <segue reference="M1E-zR-ffA"/>
         <segue reference="lPD-6z-cTJ"/>
         <segue reference="AVW-CC-bvd"/>
     </inferredMetricsTieBreakers>

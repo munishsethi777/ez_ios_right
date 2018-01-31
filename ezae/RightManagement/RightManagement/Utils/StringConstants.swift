@@ -53,6 +53,8 @@ struct StringConstants {
     
     //Message Actions
     static let GET_MESSSAGES = ACTION_API_URL + "MessageAction.php?call=getMessages&userSeq={0}&companySeq={1}"
+    static let MESSAGE_MARK_AS_READ = ACTION_API_URL + "MessageAction.php?call=markReadAndUnRead&userSeq={0}&companySeq={1}&seq={2}&isRead={3}"
+    
     static let GET_MESSAGE_DETAIL = ACTION_API_URL + "MessageAction.php?call=getMessageDetails&userSeq={0}&companySeq={1}&chattingWithUserSeq={2}&chattingWithUserType={3}&afterMessageSeq={4}"
     static let SEND_MESSAGE = ACTION_API_URL + "MessageAction.php?call=sendMessageChat&userSeq={0}&companySeq={1}&chattingWithUserSeq={2}&chattingWithUserType={3}&message={4}&chatLoadedTillSeq={5}"
     

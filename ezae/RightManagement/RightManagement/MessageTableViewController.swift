@@ -64,6 +64,13 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         selectedMessageUserSeq = message.chattingUserSeq
         selectedMessageUserType = message.chattingUserType
         selectedMessageUserName = message.messageTitle
+        if(!message.isRead){
+            let cell = tableView.cellForRow(at: indexPath) as! MessageTableViewCell
+            cell.messageDescription.font = UIFont.systemFont(ofSize: 12)
+            cell.messageDescription.textColor = UIColor.darkGray
+            let seq = message.messageSeq
+            markAsRead(row: indexPath.row)
+        }
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
     
@@ -73,6 +80,12 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell
         let message = messages[indexPath.row]
         cell?.messageTitle.text = message.messageTitle
+        cell?.messageDescription.font = UIFont.systemFont(ofSize: 12)
+        cell?.messageDescription.textColor = UIColor.darkGray
+        if(!message.isRead){
+            cell?.messageDescription.font = UIFont.boldSystemFont(ofSize: 12)
+            cell?.messageDescription.textColor = UIColor.black
+        }
         cell?.messageDescription.text = message.messageDescription
         cell?.messageDateLabel.text = message.date
         if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
@@ -119,6 +132,32 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         // Pass the selected object to the new view controller.
     }
     */
+    func markAsRead(row:Int){
+        let messageObj = messages[row]
+        let messageSeq = messageObj.messageSeq
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq,messageSeq,1]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.MESSAGE_MARK_AS_READ, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        messageObj.isRead = true
+                        self.messages[row] = messageObj
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
     func getMessages(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MESSSAGES, args: args)
@@ -154,6 +193,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         messages.removeAll()
         for i in 0..<messageJsonArr.count{
             let messageJson = messageJsonArr[i] as! [String: Any]
+            let seq = messageJson["seq"] as! String
             let title = messageJson["messageText"] as! String
             let dated = messageJson["dated"] as! String
             let name = messageJson["name"] as! String
@@ -161,7 +201,9 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as! String
-            let msg = Message(messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType)
+            //let readInt = messageJson["isRead"] as! Int
+            let isRead = true;
+            let msg = Message(seq: Int(seq)!,messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType,isRead:isRead)
             messages.append(msg)
         }
         progressHUD.hide()

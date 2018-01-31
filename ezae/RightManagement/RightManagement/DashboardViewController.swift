@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SSCalendar
 class DashboardViewController:UIViewController{
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var topView: UIView!
@@ -40,38 +41,40 @@ class DashboardViewController:UIViewController{
     @IBAction func chatroomsAction(_ sender: Any) {
         self.tabBarController?.selectedIndex = 3
     }
+   
     
-    @IBAction func notificationAction(_ sender: Any) {
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGoToNotification = true
-        self.tabBarController?.selectedIndex = 4
-    }
-    @IBAction func achievementAction(_ sender: Any) {
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGotoAchivement = true
-        self.tabBarController?.selectedIndex = 4
+//    @IBAction func notificationAction(_ sender: Any) {
+//        let controller = self.tabBarController?.viewControllers![4]
+//        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+//        settingController.isGoToNotification = true
+//        self.tabBarController?.selectedIndex = 4
+//    }
+//    @IBAction func achievementAction(_ sender: Any) {
+//        let controller = self.tabBarController?.viewControllers![4]
+//        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+//        settingController.isGotoAchivement = true
+//        self.tabBarController?.selectedIndex = 4
+//    }
+    
+//    @IBAction func notesAction(_ sender: Any) {
+//        let controller = self.tabBarController?.viewControllers![4]
+//        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+//        settingController.isGoToNotes = true
+//        self.tabBarController?.selectedIndex = 4
+//    }
+   
+    
+
+    @IBAction func eventAction(_ sender: Any) {
+        getEvents()
     }
     
-    @IBAction func notesAction(_ sender: Any) {
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGoToNotes = true
-        self.tabBarController?.selectedIndex = 4
-    }
-    @IBAction func eventsAction(_ sender: Any) {
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGotoEvents = true
-        self.tabBarController?.selectedIndex = 4
-    }
-    @IBAction func profileAction(_ sender: Any) {
-        let controller = self.tabBarController?.viewControllers![4]
-        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-        settingController.isGoToProfile = true
-        self.tabBarController?.selectedIndex = 4
-    }
+//    @IBAction func profileAction(_ sender: Any) {
+//        let controller = self.tabBarController?.viewControllers![4]
+//        let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
+//        settingController.isGoToProfile = true
+//        self.tabBarController?.selectedIndex = 4
+//    }
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     var  progressHUD: ProgressHUD!
@@ -185,7 +188,13 @@ class DashboardViewController:UIViewController{
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
         handleNotificationData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
     private func handleNotificationData(){
         let isNotificationState = PreferencesUtil.sharedInstance.isNotificationState()
@@ -203,7 +212,69 @@ class DashboardViewController:UIViewController{
             }
         }
     }
+    fileprivate func getEvents(){
+        progressHUD = ProgressHUD(text: "Loading")
+        self.view.addSubview(progressHUD)
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_EVENTS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.progressHUD.hide()
+                        self.populateEvents(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
     
+    func populateEvents(response:[String: Any]){
+        let annualViewController = SSCalendarAnnualViewController(events: generateEvents(eventsJson: response))
+        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationController!.pushViewController(annualViewController!, animated: true)
+    }
+    
+    fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {
+        var events: [SSEvent] = []
+        let eventsArr = eventsJson["chatrooms"] as! [Any]
+        for i in 0..<eventsArr.count{
+            let eventJson = eventsArr[i] as! [String: Any]
+            let title = eventJson["title"] as! String
+            let detail = eventJson["detail"] as! String
+            let startDateStr = eventJson["from"] as! String
+            let endDateStr = eventJson["to"] as! String
+            let event = SSEvent()
+            let startDate = DateUtil.sharedInstance.stringToDate(dateStr: startDateStr)
+            event.startDate = startDate
+            event.startTime = DateUtil.sharedInstance.dateToString(date: startDate, format: DateUtil.time_format)
+            let endDate = DateUtil.sharedInstance.stringToDate(dateStr: endDateStr)
+            let dateDiffArr = DateUtil.sharedInstance.getDatesDiff(start: startDate, end: endDate)
+            event.name = title
+            event.desc = detail
+            events.append(event)
+            if(!dateDiffArr.isEmpty){
+                for date in dateDiffArr{
+                    let eventN = SSEvent()
+                    eventN.name = event.name
+                    eventN.desc = event.desc
+                    eventN.startTime = event.startTime
+                    eventN.startDate = date
+                    events.append(eventN)
+                }
+            }
+        }
+        return events
+    }
     func getDashboardCounts(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_COUNTS, args: args)

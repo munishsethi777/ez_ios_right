@@ -114,11 +114,10 @@
         <scene sceneID="BZn-3S-TI9">
             <objects>
                 <tabBarController id="krr-2b-sIX" customClass="MainTabController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gmx-i7-Rjz">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Gmx-i7-Rjz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="c9V-sT-C5B" kind="relationship" relationship="viewControllers" id="hTZ-kw-6yF"/>
@@ -660,7 +659,7 @@
             <objects>
                 <viewController title="MyModules - Working" id="CPt-M1-cx8" customClass="ModuleViewController" customModule="RightManagement" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GzF-10-MhS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1249,7 +1248,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0a8-OM-9gQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="E3X-AB-lfC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYh-LM-z7J">
@@ -1511,7 +1510,7 @@
                         <viewControllerLayoutGuide type="bottom" id="QAm-Nc-ZNW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PjI-35-z22">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKO-nf-iPk">
@@ -2493,16 +2492,17 @@
         <image name="userPlaceholder.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="5Bg-cG-Azy"/>
         <segue reference="k4C-v3-nNs"/>
         <segue reference="PPM-TZ-4LS"/>
         <segue reference="Zfg-DY-aDn"/>
         <segue reference="5NI-cA-kWE"/>
         <segue reference="AlW-TL-44Y"/>
-        <segue reference="GPJ-z3-CRz"/>
+        <segue reference="hTZ-kw-6yF"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="gN8-BW-sNN"/>
-        <segue reference="Iya-jk-OBm"/>
+        <segue reference="M1E-zR-ffA"/>
         <segue reference="6hm-Uk-eBQ"/>
-        <segue reference="AVW-CC-bvd"/>
+        <segue reference="tjH-Ox-yXu"/>
     </inferredMetricsTieBreakers>
 </document>

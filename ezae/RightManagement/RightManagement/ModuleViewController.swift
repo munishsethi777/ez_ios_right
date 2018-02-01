@@ -66,6 +66,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             var lpSeqStr = moduleJson["learningPlanSeq"] as? String
             var seqStr = moduleJson["seq"] as? String
             let badges = moduleJson["badges"] as? [Any]
+            let moduleDes = moduleJson["description"] as? String
             var lpSeq = 0
             if(lpSeqStr != nil){
                  lpSeq = Int(lpSeqStr!)!
@@ -124,6 +125,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell?.pointsLabel.isHidden = true
             cell?.scoreCaptionLabel.isHidden = true
             cell?.pointsCaptionLabel.isHidden = true
+        
             if(moduleType == "quiz" && progress == 100){
                 cell?.scoreLabel.text = score
                 cell?.pointsLabel.text = points
@@ -134,6 +136,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 if(rank > 0){
                     cell?.leaderboardLabel.text = rankStr
                 }
+               
             }else{
                 if(progress > 0){
                     cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
@@ -145,7 +148,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             var  x = 160
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:54,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:46,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 let imagePath = badgesJson["imagepath"] as! String

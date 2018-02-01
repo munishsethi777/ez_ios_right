@@ -23,9 +23,18 @@ class ChangePassworViewController: UIViewController{
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0
     
+    @IBOutlet weak var updateButton: UIBarButtonItem!
+    @IBAction func updatePasswordTapped(_ sender: Any) {
+        if(isValidate()){
+            exceuteChangePassword()
+        }else{
+            showAlert(message: "Confirm Password should match with new password", title: "Failed")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
+        updateButton.isEnabled = false
         confirmPassword.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         newPasswordText.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         oldPasswordText.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
@@ -52,9 +61,11 @@ class ChangePassworViewController: UIViewController{
             let oldPassword = oldPasswordText.text, !oldPassword.isEmpty
             else {
                 self.submitButton.isEnabled = false
+                self.updateButton.isEnabled = false
                 return
         }
         submitButton.isEnabled = true
+        updateButton.isEnabled = true
     }
     
     func exceuteChangePassword(){

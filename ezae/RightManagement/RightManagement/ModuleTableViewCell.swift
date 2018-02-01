@@ -19,5 +19,6 @@ class ModuleTableViewCell : UITableViewCell{
     @IBOutlet weak var moduleImageView: UIImageView!
     @IBOutlet weak var launchModuleImage: UIImageView!
     
+    @IBOutlet weak var moduleDesLabel: UILabel!
     @IBOutlet weak var moduleTitleLabel: UILabel!
 }

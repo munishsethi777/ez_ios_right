@@ -11,7 +11,6 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
    
     
     @IBOutlet weak var moduleTrainingView: UITableView!
-    var array =  ["Module1", "Module2", "Module3", "Module4","Module5","Module6","Module7","Module8","Module9"]
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
     var selectedModuleSeq: Int = 0

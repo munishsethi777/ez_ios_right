@@ -224,10 +224,15 @@ class DashboardViewController:UIViewController{
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+       self.scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "right_back_blue.jpg")!)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         handleNotificationData()
     }
+
+    
+   
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)

@@ -33,6 +33,7 @@
 		E66863742021DE900086C117 /* topview_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E66863732021DE900086C117 /* topview_back_blue.jpg */; };
 		E668637620232BA00086C117 /* backer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E668637520232B9E0086C117 /* backer.jpg */; };
 		E66863782023357D0086C117 /* backer_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E66863772023357B0086C117 /* backer_blue.jpg */; };
+		E668637A202337270086C117 /* backer_blue1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6686379202337250086C117 /* backer_blue1.jpg */; };
 		E66D5B291F8B7C220063EDEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B281F8B7C220063EDEC /* AppDelegate.swift */; };
 		E66D5B2B1F8B7C220063EDEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66D5B2A1F8B7C220063EDEC /* ViewController.swift */; };
 		E66D5B2E1F8B7C220063EDEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66D5B2C1F8B7C220063EDEC /* Main.storyboard */; };
@@ -150,6 +151,7 @@
 		E66863732021DE900086C117 /* topview_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = topview_back_blue.jpg; path = ../../../../../../Downloads/topview_back_blue.jpg; sourceTree = "<group>"; };
 		E668637520232B9E0086C117 /* backer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer.jpg; sourceTree = "<group>"; };
 		E66863772023357B0086C117 /* backer_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer_blue.jpg; sourceTree = "<group>"; };
+		E6686379202337250086C117 /* backer_blue1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer_blue1.jpg; sourceTree = "<group>"; };
 		E66D5B251F8B7C220063EDEC /* RightManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66D5B281F8B7C220063EDEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E66D5B2A1F8B7C220063EDEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				E668637520232B9E0086C117 /* backer.jpg */,
+				E6686379202337250086C117 /* backer_blue1.jpg */,
 				E66863772023357B0086C117 /* backer_blue.jpg */,
 				F610491C202031DA00DFC66E /* right_back_blue.jpg */,
 				E66863732021DE900086C117 /* topview_back_blue.jpg */,
@@ -608,6 +611,7 @@
 				E6471735201891C0009381E9 /* icons8-black-board_24.png in Resources */,
 				E6A30631202031C6006D1E77 /* more_ico_events_24.png in Resources */,
 				E613B45F20174DBD00CAD3F9 /* ico_notes_64.png in Resources */,
+				E668637A202337270086C117 /* backer_blue1.jpg in Resources */,
 				E66863742021DE900086C117 /* topview_back_blue.jpg in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E613B45A20174DBD00CAD3F9 /* ico_chatroom_64.png in Resources */,

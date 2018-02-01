@@ -27,7 +27,17 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getLearningPlans()
         progressHUD = ProgressHUD(text: "Loading")
+        
         self.view.addSubview(progressHUD)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let backgroundImage = UIImage(named: "backer_blue.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.lpTableView.backgroundView = imageView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

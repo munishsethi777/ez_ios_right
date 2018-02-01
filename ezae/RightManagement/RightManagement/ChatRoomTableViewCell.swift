@@ -11,4 +11,6 @@ class ChatRoomTableViewCell : UITableViewCell {
     
     @IBOutlet weak var chatroomImageView: UIImageView!
     @IBOutlet weak var chatroomTitle: UILabel!
+    @IBOutlet weak var fromDateLabel: UILabel!
+    
 }

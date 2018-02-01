@@ -78,6 +78,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cell?.percentLabel.text = String(Int(percent)) + "%"
         if(completedModulesCount == 0){
             continueLabelText = "Launch"
+            cell?.desLabel.isHidden = false
         }else if(completedModulesCount == totalModule){
             continueLabelText = "Review"
             let dateOfPlay = learningPlan["dateofplay"] as! String
@@ -90,6 +91,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             cell?.pointLabel.isHidden = false
             cell?.scoreValueLabel.isHidden = false
             cell?.pointValueLabel.isHidden = false
+            cell?.desLabel.isHidden = true
         }
         
         if (completedModulesCount == 0 || completedModulesCount < totalModule){
@@ -108,7 +110,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             var  x = 165
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:54,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:50,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 let imagePath = badgesJson["imagepath"] as! String

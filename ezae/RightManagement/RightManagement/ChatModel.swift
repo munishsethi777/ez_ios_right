@@ -11,9 +11,11 @@ class ChatModel{
     var seq:Int
     var title:String
     var imageUrl:String
-    init(seq:Int,title:String,imageUrl:String){
+    var fromDate:String
+    init(seq:Int,title:String,imageUrl:String,fromDate:String){
         self.seq = seq
         self.title = title
         self.imageUrl = imageUrl
+        self.fromDate = fromDate
     }
 }

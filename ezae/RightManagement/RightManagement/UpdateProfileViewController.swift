@@ -149,7 +149,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         let userDetail = json["userDetail"] as! [String : Any]
         customFields = userDetail["customFields"] as! [Any]
         let screenWidth = UIScreen.main.bounds.width
-        var y:CGFloat = 180
+        var y:CGFloat = 210
         let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
         label.text = "Email"
         label.font = UIFont(name:"Arial",size:12.00)

@@ -75,6 +75,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ChatRoomTableViewCell
         let chatroom = chatRoomModel[indexPath.row]
         cell?.chatroomTitle.text = chatroom.title
+        cell?.fromDateLabel.text = chatroom.fromDate
         if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
             cell?.chatroomImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
         }else {
@@ -135,8 +136,11 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let seq = messageJson["seq"] as! String
             let title = messageJson["title"] as! String
             let userImage = messageJson["imagepath"] as! String
+            let fromDate = messageJson["from"] as! String
+            let date = DateUtil.sharedInstance.stringToDate(dateStr: fromDate)
+            let dateStr = DateUtil.sharedInstance.dateToString(date: date, format: DateUtil.format)
             let userImageUrl = StringConstants.WEB_API_URL + userImage
-            let chatRoom = ChatModel.init(seq: Int(seq)!, title: title, imageUrl: userImageUrl)
+            let chatRoom = ChatModel.init(seq: Int(seq)!, title: title, imageUrl: userImageUrl,fromDate: dateStr)
             chatRoomModel.append(chatRoom)
         }
         progressHUD.hide()

@@ -1159,7 +1159,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LearningPlanTableViewCell" rowHeight="88" id="nTD-J0-nUj" customClass="LearningPlanTableViewCell" customModule="RightManagement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nTD-J0-nUj" id="boX-RR-4Eb">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nTD-J0-nUj" id="boX-RR-4Eb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -1291,6 +1291,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Learnings" image="icons8-learningplans-24.png" id="vXz-js-IQj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2830,7 +2831,7 @@ ElISVBJZEmESZBJpEnESdBKGEokSjgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABKQA
         <image name="userPlaceholder.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zDH-Qe-hHd"/>
+        <segue reference="WW2-TB-a6d"/>
         <segue reference="k4C-v3-nNs"/>
         <segue reference="PPM-TZ-4LS"/>
         <segue reference="Zfg-DY-aDn"/>
@@ -2839,7 +2840,7 @@ ElISVBJZEmESZBJpEnESdBKGEokSjgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABKQA
         <segue reference="hTZ-kw-6yF"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="gN8-BW-sNN"/>
-        <segue reference="I7L-vY-GYd"/>
+        <segue reference="PkI-zp-FOV"/>
         <segue reference="6hm-Uk-eBQ"/>
         <segue reference="tjH-Ox-yXu"/>
     </inferredMetricsTieBreakers>

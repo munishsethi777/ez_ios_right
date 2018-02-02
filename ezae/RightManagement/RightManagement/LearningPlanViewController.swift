@@ -35,7 +35,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backgroundImage = UIImage(named: "backer_blue.jpg")
+        let backgroundImage = UIImage(named: "backer.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.lpTableView.backgroundView = imageView
     }
@@ -161,7 +161,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
 
     func getLearningPlans(){

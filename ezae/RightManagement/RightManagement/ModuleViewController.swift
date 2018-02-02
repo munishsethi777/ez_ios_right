@@ -125,7 +125,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell?.pointsLabel.isHidden = true
             cell?.scoreCaptionLabel.isHidden = true
             cell?.pointsCaptionLabel.isHidden = true
-        
+            cell?.leaderboardLabel.isHidden = false
             if(moduleType == "quiz" && progress == 100){
                 cell?.scoreLabel.text = score
                 cell?.pointsLabel.text = points
@@ -144,6 +144,13 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     cell?.leaderboardLabel.isHidden = true
                 }
             }
+        //remove badgeImage with tag 5 before add badgeImage
+        let theSubviews: Array = (cell?.contentView.subviews)!
+        for view in theSubviews{
+            if(view.tag == 5){
+                view.removeFromSuperview()
+            }
+        }
         if(badges != nil){
             var  x = 160
             for var i in 0..<badges!.count{
@@ -151,7 +158,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 imageView.frame = CGRect(x:x,y:46,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
-                let imagePath = badgesJson["imagepath"] as! String
+                var imagePath = badgesJson["imagepath"] as! String
+                imagePath = imagePath.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                 if (self.cache.object(forKey: badgeSeq as AnyObject) != nil){
                     imageView.image = self.cache.object(forKey: badgeSeq as AnyObject) as? UIImage
                 }else{
@@ -164,8 +172,12 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                         }
                     }
                 }
+                //remove badge image before add
+                
+                
+                imageView.tag = 5
                 cell?.contentView.addSubview(imageView)
-                x = x + 15
+                x = x + 25
             }
         }
         
@@ -176,9 +188,9 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell?.baseView.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell?.baseView.layer.shadowOpacity = 0.5
         cell?.baseView.layer.shadowRadius = 4.0
-        
         return cell!
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }

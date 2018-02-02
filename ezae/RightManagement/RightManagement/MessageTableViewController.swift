@@ -68,7 +68,6 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             let cell = tableView.cellForRow(at: indexPath) as! MessageTableViewCell
             cell.messageDescription.font = UIFont.systemFont(ofSize: 12)
             cell.messageDescription.textColor = UIColor.darkGray
-            let seq = message.messageSeq
             markAsRead(row: indexPath.row)
         }
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
@@ -201,8 +200,8 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as! String
-            //let readInt = messageJson["isRead"] as! Int
-            let isRead = true;
+            let readInt = messageJson["isread"] as! String
+            let isRead = readInt == "1";
             let msg = Message(seq: Int(seq)!,messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType,isRead:isRead)
             messages.append(msg)
         }

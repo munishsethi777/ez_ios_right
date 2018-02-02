@@ -112,15 +112,20 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 buttonTitle = "In Progress"
             }
             if(progress == 100){
-                cell?.launchModuleImage.isHidden = false
+                cell?.launchModuleImageButton.isHidden = false
                 buttonTitle = "Review"
             }else{
-                cell?.launchModuleImage.isHidden = false
+                cell?.launchModuleImageButton.isHidden = false
         }
             cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
             cell?.lauchModuleButton.tag = seq
             cell?.lauchModuleButton.titleLabel?.tag = lpSeq
             cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        
+            cell?.launchModuleImageButton.tag = seq
+            cell?.launchModuleImageButton.titleLabel?.tag = lpSeq
+            cell?.launchModuleImageButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        
             cell?.scoreLabel.isHidden = true
             cell?.pointsLabel.isHidden = true
             cell?.scoreCaptionLabel.isHidden = true

@@ -134,10 +134,10 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             buttonTitle = "In Progress"
         }
         if(progress == 100){
-            cell.launchModuleImage.isHidden = false
+            cell.launchImageButton.isHidden = false
             buttonTitle = "Review"
         }else{
-            cell.launchModuleImage.isHidden = false
+            cell.launchImageButton.isHidden = false
         }
         let isLockSequence = lpJsonArr["lockSequence"] as! Bool;
         cell?.launchModuleButton.isEnabled = true
@@ -156,6 +156,11 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.launchModuleButton.tag = seq
         cell?.launchModuleButton.titleLabel?.tag = lpSeq
         cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        
+        cell?.launchImageButton.tag = seq
+        cell?.launchImageButton.titleLabel?.tag = lpSeq
+        cell?.launchImageButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+       
         cell?.scoreLabel.isHidden = true
         cell?.pointLabel.isHidden = true
         cell?.scoreCaptionLabel.isHidden = true

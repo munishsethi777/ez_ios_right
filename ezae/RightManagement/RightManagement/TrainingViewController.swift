@@ -134,7 +134,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             buttonTitle = "In Progress"
         }
         if(progress == 100){
-            cell.launchModuleImage.isHidden = true
+            cell.launchModuleImage.isHidden = false
             buttonTitle = "Review"
         }else{
             cell.launchModuleImage.isHidden = false
@@ -226,7 +226,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
         let headerView =  UIView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
         //headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
-        headerView.backgroundColor = UIColor.gray
+        headerView.backgroundColor = UIColor.lightGray
         let lpJsonArr = learningPlanJson//lpDetailArr[section] as! [String: Any]
         let percentCompleted = lpJsonArr["percentCompleted"] as! CGFloat
         let modulesJsonArr = lpJsonArr["modules"] as! [Any]

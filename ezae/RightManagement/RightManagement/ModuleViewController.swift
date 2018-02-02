@@ -112,7 +112,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 buttonTitle = "In Progress"
             }
             if(progress == 100){
-                cell?.launchModuleImage.isHidden = true
+                cell?.launchModuleImage.isHidden = false
                 buttonTitle = "Review"
             }else{
                 cell?.launchModuleImage.isHidden = false

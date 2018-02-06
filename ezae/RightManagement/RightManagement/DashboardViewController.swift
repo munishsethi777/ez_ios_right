@@ -243,13 +243,15 @@ class DashboardViewController:UIViewController{
             let data = PreferencesUtil.sharedInstance.getNotificationData()
             let entityType = data["entityType"]
             if(entityType == "module"){
-                self.tabBarController?.selectedIndex = 1
+                let moduleViewController = self.tabBarController?.viewControllers![2] as! ModuleViewController
+                moduleViewController.isLaunch = true
+                let launchModuleSeq = Int(data["entitySeq"]!)!
+                moduleViewController.selectedModuleSeq = launchModuleSeq
+                PreferencesUtil.sharedInstance.resetNotificationData()
+                self.tabBarController?.selectedIndex = 2
             }else{
                 PreferencesUtil.sharedInstance.resetNotificationData()
-                let controller = self.tabBarController?.viewControllers![4]
-                let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
-                settingController.isGotoAchivement = true
-                self.tabBarController?.selectedIndex = 4
+                self.performSegue(withIdentifier: "Achievements", sender: nil)
             }
         }
     }

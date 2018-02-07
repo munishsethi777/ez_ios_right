@@ -116,6 +116,12 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             cell?.moduleCountLabel.text = completedText
         }
         cell?.continueLabel.text = continueLabelText
+        let theSubviews: Array = (cell?.contentView.subviews)!
+        for view in theSubviews{
+            if(view.tag == 5){
+                view.removeFromSuperview()
+            }
+        }
         if(badges != nil){
             var  x = 165
             for var i in 0..<badges!.count{
@@ -136,6 +142,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
                         }
                     }
                 }
+                imageView.tag = 5
                 cell?.contentView.addSubview(imageView)
                 x = x + 25
             }

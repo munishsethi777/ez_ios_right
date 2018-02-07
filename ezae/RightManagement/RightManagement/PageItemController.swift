@@ -59,7 +59,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq();
         let questionTitle = questionJson["title"] as! String
         quesTitle.text = String(pageNo) + ". " + questionTitle
-        quesTitle.numberOfLines = 2
+        quesTitle.numberOfLines = 3
         
         questionType = questionJson["type"] as! String;
         options = questionJson["answers"] as! [Any];

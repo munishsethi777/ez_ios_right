@@ -106,7 +106,7 @@ class DashboardViewController:UIViewController{
         userImageView.layer.cornerRadius = userImageView.frame.size.width / 2;
         userImageView.clipsToBounds = true
         
-        notificationsView.layer.cornerRadius = 2
+        notificationsView.layer.cornerRadius = 12
         notificationsView.layer.borderWidth = 0.5
         notificationsView.layer.borderColor = UIColor.lightGray.cgColor
         notificationsView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -114,7 +114,7 @@ class DashboardViewController:UIViewController{
         notificationsView.layer.shadowOpacity = 0.5
         notificationsView.layer.shadowRadius = 4.0
         
-        messagesView.layer.cornerRadius = 2
+        messagesView.layer.cornerRadius = 12
         messagesView.layer.borderWidth = 0.5
         messagesView.layer.borderColor = UIColor.lightGray.cgColor
         messagesView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -122,7 +122,7 @@ class DashboardViewController:UIViewController{
         messagesView.layer.shadowOpacity = 0.5
         messagesView.layer.shadowRadius = 4.0
         
-        chatroomsView.layer.cornerRadius = 2
+        chatroomsView.layer.cornerRadius = 12
         chatroomsView.layer.borderWidth = 0.5
         chatroomsView.layer.borderColor = UIColor.lightGray.cgColor
         chatroomsView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -130,7 +130,7 @@ class DashboardViewController:UIViewController{
         chatroomsView.layer.shadowOpacity = 0.5
         chatroomsView.layer.shadowRadius = 4.0
         
-        updateProfileView.layer.cornerRadius = 2
+        updateProfileView.layer.cornerRadius = 12
         updateProfileView.layer.borderWidth = 0.5
         updateProfileView.layer.borderColor = UIColor.lightGray.cgColor
         updateProfileView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -138,7 +138,7 @@ class DashboardViewController:UIViewController{
         updateProfileView.layer.shadowOpacity = 0.5
         updateProfileView.layer.shadowRadius = 4.0
         
-        notesView.layer.cornerRadius = 2
+        notesView.layer.cornerRadius = 12
         notesView.layer.borderWidth = 0.5
         notesView.layer.borderColor = UIColor.lightGray.cgColor
         notesView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -146,7 +146,7 @@ class DashboardViewController:UIViewController{
         notesView.layer.shadowOpacity = 0.5
         notesView.layer.shadowRadius = 4.0
         
-        trainingsView.layer.cornerRadius = 2
+        trainingsView.layer.cornerRadius = 12
         trainingsView.layer.borderWidth = 0.5
         trainingsView.layer.borderColor = UIColor.lightGray.cgColor
         trainingsView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -154,7 +154,7 @@ class DashboardViewController:UIViewController{
         trainingsView.layer.shadowOpacity = 0.5
         trainingsView.layer.shadowRadius = 4.0
         
-        eventsView.layer.cornerRadius = 2
+        eventsView.layer.cornerRadius = 12
         eventsView.layer.borderWidth = 0.5
         eventsView.layer.borderColor = UIColor.lightGray.cgColor
         eventsView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -162,7 +162,7 @@ class DashboardViewController:UIViewController{
         eventsView.layer.shadowOpacity = 0.5
         eventsView.layer.shadowRadius = 4.0
         
-        achievementsView.layer.cornerRadius = 2
+        achievementsView.layer.cornerRadius = 12
         achievementsView.layer.borderWidth = 0.5
         achievementsView.layer.borderColor = UIColor.lightGray.cgColor
         achievementsView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -170,7 +170,7 @@ class DashboardViewController:UIViewController{
         achievementsView.layer.shadowOpacity = 0.5
         achievementsView.layer.shadowRadius = 4.0
         
-        changePasswordView.layer.cornerRadius = 2
+        changePasswordView.layer.cornerRadius = 12
         changePasswordView.layer.borderWidth = 0.5
         changePasswordView.layer.borderColor = UIColor.lightGray.cgColor
         changePasswordView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -178,7 +178,7 @@ class DashboardViewController:UIViewController{
         changePasswordView.layer.shadowOpacity = 0.5
         changePasswordView.layer.shadowRadius = 4.0
         
-        logoutView.layer.cornerRadius = 2
+        logoutView.layer.cornerRadius = 12
         logoutView.layer.borderWidth = 0.5
         logoutView.layer.borderColor = UIColor.lightGray.cgColor
         logoutView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -188,7 +188,7 @@ class DashboardViewController:UIViewController{
         
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = 880
-        self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
+        //self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
         getDashboardCounts()
@@ -225,7 +225,16 @@ class DashboardViewController:UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       self.scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backer.jpg")!)
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.scrollView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+        
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         handleNotificationData()

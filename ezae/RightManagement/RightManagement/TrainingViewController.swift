@@ -36,9 +36,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
        //progressHUD = ProgressHUD(text: "Loading")
         if #available(iOS 10.0, *) {
-            refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
-            trainingTableView.refreshControl = refreshControl
+            //refreshControl = UIRefreshControl()
+            //refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            //trainingTableView.refreshControl = refreshControl
         }
        //self.view.addSubview(progressHUD)
        //loadLearningPlanAndModule()
@@ -180,11 +180,18 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }else{
             cell?.leaderboardLabel.isHidden = true
         }
+        let theSubviews: Array = (cell?.contentView.subviews)!
+        for view in theSubviews{
+            if(view.tag == 5){
+                view.removeFromSuperview()
+            }
+        }
+        
         if(badges != nil){
-            var  x = 150
+            var  x = 165
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:43,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:55,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 let imagePath = badgesJson["imagepath"] as! String
@@ -200,6 +207,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                         }
                     }
                 }
+                imageView.tag = 5
                 cell?.contentView.addSubview(imageView)
                 x = x + 15
             }

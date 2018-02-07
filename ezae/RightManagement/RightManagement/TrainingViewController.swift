@@ -28,20 +28,20 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
-        super.viewDidLoad()
+       super.viewDidLoad()
        cache = NSCache()
        trainingTableView.delegate = self
        trainingTableView.dataSource = self
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-       progressHUD = ProgressHUD(text: "Loading")
+       //progressHUD = ProgressHUD(text: "Loading")
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             trainingTableView.refreshControl = refreshControl
         }
-        self.view.addSubview(progressHUD)
-       loadLearningPlanAndModule()
+       //self.view.addSubview(progressHUD)
+       //loadLearningPlanAndModule()
        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
         
     }
@@ -50,7 +50,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     func refreshView(refreshControl: UIRefreshControl) {
         cache = NSCache()
-        getLearningPlanAndModules()
+        //getLearningPlanAndModules()
     }
     
     func backAction(){
@@ -141,6 +141,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
         let isLockSequence = lpJsonArr["lockSequence"] as! Bool;
         cell?.launchModuleButton.isEnabled = true
+        cell.launchImageButton.isEnabled = true
         if(row > 0 && isLockSequence){
             let previousModuleJson = moduleJsonArr[row-1] as! [String: Any]
             let lastProgressStr = previousModuleJson["progress"] as? String
@@ -150,6 +151,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             }
             if(lastProgress < 100){
                 cell?.launchModuleButton.isEnabled = false
+                cell.launchImageButton.isEnabled = false
             }
         }
         cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)

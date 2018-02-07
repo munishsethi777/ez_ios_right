@@ -177,9 +177,6 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                         }
                     }
                 }
-                //remove badge image before add
-                
-                
                 imageView.tag = 5
                 cell?.contentView.addSubview(imageView)
                 x = x + 25

@@ -60,7 +60,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         let questionTitle = questionJson["title"] as! String
         quesTitle.text = String(pageNo) + ". " + questionTitle
         quesTitle.numberOfLines = 3
-        
         questionType = questionJson["type"] as! String;
         options = questionJson["answers"] as! [Any];
         seqOptions = options
@@ -356,8 +355,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         webView.contentMode = UIViewContentMode.scaleAspectFit
         view.addSubview(webView)
         let questionDetail = questionJson["detail"] as! String
-        var urlS = StringConstants.DOC_URL + questionDetail
-        urlS = urlS.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let urlS = StringConstants.DOC_URL + questionDetail
+        //urlS = urlS.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let url = URL(string: urlS)
         let request = URLRequest(url: url!)
         webView.loadRequest(request)

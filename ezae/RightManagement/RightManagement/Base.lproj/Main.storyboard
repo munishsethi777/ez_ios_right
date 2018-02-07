@@ -2441,7 +2441,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="ico_achievements_64.png"/>
                                         <connections>
-                                            <segue destination="H5H-DG-r1d" kind="show" id="6hm-Uk-eBQ"/>
+                                            <segue destination="H5H-DG-r1d" kind="show" identifier="Achievements" id="6hm-Uk-eBQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2788,5 +2788,6 @@ ElISVBJZEmESZBJpEnESdBKGEokSjgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABKQA
         <segue reference="PkI-zp-FOV"/>
         <segue reference="6hm-Uk-eBQ"/>
         <segue reference="AVW-CC-bvd"/>
+        <segue reference="26S-pN-GFy"/>
     </inferredMetricsTieBreakers>
 </document>

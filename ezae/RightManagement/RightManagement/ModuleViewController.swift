@@ -108,11 +108,14 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell?.pointsLabel.text = points
             cell?.scoreLabel.text = score
             var buttonTitle: String = "Launch"
+            cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
             if(progress > 0 && progress < 100){
-                buttonTitle = "In Progress"
+                buttonTitle = "Continue"
+                cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
             }
             if(progress == 100){
                 cell?.launchModuleImageButton.isHidden = false
+                cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
                 buttonTitle = "Review"
             }else{
                 cell?.launchModuleImageButton.isHidden = false

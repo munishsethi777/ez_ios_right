@@ -129,13 +129,16 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.pointLabel.text = points
         cell?.scoreLabel.text = score
         var buttonTitle: String = "Launch"
+        cell?.launchImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
         let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
         if((progress > 0 && progress < 100) || (progress < 100 && isLocalProgressExists)){
-            buttonTitle = "In Progress"
+            buttonTitle = "Continue"
+            cell?.launchImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
         }
         if(progress == 100){
             cell.launchImageButton.isHidden = false
             buttonTitle = "Review"
+            cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
         }else{
             cell.launchImageButton.isHidden = false
         }

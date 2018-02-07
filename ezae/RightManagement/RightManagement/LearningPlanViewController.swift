@@ -86,11 +86,14 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cell?.scoreValueLabel.isHidden = true
         cell?.pointValueLabel.isHidden = true
         cell?.percentLabel.text = String(Int(percent)) + "%"
+        cell?.launchPlanImageView.image = UIImage(named: "arrow_green.png")
         if(completedModulesCount == 0){
             continueLabelText = "Launch"
             cell?.desLabel.isHidden = false
+            cell?.launchPlanImageView.image = UIImage(named: "arrow_up.png")
         }else if(completedModulesCount == totalModule){
             continueLabelText = "Review"
+            cell?.launchPlanImageView.image = UIImage(named: "arrow_orange.png")
             let dateOfPlay = learningPlan["dateofplay"] as! String
             let date = DateUtil.sharedInstance.stringToDate(dateStr: dateOfPlay)
             cell?.percentLabel.text = DateUtil.sharedInstance.dateToString(date: date, format: DateUtil.format2)

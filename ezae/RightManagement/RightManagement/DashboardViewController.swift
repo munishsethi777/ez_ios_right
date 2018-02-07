@@ -99,6 +99,7 @@ class DashboardViewController:UIViewController{
     var  progressHUD: ProgressHUD!
     var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
+        setbackround()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         userImageView.layer.borderWidth = 3
@@ -188,6 +189,7 @@ class DashboardViewController:UIViewController{
         
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = 880
+        
         //self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
@@ -225,6 +227,11 @@ class DashboardViewController:UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        handleNotificationData()
+    }
+    
+    func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
         if let image = UIGraphicsGetImageFromCurrentImageContext(){
@@ -234,10 +241,6 @@ class DashboardViewController:UIViewController{
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
         }
-        
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        handleNotificationData()
     }
 
     

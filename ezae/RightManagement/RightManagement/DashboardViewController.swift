@@ -108,84 +108,65 @@ class DashboardViewController:UIViewController{
         userImageView.clipsToBounds = true
         
         notificationsView.layer.cornerRadius = 12
-        notificationsView.layer.borderWidth = 0.5
-        notificationsView.layer.borderColor = UIColor.lightGray.cgColor
-        notificationsView.layer.shadowColor = UIColor.lightGray.cgColor
-        notificationsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        notificationsView.layer.shadowOpacity = 0.5
-        notificationsView.layer.shadowRadius = 4.0
+        notificationsView.layer.shadowColor = UIColor.darkGray.cgColor
+        notificationsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        notificationsView.layer.shadowOpacity = 0.8
+        notificationsView.layer.shadowRadius = 6.0
         
         messagesView.layer.cornerRadius = 12
-        messagesView.layer.borderWidth = 0.5
-        messagesView.layer.borderColor = UIColor.lightGray.cgColor
-        messagesView.layer.shadowColor = UIColor.lightGray.cgColor
-        messagesView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        messagesView.layer.shadowOpacity = 0.5
-        messagesView.layer.shadowRadius = 4.0
+        messagesView.layer.shadowColor = UIColor.darkGray.cgColor
+        messagesView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        messagesView.layer.shadowOpacity = 0.8
+        messagesView.layer.shadowRadius = 6.0
         
         chatroomsView.layer.cornerRadius = 12
-        chatroomsView.layer.borderWidth = 0.5
-        chatroomsView.layer.borderColor = UIColor.lightGray.cgColor
-        chatroomsView.layer.shadowColor = UIColor.lightGray.cgColor
-        chatroomsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        chatroomsView.layer.shadowOpacity = 0.5
-        chatroomsView.layer.shadowRadius = 4.0
+        chatroomsView.layer.shadowColor = UIColor.darkGray.cgColor
+        chatroomsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        chatroomsView.layer.shadowOpacity = 0.8
+        chatroomsView.layer.shadowRadius = 6.0
         
         updateProfileView.layer.cornerRadius = 12
-        updateProfileView.layer.borderWidth = 0.5
-        updateProfileView.layer.borderColor = UIColor.lightGray.cgColor
-        updateProfileView.layer.shadowColor = UIColor.lightGray.cgColor
-        updateProfileView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        updateProfileView.layer.shadowOpacity = 0.5
-        updateProfileView.layer.shadowRadius = 4.0
+        updateProfileView.layer.shadowColor = UIColor.darkGray.cgColor
+        updateProfileView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        updateProfileView.layer.shadowOpacity = 0.8
+        updateProfileView.layer.shadowRadius = 6.0
         
         notesView.layer.cornerRadius = 12
-        notesView.layer.borderWidth = 0.5
-        notesView.layer.borderColor = UIColor.lightGray.cgColor
-        notesView.layer.shadowColor = UIColor.lightGray.cgColor
-        notesView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        notesView.layer.shadowOpacity = 0.5
-        notesView.layer.shadowRadius = 4.0
+        notesView.layer.shadowColor = UIColor.darkGray.cgColor
+        notesView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        notesView.layer.shadowOpacity = 0.8
+        notesView.layer.shadowRadius = 6.0
         
         trainingsView.layer.cornerRadius = 12
-        trainingsView.layer.borderWidth = 0.5
-        trainingsView.layer.borderColor = UIColor.lightGray.cgColor
-        trainingsView.layer.shadowColor = UIColor.lightGray.cgColor
-        trainingsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        trainingsView.layer.shadowOpacity = 0.5
-        trainingsView.layer.shadowRadius = 4.0
+        trainingsView.layer.shadowColor = UIColor.darkGray.cgColor
+        trainingsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        trainingsView.layer.shadowOpacity = 0.8
+        trainingsView.layer.shadowRadius = 6.0
+        
         
         eventsView.layer.cornerRadius = 12
-        eventsView.layer.borderWidth = 0.5
-        eventsView.layer.borderColor = UIColor.lightGray.cgColor
-        eventsView.layer.shadowColor = UIColor.lightGray.cgColor
-        eventsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        eventsView.layer.shadowOpacity = 0.5
-        eventsView.layer.shadowRadius = 4.0
+        eventsView.layer.shadowColor = UIColor.darkGray.cgColor
+        eventsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        eventsView.layer.shadowOpacity = 0.8
+        eventsView.layer.shadowRadius = 6.0
         
         achievementsView.layer.cornerRadius = 12
-        achievementsView.layer.borderWidth = 0.5
-        achievementsView.layer.borderColor = UIColor.lightGray.cgColor
-        achievementsView.layer.shadowColor = UIColor.lightGray.cgColor
-        achievementsView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        achievementsView.layer.shadowOpacity = 0.5
-        achievementsView.layer.shadowRadius = 4.0
+        achievementsView.layer.shadowColor = UIColor.darkGray.cgColor
+        achievementsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        achievementsView.layer.shadowOpacity = 0.8
+        achievementsView.layer.shadowRadius = 6.0
         
         changePasswordView.layer.cornerRadius = 12
-        changePasswordView.layer.borderWidth = 0.5
-        changePasswordView.layer.borderColor = UIColor.lightGray.cgColor
-        changePasswordView.layer.shadowColor = UIColor.lightGray.cgColor
-        changePasswordView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        changePasswordView.layer.shadowOpacity = 0.5
-        changePasswordView.layer.shadowRadius = 4.0
+        changePasswordView.layer.shadowColor = UIColor.darkGray.cgColor
+        changePasswordView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        changePasswordView.layer.shadowOpacity = 0.8
+        changePasswordView.layer.shadowRadius = 6.0
         
         logoutView.layer.cornerRadius = 12
-        logoutView.layer.borderWidth = 0.5
-        logoutView.layer.borderColor = UIColor.lightGray.cgColor
-        logoutView.layer.shadowColor = UIColor.lightGray.cgColor
-        logoutView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        logoutView.layer.shadowOpacity = 0.5
-        logoutView.layer.shadowRadius = 4.0
+        logoutView.layer.shadowColor = UIColor.darkGray.cgColor
+        logoutView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        logoutView.layer.shadowOpacity = 0.8
+        logoutView.layer.shadowRadius = 6.0
         
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = 880

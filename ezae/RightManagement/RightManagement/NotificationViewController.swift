@@ -22,6 +22,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setbackround()
         notificationsTableView.dataSource = self
         notificationsTableView.delegate = self
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
@@ -29,6 +30,17 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
         getNotifications()
+    }
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.notificationsTableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.notificationsCount

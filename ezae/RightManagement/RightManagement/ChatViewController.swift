@@ -22,6 +22,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad(){
         cache = NSCache()
         super.viewDidLoad()
+        setbackround()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         tableView.dataSource = self
@@ -35,7 +36,17 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
-    
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.tableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         cache = NSCache()
         getChatRooms()

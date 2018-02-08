@@ -64,6 +64,7 @@
 		E6878AB4202B1B4F00A6E3FA /* arrow_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AB1202B1B4F00A6E3FA /* arrow_green.png */; };
 		E6A30625201F2ADE006D1E77 /* userPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = E6A30624201F2ADD006D1E77 /* userPlaceholder.png */; };
 		E6AC96422015EDE0007D5637 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AC96412015EDE0007D5637 /* DashboardViewController.swift */; };
+		E6BFA672202C2399005EB4A1 /* ico_badge_white_50.png in Resources */ = {isa = PBXBuildFile; fileRef = E6BFA671202C2398005EB4A1 /* ico_badge_white_50.png */; };
 		F610491B201F2AC400DFC66E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F610491A201F2AC400DFC66E /* NotificationViewController.swift */; };
 		F610491D202031DA00DFC66E /* right_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F610491C202031DA00DFC66E /* right_back_blue.jpg */; };
 		F612B07420077FC80065C015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F612B07320077FC80065C015 /* UserNotifications.framework */; };
@@ -195,6 +196,7 @@
 		E6878AB1202B1B4F00A6E3FA /* arrow_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_green.png; sourceTree = "<group>"; };
 		E6A30624201F2ADD006D1E77 /* userPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userPlaceholder.png; sourceTree = "<group>"; };
 		E6AC96412015EDE0007D5637 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		E6BFA671202C2398005EB4A1 /* ico_badge_white_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_badge_white_50.png; sourceTree = "<group>"; };
 		E6CA01EB2004AF370023D67D /* RightManagement.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RightManagement.entitlements; sourceTree = "<group>"; };
 		F610491A201F2AC400DFC66E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		F610491C202031DA00DFC66E /* right_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right_back_blue.jpg; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		E6377CAA1FEE433700289F4E /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				E6BFA671202C2398005EB4A1 /* ico_badge_white_50.png */,
 				E6878A97202B02E300A6E3FA /* icons8-alarm-filled-100.png */,
 				E6878AA2202B048700A6E3FA /* icons8-chat-filled-100.png */,
 				E6878AA3202B048900A6E3FA /* icons8-collaboration-filled-100.png */,
@@ -635,6 +638,7 @@
 				E613B45E20174DBD00CAD3F9 /* ico_messages_64.png in Resources */,
 				E6878A96202AF6A900A6E3FA /* login_back_bw_lighter.jpg in Resources */,
 				E66D5B301F8B7C220063EDEC /* Assets.xcassets in Resources */,
+				E6BFA672202C2399005EB4A1 /* ico_badge_white_50.png in Resources */,
 				E647174120198A72009381E9 /* icons8-learningplans-24.png in Resources */,
 				E6A30625201F2ADE006D1E77 /* userPlaceholder.png in Resources */,
 				E613B45D20174DBD00CAD3F9 /* ico_achievements_64.png in Resources */,

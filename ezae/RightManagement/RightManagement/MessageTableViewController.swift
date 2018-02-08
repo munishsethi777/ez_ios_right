@@ -24,6 +24,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setbackround()
         cache  = NSCache()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -37,6 +38,17 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+    }
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.messageTableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     func refreshView(refreshControl: UIRefreshControl) {
         cache  = NSCache()

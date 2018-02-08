@@ -34,6 +34,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.view.addSubview(progressHUD)
         getMyAchievements()
         getBadges()
+        setbackround()
         //scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
@@ -41,30 +42,60 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
             scrollView.refreshControl = refreshControl
         }
         
-        pointsBackView.layer.cornerRadius = 8
-        pointsBackView.layer.borderWidth = 1
-        pointsBackView.layer.borderColor = UIColor.lightGray.cgColor
-        pointsBackView.layer.shadowColor = UIColor.lightGray.cgColor
-        pointsBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        pointsBackView.layer.shadowOpacity = 0.5
-        pointsBackView.layer.shadowRadius = 4.0
         
-        scoreBackView.layer.cornerRadius = 8
-        scoreBackView.layer.borderWidth = 1
-        scoreBackView.layer.borderColor = UIColor.lightGray.cgColor
-        scoreBackView.layer.shadowColor = UIColor.lightGray.cgColor
-        scoreBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        scoreBackView.layer.shadowOpacity = 0.5
-        scoreBackView.layer.shadowRadius = 4.0
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: self.pointsBackView.frame.size)
+        gradient.colors = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor]
+        let shape = CAShapeLayer()
+        shape.lineWidth = 4
+        shape.path = UIBezierPath(rect: self.pointsBackView.bounds).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradient.mask = shape
+        self.pointsBackView.layer.addSublayer(gradient)
         
-        rankBackView.layer.cornerRadius = 8
-        rankBackView.layer.borderWidth = 1
-        rankBackView.layer.borderColor = UIColor.lightGray.cgColor
-        rankBackView.layer.shadowColor = UIColor.lightGray.cgColor
-        rankBackView.layer.shadowOffset = CGSize(width: 1, height: 1)
-        rankBackView.layer.shadowOpacity = 0.5
-        rankBackView.layer.shadowRadius = 4.0
+        let gradient2 = CAGradientLayer()
+        gradient2.frame =  CGRect(origin: CGPoint.zero, size: self.scoreBackView.frame.size)
+        gradient2.colors = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor]
+        let shape2 = CAShapeLayer()
+        shape2.lineWidth = 4
+        shape2.path = UIBezierPath(rect: self.scoreBackView.bounds).cgPath
+        shape2.strokeColor = UIColor.black.cgColor
+        shape2.fillColor = UIColor.clear.cgColor
+        gradient2.mask = shape2
+        self.scoreBackView.layer.addSublayer(gradient2)
+        
+        let gradient3 = CAGradientLayer()
+        gradient3.frame =  CGRect(origin: CGPoint.zero, size: self.rankBackView.frame.size)
+        gradient3.colors = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor]
+        let shape3 = CAShapeLayer()
+        shape3.lineWidth = 4
+        shape3.path = UIBezierPath(rect: self.rankBackView.bounds).cgPath
+        shape3.strokeColor = UIColor.black.cgColor
+        shape3.fillColor = UIColor.clear.cgColor
+        gradient3.mask = shape3
+        self.rankBackView.layer.addSublayer(gradient3)
+        
+        //pointsBackView.layer.borderWidth = 2
+        //pointsBackView.layer.borderColor =  UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
+        
+        //scoreBackView.layer.borderWidth = 2
+        //scoreBackView.layer.borderColor = UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
+        
+        //rankBackView.layer.borderWidth = 2
+        //rankBackView.layer.borderColor = UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
 
+    }
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.scrollView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()

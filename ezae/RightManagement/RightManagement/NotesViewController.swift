@@ -17,6 +17,7 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     var  progressHUD: ProgressHUD!
     @IBOutlet weak var notesTableView: UITableView!
     override func viewDidLoad() {
+        setbackround()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         notesTableView.dataSource = self
@@ -30,6 +31,17 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+    }
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.notesTableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     
     func refreshView(refreshControl: UIRefreshControl) {

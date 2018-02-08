@@ -47,6 +47,7 @@ struct StringConstants {
     //Learning Plan Actions
     static let GET_LEARNING_PLAN = ACTION_API_URL + "LearningPlanAction.php?call=getLearningPlans&userSeq={0}&companySeq={1}"
     static let GET_LEARNING_PLAN_DETAIL = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&call=getLearningPlanDetails"
+    static let GET_LEARNING_PLAN_MODULES = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&learningPlanSeq={2}&call=getLearningPlanModules"
     
     //Badge Actions
     static let GET_ACHIEVEMENT_BADGES = ACTION_API_URL + "BadgeAction.php?call=myAchievementMyBadges&userSeq={0}&companyseq={1}"

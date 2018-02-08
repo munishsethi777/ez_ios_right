@@ -119,7 +119,10 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     private func goToNextPage(){
         if(isLastPage()){
             //self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
-             dismiss(animated: true, completion: nil)
+            //dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: { () -> Void in
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshController"), object: nil)
+            })
         }else{
             parentController.goNextPage(index:itemIndex+1)
         }

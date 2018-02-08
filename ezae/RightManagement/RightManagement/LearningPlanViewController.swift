@@ -13,10 +13,10 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     var loggedInUserSeq:Int!
     var loggedInCompanySeq:Int!
     var learningPlanArr:[Any]!
-    var selectedRowIndex:Int!
+    var selectedlearningPlanSeq:Int!
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var lpTableView: UITableView!
-    
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         cache = NSCache()
@@ -27,11 +27,19 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getLearningPlans()
         progressHUD = ProgressHUD(text: "Loading")
-        
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            lpTableView.refreshControl = refreshControl
+        }
         self.view.addSubview(progressHUD)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
+    }
+    func refreshView(control:UIRefreshControl){
+        cache = NSCache()
+        getLearningPlans()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -151,7 +159,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             }
         }
         let tap = UITapGestureRecognizer(target: self, action: #selector(launch))
-        cell?.launchPlanImageView.tag = indexPath.row
+        cell?.launchPlanImageView.tag = Int(id)!
         cell?.launchPlanImageView.addGestureRecognizer(tap)
         cell?.launchPlanImageView.isUserInteractionEnabled = true
         cell?.progressView.sendSubview(toBack: (cell?.bottomView)!)
@@ -166,7 +174,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     
     
     func launch(sender:UITapGestureRecognizer){
-        selectedRowIndex = sender.view?.tag
+        selectedlearningPlanSeq = sender.view?.tag
         self.performSegue(withIdentifier: "LearningPlanDetail", sender: nil)
     }
     
@@ -200,6 +208,9 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     
     func loadLearningPlans(response: [String: Any]){
         learningPlanArr = response["learningPlanDetails"] as! [Any]
+        if #available(iOS 10.0, *) {
+            self.refreshControl.endRefreshing()
+        }
         lpTableView.reloadData()
     }
     
@@ -211,7 +222,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? TrainingViewController {
-            secondController.learningPlanJson = learningPlanArr[selectedRowIndex] as! [String: Any]
+            secondController.selectedLpSeq = selectedlearningPlanSeq
         }
     }
 }

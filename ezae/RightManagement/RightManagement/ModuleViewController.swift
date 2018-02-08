@@ -30,6 +30,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         moduleTrainingView.dataSource = self
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        NotificationCenter.default.addObserver(self, selector: #selector(ModuleViewController.refreshController), name: NSNotification.Name(rawValue: "refreshController"), object: nil)
         getModules()
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
@@ -40,10 +41,14 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(progressHUD)
     }
     
-    
-    func refreshView(refreshControl: UIRefreshControl) {
+  
+    func refreshController(){
         cache = NSCache()
         getModules()
+    }
+    
+    func refreshView(refreshControl: UIRefreshControl) {
+        refreshController()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,7 +114,8 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell?.scoreLabel.text = score
             var buttonTitle: String = "Launch"
             cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
-            if(progress > 0 && progress < 100){
+            let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
+            if(isLocalProgressExists && progress < 100){
                 buttonTitle = "Continue"
                 cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
             }
@@ -119,7 +125,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 buttonTitle = "Review"
             }else{
                 cell?.launchModuleImageButton.isHidden = false
-        }
+            }
             cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
             cell?.lauchModuleButton.tag = seq
             cell?.lauchModuleButton.titleLabel?.tag = lpSeq

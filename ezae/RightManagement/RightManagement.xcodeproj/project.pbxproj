@@ -30,7 +30,6 @@
 		E647174220198A72009381E9 /* icons8-modules-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E647174020198A71009381E9 /* icons8-modules-24.png */; };
 		E66863712021B6210086C117 /* ico_changepass_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E668636F2021B61D0086C117 /* ico_changepass_40.png */; };
 		E66863722021B6210086C117 /* ico_logout_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E66863702021B61F0086C117 /* ico_logout_40.png */; };
-		E66863742021DE900086C117 /* topview_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E66863732021DE900086C117 /* topview_back_blue.jpg */; };
 		E668637620232BA00086C117 /* backer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E668637520232B9E0086C117 /* backer.jpg */; };
 		E66863782023357D0086C117 /* backer_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E66863772023357B0086C117 /* backer_blue.jpg */; };
 		E668637A202337270086C117 /* backer_blue1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6686379202337250086C117 /* backer_blue1.jpg */; };
@@ -68,6 +67,7 @@
 		F610491B201F2AC400DFC66E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F610491A201F2AC400DFC66E /* NotificationViewController.swift */; };
 		F610491D202031DA00DFC66E /* right_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F610491C202031DA00DFC66E /* right_back_blue.jpg */; };
 		F612B07420077FC80065C015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F612B07320077FC80065C015 /* UserNotifications.framework */; };
+		F6255090202C34AF00514518 /* topview_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F625508F202C34AF00514518 /* topview_back_blue.jpg */; };
 		F62F587F1FF37B2200EDFEF1 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */; };
 		F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */; };
 		F63EE2732000E71200403994 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63EE26F2000E71100403994 /* UpdateProfileViewController.swift */; };
@@ -160,7 +160,6 @@
 		E647174020198A71009381E9 /* icons8-modules-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-modules-24.png"; sourceTree = "<group>"; };
 		E668636F2021B61D0086C117 /* ico_changepass_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_changepass_40.png; sourceTree = "<group>"; };
 		E66863702021B61F0086C117 /* ico_logout_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_logout_40.png; sourceTree = "<group>"; };
-		E66863732021DE900086C117 /* topview_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = topview_back_blue.jpg; path = ../../../../../../Downloads/topview_back_blue.jpg; sourceTree = "<group>"; };
 		E668637520232B9E0086C117 /* backer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer.jpg; sourceTree = "<group>"; };
 		E66863772023357B0086C117 /* backer_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer_blue.jpg; sourceTree = "<group>"; };
 		E6686379202337250086C117 /* backer_blue1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backer_blue1.jpg; sourceTree = "<group>"; };
@@ -201,6 +200,7 @@
 		F610491A201F2AC400DFC66E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		F610491C202031DA00DFC66E /* right_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right_back_blue.jpg; sourceTree = "<group>"; };
 		F612B07320077FC80065C015 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		F625508F202C34AF00514518 /* topview_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topview_back_blue.jpg; sourceTree = "<group>"; };
 		F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		F63982201FBB0B9200DA61B1 /* right.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = right.xcdatamodel; sourceTree = "<group>"; };
 		F63EE26F2000E71100403994 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
@@ -489,6 +489,7 @@
 		F692B7091FDFD42100AD8745 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F625508F202C34AF00514518 /* topview_back_blue.jpg */,
 				E6878A91202AEBC300A6E3FA /* login_back_colored.jpg */,
 				E6878A93202AEC7600A6E3FA /* login_back_bw_light.jpg */,
 				E6878A95202AF6A700A6E3FA /* login_back_bw_lighter.jpg */,
@@ -496,7 +497,6 @@
 				E6686379202337250086C117 /* backer_blue1.jpg */,
 				E66863772023357B0086C117 /* backer_blue.jpg */,
 				F610491C202031DA00DFC66E /* right_back_blue.jpg */,
-				E66863732021DE900086C117 /* topview_back_blue.jpg */,
 				E6A30624201F2ADD006D1E77 /* userPlaceholder.png */,
 				E6377CAA1FEE433700289F4E /* icons */,
 				E6821D5D1FEA6F380001E7C9 /* login_logo.png */,
@@ -655,7 +655,7 @@
 				E668637A202337270086C117 /* backer_blue1.jpg in Resources */,
 				E6878AB2202B1B4F00A6E3FA /* arrow_orange.png in Resources */,
 				E6878AB3202B1B4F00A6E3FA /* arrow_up.png in Resources */,
-				E66863742021DE900086C117 /* topview_back_blue.jpg in Resources */,
+				F6255090202C34AF00514518 /* topview_back_blue.jpg in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E6878A99202B02E400A6E3FA /* icons8-alarm-filled-100.png in Resources */,
 				E6878AAB202B048D00A6E3FA /* icons8-alarm-filled-100.png in Resources */,

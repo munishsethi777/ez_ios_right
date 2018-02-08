@@ -37,6 +37,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             moduleTrainingView.refreshControl = refreshControl
         }
+        setbackround()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -57,6 +58,18 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.moduleTrainingView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,12 +104,16 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             }
             if (self.cache.object(forKey: seqStr as AnyObject) != nil){
                 cell?.moduleImageView?.image = self.cache.object(forKey: seqStr as AnyObject) as? UIImage
+                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                cell?.moduleImageView.clipsToBounds = true
             }else {
                 moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
                 if let url = NSURL(string: moduleImageUrl!) {
                     if let data = NSData(contentsOf: url as URL) {
                         let img = UIImage(data: data as Data)
                         cell?.moduleImageView.image = UIImage(data: data as Data)
+                        cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                        cell?.moduleImageView.clipsToBounds = true
                         self.cache.setObject(img!, forKey: seqStr as AnyObject)
                     }
                 }
@@ -115,12 +132,15 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             var buttonTitle: String = "Launch"
             cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
             let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 51/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1).cgColor]
             if(isLocalProgressExists && progress < 100){
                 buttonTitle = "Continue"
+                cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 38/255.0, green: 160/255.0, blue: 133/255.0, alpha: 1).cgColor]
                 cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
             }
             if(progress == 100){
                 cell?.launchModuleImageButton.isHidden = false
+                cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 243/255.0, green: 157/255.0, blue: 46/255.0, alpha: 1).cgColor]
                 cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
                 buttonTitle = "Review"
             }else{
@@ -169,7 +189,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             var  x = 160
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:46,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:55,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 var imagePath = badgesJson["imagepath"] as! String
@@ -199,12 +219,11 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         cell?.baseView.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell?.baseView.layer.shadowOpacity = 0.5
         cell?.baseView.layer.shadowRadius = 4.0
+        cell?.baseView.commonInit()
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
+   
     func getModules(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MODULES, args: args)

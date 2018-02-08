@@ -53,8 +53,6 @@
 		E6878AA7202B048D00A6E3FA /* icons8-profile-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878A9D202B047D00A6E3FA /* icons8-profile-filled-100.png */; };
 		E6878AA8202B048D00A6E3FA /* icons8-shutdown-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878A9E202B047F00A6E3FA /* icons8-shutdown-filled-100.png */; };
 		E6878AA9202B048D00A6E3FA /* icons8-calendar-1-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878A9F202B048100A6E3FA /* icons8-calendar-1-filled-100.png */; };
-		E6878AAA202B048D00A6E3FA /* icons8-e-learning-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AA0202B048300A6E3FA /* icons8-e-learning-100.png */; };
-		E6878AAB202B048D00A6E3FA /* icons8-alarm-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AA1202B048500A6E3FA /* icons8-alarm-filled-100.png */; };
 		E6878AAC202B048D00A6E3FA /* icons8-chat-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AA2202B048700A6E3FA /* icons8-chat-filled-100.png */; };
 		E6878AAD202B048D00A6E3FA /* icons8-collaboration-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AA3202B048900A6E3FA /* icons8-collaboration-filled-100.png */; };
 		E6878AAE202B048D00A6E3FA /* icons8-trophy-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E6878AA4202B048B00A6E3FA /* icons8-trophy-filled-100.png */; };
@@ -68,6 +66,7 @@
 		F610491D202031DA00DFC66E /* right_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F610491C202031DA00DFC66E /* right_back_blue.jpg */; };
 		F612B07420077FC80065C015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F612B07320077FC80065C015 /* UserNotifications.framework */; };
 		F6255090202C34AF00514518 /* topview_back_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F625508F202C34AF00514518 /* topview_back_blue.jpg */; };
+		F6255092202C583100514518 /* bottonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6255091202C583100514518 /* bottonView.swift */; };
 		F62F587F1FF37B2200EDFEF1 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */; };
 		F63982211FBB0B9200DA61B1 /* right.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */; };
 		F63EE2732000E71200403994 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63EE26F2000E71100403994 /* UpdateProfileViewController.swift */; };
@@ -185,8 +184,6 @@
 		E6878A9D202B047D00A6E3FA /* icons8-profile-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-profile-filled-100.png"; sourceTree = "<group>"; };
 		E6878A9E202B047F00A6E3FA /* icons8-shutdown-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-shutdown-filled-100.png"; sourceTree = "<group>"; };
 		E6878A9F202B048100A6E3FA /* icons8-calendar-1-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-calendar-1-filled-100.png"; sourceTree = "<group>"; };
-		E6878AA0202B048300A6E3FA /* icons8-e-learning-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-e-learning-100.png"; path = "../../../../../../../Downloads/icons8-e-learning-100.png"; sourceTree = "<group>"; };
-		E6878AA1202B048500A6E3FA /* icons8-alarm-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-alarm-filled-100.png"; path = "../../../../../../../Downloads/icons8-alarm-filled-100.png"; sourceTree = "<group>"; };
 		E6878AA2202B048700A6E3FA /* icons8-chat-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-chat-filled-100.png"; sourceTree = "<group>"; };
 		E6878AA3202B048900A6E3FA /* icons8-collaboration-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-collaboration-filled-100.png"; sourceTree = "<group>"; };
 		E6878AA4202B048B00A6E3FA /* icons8-trophy-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-trophy-filled-100.png"; sourceTree = "<group>"; };
@@ -201,6 +198,7 @@
 		F610491C202031DA00DFC66E /* right_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = right_back_blue.jpg; sourceTree = "<group>"; };
 		F612B07320077FC80065C015 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F625508F202C34AF00514518 /* topview_back_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = topview_back_blue.jpg; sourceTree = "<group>"; };
+		F6255091202C583100514518 /* bottonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottonView.swift; sourceTree = "<group>"; };
 		F62F587E1FF37B2200EDFEF1 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		F63982201FBB0B9200DA61B1 /* right.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = right.xcdatamodel; sourceTree = "<group>"; };
 		F63EE26F2000E71100403994 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
@@ -302,9 +300,7 @@
 				E6878AA2202B048700A6E3FA /* icons8-chat-filled-100.png */,
 				E6878AA3202B048900A6E3FA /* icons8-collaboration-filled-100.png */,
 				E6878A98202B02E300A6E3FA /* icons8-e-learning-100.png */,
-				E6878AA1202B048500A6E3FA /* icons8-alarm-filled-100.png */,
 				E6878A9F202B048100A6E3FA /* icons8-calendar-1-filled-100.png */,
-				E6878AA0202B048300A6E3FA /* icons8-e-learning-100.png */,
 				E6878A9C202B047B00A6E3FA /* icons8-note-filled-100.png */,
 				E6878A9B202B047800A6E3FA /* icons8-password-filled-100.png */,
 				E6878A9D202B047D00A6E3FA /* icons8-profile-filled-100.png */,
@@ -417,6 +413,7 @@
 				F6ED788720175310006D931D /* LearningPlanViewController.swift */,
 				F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */,
 				F610491A201F2AC400DFC66E /* NotificationViewController.swift */,
+				F6255091202C583100514518 /* bottonView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -633,7 +630,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6471734201891C0009381E9 /* icons8-chat_24.png in Resources */,
-				E6878AAA202B048D00A6E3FA /* icons8-e-learning-100.png in Resources */,
 				E6878AA8202B048D00A6E3FA /* icons8-shutdown-filled-100.png in Resources */,
 				E613B45E20174DBD00CAD3F9 /* ico_messages_64.png in Resources */,
 				E6878A96202AF6A900A6E3FA /* login_back_bw_lighter.jpg in Resources */,
@@ -658,7 +654,6 @@
 				F6255090202C34AF00514518 /* topview_back_blue.jpg in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E6878A99202B02E400A6E3FA /* icons8-alarm-filled-100.png in Resources */,
-				E6878AAB202B048D00A6E3FA /* icons8-alarm-filled-100.png in Resources */,
 				E613B45A20174DBD00CAD3F9 /* ico_chatroom_64.png in Resources */,
 				E6878A9A202B02E400A6E3FA /* icons8-e-learning-100.png in Resources */,
 				E66863712021B6210086C117 /* ico_changepass_40.png in Resources */,
@@ -768,6 +763,7 @@
 				F6F078271FFE0A6700120DA7 /* ChatRoomTableViewCell.swift in Sources */,
 				F6F078231FFDF17600120DA7 /* ChatViewController.swift in Sources */,
 				F6B63D901FEF895B00886264 /* NotesViewController.swift in Sources */,
+				F6255092202C583100514518 /* bottonView.swift in Sources */,
 				F64A98671FD016AD001858DE /* UICircularProgressRingView.swift in Sources */,
 				F64A98691FD016AD001858DE /* UICircularProgressRingLayer.swift in Sources */,
 				F6ED788820175310006D931D /* LearningPlanViewController.swift in Sources */,

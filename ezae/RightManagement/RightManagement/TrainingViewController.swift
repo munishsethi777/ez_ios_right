@@ -33,6 +33,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
        cache = NSCache()
        trainingTableView.delegate = self
        trainingTableView.dataSource = self
+       setbackround()
        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
          NotificationCenter.default.addObserver(self, selector: #selector(TrainingViewController.refreshController), name: NSNotification.Name(rawValue: "refreshController"), object: nil)
@@ -53,6 +54,18 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         totalModuleCount = 0
         headerCount = 0
         getLearningPlanAndModules()
+    }
+    
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.trainingTableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     
     func refreshView(refreshControl: UIRefreshControl) {
@@ -111,12 +124,16 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         
         if (self.cache.object(forKey: moduleSeq as AnyObject) != nil){
             cell.moduleImageView?.image = self.cache.object(forKey: moduleSeq as AnyObject) as? UIImage
+            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+            cell?.moduleImageView.clipsToBounds = true
         }else {
             moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
             if let url = NSURL(string: moduleImageUrl!) {
                 if let data = NSData(contentsOf: url as URL) {
                     let img = UIImage(data: data as Data)
                     cell?.moduleImageView.image = img
+                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                    cell?.moduleImageView.clipsToBounds = true
                     self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
                 }
             }
@@ -134,14 +151,17 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.scoreLabel.text = score
         var buttonTitle: String = "Launch"
         cell?.launchImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
+         cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 51/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1).cgColor]
         let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
         if(progress < 100 && isLocalProgressExists){
             buttonTitle = "Continue"
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 38/255.0, green: 160/255.0, blue: 133/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
         }
         if(progress == 100){
             cell.launchImageButton.isHidden = false
             buttonTitle = "Review"
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 243/255.0, green: 157/255.0, blue: 46/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
         }else{
             cell.launchImageButton.isHidden = false
@@ -226,6 +246,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.baseView.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell?.baseView.layer.shadowOpacity = 0.5
         cell?.baseView.layer.shadowRadius = 4.0
+        cell?.baseView.commonInit()
         return cell!
     }
     

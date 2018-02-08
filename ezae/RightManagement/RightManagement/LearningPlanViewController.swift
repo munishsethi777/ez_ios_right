@@ -23,6 +23,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         learningPlanArr = []
         lpTableView.dataSource  = self
         lpTableView.delegate = self
+        setbackround()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         getLearningPlans()
@@ -41,16 +42,22 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cache = NSCache()
         getLearningPlans()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let backgroundImage = UIImage(named: "backer.jpg")
-        let imageView = UIImageView(image: backgroundImage)
-        self.lpTableView.backgroundView = imageView
+   
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.lpTableView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return learningPlanArr.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "LearningPlanTableViewCell"
@@ -63,6 +70,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         let badges = learningPlan["badges"] as? [Any]
         let moduleArr = learningPlan["modules"] as! [Any]
         let moduleJson = moduleArr[0] as! [String: Any]
+        var colorArr:[UIColor] = []
         var continueLabelText = "Continue"
         var moduleImageUrl = moduleJson["imagepath"] as? String
         if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
@@ -79,12 +87,16 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         }
         if (self.cache.object(forKey: id as AnyObject) != nil){
             cell?.lpImageView?.image = self.cache.object(forKey: id as AnyObject) as? UIImage
+            cell?.lpImageView.layer.cornerRadius = (cell?.lpImageView.frame.height)! / 2
+            cell?.lpImageView.clipsToBounds = true
         }else {
             moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
             if let url = NSURL(string: moduleImageUrl!) {
                 if let data = NSData(contentsOf: url as URL) {
                     let img = UIImage(data: data as Data)
                     cell?.lpImageView.image = UIImage(data: data as Data)
+                    cell?.lpImageView.layer.cornerRadius = (cell?.lpImageView.frame.height)! / 2
+                    cell?.lpImageView.clipsToBounds = true
                     self.cache.setObject(img!, forKey: id as AnyObject)
                 }
             }
@@ -95,12 +107,15 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cell?.pointValueLabel.isHidden = true
         cell?.percentLabel.text = String(Int(percent)) + "%"
         cell?.launchPlanImageView.image = UIImage(named: "arrow_green.png")
+        cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 38/255.0, green: 160/255.0, blue: 133/255.0, alpha: 1).cgColor]
         if(completedModulesCount == 0){
+            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 51/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1).cgColor]
             continueLabelText = "Launch"
             cell?.desLabel.isHidden = false
             cell?.launchPlanImageView.image = UIImage(named: "arrow_up.png")
         }else if(completedModulesCount == totalModule){
             continueLabelText = "Review"
+            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 243/255.0, green: 157/255.0, blue: 46/255.0, alpha: 1).cgColor]
             cell?.launchPlanImageView.image = UIImage(named: "arrow_orange.png")
             let dateOfPlay = learningPlan["dateofplay"] as! String
             let date = DateUtil.sharedInstance.stringToDate(dateStr: dateOfPlay)
@@ -137,7 +152,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             var  x = 165
             for var i in 0..<badges!.count{
                 let imageView = UIImageView.init()
-                imageView.frame = CGRect(x:x,y:50,width:22,height:22)
+                imageView.frame = CGRect(x:x,y:55,width:22,height:22)
                 let badgesJson = badges![i] as! [String: Any]
                 let badgeSeq = badgesJson["seq"] as! String
                 let imagePath = badgesJson["imagepath"] as! String
@@ -169,6 +184,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell?.bottomView.layer.shadowOpacity = 0.5
         cell?.bottomView.layer.shadowRadius = 4.0
+        cell?.bottomView.commonInit()
         return cell!
     }
     

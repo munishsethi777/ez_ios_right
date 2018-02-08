@@ -11,7 +11,8 @@ import UIKit
 class LearningPlanTableViewCell: UITableViewCell{
     
     
-    @IBOutlet weak var bottomView: UIView!
+    
+    @IBOutlet weak var bottomView: bottomView!
     @IBOutlet weak var continueLabel: UILabel!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var percentLabel: UILabel!
@@ -26,4 +27,7 @@ class LearningPlanTableViewCell: UITableViewCell{
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var moduleCountLabel: UILabel!
+    
+    
+    
 }

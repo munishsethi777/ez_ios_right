@@ -42,7 +42,6 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
             scrollView.refreshControl = refreshControl
         }
         
-        
         let gradient = CAGradientLayer()
         gradient.frame =  CGRect(origin: CGPoint.zero, size: self.pointsBackView.frame.size)
         gradient.colors = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor]

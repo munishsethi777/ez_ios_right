@@ -15,7 +15,8 @@ class TrainingTableViewCell: UITableViewCell {
    
     @IBOutlet weak var launchImageButton: UIButton!
     
-    @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var baseView: bottomView!
+    
     @IBOutlet weak var pointsCaptionLabel: UILabel!
     @IBOutlet weak var scoreCaptionLabel: UILabel!
     @IBOutlet weak var leaderboardLabel: UILabel!

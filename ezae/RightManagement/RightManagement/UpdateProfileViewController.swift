@@ -25,10 +25,21 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         getUserFields()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UpdateProfileViewController.tapGesture(gesture:)))
-        //userImageView.addGestureRecognizer(tapGesture)
         userImageView.isUserInteractionEnabled = true
         picker?.delegate = self
+        setbackround()
+    }
+    
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     func tapGesture(gesture: UIGestureRecognizer) {
         let alert:UIAlertController = UIAlertController(title: "Profile Picture Options", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -150,15 +161,20 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         customFields = userDetail["customFields"] as! [Any]
         let screenWidth = UIScreen.main.bounds.width
         var y:CGFloat = 210
-        let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
+        
+        
+        let opaView = UIView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+        opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)
+        opaView.layer.borderWidth = 1
+        opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
+        
+        let label = UILabel(frame: CGRect(x:10,y:8,width:opaView.bounds.width - 20,height:20))
         label.text = "Email"
-        label.font = UIFont(name:"Arial",size:12.00)
-        mainScrollView.addSubview(label)
-        let textField = UITextField(frame: CGRect(x:110,y:y + 10,width:screenWidth - 120,height:30))
+        label.font = UIFont(name:"Arial",size:14.00)
+        let textField = UITextField(frame: CGRect(x:10,y:30,width:opaView.bounds.width - 20,height:30))
         textField.font = UIFont(name:"Arial",size:12.00)
         textField.borderStyle = UITextBorderStyle.roundedRect
         textField.text = userDetail["emailid"] as? String
-        mainScrollView.addSubview(textField)
         let userImageName = userDetail["userimage"] as? String
         if(userImageName != nil){
             let userImageUrl = StringConstants.USER_IMAGE_URL + userImageName!
@@ -169,16 +185,24 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
                 }
             }
         }
-        y = y + 50
+        opaView.addSubview(label)
+        opaView.addSubview(textField)
+        mainScrollView.addSubview(opaView);
+        
+        y = y + 80
         for customField in customFields {
             let fieldJson = customField as! [String:Any]
             if(fieldJson["fieldType"] as! String != "Image"){
-                let label = UILabel(frame: CGRect(x:10,y:y,width:100,height:50))
+                let opaView = UIView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+                opaView.layer.borderWidth = 1
+                opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
+                opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)
+                let label = UILabel(frame: CGRect(x:10,y:8,width:opaView.bounds.width - 20,height:20))
                 label.text = fieldJson["fieldTitle"] as! String
-                label.font = UIFont(name:"Arial",size:12.00)
+                label.font = UIFont(name:"Arial",size:14.00)
                 label.numberOfLines = 2
-                mainScrollView.addSubview(label)
-                let textField = UITextField(frame: CGRect(x:110,y:y + 10,width:screenWidth - 120,height:30))
+                opaView.addSubview(label)
+                let textField = UITextField(frame: CGRect(x:10,y:30,width:opaView.bounds.width - 20,height:30))
                 textField.font = UIFont(name:"Arial",size:12.00)
                 textField.borderStyle = UITextBorderStyle.roundedRect
                 textField.text = fieldJson["fieldValue"] as? String
@@ -188,9 +212,9 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
                 }else if(fieldJson["fieldType"] as! String == "Date"){
                     textField.addTarget(self, action: #selector(editingChanged), for: .editingDidBegin)
                 }
-                mainScrollView.addSubview(textField)
-                
-                y = y + 50
+                opaView.addSubview(textField)
+                mainScrollView.addSubview(opaView)
+                y = y + 80
             }
         }
         progressHUD.hide()

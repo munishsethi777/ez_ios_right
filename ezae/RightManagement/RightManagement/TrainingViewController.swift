@@ -151,17 +151,17 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         cell?.scoreLabel.text = score
         var buttonTitle: String = "Launch"
         cell?.launchImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
-         cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 51/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1).cgColor]
+        cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1).cgColor]
         let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
         if(progress < 100 && isLocalProgressExists){
             buttonTitle = "Continue"
-            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 38/255.0, green: 160/255.0, blue: 133/255.0, alpha: 1).cgColor]
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
         }
         if(progress == 100){
             cell.launchImageButton.isHidden = false
             buttonTitle = "Review"
-            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 243/255.0, green: 157/255.0, blue: 46/255.0, alpha: 1).cgColor]
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
         }else{
             cell.launchImageButton.isHidden = false

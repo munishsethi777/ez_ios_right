@@ -109,18 +109,21 @@ class DashboardViewController:UIViewController{
         
         notificationsView.layer.cornerRadius = 12
         notificationsView.layer.shadowColor = UIColor.darkGray.cgColor
+        notificationsView.backgroundColor = UIColor(red: 171/255, green: 64/255, blue: 75/255, alpha: 1)
         notificationsView.layer.shadowOffset = CGSize(width: 2, height: 2)
         notificationsView.layer.shadowOpacity = 0.8
         notificationsView.layer.shadowRadius = 6.0
         
         messagesView.layer.cornerRadius = 12
         messagesView.layer.shadowColor = UIColor.darkGray.cgColor
+        messagesView.backgroundColor = UIColor(red: 231/255, green: 124/255, blue: 34/255, alpha: 1)
         messagesView.layer.shadowOffset = CGSize(width: 2, height: 2)
         messagesView.layer.shadowOpacity = 0.8
         messagesView.layer.shadowRadius = 6.0
         
         chatroomsView.layer.cornerRadius = 12
         chatroomsView.layer.shadowColor = UIColor.darkGray.cgColor
+        chatroomsView.backgroundColor = UIColor(red: 40/255, green: 42/255, blue: 50/255, alpha: 1)
         chatroomsView.layer.shadowOffset = CGSize(width: 2, height: 2)
         chatroomsView.layer.shadowOpacity = 0.8
         chatroomsView.layer.shadowRadius = 6.0
@@ -133,12 +136,14 @@ class DashboardViewController:UIViewController{
         
         notesView.layer.cornerRadius = 12
         notesView.layer.shadowColor = UIColor.darkGray.cgColor
+        notesView.backgroundColor = UIColor(red: 99/255, green: 144/255, blue: 198/255, alpha: 1)
         notesView.layer.shadowOffset = CGSize(width: 2, height: 2)
         notesView.layer.shadowOpacity = 0.8
         notesView.layer.shadowRadius = 6.0
         
         trainingsView.layer.cornerRadius = 12
         trainingsView.layer.shadowColor = UIColor.darkGray.cgColor
+        trainingsView.backgroundColor = UIColor(red: 110/255, green: 143/255, blue: 130/255, alpha: 1)
         trainingsView.layer.shadowOffset = CGSize(width: 2, height: 2)
         trainingsView.layer.shadowOpacity = 0.8
         trainingsView.layer.shadowRadius = 6.0
@@ -147,12 +152,14 @@ class DashboardViewController:UIViewController{
         eventsView.layer.cornerRadius = 12
         eventsView.layer.shadowColor = UIColor.darkGray.cgColor
         eventsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        eventsView.backgroundColor = UIColor(red: 103/255, green: 105/255, blue: 111/255, alpha: 1)
         eventsView.layer.shadowOpacity = 0.8
         eventsView.layer.shadowRadius = 6.0
         
         achievementsView.layer.cornerRadius = 12
         achievementsView.layer.shadowColor = UIColor.darkGray.cgColor
         achievementsView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        achievementsView.backgroundColor = UIColor(red: 70/255, green: 110/255, blue: 165/255, alpha: 1)
         achievementsView.layer.shadowOpacity = 0.8
         achievementsView.layer.shadowRadius = 6.0
         

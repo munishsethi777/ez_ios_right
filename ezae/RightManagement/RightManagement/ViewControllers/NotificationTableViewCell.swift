@@ -15,6 +15,11 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var notificationButton: UIButton!
     
     
+    
+    @IBOutlet weak var bottomView: baseView!
+    
+    @IBOutlet weak var notificationImageView: UIImageView!
+    @IBOutlet weak var mainView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

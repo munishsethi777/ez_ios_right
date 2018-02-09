@@ -58,13 +58,23 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
         cell?.notificationButton.tag = indexPath.row
         cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
+        cell?.notificationImageView.image = UIImage(named: "ico_calendar_64.png")
         if(notification.notificationType == "Chatroom"){
+            cell?.notificationImageView.image = UIImage(named: "ico_chatroom_64.png")
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         }else if(notification.notificationType == "Nominate"){
             cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         }else if (notification.notificationType == "Classroom"){
             cell?.notificationButton.addTarget(self, action:#selector(goToEvents), for: .touchUpInside)
         }
+        cell?.contentView.sendSubview(toBack:(cell?.bottomView)!)
+        cell?.bottomView.layer.borderWidth = 0.3
+        cell?.bottomView.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell?.bottomView.layer.shadowOpacity = 0.5
+        cell?.bottomView.layer.shadowRadius = 4.0
+        cell?.bottomView.commonInit()
         return cell!
     }
     func goToEvents(){
@@ -161,7 +171,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             let status = notificationJson["status"] as? String
             let fromDate = DateUtil.sharedInstance.stringToDate(dateStr: from!)
             let fromDateInFormat = DateUtil.sharedInstance.dateToString(date: fromDate, format: DateUtil.format)
-            let Detail = title! + " on " + fromDateInFormat
+            let Detail = title! + "\non " + fromDateInFormat
             var notificationType = "Nominate"
             if(type == "currentlyActiveEvent"){
                 if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
@@ -257,5 +267,33 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             destinationVC.chatRoomName = selctedChatroomName
             destinationVC.isCallFromNotification = true;
         }
+    }
+}
+
+class baseView: UIView {
+    
+    let dashedBorder = CAShapeLayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        //commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+       // commonInit()
+    }
+    
+     func commonInit() {
+        //custom initialization
+        dashedBorder.strokeColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
+        dashedBorder.fillColor = nil
+        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 1.5, height: self.frame.height)).cgPath
+        self.layer.addSublayer(dashedBorder)
+    }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 1.5, height: self.frame.height)).cgPath
     }
 }

@@ -182,6 +182,8 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
                 if let data = NSData(contentsOf: url as URL) {
                     let img = UIImage(data: data as Data)
                     userImageView.image = img
+                    userImageView.layer.cornerRadius = (userImageView.frame.height) / 2
+                    userImageView.clipsToBounds = true
                 }
             }
         }

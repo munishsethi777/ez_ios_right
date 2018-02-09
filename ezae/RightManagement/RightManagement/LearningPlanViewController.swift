@@ -107,15 +107,15 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cell?.pointValueLabel.isHidden = true
         cell?.percentLabel.text = String(Int(percent)) + "%"
         cell?.launchPlanImageView.image = UIImage(named: "arrow_green.png")
-        cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 38/255.0, green: 160/255.0, blue: 133/255.0, alpha: 1).cgColor]
+        cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1).cgColor]
         if(completedModulesCount == 0){
-            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 51/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1).cgColor]
+            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1).cgColor]
             continueLabelText = "Launch"
             cell?.desLabel.isHidden = false
             cell?.launchPlanImageView.image = UIImage(named: "arrow_up.png")
         }else if(completedModulesCount == totalModule){
             continueLabelText = "Review"
-            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 243/255.0, green: 157/255.0, blue: 46/255.0, alpha: 1).cgColor]
+            cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
             cell?.launchPlanImageView.image = UIImage(named: "arrow_orange.png")
             let dateOfPlay = learningPlan["dateofplay"] as! String
             let date = DateUtil.sharedInstance.stringToDate(dateStr: dateOfPlay)

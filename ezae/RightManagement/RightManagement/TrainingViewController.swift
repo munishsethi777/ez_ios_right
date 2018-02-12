@@ -267,18 +267,21 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             return headerArr[section]!
         }
         let headerView =  UIView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
-        headerView.backgroundColor = UIColor.lightGray
+        //headerView.backgroundColor = UIColor.lightGray
+        headerView.backgroundColor = UIColor(red: 99/255, green: 144/255, blue: 198/255, alpha: 1)
+        
         let lpJsonArr = learningPlanJson
         let percentCompleted = lpJsonArr["percentCompleted"] as! CGFloat
         let modulesJsonArr = lpJsonArr["modules"] as! [Any]
         let progress = UICircularProgressRingView.init(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
         progress.setProgress(value: CGFloat(percentCompleted), animationDuration: 2)
-        progress.innerRingColor = UIColor.orange
-        progress.outerRingColor = UIColor.darkGray
+        progress.innerRingColor = UIColor(red: 171/255, green: 64/255, blue: 75/255, alpha: 1)
+        
+        progress.outerRingColor = UIColor.white
         progress.innerRingWidth = 4
         progress.outerRingWidth = 5
         progress.font = UIFont(name: "Helvetica Neue", size: 10)!
-        progress.fontColor = UIColor.white
+        progress.fontColor = UIColor.black
         progress.viewStyle = 5
         for subview in headerView.subviews {
             if subview is UICircularProgressRingView || subview is UILabel {
@@ -289,14 +292,14 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         let label = UILabel.init(frame: CGRect(x: 50, y: 35, width: 80, height: 10))
         label.text = String(modulesJsonArr.count) + " Modules"
         label.font = UIFont(name: "Helvetica Neue", size: 10)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         headerView.addSubview(label)
         
         let sectionHeader = lpJsonArr["title"] as? String
         let headerLabel = UILabel.init(frame: CGRect(x: 50, y: 10, width: self.view.frame.width, height: 16))
         headerLabel.text = sectionHeader
         headerLabel.font = UIFont(name: "Helvetica Neue", size: 16)
-        headerLabel.textColor = UIColor.white
+        headerLabel.textColor = UIColor.black
         headerView.addSubview(headerLabel)
         headerArr[section] = headerView
         return headerView

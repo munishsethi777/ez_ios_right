@@ -55,12 +55,12 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
-        cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
+        //cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
         cell?.notificationButton.tag = indexPath.row
         cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
-        cell?.notificationImageView.image = UIImage(named: "ico_calendar_64.png")
+        cell?.notificationImageView.image = UIImage(named: "icons8-classroom-50")
         if(notification.notificationType == "Chatroom"){
-            cell?.notificationImageView.image = UIImage(named: "ico_chatroom_64.png")
+            cell?.notificationImageView.image = UIImage(named: "icons8-communication-50.png")
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         }else if(notification.notificationType == "Nominate"){
             cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)

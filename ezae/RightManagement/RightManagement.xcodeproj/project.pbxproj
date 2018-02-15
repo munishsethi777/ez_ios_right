@@ -123,6 +123,7 @@
 		F6F078251FFE054400120DA7 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078241FFE054400120DA7 /* ChatModel.swift */; };
 		F6F078271FFE0A6700120DA7 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */; };
 		F6F078291FFE27B900120DA7 /* ChatDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F078281FFE27B900120DA7 /* ChatDetailController.swift */; };
+		F6FABE2820354CEA00FCED41 /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FABE2720354CEA00FCED41 /* UIImageExtention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +253,7 @@
 		F6F078241FFE054400120DA7 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		F6F078261FFE0A6700120DA7 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		F6F078281FFE27B900120DA7 /* ChatDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailController.swift; sourceTree = "<group>"; };
+		F6FABE2720354CEA00FCED41 /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +397,7 @@
 				F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */,
 				F610491A201F2AC400DFC66E /* NotificationViewController.swift */,
 				F6255091202C583100514518 /* bottonView.swift */,
+				F6FABE2720354CEA00FCED41 /* UIImageExtention.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				F64A98761FD01A82001858DE /* DashboardMgr.swift in Sources */,
 				F64A98871FD16AF0001858DE /* LaunchModuleViewController.swift in Sources */,
 				F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */,
+				F6FABE2820354CEA00FCED41 /* UIImageExtention.swift in Sources */,
 				E66D5B551F8CBDF20063EDEC /* MessageTableViewController.swift in Sources */,
 				F6B63D881FEE551700886264 /* MainTabController.swift in Sources */,
 				E66D5B621F8E0B2C0063EDEC /* NotificationTableViewCell.swift in Sources */,

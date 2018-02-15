@@ -98,12 +98,20 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = .black
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
-       // self.navigationController?.navigationBar.isTranslucent = true
-        //UINavigationBar.appearance().isTranslucent = false
+        changeNavBarColor()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        changeNavBarColor()
+    }
+    
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let image = UIImage.imageFromColor(color: UIColor(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5))
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()
         getBadges()
@@ -220,3 +228,5 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     }
     
 }
+
+

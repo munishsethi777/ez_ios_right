@@ -89,8 +89,15 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
     func cancel(){
         print("Cancel Clicked")
     }
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        changeNavBarColor()
+    }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let image = UIImage.imageFromColor(color: UIColor(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 0.5))
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     @IBAction func updateProfileAction(_ sender: Any) {
         progressHUD.text = "Updating"
         progressHUD.show()

@@ -69,7 +69,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }
         cell?.notificationImageView.layer.borderWidth = 2.5
         cell?.notificationImageView.layer.borderColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
-        cell?.notificationImageView.layer.cornerRadius = 10;
+        cell?.notificationImageView.layer.cornerRadius = 16;
         cell?.notificationImageView.clipsToBounds = true
         cell?.contentView.sendSubview(toBack:(cell?.bottomView)!)
         cell?.bottomView.layer.borderWidth = 0.3

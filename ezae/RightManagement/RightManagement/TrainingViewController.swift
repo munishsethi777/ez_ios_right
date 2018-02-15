@@ -62,6 +62,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         if let image = UIGraphicsGetImageFromCurrentImageContext(){
             UIGraphicsEndImageContext()
             self.trainingTableView.backgroundColor = UIColor(patternImage: image)
+            self.view.backgroundColor = UIColor(patternImage: image)
         }else{
             UIGraphicsEndImageContext()
             debugPrint("Image not available")

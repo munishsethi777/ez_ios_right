@@ -58,15 +58,19 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         //cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
         cell?.notificationButton.tag = indexPath.row
         cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
-        cell?.notificationImageView.image = UIImage(named: "icons8-classroom-50")
+        cell?.notificationImageView.image = UIImage(named: "icons8-training-60")
         if(notification.notificationType == "Chatroom"){
-            cell?.notificationImageView.image = UIImage(named: "icons8-communication-50.png")
+            cell?.notificationImageView.image = UIImage(named: "icons8-communication-60")
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
         }else if(notification.notificationType == "Nominate"){
             cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         }else if (notification.notificationType == "Classroom"){
             cell?.notificationButton.addTarget(self, action:#selector(goToEvents), for: .touchUpInside)
         }
+        cell?.notificationImageView.layer.borderWidth = 2.5
+        cell?.notificationImageView.layer.borderColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
+        cell?.notificationImageView.layer.cornerRadius = 10;
+        cell?.notificationImageView.clipsToBounds = true
         cell?.contentView.sendSubview(toBack:(cell?.bottomView)!)
         cell?.bottomView.layer.borderWidth = 0.3
         cell?.bottomView.layer.borderColor = UIColor.lightGray.cgColor
@@ -74,6 +78,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
         cell?.bottomView.layer.shadowOpacity = 0.5
         cell?.bottomView.layer.shadowRadius = 4.0
+        cell?.bottomView.color = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1)
         cell?.bottomView.commonInit()
         return cell!
     }
@@ -273,7 +278,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
 class baseView: UIView {
     
     let dashedBorder = CAShapeLayer()
-    
+    var color = UIColor()
     override init(frame: CGRect) {
         super.init(frame: frame)
         //commonInit()
@@ -281,19 +286,19 @@ class baseView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-       // commonInit()
+         //commonInit()
     }
     
      func commonInit() {
         //custom initialization
-        dashedBorder.strokeColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
-        dashedBorder.fillColor = nil
-        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 1.5, height: self.frame.height)).cgPath
+        dashedBorder.strokeColor = color.cgColor
+        dashedBorder.fillColor = color.cgColor
+        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 2, height: self.frame.height)).cgPath
         self.layer.addSublayer(dashedBorder)
     }
     
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
-        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 1.5, height: self.frame.height)).cgPath
+        dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 2, height: self.frame.height)).cgPath
     }
 }

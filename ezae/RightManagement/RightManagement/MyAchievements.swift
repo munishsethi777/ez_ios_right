@@ -91,10 +91,18 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         if let image = UIGraphicsGetImageFromCurrentImageContext(){
             UIGraphicsEndImageContext()
             self.scrollView.backgroundColor = UIColor(patternImage: image)
+            self.view.backgroundColor = UIColor(patternImage: image)
         }else{
             UIGraphicsEndImageContext()
             debugPrint("Image not available")
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.backgroundColor = UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = .black
+        //self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+       // self.navigationController?.navigationBar.isTranslucent = true
+        //UINavigationBar.appearance().isTranslucent = false
     }
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()

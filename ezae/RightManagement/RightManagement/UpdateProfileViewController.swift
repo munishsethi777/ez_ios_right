@@ -163,11 +163,12 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         var y:CGFloat = 210
         
         
-        let opaView = UIView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+        let opaView = baseView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+        opaView.color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1)
         opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)
         opaView.layer.borderWidth = 1
         opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
-        
+        opaView.commonInit()
         let label = UILabel(frame: CGRect(x:10,y:8,width:opaView.bounds.width - 20,height:20))
         label.text = "Email"
         label.font = UIFont(name:"Arial",size:14.00)
@@ -195,10 +196,12 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         for customField in customFields {
             let fieldJson = customField as! [String:Any]
             if(fieldJson["fieldType"] as! String != "Image"){
-                let opaView = UIView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+                let opaView = baseView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
+                opaView.color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1)
                 opaView.layer.borderWidth = 1
                 opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
                 opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)
+                opaView.commonInit()
                 let label = UILabel(frame: CGRect(x:10,y:8,width:opaView.bounds.width - 20,height:20))
                 label.text = fieldJson["fieldTitle"] as! String
                 label.font = UIFont(name:"Arial",size:14.00)

@@ -15,4 +15,13 @@ class MainTabController: UITabBarController{
          self.selectedIndex = 1
        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if #available(iOS 10.0, *) {
+            UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 }

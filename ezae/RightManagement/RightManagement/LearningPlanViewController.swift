@@ -42,7 +42,19 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         cache = NSCache()
         getLearningPlans()
     }
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let image = UIImage.imageFromColor(color: UIColor.white)
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        changeNavBarColor()
+    }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)

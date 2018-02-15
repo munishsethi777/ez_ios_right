@@ -61,6 +61,17 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return notes.count
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.white
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "NotesTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotesTableViewCell

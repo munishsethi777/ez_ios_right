@@ -74,16 +74,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         shape3.fillColor = UIColor.clear.cgColor
         gradient3.mask = shape3
         self.rankBackView.layer.addSublayer(gradient3)
-        
-        //pointsBackView.layer.borderWidth = 2
-        //pointsBackView.layer.borderColor =  UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
-        
-        //scoreBackView.layer.borderWidth = 2
-        //scoreBackView.layer.borderColor = UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
-        
-        //rankBackView.layer.borderWidth = 2
-        //rankBackView.layer.borderColor = UIColor.init(red: 110/255.0, green: 161/255.0, blue: 152/255.0, alpha: 1).cgColor
-
+    
     }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -97,10 +88,8 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
             debugPrint("Image not available")
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        changeNavBarColor()
-    }
-    override func viewDidAppear(_ animated: Bool) {
         changeNavBarColor()
     }
     
@@ -110,8 +99,11 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }
+   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     
-
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()
         getBadges()

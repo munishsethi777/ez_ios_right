@@ -23,9 +23,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var learningPlanJson:[String: Any] = [:]
     var cell:TrainingTableViewCell!
     
-    @IBAction func backTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
@@ -45,8 +43,6 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
        self.view.addSubview(progressHUD)
        getLearningPlanAndModules()
-       navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-        
     }
     
     func refreshController(){
@@ -54,6 +50,18 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         totalModuleCount = 0
         headerCount = 0
         getLearningPlanAndModules()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let image = UIImage.imageFromColor(color: UIColor(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 0.5))
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func setbackround(){
@@ -257,9 +265,14 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func launchModule(sender:UIButton){
-        selectedModuleSeq = sender.tag
-        selectedLpSeq = (sender.titleLabel?.tag)!
-        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+//        selectedModuleSeq = sender.tag
+//        selectedLpSeq = (sender.titleLabel?.tag)!
+//        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+        
+        let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
+        launchModuleVC.moduleSeq = sender.tag
+        launchModuleVC.lpSeq = (sender.titleLabel?.tag)!
+        self.present(launchModuleVC, animated: true, completion: nil)
     }
     
     var headerArr:[Int:UIView] = [:]

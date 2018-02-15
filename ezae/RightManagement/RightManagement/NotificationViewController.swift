@@ -226,7 +226,16 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         let annualViewController = SSCalendarAnnualViewController(events: generateEvents(eventsJson: response))
         self.navigationController!.pushViewController(annualViewController!, animated: true)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {
         var events: [SSEvent] = []
         let eventsArr = eventsJson["chatrooms"] as! [Any]

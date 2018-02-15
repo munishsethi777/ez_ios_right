@@ -299,9 +299,16 @@ class DashboardViewController:UIViewController{
     func populateEvents(response:[String: Any]){
         let annualViewController = SSCalendarAnnualViewController(events: generateEvents(eventsJson: response))
         self.navigationController!.navigationBar.isTranslucent = false
+        annualViewController?.title = "Events"
         self.navigationController!.pushViewController(annualViewController!, animated: true)
+        changeNavBarColor()
+        
     }
-    
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: UIColor.white), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     fileprivate func generateEvents(eventsJson:[String:Any]) -> [SSEvent] {
         var events: [SSEvent] = []
         let eventsArr = eventsJson["chatrooms"] as! [Any]

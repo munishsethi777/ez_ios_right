@@ -57,6 +57,16 @@ class ChangePassworViewController: UIViewController{
         submitButton.isEnabled = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        changeNavBarColor()
+    }
+    
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: UIColor.white), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
     func exceuteChangePassword(){
         let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,oldPasswordText.text!,newPasswordText.text!]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.CHANGE_PASSWORD, args: args)

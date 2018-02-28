@@ -79,8 +79,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBAction func loginButton(_ sender: UIButton) {
-        let username: String = usernameTextField.text!;
-        let password: String = passwordTextField.text!;
+        var username: String = usernameTextField.text!;
+        var password: String = passwordTextField.text!;
+        username = username.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        password = password.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         var deviceId = PreferencesUtil.sharedInstance.getDeviceId()
         if(deviceId == nil){
             deviceId = ""

@@ -76,20 +76,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs registration failed: \(error)")
     }
     
-    // Push notification received
-    func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-        // Print notification payload data
-        print("Push notification received: \(data)")
-        let notificationData = data["data"] as! [String:Any]
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Push notification received: \(userInfo)")
+        let notificationData = userInfo["data"] as! [String:Any]
         let entitySeq = notificationData["entitySeq"] as! String
         let entityType = notificationData["entityType"] as! String
+        let fromUserName = notificationData["fromUserName"] as? String
         let prefUtil = PreferencesUtil.sharedInstance
         prefUtil.setNotificationState(flag: true)
-        prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq)
+        prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq,fromUserName:fromUserName!)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "Login") as UIViewController
         self.window?.rootViewController = viewController
+        let state = UIApplication.shared.applicationState
+        if(state == .active){
+            return
+        }
         self.window?.makeKeyAndVisible()
     }
 }

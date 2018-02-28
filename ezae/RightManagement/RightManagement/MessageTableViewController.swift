@@ -22,6 +22,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     var refreshControl:UIRefreshControl!
     var  progressHUD: ProgressHUD!
     var cache:NSCache<AnyObject, AnyObject>!
+    var isGoToMessageDetail = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setbackround()
@@ -38,6 +39,9 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+        if(isGoToMessageDetail){
+            goToMessageDetail()
+        }
     }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -95,7 +99,9 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
     }
     
-    
+    func goToMessageDetail(){
+        self.performSegue(withIdentifier: "MessageDetailViewController", sender: nil)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MessageTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MessageTableViewCell

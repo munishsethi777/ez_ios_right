@@ -14,6 +14,7 @@ class PreferencesUtil{
     static let LOGGED_IN_DEVICE_ID = "deviceId"
     static let NOTIFICATION_STATE = "notificationState"
     static let NOTIFICATION_ENTITY_SEQ = "notificationEntitySeq"
+    static let FROM_USER_NAME = "fromUserName";
     static let NOTIFICATION_ENTITY_TYPE = "notificationEntityType"
     
     func setDeviceId(deviceId:String){
@@ -67,17 +68,20 @@ class PreferencesUtil{
         setValue(key: PreferencesUtil.NOTIFICATION_STATE,value: flag);
     }
     
-    func setNotificationData(entityType:String,entitySeq:String){
+    func setNotificationData(entityType:String,entitySeq:String,fromUserName:String){
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ, value: entitySeq)
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE, value: entityType)
+        setValue(key: PreferencesUtil.FROM_USER_NAME, value: fromUserName)
     }
     
     func getNotificationData()->[String: String]{
         let entityType = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE)!
         let entitySeq = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ)!
+        let fromUserName = getValue(key: PreferencesUtil.FROM_USER_NAME)!
         var notificationData:[String:String] = [:]
         notificationData["entityType"] = entityType
         notificationData["entitySeq"] = entitySeq
+        notificationData["fromUserName"] = fromUserName
         return notificationData
     }
     
@@ -91,7 +95,7 @@ class PreferencesUtil{
         let defaults = UserDefaults.standard
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
-            if(key == PreferencesUtil.NOTIFICATION_ENTITY_TYPE || key == PreferencesUtil.NOTIFICATION_ENTITY_SEQ || key == PreferencesUtil.NOTIFICATION_STATE){
+            if(key == PreferencesUtil.NOTIFICATION_ENTITY_TYPE || key == PreferencesUtil.NOTIFICATION_ENTITY_SEQ || key == PreferencesUtil.NOTIFICATION_STATE || key == PreferencesUtil.NOTIFICATION_ENTITY_SEQ ){
                 defaults.removeObject(forKey: key)
             }
             UIApplication.shared.applicationIconBadgeNumber = 0

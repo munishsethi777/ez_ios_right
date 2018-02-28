@@ -353,7 +353,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     
     func addWebViewforDoc(){
         let y:CGFloat = quesTitle.frame.height
-        let webView = UIWebView(frame: CGRect(x:0,y:y,width:view.frame.width,height:350))
+        var height:CGFloat = view.frame.height - submitProgress.frame.height
+        height = height - quesTitle.frame.height
+        height = height - 80
+        
+        let webView = UIWebView(frame: CGRect(x:0,y:y,width:view.frame.width,height:height))
         webView.scalesPageToFit = true
         webView.contentMode = UIViewContentMode.scaleAspectFit
         view.addSubview(webView)

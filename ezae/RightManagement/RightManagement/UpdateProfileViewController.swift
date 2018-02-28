@@ -29,7 +29,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         picker?.delegate = self
         setbackround()
     }
-    
+
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
@@ -92,10 +92,11 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
     override func viewWillAppear(_ animated: Bool) {
         changeNavBarColor()
     }
+    
     func changeNavBarColor(){
         self.navigationController?.navigationBar.tintColor = .black
-        let image = UIImage.imageFromColor(color: UIColor(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 0.5))
-        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        let color = UIColor.init(red: 128/255.0, green: 166/255.0, blue: 132/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }
     @IBAction func updateProfileAction(_ sender: Any) {
@@ -171,7 +172,8 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         
         
         let opaView = baseView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
-        opaView.color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1)
+        opaView.color = UIColor.init(red: 128/255.0, green: 166/255.0, blue: 132/255.0, alpha: 1)
+        //opaView.color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1)
         opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)
         opaView.layer.borderWidth = 1
         opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
@@ -204,7 +206,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
             let fieldJson = customField as! [String:Any]
             if(fieldJson["fieldType"] as! String != "Image"){
                 let opaView = baseView(frame: CGRect(x:10,y:y,width:screenWidth - 20,height:70));
-                opaView.color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1)
+                opaView.color = UIColor.init(red: 128/255.0, green: 166/255.0, blue: 132/255.0, alpha: 1)
                 opaView.layer.borderWidth = 1
                 opaView.layer.borderColor = UIColor.init(red: 155/255.0, green: 155/255.0, blue: 155/255.0, alpha: 0.5).cgColor
                 opaView.backgroundColor = UIColor.init(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.75)

@@ -120,8 +120,15 @@ class SettingsTableViewController : UITableViewController {
             self.performSegue(withIdentifier: "Notifications", sender: self)
             
         }
-        
+        changeNavBarColor()
     }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.init(red: 128/255.0, green: 166/255.0, blue: 132/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
     @IBAction func logoutTapped(_ sender: Any) {
         logout()
     }

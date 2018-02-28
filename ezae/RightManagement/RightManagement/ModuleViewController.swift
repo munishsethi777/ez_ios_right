@@ -41,7 +41,16 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
   
     func refreshController(){
         cache = NSCache()

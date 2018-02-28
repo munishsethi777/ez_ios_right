@@ -47,9 +47,16 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             debugPrint("Image not available")
         }
     }
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.init(red: 209/255.0, green: 163/255.0, blue: 106/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
     override func viewWillAppear(_ animated: Bool) {
         cache = NSCache()
         getChatRooms()
+        changeNavBarColor()
     }
     
     func refreshView(refreshControl: UIRefreshControl) {

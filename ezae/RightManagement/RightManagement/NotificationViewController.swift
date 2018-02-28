@@ -141,7 +141,6 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     }
     func getNotifications(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
-        
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATION, args: args)
         var success : Int = 0
         var message : String? = nil
@@ -232,7 +231,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     }
     func changeNavBarColor(){
         self.navigationController?.navigationBar.tintColor = .black
-        let color = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 0.5)
+        let color = UIColor.init(red: 171/255.0, green: 64/255.0, blue: 75/255.0, alpha: 0.5)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }

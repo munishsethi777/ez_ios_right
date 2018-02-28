@@ -31,6 +31,29 @@ class ChangePassworViewController: UIViewController{
         oldPasswordText.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        setbackround()
+    }
+    func setbackround(){
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        changeNavBarColor()
+    }
+    
+    func changeNavBarColor(){
+        self.navigationController?.navigationBar.tintColor = .black
+        let color = UIColor.init(red: 255/255.0, green: 102/255.0, blue: 51/255.0, alpha: 0.5)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func showAlert(message: String,title:String){
@@ -56,16 +79,7 @@ class ChangePassworViewController: UIViewController{
         }
         submitButton.isEnabled = true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        changeNavBarColor()
-    }
-    
-    func changeNavBarColor(){
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: UIColor.white), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
-    }
+
     
     func exceuteChangePassword(){
         let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,oldPasswordText.text!,newPasswordText.text!]

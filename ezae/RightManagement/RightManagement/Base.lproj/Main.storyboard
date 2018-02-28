@@ -1472,7 +1472,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYh-LM-z7J">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <connections>
                                     <segue destination="8Ic-xE-HcQ" kind="embed" id="j8N-O7-rB4"/>
                                 </connections>
@@ -1499,7 +1499,7 @@
                 <navigationController id="8Ic-xE-HcQ" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ObL-Et-ZQf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1519,11 +1519,11 @@
                         <viewControllerLayoutGuide type="bottom" id="bNk-G0-6gM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ytf-X7-09g">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Z6-qF-wvl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1607,7 +1607,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wRn-pv-JI7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7v5-od-Zfd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="login_back_bw_lighter.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5kp-vm-lat">
@@ -1619,7 +1619,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MpK-9V-xfs" customClass="Inputbar" customModule="RightManagement" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="475" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="431" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
@@ -1658,7 +1658,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tWo-pm-xGb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6z5-Tv-Rvy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ji0-H1-Iww">
@@ -1741,7 +1741,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKO-nf-iPk">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <connections>
                                     <segue destination="qxa-za-WHU" kind="embed" id="fOP-5j-FL9"/>
                                 </connections>
@@ -1768,7 +1768,7 @@
                 <navigationController id="qxa-za-WHU" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lUo-nI-LJa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1788,11 +1788,11 @@
                         <viewControllerLayoutGuide type="bottom" id="u9N-Xi-jck"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D3M-bd-rkW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="76" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="39P-8A-UHD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1863,7 +1863,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fco-xM-TJe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YNL-Oz-K2m">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="login_back_bw_lighter.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6tL-hj-6A9">
@@ -1874,7 +1874,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMW-S8-yu4" customClass="Inputbar" customModule="RightManagement" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="475" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
@@ -2871,13 +2871,13 @@ AEEAAAAAAAAAAAAAAAAAABKoA
         <segue reference="k4C-v3-nNs"/>
         <segue reference="PPM-TZ-4LS"/>
         <segue reference="Zfg-DY-aDn"/>
-        <segue reference="5NI-cA-kWE"/>
+        <segue reference="KEB-lz-C9N"/>
         <segue reference="AlW-TL-44Y"/>
         <segue reference="GPJ-z3-CRz"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="gN8-BW-sNN"/>
-        <segue reference="PkI-zp-FOV"/>
-        <segue reference="kHq-gY-EtM"/>
-        <segue reference="AVW-CC-bvd"/>
+        <segue reference="I7L-vY-GYd"/>
+        <segue reference="6hm-Uk-eBQ"/>
+        <segue reference="tjH-Ox-yXu"/>
     </inferredMetricsTieBreakers>
 </document>

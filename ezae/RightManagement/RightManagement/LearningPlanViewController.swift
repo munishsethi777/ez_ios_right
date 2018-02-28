@@ -48,7 +48,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     }
     func changeNavBarColor(){
         self.navigationController?.navigationBar.tintColor = .black
-        let image = UIImage.imageFromColor(color: UIColor.white)
+        let image = UIImage.imageFromColor(color: UIColor(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5))
         self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }

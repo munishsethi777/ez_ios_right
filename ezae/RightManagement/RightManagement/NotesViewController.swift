@@ -67,10 +67,11 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     func changeNavBarColor(){
         self.navigationController?.navigationBar.tintColor = .black
-        let color = UIColor.white
+        let color = UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 0.5)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "NotesTableViewCell"

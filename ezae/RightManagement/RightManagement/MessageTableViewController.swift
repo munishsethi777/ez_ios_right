@@ -162,7 +162,9 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     func markAsRead(row:Int){
         let messageObj = messages[row]
         let messageSeq = messageObj.messageSeq
-        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq,messageSeq,1]
+        let chatUserSeq = messageObj.chattingUserSeq
+        let chatUserType = messageObj.chattingUserType
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,chatUserSeq,chatUserType,1]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.MESSAGE_MARK_AS_READ, args: args)
         var success : Int = 0
         var message : String? = nil

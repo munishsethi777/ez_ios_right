@@ -407,6 +407,8 @@ class DashboardViewController:UIViewController{
         }
         if(mesasgeCount > 0){
             self.messagesCount.text = "+" + String(mesasgeCount)
+        }else{
+            self.messagesCount.text = ""
         }
         progressHUD.hide()
     }

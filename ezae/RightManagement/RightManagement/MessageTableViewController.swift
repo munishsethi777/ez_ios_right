@@ -230,8 +230,13 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
             let userImageUrl = StringConstants.WEB_API_URL + userImage
             let userType = messageJson["userType"] as! String
             let userSeq = messageJson["userSeq"] as! String
-            let readInt = messageJson["isread"] as! String
-            let isRead = readInt == "1";
+           // let fromSeq  = messageJson["fromseq"] as! String
+            let readInt = messageJson["isRead"] as! Int
+            var isRead = readInt == 1;
+            //check sent by itself
+            //if(userType != "admin" && Int(fromSeq)! == self.loggedInUserSeq){
+            //    isRead = true
+            //}
             let msg = Message(seq: Int(seq)!,messageTitle:name,messageDescription: title,userImageUrl:userImageUrl,date:dated,chattingUserSeq:Int(userSeq)!,chattingUserType:userType,isRead:isRead)
             messages.append(msg)
         }

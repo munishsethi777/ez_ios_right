@@ -105,11 +105,14 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         var customFieldValues = [String:Any]()
         var emailId = ""
         for view in mainScrollView.subviews{
-            if let textField = view as? UITextField {
-                if(textField.tag == 0){
-                    emailId = textField.text!
-                }else{
-                    customFieldValues[String(textField.tag)] = textField.text!
+            if let baseView = view as? baseView {
+                let childView = baseView.subviews[1];
+                if let textField = childView as? UITextField {
+                    if(textField.tag == 0){
+                        emailId = textField.text!
+                    }else{
+                        customFieldValues[String(textField.tag)] = textField.text!
+                    }
                 }
             }
         }

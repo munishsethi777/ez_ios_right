@@ -31,6 +31,7 @@ struct StringConstants {
     static let GET_DASHBOARD_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardStats&userSeq={0}&companySeq={1}";
     static let GET_COUNTS = ACTION_API_URL+"UserAction.php?call=getDashboardCounts&userSeq={0}&companySeq={1}";
     static let GET_NOTIFICATION = ACTION_API_URL+"UserAction.php?call=getNotifications&userSeq={0}&companySeq={1}";
+    static let GET_NOTIFICATIONS_NEW = ACTION_API_URL + "NotificationAction.php?call=getAllNotifications&userSeq={0}&companySeq={1}";
     static let CHANGE_PASSWORD = ACTION_API_URL + "UserAction.php?call=changePassword&userSeq={0}&companySeq={1}&earlierPassword={2}&newPassword={3}"
     static let NOMINATE_TRAINING = ACTION_API_URL+"UserAction.php?call=nominateCT&userSeq={0}&companySeq={1}&trainingSeq={2}&lpSeq={3}"
     static let GET_NOTES = ACTION_API_URL + "NoteAction.php?call=getAllNotes&userSeq={0}&companySeq={1}"
@@ -82,4 +83,9 @@ struct StringConstants {
     static let GET_CHATROOM_DETAIL = ACTION_API_URL + "ChatroomAction.php?call=getChatroomDetails&userSeq={0}&companySeq={1}&chatroomId={2}&afterMessageSeq={3}"
     static let SEND_CHAT_MESSAGE = ACTION_API_URL + "ChatroomAction.php?call=sendMessageChat&userSeq={0}&companySeq={1}&chatroomId={2}&userType={3}&userName={4}&afterMessageSeq={5}&message={6}"
     static let GET_EVENTS = ACTION_API_URL + "ChatroomAction.php?call=getAllEvents&userSeq={0}&companySeq={1}"
+    
+    //Notification Action
+    static let MARK_AS_READ_NOTIFICATION = ACTION_API_URL + "NotificationAction.php?call=markReadOrUnRead&isRead=1&userSeq={0}&companySeq={1}";
+    static let DELETE_NOTIFICATION = ACTION_API_URL + "NotificationAction.php?call=markAsClearNotification&userSeq={0}&companySeq={1}&seq={2}";
+    
 }

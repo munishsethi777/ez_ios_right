@@ -43,11 +43,19 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.notificationsCount
+        return notifications.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // action two
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.delete(tableView:tableView,index:indexPath)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        return [deleteAction]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,6 +93,21 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     func goToEvents(){
         getEvents()
     }
+  
+    private func delete(tableView:UITableView,index:IndexPath){
+        let refreshAlert = UIAlertController(title: "Remove Notification", message: "Are you realy want to Remove this Notification?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.progressHUD.show()
+            self.deleteNotification(tableView:tableView,index:index)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
     func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
@@ -117,6 +140,33 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }))
         present(refreshAlert, animated: true, completion: nil)
     }
+    func deleteNotification(tableView:UITableView,index:IndexPath){
+        let notification = notifications[index.row]
+        let notificationSeq = notification.seq
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,notificationSeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.DELETE_NOTIFICATION, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.notifications.remove(at: index.row)
+                        self.progressHUD.hide()
+                        tableView.deleteRows(at: [index], with: .fade)
+                        //self.showAlert(message: message!,title:"Success")
+                    }else{
+                        self.showAlert(message: message!,title:"Failed")
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description,title:"Exception")
+            }
+        })
+    }
     func excuteNominateTraining(trainingSeq:Int,lpSeq:Int){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq,trainingSeq,lpSeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.NOMINATE_TRAINING, args: args)
@@ -141,7 +191,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     }
     func getNotifications(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
-        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATION, args: args)
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_NOTIFICATIONS_NEW, args: args)
         var success : Int = 0
         var message : String? = nil
         ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
@@ -161,40 +211,85 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             }
         })
     }
-    
     func loadNotificaitons(response: [String: Any]){
         let notificationJsonArr = response["notifications"] as! [Any]
         self.notificationsCount = notificationJsonArr.count
         notifications = []
+        var unReadCount = 0;
         for var i in 0..<notificationJsonArr.count{
             let notificationJson = notificationJsonArr[i] as! [String:Any]
             let seq = notificationJson["seq"] as! String
-            let title = notificationJson["title"] as? String
+            let title = notificationJson["title"] as! String
             let from = notificationJson["from"] as? String
-            let type = notificationJson["type"] as! String
-            let status = notificationJson["status"] as? String
-            let fromDate = DateUtil.sharedInstance.stringToDate(dateStr: from!)
-            let fromDateInFormat = DateUtil.sharedInstance.dateToString(date: fromDate, format: DateUtil.format)
-            let Detail = title! + "\non " + fromDateInFormat
-            var notificationType = "Nominate"
-            if(type == "currentlyActiveEvent"){
-                if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
-                {
-                    notificationType = "Chatroom"
-                }else{
-                    notificationType = "Classroom"
-                }
-            }else{
-                if(status == "unapproved"){
-                    notificationType = "Nominated"
-                }
+            let notificationType = notificationJson["notificationtype"] as! String
+            let isRead = notificationJson["isread"] as! String
+            if(isRead == "0"){
+                unReadCount = unReadCount + 1;
             }
-            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType)
+            let not1 = Notification(seq:Int(seq)!,title:title,notificationType: notificationType)
             notifications.append(not1)
         }
         progressHUD.hide()
         self.notificationsTableView.reloadData()
+        if(unReadCount > 0){
+            markAsReadCall();
+        }
     }
+    
+    func markAsReadCall(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.MARK_AS_READ_NOTIFICATION, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+//    func loadNotificaitons(response: [String: Any]){
+//        let notificationJsonArr = response["notifications"] as! [Any]
+//        self.notificationsCount = notificationJsonArr.count
+//        notifications = []
+//        for var i in 0..<notificationJsonArr.count{
+//            let notificationJson = notificationJsonArr[i] as! [String:Any]
+//            let seq = notificationJson["seq"] as! String
+//            let title = notificationJson["title"] as? String
+//            let from = notificationJson["from"] as? String
+//            let type = notificationJson["type"] as! String
+//            let status = notificationJson["status"] as? String
+//            let fromDate = DateUtil.sharedInstance.stringToDate(dateStr: from!)
+//            let fromDateInFormat = DateUtil.sharedInstance.dateToString(date: fromDate, format: DateUtil.format)
+//            let Detail = title! + "\non " + fromDateInFormat
+//            var notificationType = "Nominate"
+//            if(type == "currentlyActiveEvent"){
+//                if let eventType = notificationJson["eventtype"] as? String, eventType == "chatroom"
+//                {
+//                    notificationType = "Chatroom"
+//                }else{
+//                    notificationType = "Classroom"
+//                }
+//            }else{
+//                if(status == "unapproved"){
+//                    notificationType = "Nominated"
+//                }
+//            }
+//            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType)
+//            notifications.append(not1)
+//        }
+//        progressHUD.hide()
+//        self.notificationsTableView.reloadData()
+//    }
     fileprivate func getEvents(){
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
@@ -266,7 +361,11 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }
         return events
     }
-    
+    func showAlert(message: String,title:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     func showAlert(message: String){
         let alert = UIAlertController(title: "MessageBox", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

@@ -56,6 +56,7 @@
 		E6A427BE202EE26E00373A02 /* RM_BE_Logo_SS_STK_MC_RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = E6A427BD202EE26B00373A02 /* RM_BE_Logo_SS_STK_MC_RGB.png */; };
 		E6AC96422015EDE0007D5637 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AC96412015EDE0007D5637 /* DashboardViewController.swift */; };
 		E6BFA672202C2399005EB4A1 /* ico_badge_white_50.png in Resources */ = {isa = PBXBuildFile; fileRef = E6BFA671202C2398005EB4A1 /* ico_badge_white_50.png */; };
+		F60F454A2050039F00E89114 /* icons8-prize-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F60F45492050039C00E89114 /* icons8-prize-50.png */; };
 		F610491B201F2AC400DFC66E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F610491A201F2AC400DFC66E /* NotificationViewController.swift */; };
 		F612B07420077FC80065C015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F612B07320077FC80065C015 /* UserNotifications.framework */; };
 		F6255092202C583100514518 /* bottonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6255091202C583100514518 /* bottonView.swift */; };
@@ -181,6 +182,7 @@
 		E6AC96412015EDE0007D5637 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		E6BFA671202C2398005EB4A1 /* ico_badge_white_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ico_badge_white_50.png; sourceTree = "<group>"; };
 		E6CA01EB2004AF370023D67D /* RightManagement.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RightManagement.entitlements; sourceTree = "<group>"; };
+		F60F45492050039C00E89114 /* icons8-prize-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-prize-50.png"; sourceTree = "<group>"; };
 		F610491A201F2AC400DFC66E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		F612B07320077FC80065C015 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F6255091202C583100514518 /* bottonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottonView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		E6377CAA1FEE433700289F4E /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				F60F45492050039C00E89114 /* icons8-prize-50.png */,
 				E6A427B9202ED45800373A02 /* arrow_right_orange.png */,
 				E6A427B6202ED2D400373A02 /* icons8-classroom-50.png */,
 				E6A427B5202ED2D300373A02 /* icons8-communication-50.png */,
@@ -630,6 +633,7 @@
 				E6878AB3202B1B4F00A6E3FA /* arrow_up.png in Resources */,
 				E6335DAF1FE918C30090B7AD /* ic_rocket.png in Resources */,
 				E6878A99202B02E400A6E3FA /* icons8-alarm-filled-100.png in Resources */,
+				F60F454A2050039F00E89114 /* icons8-prize-50.png in Resources */,
 				E613B45A20174DBD00CAD3F9 /* ico_chatroom_64.png in Resources */,
 				E6878A9A202B02E400A6E3FA /* icons8-e-learning-100.png in Resources */,
 				E6A427BA202ED45A00373A02 /* arrow_right_orange.png in Resources */,

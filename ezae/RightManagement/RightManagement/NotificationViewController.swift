@@ -77,6 +77,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         cell?.notificationButton.tag = indexPath.row
         cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         cell?.notificationImageView.image = UIImage(named: "icons8-training-60")
+        cell?.notificationImageView.isHidden = false
         if(notification.notificationType == "Chatroom"){
             cell?.notificationImageView.image = UIImage(named: "icons8-communication-60")
             cell?.notificationButton.addTarget(self, action:#selector(launchChatroom), for: .touchUpInside)
@@ -87,9 +88,13 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }else if (notification.notificationType == "Module"){
             cell?.notificationButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
         }else if (notification.notificationType == "Badge Allotted"){
+            cell?.notificationImageView.image = UIImage(named: "icons8-prize-50")
             cell?.notificationButton.addTarget(self, action:#selector(goToAchievements), for: .touchUpInside)
         }else if(notification.notificationType == "Nominated"){
             cell?.notificationButton.addTarget(self, action:#selector(alreadyNominated), for: .touchUpInside)
+        }else if(notification.notificationType == "Rejected"){
+           
+            cell?.notificationButton.isHidden = true
         }
         cell?.notificationImageView.layer.borderWidth = 2.5
         cell?.notificationImageView.layer.borderColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
@@ -301,6 +306,8 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             }
             if(notificationType == "nominated") {
                 nType = "Nominated";
+            }else if(notificationType == "reject"){
+                nType = "Rejected"
             }
             let not1 = Notification(seq:Int(seq)!,title:title,notificationType: nType,isRead:isRead,entitySeq:Int(entitySeq)!)
             notifications.append(not1)

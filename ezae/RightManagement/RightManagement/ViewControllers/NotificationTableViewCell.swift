@@ -16,6 +16,7 @@ class NotificationTableViewCell: UITableViewCell {
     
     
     
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var bottomView: baseView!
     
     @IBOutlet weak var notificationImageView: UIImageView!

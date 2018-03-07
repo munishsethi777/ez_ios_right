@@ -236,7 +236,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                     notificationType = "Nominated"
                 }
             }
-            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType)
+            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType,isRead: false,entitySeq:0)
             notifications.append(not1)
         }
         self.notificationsTableView.reloadData()

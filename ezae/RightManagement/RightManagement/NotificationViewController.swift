@@ -63,6 +63,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell
         let notification = notifications[indexPath.row]
         cell?.notificationTitle.text = notification.title
+        cell?.typeLabel.text = notification.notificationType
         //cell?.notificationButton.setTitle(notification.notificationType, for: UIControlState.normal)
         cell?.notificationButton.tag = indexPath.row
         cell?.notificationButton.removeTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
@@ -74,6 +75,12 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             cell?.notificationButton.addTarget(self, action:#selector(nominateTraining), for: .touchUpInside)
         }else if (notification.notificationType == "Classroom"){
             cell?.notificationButton.addTarget(self, action:#selector(goToEvents), for: .touchUpInside)
+        }else if (notification.notificationType == "Module"){
+            cell?.notificationButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        }else if (notification.notificationType == "Badge Allotted"){
+            cell?.notificationButton.addTarget(self, action:#selector(goToAchievements), for: .touchUpInside)
+        }else if(notification.notificationType == "Nominated"){
+            cell?.notificationButton.addTarget(self, action:#selector(alreadyNominated), for: .touchUpInside)
         }
         cell?.notificationImageView.layer.borderWidth = 2.5
         cell?.notificationImageView.layer.borderColor = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor
@@ -88,8 +95,16 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         cell?.bottomView.layer.shadowRadius = 4.0
         cell?.bottomView.color = UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1)
         cell?.bottomView.commonInit()
+        if(notification.isread){
+            cell?.bottomView.setBackroundColor(color: UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 0.2));
+        }
         return cell!
     }
+    
+    func alreadyNominated(){
+        showAlert(message: "Training Already Nominated", title: "Nominated")
+    }
+    
     func goToEvents(){
         getEvents()
     }
@@ -108,26 +123,32 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         
         present(refreshAlert, animated: true, completion: nil)
     }
+    
     func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
-        selectedChatroomId = notification.seq
+        selectedChatroomId = notification.entitySeq
         selctedChatroomName = notification.title
         self.performSegue(withIdentifier: "ChatroomDetailView", sender: nil)
-//        self.tabBarController?.selectedIndex = 4
-//        let controller = self.tabBarController?.viewControllers![4]
-//        let navigationController = controller?.childViewControllers[0] as! UINavigationController
-//        let chatController = navigationController.viewControllers[0] as! ChatViewController
-//        chatController.selectedChatroomId = selectedChatroomId
-//        chatController.selctedChatroomName = selctedChatroomName
-//        chatController.isCalledFromDashboard = true
-//        self.tabBarController?.selectedIndex = 4
-        
     }
+    
+    func launchModule(sender:UIButton){
+        let index = sender.tag
+        let notification = notifications[index]
+        let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
+        launchModuleVC.moduleSeq = notification.entitySeq
+        launchModuleVC.lpSeq = 0
+        self.present(launchModuleVC, animated: true, completion: nil)
+    }
+    
+    func goToAchievements(sender:UIButton){
+       self.performSegue(withIdentifier: "MyAchievements", sender: nil)
+    }
+    
     func nominateTraining(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
-        let tSeq = notification.seq
+        let tSeq = notification.entitySeq
         let lpSeq = 0
         let refreshAlert = UIAlertController(title: "Nominate", message: StringConstants.NOMINATE_TRAINING_CONFIRM, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -211,30 +232,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             }
         })
     }
-    func loadNotificaitons(response: [String: Any]){
-        let notificationJsonArr = response["notifications"] as! [Any]
-        self.notificationsCount = notificationJsonArr.count
-        notifications = []
-        var unReadCount = 0;
-        for var i in 0..<notificationJsonArr.count{
-            let notificationJson = notificationJsonArr[i] as! [String:Any]
-            let seq = notificationJson["seq"] as! String
-            let title = notificationJson["title"] as! String
-            let from = notificationJson["from"] as? String
-            let notificationType = notificationJson["notificationtype"] as! String
-            let isRead = notificationJson["isread"] as! String
-            if(isRead == "0"){
-                unReadCount = unReadCount + 1;
-            }
-            let not1 = Notification(seq:Int(seq)!,title:title,notificationType: notificationType)
-            notifications.append(not1)
-        }
-        progressHUD.hide()
-        self.notificationsTableView.reloadData()
-        if(unReadCount > 0){
-            markAsReadCall();
-        }
-    }
+    
     
     func markAsReadCall(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
@@ -257,7 +255,54 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             }
         })
     }
-//    func loadNotificaitons(response: [String: Any]){
+    func loadNotificaitons(response: [String: Any]){
+        let notificationJsonArr = response["notifications"] as! [Any]
+        self.notificationsCount = notificationJsonArr.count
+        notifications = []
+        var unReadCount = 0;
+        for var i in 0..<notificationJsonArr.count{
+            let notificationJson = notificationJsonArr[i] as! [String:Any]
+            let seq = notificationJson["seq"] as! String
+            let title = notificationJson["title"] as! String
+            let entityType = notificationJson["entitytype"] as! String
+            let entitySeq = notificationJson["entityseq"] as! String
+            let from = notificationJson["startdate"] as? String
+            let notificationType = notificationJson["notificationtype"] as! String
+            let read = notificationJson["isread"] as! String
+            var nType = "Nominate"
+            var isRead = false;
+            if(read == "0"){
+                unReadCount = unReadCount + 1;
+                isRead = true
+            }
+            if(entityType == "module"){
+//                if(notificationType != "onEnrollment"){
+//                    button.setVisibility(View.GONE);
+//                    imageView_button.setVisibility(View.GONE);
+//                }
+                nType = "Module";
+            }else if (entityType == "chatroom"
+                && notificationType != "self_nomination") {
+                nType = "Chatroom";
+            } else if (entityType == "classroom"
+                && notificationType != "self_nomination") {
+                nType = "Classroom"
+            } else if(entityType == "badge"){
+                nType = "Badge Allotted";
+            }
+            if(notificationType == "nominated") {
+                nType = "Nominated";
+            }
+            let not1 = Notification(seq:Int(seq)!,title:title,notificationType: nType,isRead:isRead,entitySeq:Int(entitySeq)!)
+            notifications.append(not1)
+        }
+        progressHUD.hide()
+        self.notificationsTableView.reloadData()
+        if(unReadCount > 0){
+            markAsReadCall();
+        }
+    }
+//    func loadNotificaitons1(response: [String: Any]){
 //        let notificationJsonArr = response["notifications"] as! [Any]
 //        self.notificationsCount = notificationJsonArr.count
 //        notifications = []
@@ -378,13 +423,19 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             destinationVC.chatRoomId = selectedChatroomId
             destinationVC.chatRoomName = selctedChatroomName
             destinationVC.isCallFromNotification = true;
+        }else if (segue.identifier == "LaunchModule") {
+                 let destinationVC:LaunchModuleViewController = segue.destination as! LaunchModuleViewController
+                destinationVC.moduleSeq = selectedChatroomId
+                destinationVC.lpSeq = 0
         }
-    }
+     }
+    
 }
 
 class baseView: UIView {
     
     let dashedBorder = CAShapeLayer()
+    let backround = CAShapeLayer()
     var color = UIColor()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -402,8 +453,12 @@ class baseView: UIView {
         dashedBorder.fillColor = color.cgColor
         dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 2, height: self.frame.height)).cgPath
         self.layer.addSublayer(dashedBorder)
+        
     }
-    
+ 
+    func setBackroundColor(color:UIColor){
+        self.layer.backgroundColor = color.cgColor
+    }
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         dashedBorder.path = UIBezierPath(rect: CGRect(x: self.frame.width, y: 0, width: 2, height: self.frame.height)).cgPath

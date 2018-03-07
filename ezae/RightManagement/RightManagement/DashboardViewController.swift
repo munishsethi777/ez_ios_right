@@ -401,9 +401,13 @@ class DashboardViewController:UIViewController{
         let mesasgeCount = responseJson["messages"] as! Int
         if(pendingLpCount > 0){
             self.pendingLpCount.text =  "+" + String(pendingLpCount)
+        }else{
+            self.pendingLpCount.text = ""
         }
         if(notificationCount > 0){
             self.notificationsCount.text = "+" + String(notificationCount)
+        }else{
+            self.notificationsCount.text = ""
         }
         if(mesasgeCount > 0){
             self.messagesCount.text = "+" + String(mesasgeCount)

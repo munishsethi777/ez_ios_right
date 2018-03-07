@@ -11,11 +11,15 @@ class Notification{
     var seq:Int
     var title:String
     var notificationType:String
+    var isread:Bool
+    var entitySeq:Int
     
-    init(seq:Int,title:String,notificationType:String){
+    init(seq:Int,title:String,notificationType:String,isRead:Bool,entitySeq:Int){
         self.seq = seq
         self.title = title
         self.notificationType = notificationType
+        self.isread = isRead
+        self.entitySeq = entitySeq
     }
     
 }

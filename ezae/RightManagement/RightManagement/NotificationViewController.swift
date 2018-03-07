@@ -16,6 +16,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
     var progressHUD: ProgressHUD!
     var selectedChatroomId:Int!
     var selctedChatroomName:String!
+     var refreshControl:UIRefreshControl!
     @IBOutlet weak var notificationsTableView: UITableView!
 
 
@@ -29,6 +30,14 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+        getNotifications()
+        if #available(iOS 10.0, *) {
+            refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+            notificationsTableView.refreshControl = refreshControl
+        }
+    }
+    func refreshView(refreshControl: UIRefreshControl) {
         getNotifications()
     }
     func setbackround(){
@@ -298,6 +307,9 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }
         progressHUD.hide()
         self.notificationsTableView.reloadData()
+        if #available(iOS 10.0, *) {
+            refreshControl.endRefreshing()
+        }
         if(unReadCount > 0){
             markAsReadCall();
         }

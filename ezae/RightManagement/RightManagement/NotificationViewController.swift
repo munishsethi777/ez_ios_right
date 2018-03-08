@@ -92,7 +92,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             cell?.notificationButton.addTarget(self, action:#selector(goToAchievements), for: .touchUpInside)
         }else if(notification.notificationType == "Nominated"){
             cell?.notificationButton.addTarget(self, action:#selector(alreadyNominated), for: .touchUpInside)
-        }else if(notification.notificationType == "Rejected"){
+        }else if(notification.notificationType == "Nomination Rejected"){
            
             cell?.notificationButton.isHidden = true
         }
@@ -307,7 +307,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             if(notificationType == "nominated") {
                 nType = "Nominated";
             }else if(notificationType == "reject"){
-                nType = "Rejected"
+                nType = "Nomination Rejected"
             }
             let not1 = Notification(seq:Int(seq)!,title:title,notificationType: nType,isRead:isRead,entitySeq:Int(entitySeq)!)
             notifications.append(not1)

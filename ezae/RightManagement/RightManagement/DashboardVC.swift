@@ -28,7 +28,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     var selectedChatroomId:Int!
     var selctedChatroomName:String!
     
-    var notifications = [Notification]()
+    var notifications = [NotificationObj]()
     var activeLearningPlans = [ActiveLearningPlan]()
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
@@ -236,7 +236,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                     notificationType = "Nominated"
                 }
             }
-            let not1 = Notification(seq:Int(seq)!,title:Detail,notificationType: notificationType,isRead: false,entitySeq:0)
+            let not1 = NotificationObj(seq:Int(seq)!,title:Detail,notificationType: notificationType,isRead: false,entitySeq:0)
             notifications.append(not1)
         }
         self.notificationsTableView.reloadData()

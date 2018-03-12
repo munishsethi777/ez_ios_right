@@ -9,7 +9,7 @@
 import UIKit
 import SSCalendar
 class NotificationViewController:UIViewController,UITableViewDataSource,UITableViewDelegate{
-    var notifications = [Notification]()
+    var notifications = [NotificationObj]()
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
     var notificationsCount: Int = 0
@@ -309,7 +309,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             }else if(notificationType == "reject"){
                 nType = "Nomination Rejected"
             }
-            let not1 = Notification(seq:Int(seq)!,title:title,notificationType: nType,isRead:isRead,entitySeq:Int(entitySeq)!)
+            let not1 = NotificationObj(seq:Int(seq)!,title:title,notificationType: nType,isRead:isRead,entitySeq:Int(entitySeq)!)
             notifications.append(not1)
         }
         progressHUD.hide()

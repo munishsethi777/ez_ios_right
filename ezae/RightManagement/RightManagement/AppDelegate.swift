@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // iOS 10 support
+        
         if #available(iOS 10, *) {
             UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
             application.registerForRemoteNotifications()
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
+        ReachabilityManager.shared.startMonitoring()
         return true
     }
 
@@ -76,6 +78,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs registration failed: \(error)")
     }
     
+ 
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Push notification received: \(userInfo)")
         let notificationData = userInfo["data"] as! [String:Any]
@@ -95,5 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
     }
+    
 }
 

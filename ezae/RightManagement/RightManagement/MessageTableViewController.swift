@@ -29,7 +29,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         cache  = NSCache()
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-        getMessages()
+       // getMessages()
         messageTableView.delegate = self
         messageTableView.dataSource = self
         if #available(iOS 10.0, *) {
@@ -56,6 +56,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getMessages()
         changeNavBarColor()
     }
     func changeNavBarColor(){

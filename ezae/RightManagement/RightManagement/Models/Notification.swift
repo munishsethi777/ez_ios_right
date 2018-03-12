@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Notification{
+class NotificationObj{
     var seq:Int
     var title:String
     var notificationType:String

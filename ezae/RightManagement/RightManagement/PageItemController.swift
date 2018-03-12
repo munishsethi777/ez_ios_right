@@ -472,28 +472,36 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     func executeSubmitModuleCall(){
         let moduleSeq = Int(questionJson["moduleSeq"] as! String)!;
         let learningPlanSeq = Int(questionJson["learningPlanSeq"] as! String)!;
-        var jsonString = ModuleProgressMgr.sharedInstance.getExistingProgressJosnStringForModule(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
-        jsonString = jsonString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,jsonString]
-        let apiUrl: String = MessageFormat.format(pattern: StringConstants.SUBMIT_MODULE_PROGRESS, args: args)
-        var success : Int = 0
-        var message : String? = nil
-        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
-                success = json["success"] as! Int
-                message = json["message"] as? String
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    if(success == 1){
-                        ModuleProgressMgr.sharedInstance.deleteModuleProgress(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
-                        self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
-                        self.showAlert(message: message!)
+        let isNetworkAvailable = Reachability1.isConnectedToNetwork()
+        if(isNetworkAvailable){
+            var jsonString = ModuleProgressMgr.sharedInstance.getExistingProgressJosnStringForModule(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
+            jsonString = jsonString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,jsonString]
+            let apiUrl: String = MessageFormat.format(pattern: StringConstants.SUBMIT_MODULE_PROGRESS, args: args)
+            var success : Int = 0
+            var message : String? = nil
+            ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                    success = json["success"] as! Int
+                    message = json["message"] as? String
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        if(success == 1){
+                            ModuleProgressMgr.sharedInstance.deleteModuleProgress(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq)
+                            self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
+                            self.showAlert(message: message!)
+                        }
                     }
+                } catch let parseError as NSError {
+                    self.showAlert(message: parseError.description)
                 }
-            } catch let parseError as NSError {
-                self.showAlert(message: parseError.description)
-            }
-        })
+            })
+        }else{
+            let moduleMgr = ModuleMgr.sharedInstance
+            moduleMgr.savePendingModule(moduleSeq: moduleSeq,learningPlanSeq: learningPlanSeq)
+            self.performSegue(withIdentifier: "showTrainingTabs", sender: self)
+            self.showAlert(message: "Training Completed")
+        }
     }
     
     func executeSaveActivityCall(){

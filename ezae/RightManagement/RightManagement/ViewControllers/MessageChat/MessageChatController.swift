@@ -18,6 +18,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         }
     }
     
+    
     var chatUserSeq:Int = 0
     var charUserType:String!
     var chattingUserName:String!
@@ -35,15 +36,19 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         
         getMessages(isScroll: true)
         syncMessages()
-        
+       
+    }
+
+    @IBAction func userTappedClick(_ sender: Any) {
+        self.inputbar.inputResignFirstResponder()
     }
     func syncMessages(){
         syncMessageScheduler = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
     }
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        
-        //self.view.keyboardTriggerOffset = inputbar.frame.size.height
+        self.view.keyboardTriggerOffset = inputbar.frame.size.height
+        //self.tableView.frame.origin.y = self.tableView.frame.origin.y - 20
         self.view.addKeyboardPanning() {[unowned self](keyboardFrameInView:CGRect, opening:Bool, closing:Bool) in
             /*
              self.view.removeKeyboardControl()
@@ -59,13 +64,13 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
             self.inputbar.frame = toolBarFrame
             var tableViewFrame = self.tableView.frame
             let tableViewY = toolBarFrame.origin.y + (tabbarFrame?.size.height)!
-            
-            tableViewFrame.size.height = tableViewY - 64
+            let tableH = 64 + toolBarFrame.height
+            tableViewFrame.size.height = tableViewY - tableH
             self.tableView.frame = tableViewFrame
             self.tableViewScrollToBottomAnimated(animated: false)
         }
     }
-    
+   
     override func viewDidDisappear(_ animated:Bool) {
         super.viewDidDisappear(animated)
         self.view.endEditing(true)
@@ -76,6 +81,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     
     override func viewWillDisappear(_ animated:Bool) {
         self.chat.lastMessage = self.tableArray!.lastObject()
+        
     }
     
     // MARK -
@@ -125,6 +131,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let rows = self.tableArray.numberOfMessagesInSection(section: section)
         return self.tableArray.numberOfMessagesInSection(section: section)
     }
     
@@ -174,10 +181,12 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     func tableViewScrollToBottomAnimated(animated:Bool) {
         let numberOfSections = self.tableArray.numberOfSections
         let numberOfRows = self.tableArray.numberOfMessagesInSection(section: numberOfSections-1)
+        let tableRows = tableView.numberOfRows(inSection: numberOfSections-1)
         if numberOfRows > 0 {
             self.tableView.scrollToRow(at: self.tableArray.indexPathForLastMessage() as IndexPath, at:.bottom, animated:animated)
         }
     }
+    
     
     
     
@@ -242,7 +251,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
                         self.loadMessageDetail(response: json)
                         self.setInputbar()
                         self.setTableView()
-                        self.setGateway(scroll:isScroll)
+                        self.setGateway(scroll:true)
                     }else{
                         self.showAlert(message: message!)
                     }

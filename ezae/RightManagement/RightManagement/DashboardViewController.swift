@@ -209,7 +209,9 @@ class DashboardViewController:UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        handleNotificationData()
+       // handleNotificationData()
+        getDashboardCounts()
+        getDashboardStates()
     }
     
     func setbackround(){
@@ -230,6 +232,8 @@ class DashboardViewController:UIViewController{
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillDisappear(animated)
     }
+   
+    
     private func handleNotificationData(){
         let isNotificationState = PreferencesUtil.sharedInstance.isNotificationState()
         if(isNotificationState){

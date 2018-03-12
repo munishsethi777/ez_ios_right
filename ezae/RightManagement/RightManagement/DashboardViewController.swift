@@ -174,8 +174,8 @@ class DashboardViewController:UIViewController{
         //self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
-        getDashboardCounts()
-        getDashboardStates()
+        //getDashboardCounts()
+        //getDashboardStates()
         synchCompanyUsers()
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()

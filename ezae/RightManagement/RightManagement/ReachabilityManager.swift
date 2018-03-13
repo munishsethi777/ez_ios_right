@@ -19,7 +19,7 @@ class ReachabilityManager: NSObject {
     // 4. Tracks current NetworkStatus (notReachable, reachableViaWiFi, reachableViaWWAN)
     var reachabilityStatus: Reachability.NetworkStatus = .notReachable
     // 5. Reachability instance for Network status monitoring
-    let reachability = Reachability()!
+    var reachability = Reachability()!
     
     func reachabilityChanged(notification: Notification) {
         let reachability = notification.object as! Reachability
@@ -41,7 +41,8 @@ class ReachabilityManager: NSObject {
                                                name: ReachabilityChangedNotification,
                                                object: reachability)
         do{
-            try reachability.startNotifier()
+            try
+                reachability.startNotifier()
         } catch {
             debugPrint("Could not start reachability notifier")
         }

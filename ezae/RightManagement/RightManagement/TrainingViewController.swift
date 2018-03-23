@@ -103,7 +103,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         let moduleJson = moduleJsonArr[row] as! [String: Any]
         let moduleSeq = moduleJson["seq"] as! String
         let cellIdentifier = "TrainingTableViewCell"
-        cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrainingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TrainingTableViewCell
         var moduleImageUrl = moduleJson["imagepath"] as? String
         var lpSeqStr = moduleJson["learningPlanSeq"] as? String
         var seqStr = moduleJson["seq"] as? String
@@ -132,7 +132,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
         
         if (self.cache.object(forKey: moduleSeq as AnyObject) != nil){
-            cell.moduleImageView?.image = self.cache.object(forKey: moduleSeq as AnyObject) as? UIImage
+            cell?.moduleImageView?.image = self.cache.object(forKey: moduleSeq as AnyObject) as? UIImage
             cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
             cell?.moduleImageView.clipsToBounds = true
         }else {
@@ -151,9 +151,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                     if let data = NSData(contentsOf: url as URL) {
                         DispatchQueue.main.async {
                             let img = UIImage(data: data as Data)
-                            self.cell?.moduleImageView.image = img
-                            self.cell?.moduleImageView.layer.cornerRadius = (self.cell?.moduleImageView.frame.height)! / 2
-                            self.cell?.moduleImageView.clipsToBounds = true
+                            cell?.moduleImageView.image = img
+                            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                            cell?.moduleImageView.clipsToBounds = true
                             self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
                         }
                     }
@@ -181,16 +181,16 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             cell?.launchImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
         }
         if(progress == 100){
-            cell.launchImageButton.isHidden = false
+            cell?.launchImageButton.isHidden = false
             buttonTitle = "Review"
             cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
         }else{
-            cell.launchImageButton.isHidden = false
+            cell?.launchImageButton.isHidden = false
         }
         let isLockSequence = lpJsonArr["lockSequence"] as! Bool;
         cell?.launchModuleButton.isEnabled = true
-        cell.launchImageButton.isEnabled = true
+        cell?.launchImageButton.isEnabled = true
         if(row > 0 && isLockSequence){
             let previousModuleJson = moduleJsonArr[row-1] as! [String: Any]
             let lastProgressStr = previousModuleJson["progress"] as? String
@@ -200,7 +200,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             }
             if(lastProgress < 100){
                 cell?.launchModuleButton.isEnabled = false
-                cell.launchImageButton.isEnabled = false
+                cell?.launchImageButton.isEnabled = false
             }
         }
         cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)

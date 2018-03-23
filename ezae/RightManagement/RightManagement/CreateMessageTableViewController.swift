@@ -99,7 +99,8 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
                         self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
                     }
                 }
-        
+            }
+        }
         return cell!
     }
 

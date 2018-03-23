@@ -134,6 +134,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
                         self.progressHUD.hide()
+                        UserMgr.sharedInstance.updateUser(response: json)
                         self.showAlert(message: message!,title:"Success")
                     }else{
                         self.showAlert(message: message!,title:"Failed")

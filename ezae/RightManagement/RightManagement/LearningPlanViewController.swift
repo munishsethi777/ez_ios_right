@@ -103,15 +103,29 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
             cell?.lpImageView.clipsToBounds = true
         }else {
             moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+//            if let url = NSURL(string: moduleImageUrl!) {
+//                if let data = NSData(contentsOf: url as URL) {
+//                    let img = UIImage(data: data as Data)
+//                    cell?.lpImageView.image = UIImage(data: data as Data)
+//                    cell?.lpImageView.layer.cornerRadius = (cell?.lpImageView.frame.height)! / 2
+//                    cell?.lpImageView.clipsToBounds = true
+//                    self.cache.setObject(img!, forKey: id as AnyObject)
+//                }
+//            }
             if let url = NSURL(string: moduleImageUrl!) {
-                if let data = NSData(contentsOf: url as URL) {
-                    let img = UIImage(data: data as Data)
-                    cell?.lpImageView.image = UIImage(data: data as Data)
-                    cell?.lpImageView.layer.cornerRadius = (cell?.lpImageView.frame.height)! / 2
-                    cell?.lpImageView.clipsToBounds = true
-                    self.cache.setObject(img!, forKey: id as AnyObject)
+                DispatchQueue.global().async {
+                    if let data = NSData(contentsOf: url as URL) {
+                        DispatchQueue.main.async {
+                            let img = UIImage(data: data as Data)
+                            cell?.lpImageView.image = UIImage(data: data as Data)
+                            cell?.lpImageView.layer.cornerRadius = (cell?.lpImageView.frame.height)! / 2
+                            cell?.lpImageView.clipsToBounds = true
+                            self.cache.setObject(img!, forKey: id as AnyObject)
+                        }
+                    }
                 }
             }
+            
         }
         cell?.scoreLabel.isHidden = true
         cell?.pointLabel.isHidden = true

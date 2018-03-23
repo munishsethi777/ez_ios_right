@@ -137,13 +137,26 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             cell?.moduleImageView.clipsToBounds = true
         }else {
             moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+//            if let url = NSURL(string: moduleImageUrl!) {
+//                if let data = NSData(contentsOf: url as URL) {
+//                    let img = UIImage(data: data as Data)
+//                    cell?.moduleImageView.image = img
+//                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+//                    cell?.moduleImageView.clipsToBounds = true
+//                    self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+//                }
+//            }
             if let url = NSURL(string: moduleImageUrl!) {
-                if let data = NSData(contentsOf: url as URL) {
-                    let img = UIImage(data: data as Data)
-                    cell?.moduleImageView.image = img
-                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                    cell?.moduleImageView.clipsToBounds = true
-                    self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+                DispatchQueue.global().async {
+                    if let data = NSData(contentsOf: url as URL) {
+                        DispatchQueue.main.async {
+                            let img = UIImage(data: data as Data)
+                            self.cell?.moduleImageView.image = img
+                            self.cell?.moduleImageView.layer.cornerRadius = (self.cell?.moduleImageView.frame.height)! / 2
+                            self.cell?.moduleImageView.clipsToBounds = true
+                            self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+                        }
+                    }
                 }
             }
         }

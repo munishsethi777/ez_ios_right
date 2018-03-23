@@ -117,13 +117,26 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 cell?.moduleImageView.clipsToBounds = true
             }else {
                 moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+//                if let url = NSURL(string: moduleImageUrl!) {
+//                    if let data = NSData(contentsOf: url as URL) {
+//                        let img = UIImage(data: data as Data)
+//                        cell?.moduleImageView.image = UIImage(data: data as Data)
+//                        cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+//                        cell?.moduleImageView.clipsToBounds = true
+//                        self.cache.setObject(img!, forKey: seqStr as AnyObject)
+//                    }
+//                }
                 if let url = NSURL(string: moduleImageUrl!) {
-                    if let data = NSData(contentsOf: url as URL) {
-                        let img = UIImage(data: data as Data)
-                        cell?.moduleImageView.image = UIImage(data: data as Data)
-                        cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                        cell?.moduleImageView.clipsToBounds = true
-                        self.cache.setObject(img!, forKey: seqStr as AnyObject)
+                    DispatchQueue.global().async {
+                        if let data = NSData(contentsOf: url as URL) {
+                            DispatchQueue.main.async {
+                                let img = UIImage(data: data as Data)
+                                cell?.moduleImageView.image = UIImage(data: data as Data)
+                                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                                cell?.moduleImageView.clipsToBounds = true
+                                self.cache.setObject(img!, forKey: seqStr as AnyObject)
+                            }
+                        }
                     }
                 }
             }

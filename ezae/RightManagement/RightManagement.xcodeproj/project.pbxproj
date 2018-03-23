@@ -929,7 +929,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50B319A9552DE2DB7876F505 /* Pods-RightManagement.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Assets;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_ENTITLEMENTS = RightManagement/RightManagement.entitlements;
 				DEVELOPMENT_TEAM = X2RLNL6C4P;
 				INFOPLIST_FILE = RightManagement/Info.plist;
@@ -945,7 +946,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B03A325ECBCE181B8C5AB06 /* Pods-RightManagement.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Assets;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_ENTITLEMENTS = RightManagement/RightManagement.entitlements;
 				DEVELOPMENT_TEAM = X2RLNL6C4P;
 				INFOPLIST_FILE = RightManagement/Info.plist;

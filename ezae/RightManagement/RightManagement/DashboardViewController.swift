@@ -198,11 +198,21 @@ class DashboardViewController:UIViewController{
        }
        let imageUrl = StringConstants.USER_IMAGE_URL + userImageName!
        let userProfiles = user?.profiles
-       if let url = NSURL(string: imageUrl) {
-            if let data = NSData(contentsOf: url as URL) {
-                userImageView.image = UIImage(data: data as Data)
+//       if let url = NSURL(string: imageUrl) {
+//            if let data = NSData(contentsOf: url as URL) {
+//                userImageView.image = UIImage(data: data as Data)
+//            }
+//        }
+        if let url = NSURL(string: imageUrl) {
+            DispatchQueue.global().async {
+                if let data = NSData(contentsOf: url as URL) {
+                    DispatchQueue.main.async {
+                        self.userImageView.image = UIImage(data: data as Data)
+                    }
+                }
             }
         }
+        
         userNameLabel.text = userName
         userProfileLabel.text = userProfiles
         

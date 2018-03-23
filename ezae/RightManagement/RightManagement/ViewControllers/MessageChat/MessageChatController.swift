@@ -181,9 +181,11 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     func tableViewScrollToBottomAnimated(animated:Bool) {
         let numberOfSections = self.tableArray.numberOfSections
         let numberOfRows = self.tableArray.numberOfMessagesInSection(section: numberOfSections-1)
-        let tableRows = tableView.numberOfRows(inSection: numberOfSections-1)
-        if numberOfRows > 0 {
-            self.tableView.scrollToRow(at: self.tableArray.indexPathForLastMessage() as IndexPath, at:.bottom, animated:animated)
+        if(numberOfRows > 0){
+            let tableRows = tableView.numberOfRows(inSection: numberOfSections-1)
+            if numberOfRows > 0 {
+                self.tableView.scrollToRow(at: self.tableArray.indexPathForLastMessage() as IndexPath, at:.bottom, animated:animated)
+            }
         }
     }
     

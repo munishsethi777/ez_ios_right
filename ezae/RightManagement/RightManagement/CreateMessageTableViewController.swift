@@ -89,14 +89,16 @@ class CreateMessageTableViewController: UIViewController,UITableViewDelegate,UIT
         if (self.cache.object(forKey: indexPath.row as AnyObject) != nil){
             cell?.messageImageView?.image = self.cache.object(forKey: indexPath.row as AnyObject) as? UIImage
         }else if let url = NSURL(string: imagePath) {
-            if let data = NSData(contentsOf: url as URL) {
-                let img = UIImage(data: data as Data)
-                cell?.messageImageView.image = img
-                cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
-                cell?.messageImageView.clipsToBounds = true
-                self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
-            }
-        }
+            DispatchQueue.global().async {
+               if let data = NSData(contentsOf: url as URL) {
+                    DispatchQueue.main.async {
+                        let img = UIImage(data: data as Data)
+                        cell?.messageImageView.image = img
+                        cell?.messageImageView.layer.cornerRadius = (cell?.messageImageView.frame.height)! / 2
+                        cell?.messageImageView.clipsToBounds = true
+                        self.cache.setObject(img!, forKey: indexPath.row as AnyObject)
+                    }
+                }
         
         return cell!
     }

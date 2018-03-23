@@ -187,6 +187,7 @@ class DashboardViewController:UIViewController{
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getDashboardCounts()
         getDashboardStates()
+        populateUserInfoFromLocal()
     }
     func populateUserInfoFromLocal(){
        let user =  UserMgr.sharedInstance.getUserByUserSeq(userSeq: loggedInUserSeq)
@@ -212,6 +213,7 @@ class DashboardViewController:UIViewController{
        // handleNotificationData()
         getDashboardCounts()
         getDashboardStates()
+        populateUserInfoFromLocal()
     }
     
     func setbackround(){

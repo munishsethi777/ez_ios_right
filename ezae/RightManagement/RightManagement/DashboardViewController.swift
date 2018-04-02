@@ -219,11 +219,14 @@ class DashboardViewController:UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-       // handleNotificationData()
+       
         getDashboardCounts()
         getDashboardStates()
         populateUserInfoFromLocal()
+        handleNotificationData()
     }
     
     func setbackround(){

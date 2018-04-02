@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -37,8 +37,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
         ReachabilityManager.shared.startMonitoring()
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.registerForRemoteNotifications()
+            
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self //DID NOT WORK WHEN self WAS MyOtherDelegateClass()
+            
+            center.requestAuthorization(options: [.alert, .sound, .badge]) {
+                (granted, error) in
+                // Enable or disable features based on authorization.
+                if granted {
+                    // update application settings
+                }
+            }
+
+        } else {
+            // Fallback on earlier versions
+        }
         return true
     }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler: @escaping (UNNotificationPresentationOptions)->()) {
+        if UIApplication.shared.applicationState == .active {
+            let currentController = UIApplication.topViewController()
+            if(currentController is MessageChatController){
+                let userInfo = notification.request.content.userInfo as? NSDictionary
+                let notificationData = userInfo!["data"] as! [String:Any]
+                let entitySeq = notificationData["entitySeq"] as! String
+                let entityType = notificationData["entityType"] as! String
+                let mcv = currentController as! MessageChatController
+                let chatUserSeq = mcv.chatUserSeq;
+                let chatUserType = mcv.charUserType;
+                if(chatUserSeq == Int(entitySeq) && chatUserType! == entityType){
+                    mcv.getMessages(isScroll: false);
+                }else{
+                    withCompletionHandler([.alert, .sound, .badge])
+                }
+                return;
+            }
+        }
+        withCompletionHandler([.alert, .sound, .badge])
+    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -78,9 +121,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs registration failed: \(error)")
     }
     
+    
  
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let state = UIApplication.shared.applicationState
         print("Push notification received: \(userInfo)")
         let notificationData = userInfo["data"] as! [String:Any]
         let entitySeq = notificationData["entitySeq"] as! String
@@ -91,14 +136,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq,fromUserName:fromUserName!)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "Login") as UIViewController
-        self.window?.rootViewController = viewController
-        let state = UIApplication.shared.applicationState
-        if(state == .active){
-            return
+        var viewController:UIViewController!;
+        if(prefUtil.getLoggedInUserSeq() > 0){
+             viewController = storyBoard.instantiateViewController(withIdentifier: "MainTab") as UIViewController
+        }else{
+             viewController = storyBoard.instantiateViewController(withIdentifier: "Login") as UIViewController
         }
+        self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
     }
     
+}
+
+extension UIApplication {
+    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
+    }
 }
 

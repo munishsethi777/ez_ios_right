@@ -16,6 +16,7 @@ class PreferencesUtil{
     static let NOTIFICATION_ENTITY_SEQ = "notificationEntitySeq"
     static let FROM_USER_NAME = "fromUserName";
     static let NOTIFICATION_ENTITY_TYPE = "notificationEntityType"
+    static let APP_ACTIVE_STATE = "AppActiveState"
     
     func setDeviceId(deviceId:String){
         setValue(key: PreferencesUtil.LOGGED_IN_DEVICE_ID,value: deviceId)
@@ -68,6 +69,14 @@ class PreferencesUtil{
         setValue(key: PreferencesUtil.NOTIFICATION_STATE,value: flag);
     }
     
+    func isAppActive()->Bool{
+        return getValueBool(key: PreferencesUtil.APP_ACTIVE_STATE);
+    }
+    
+    func setAppActive(flag:Bool){
+        setValue(key: PreferencesUtil.APP_ACTIVE_STATE,value: flag);
+    }
+    
     func setNotificationData(entityType:String,entitySeq:String,fromUserName:String){
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ, value: entitySeq)
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE, value: entityType)
@@ -99,6 +108,7 @@ class PreferencesUtil{
                 defaults.removeObject(forKey: key)
             }
             UIApplication.shared.applicationIconBadgeNumber = 0
+            setValue(key: PreferencesUtil.APP_ACTIVE_STATE,value: false);
         }
     }
     

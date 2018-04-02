@@ -284,7 +284,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        messageDetail.status = .Sent
+                        messageDetail.status = .Received
                         messageDetail.sender = .Myself
                         self.gateway.sendMessage(message: messageDetail)
                     }else{

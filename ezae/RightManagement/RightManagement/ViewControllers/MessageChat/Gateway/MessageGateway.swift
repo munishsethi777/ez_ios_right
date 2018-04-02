@@ -93,7 +93,7 @@ class MessageGateway:NSObject {
         // Now I'm just faking update message
         //
         LocalStorage.sharedInstance.storeMessage(message: message)
-        //self.fakeMessageUpdate(message: message)
+        self.fakeMessageUpdate(message: message)
         //TODO
     }
     func sendReadStatusToMessages(messageIds:[String]) {

@@ -43,7 +43,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.inputbar.inputResignFirstResponder()
     }
     func syncMessages(){
-        syncMessageScheduler = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
+        //syncMessageScheduler = Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
     }
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
@@ -76,8 +76,15 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
         self.view.endEditing(true)
         self.view.removeKeyboardControl()
         self.gateway.dismiss()
+        stopTimerTest();
     }
     
+    func stopTimerTest() {
+        if syncMessageScheduler != nil {
+            syncMessageScheduler.invalidate()
+            syncMessageScheduler = Timer();
+        }
+    }
     
     override func viewWillDisappear(_ animated:Bool) {
         self.chat.lastMessage = self.tableArray!.lastObject()
@@ -277,7 +284,8 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
                 message = json["message"] as? String
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if(success == 1){
-                        messageDetail.status = .Received
+                        messageDetail.status = .Sent
+                        messageDetail.sender = .Myself
                         self.gateway.sendMessage(message: messageDetail)
                     }else{
                         self.showAlert(message: message!)

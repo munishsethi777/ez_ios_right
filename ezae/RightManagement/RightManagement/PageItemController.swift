@@ -650,6 +650,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     
     private func handleViews(){
+        if(moduleType == StringConstants.LESSION_TYPE_MODULE){
+            submitProgress.setTitle("Mark as read", for: .normal)
+        }else{
+            submitProgress.setTitle("Submit", for: .normal)
+        }
         if(!moduleProgress.isEmpty){
            submitProgress.isEnabled = false
            okButton.isHidden = false

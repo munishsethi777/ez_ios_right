@@ -182,8 +182,19 @@ class DashboardViewController:UIViewController{
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
             scrollView.refreshControl = refreshControl
         }
-        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(connected(_:)))
+        userImageView.isUserInteractionEnabled = true
+        userImageView.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    func connected(_ sender:AnyObject){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UpdateProfileController") as! UpdateProfileViewController
+        self.navigationController!.pushViewController(nextViewController, animated:true)
+    }
+    
+   
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getDashboardCounts()
         getDashboardStates()

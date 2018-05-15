@@ -11,6 +11,7 @@ import UIKit
 class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     
+    @IBOutlet weak var badgeTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var pointsBackView: UIView!
     @IBOutlet weak var scoreBackView: UIView!
     @IBOutlet weak var rankBackView: UIView!
@@ -206,8 +207,8 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         progressHUD.hide()
         badgeTableView.reloadData()
         badgeTableView.frame.size.height = CGFloat(badgesCount*100)
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 200)
-
+        badgeTableViewHeight.constant = CGFloat(badgesCount*100)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 400)
         if #available(iOS 10.0, *){
             refreshControl.endRefreshing()
         }

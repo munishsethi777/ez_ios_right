@@ -9,8 +9,10 @@
 import UIKit
 
 class
-MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
+MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+     
     
+    @IBOutlet weak var leaderboardPicker: UIPickerView!
     @IBOutlet weak var badgeTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var pointsBackView: UIView!
     @IBOutlet weak var scoreBackView: UIView!
@@ -26,6 +28,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
     var badgesCount: Int = 0
     var progressHUD: ProgressHUD!
     var refreshControl:UIRefreshControl!
+    var pickerData: [String] = [String]()
     override func viewDidLoad() {
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
@@ -75,7 +78,22 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate{
         shape3.fillColor = UIColor.clear.cgColor
         gradient3.mask = shape3
         self.rankBackView.layer.addSublayer(gradient3)
+        
+        self.leaderboardPicker.delegate = self
+        self.leaderboardPicker.dataSource = self
+        pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
     
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1;
+    }
+  
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
     }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)

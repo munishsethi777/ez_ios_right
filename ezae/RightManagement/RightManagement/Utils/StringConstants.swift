@@ -39,12 +39,16 @@ struct StringConstants {
     static let GET_ACHIEVEMENTS = ACTION_API_URL + "UserAction.php?call=myAchievements&userSeq={0}&companyseq={1}"
     static let SAVE_NOTES = ACTION_API_URL + "NoteAction.php?call=saveNote&userSeq={0}&companySeq={1}&seq={2}&details={3}"
     static let DELETE_NOTES = ACTION_API_URL + "NoteAction.php?call=deleteNote&userSeq={0}&companySeq={1}&noteSeq={2}"
+    static let GET_LEADERBOARD_BY_MODULE = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByModule&userSeq={0}&companySeq={1}&moduleSeq={2}";
+    static let GET_LEADERBOARD_BY_PROFILE = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByProfile&userSeq={0}&companySeq={1}&profileSeq={2}";
+    static let GET_LEADERBOARD_BY_LEARNINGPLAN = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByLearningPlan&userSeq={0}&companySeq={1}&lpSeq={2}";
 
     static let SYNCH_USERS = ACTION_API_URL + "UserAction.php?call=synchUsersAndAdmins&userSeq={0}&companySeq={1}"
 
     static let GET_USER_DETAIL = ACTION_API_URL + "UserAction.php?call=getUserDetail&userSeq={0}&companySeq={1}";
     static let UPDATE_USER_PROFILE = ACTION_API_URL + "UserAction.php?call=updateUserProfile&userSeq={0}&companySeq={1}&userProfileDetail={2}";
-
+    static let GET_PROFILE_AND_MODULES = ACTION_API_URL + "UserAction.php?call=getProfilesAndModules&userSeq={0}&companySeq={1}";
+    
     //Learning Plan Actions
     static let GET_LEARNING_PLAN = ACTION_API_URL + "LearningPlanAction.php?call=getLearningPlans&userSeq={0}&companySeq={1}"
     static let GET_LEARNING_PLAN_DETAIL = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&call=getLearningPlanDetails"
@@ -87,5 +91,6 @@ struct StringConstants {
     //Notification Action
     static let MARK_AS_READ_NOTIFICATION = ACTION_API_URL + "NotificationAction.php?call=markReadOrUnRead&isRead=1&userSeq={0}&companySeq={1}";
     static let DELETE_NOTIFICATION = ACTION_API_URL + "NotificationAction.php?call=markAsClearNotification&userSeq={0}&companySeq={1}&seq={2}";
+   
     
 }

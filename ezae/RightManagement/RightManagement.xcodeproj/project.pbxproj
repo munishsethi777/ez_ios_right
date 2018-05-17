@@ -109,6 +109,7 @@
 		F6B63D981FF2533100886264 /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B63D971FF2533000886264 /* CreateNoteViewController.swift */; };
 		F6C85BEA1FD8181300BF4987 /* ModuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */; };
 		F6C85C2B1FDA929000BF4987 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C85C2A1FDA929000BF4987 /* PageItemController.swift */; };
+		F6C9F9D220AD39840090D0C5 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C9F9D120AD39830090D0C5 /* LeaderboardTableViewCell.swift */; };
 		F6D3FC91201755BC008E0C11 /* LearningPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */; };
 		F6DBB5661FF4F7C900386125 /* MessageChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5651FF4F7C900386125 /* MessageChatController.swift */; };
 		F6DBB56B1FF4F96200386125 /* Inputbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBB5681FF4F96200386125 /* Inputbar.swift */; };
@@ -240,6 +241,7 @@
 		F6B63D971FF2533000886264 /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
+		F6C9F9D120AD39830090D0C5 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		F6D3FC90201755BC008E0C11 /* LearningPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPlanTableViewCell.swift; sourceTree = "<group>"; };
 		F6DBB5651FF4F7C900386125 /* MessageChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatController.swift; sourceTree = "<group>"; };
 		F6DBB5681FF4F96200386125 /* Inputbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inputbar.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		E66D5B4B1F8CA3990063EDEC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6C9F9D120AD39830090D0C5 /* LeaderboardTableViewCell.swift */,
 				F63EE2722000E71200403994 /* CompanyUserMgr.swift */,
 				F63EE2702000E71100403994 /* CreateMessageTableViewController.swift */,
 				F63EE2712000E71200403994 /* ProgressHUD.swift */,
@@ -759,6 +762,7 @@
 				F6ED788820175310006D931D /* LearningPlanViewController.swift in Sources */,
 				F64A98891FD2B630001858DE /* TrainingViewController.swift in Sources */,
 				F64A987C1FD01ADF001858DE /* ActiveLearningPlan.swift in Sources */,
+				F6C9F9D220AD39840090D0C5 /* LeaderboardTableViewCell.swift in Sources */,
 				F6DBB5821FF50A3200386125 /* Chat.swift in Sources */,
 				F6A65B692053B7DC00E15862 /* ModuleMgr.swift in Sources */,
 				F6DBB5841FF50A3200386125 /* MessageDetail.swift in Sources */,

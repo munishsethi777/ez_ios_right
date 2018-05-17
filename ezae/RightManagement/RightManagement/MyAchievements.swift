@@ -10,8 +10,12 @@ import UIKit
 
 class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
-     
     
+    @IBOutlet weak var testTableView: UITableView!
+    
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var noRowFoundLabel: UILabel!
+    @IBOutlet weak var leaderboardTable: UITableView!
     @IBOutlet weak var leaderboardPicker: UIPickerView!
     @IBOutlet weak var badgeTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var pointsBackView: UIView!
@@ -29,16 +33,23 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     var progressHUD: ProgressHUD!
     var refreshControl:UIRefreshControl!
     var pickerData: [String] = [String]()
+    var profileAndModules = [Any]()
+    var leaderBoardDataArr = [Any]()
     override func viewDidLoad() {
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         badgeTableView.delegate = self
         badgeTableView.dataSource = self
+        testTableView.delegate = self
+        testTableView.dataSource = self
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+        let progress = ProgressHUD(text:"Loading")
+        progressView.addSubview(progress);
         getMyAchievements()
         getBadges()
         setbackround()
+        getProfileAndModules();
         //scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
@@ -81,7 +92,8 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         
         self.leaderboardPicker.delegate = self
         self.leaderboardPicker.dataSource = self
-        pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+       // pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+        
     
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -94,6 +106,11 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let profileAndModule = profileAndModules[row] as! [String:Any];
+        let id = profileAndModule["id"] as! String
+        getLeaderboardData(selectedId: id);
     }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -126,25 +143,85 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()
         getBadges()
+        getProfileAndModules()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.badgesCount
+        if(tableView == self.badgeTableView){
+            return self.badgesCount
+        }else{
+            return self.leaderBoardDataArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "BadgeTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? BadgeTableViewCell
-        let badge = badges[indexPath.row]
-        cell?.badgeTitleLabel.text = badge.title
-        cell?.badgeDetailImage.text = badge.detail
-        cell?.badgeDateLabel.text = badge.date
-        let imagePath = StringConstants.WEB_API_URL + badge.imagepath
-        if let url = NSURL(string: imagePath) {
-            if let data = NSData(contentsOf: url as URL) {
-                cell?.badgeImageView.image = UIImage(data: data as Data)
+        if(tableView == badgeTableView){
+            let cellIdentifier = "BadgeTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? BadgeTableViewCell
+            let badge = badges[indexPath.row]
+            cell?.badgeTitleLabel.text = badge.title
+            cell?.badgeDetailImage.text = badge.detail
+            cell?.badgeDateLabel.text = badge.date
+            let imagePath = StringConstants.WEB_API_URL + badge.imagepath
+            if let url = NSURL(string: imagePath) {
+                if let data = NSData(contentsOf: url as URL) {
+                    cell?.badgeImageView.image = UIImage(data: data as Data)
+                }
             }
+            return cell!
+        }else{
+            let cellIdentifier = "LeaderboardTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LeaderboardTableViewCell
+            let leaderboardData = leaderBoardDataArr[indexPath.row] as? [String : Any]
+            if(leaderboardData != nil){
+                var userName = leaderboardData!["uname"] as? String
+                if(userName != nil && userName != "" && userName != "null"){
+                }else{
+                    userName = leaderboardData!["username"] as? String;
+                }
+                let totalScore = leaderboardData!["totalscore"] as? String
+                cell?.userNameLabel.text = userName
+                cell?.scoreLabel.text = totalScore
+            }
+            return cell!
         }
-        return cell!
+    }
+    
+    func getProfileAndModules(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_PROFILE_AND_MODULES, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.populateProfileAndModule(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func populateProfileAndModule(response : [String: Any]){
+        profileAndModules = response["profilesAndModules"] as! [Any]
+        for i in 0..<profileAndModules.count{
+            let profileAndModulesJson = profileAndModules[i] as! [String:Any]
+            let name = profileAndModulesJson["name"] as! String
+            pickerData.append(name);
+        }
+        leaderboardPicker.reloadAllComponents()
+        leaderboardPicker.selectRow(0, inComponent: 0, animated: true)
+        let profileAndModule = profileAndModules[0] as! [String:Any];
+        let id = profileAndModule["id"] as! String
+        getLeaderboardData(selectedId: id);
     }
     
     func getMyAchievements(){
@@ -169,6 +246,53 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
             }
         })
     }
+    
+    func getLeaderboardData(selectedId:String){
+        progressView.isHidden = false
+        let selectedIdArr = selectedId.split(separator: "_")
+        let prefix = selectedIdArr[0]
+        let id = selectedIdArr[1];
+        var actionUrl =  StringConstants.GET_LEADERBOARD_BY_PROFILE;
+        if(prefix == "module"){
+            actionUrl = StringConstants.GET_LEADERBOARD_BY_MODULE;
+        }else if(prefix == "lp"){
+            actionUrl = StringConstants.GET_LEADERBOARD_BY_LEARNINGPLAN;
+        }
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,id]
+        let apiUrl: String = MessageFormat.format(pattern: actionUrl, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadLeaderboard(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func loadLeaderboard(response:[String: Any]){
+        leaderBoardDataArr = response["leaderboarddata"] as! [Any]
+        if(leaderBoardDataArr.count == 0){
+            self.testTableView.isHidden = true
+            self.noRowFoundLabel.isHidden = false
+        }else{
+           self.noRowFoundLabel.isHidden = true
+           self.testTableView.isHidden = false
+           self.testTableView.reloadData()
+        }
+        progressView.isHidden = true
+    }
+
     
     
     func getBadges(){

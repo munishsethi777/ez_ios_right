@@ -112,6 +112,20 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         let id = profileAndModule["id"] as! String
         getLeaderboardData(selectedId: id);
     }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel = view as? UILabel;
+        
+        if (pickerLabel == nil)
+        {
+            pickerLabel = UILabel()
+            
+            pickerLabel?.font = UIFont(name: "Montserrat", size: 12)
+            pickerLabel?.textAlignment = NSTextAlignment.center
+        }
+        
+        pickerLabel?.text = self.pickerData[row]
+        return pickerLabel!;
+    }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)

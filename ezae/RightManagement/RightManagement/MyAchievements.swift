@@ -35,7 +35,9 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     var pickerData: [String] = [String]()
     var profileAndModules = [Any]()
     var leaderBoardDataArr = [Any]()
+    var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
+        cache = NSCache()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
         badgeTableView.delegate = self
@@ -50,7 +52,6 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         getBadges()
         setbackround()
         getProfileAndModules();
-        //scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.height+250)
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
@@ -89,13 +90,10 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         shape3.fillColor = UIColor.clear.cgColor
         gradient3.mask = shape3
         self.rankBackView.layer.addSublayer(gradient3)
-        
         self.leaderboardPicker.delegate = self
         self.leaderboardPicker.dataSource = self
-       // pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
-        
-    
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
@@ -188,6 +186,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LeaderboardTableViewCell
             let leaderboardData = leaderBoardDataArr[indexPath.row] as? [String : Any]
             if(leaderboardData != nil){
+                var userImage = leaderboardData!["imagepath"] as? String
                 var userName = leaderboardData!["uname"] as? String
                 if(userName != nil && userName != "" && userName != "null"){
                 }else{
@@ -196,6 +195,29 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
                 let totalScore = leaderboardData!["totalscore"] as? String
                 cell?.userNameLabel.text = userName
                 cell?.scoreLabel.text = totalScore
+                if(userImage == nil){
+                    userImage = "dummy.jpg"
+                }
+                if (self.cache.object(forKey: userName as AnyObject) != nil){
+                    cell?.userImageView?.image = self.cache.object(forKey: userName as AnyObject) as? UIImage
+                    cell?.userImageView.layer.cornerRadius = (cell?.userImageView.frame.height)! / 2
+                    cell?.userImageView.clipsToBounds = true
+                }else {
+                    userImage = StringConstants.WEB_API_URL + userImage!
+                    if let url = NSURL(string: userImage!) {
+                        DispatchQueue.global().async {
+                            if let data = NSData(contentsOf: url as URL) {
+                                DispatchQueue.main.async {
+                                    let img = UIImage(data: data as Data)
+                                    cell?.userImageView.image = UIImage(data: data as Data)
+                                    cell?.userImageView.layer.cornerRadius = (cell?.userImageView.frame.height)! / 2
+                                    cell?.userImageView.clipsToBounds = true
+                                    self.cache.setObject(img!, forKey: userName as AnyObject)
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return cell!
         }

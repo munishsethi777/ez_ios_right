@@ -43,11 +43,14 @@ final class CoreDataManager {
         let storeName = "\(self.modelName).sqlite"
         let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let persistentStoreURL = documentsDirectoryURL.appendingPathComponent(storeName)
+        let options = [ NSInferMappingModelAutomaticallyOption : true,
+                        NSMigratePersistentStoresAutomaticallyOption : true]
+
         do {
             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                               configurationName: nil,
                                                               at: persistentStoreURL,
-                                                              options: nil)
+                                                              options: options)
         } catch {
             fatalError("Unable to Load Persistent Store")
         }

@@ -32,6 +32,7 @@ class DashboardViewController:UIViewController{
     }
     @IBOutlet weak var points: UILabel!
     
+    @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var userProfileLabel: UILabel!
@@ -204,10 +205,15 @@ class DashboardViewController:UIViewController{
        let user =  UserMgr.sharedInstance.getUserByUserSeq(userSeq: loggedInUserSeq)
        let userName = user?.fullname
        var userImageName = user?.imagename
+       let compmanyImage = user?.companyimage
        if(userImageName == nil){
            userImageName = "dummy.jpg"
        }
        let imageUrl = StringConstants.USER_IMAGE_URL + userImageName!
+        var companyImageUrl = ""
+        if(compmanyImage != nil){
+            companyImageUrl = StringConstants.IMAGE_URL + "CompanyImages/companylogo/"+compmanyImage!
+        }
        let userProfiles = user?.profiles
 //       if let url = NSURL(string: imageUrl) {
 //            if let data = NSData(contentsOf: url as URL) {
@@ -223,10 +229,21 @@ class DashboardViewController:UIViewController{
                 }
             }
         }
-        
         userNameLabel.text = userName
         userProfileLabel.text = userProfiles
-        
+        self.companyLogo.isHidden = true
+        if(companyImageUrl != ""){
+            if let url = NSURL(string: companyImageUrl) {
+                DispatchQueue.global().async {
+                    if let data = NSData(contentsOf: url as URL) {
+                        DispatchQueue.main.async {
+                            self.companyLogo.image = UIImage(data: data as Data)
+                        }
+                    }
+                }
+                self.companyLogo.isHidden = false
+            }
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

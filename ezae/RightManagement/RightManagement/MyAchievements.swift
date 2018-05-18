@@ -12,6 +12,7 @@ class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     
     @IBOutlet weak var testTableView: UITableView!
+    @IBOutlet weak var leaderboardTableViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var noRowFoundLabel: UILabel!
@@ -327,6 +328,13 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
            self.testTableView.reloadData()
         }
         progressView.isHidden = true
+        testTableView.frame.size.height = CGFloat(leaderBoardDataArr.count * 80)
+        leaderboardTableViewHeight.constant = CGFloat(leaderBoardDataArr.count * 80)
+        
+        //badgeTableView.frame.size.height = CGFloat(badgesCount*100)
+        //badgeTableViewHeight.constant = CGFloat(badgesCount*100)
+        
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 400 + leaderboardTableViewHeight.constant)
     }
 
     

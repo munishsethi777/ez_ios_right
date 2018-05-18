@@ -239,6 +239,7 @@
 		F6B63D911FEF8A3400886264 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		F6B63D951FF20A1800886264 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		F6B63D971FF2533000886264 /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
+		F6C1988B20AEAD84009AF4A5 /* right 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "right 2.xcdatamodel"; sourceTree = "<group>"; };
 		F6C85BE91FD8181300BF4987 /* ModuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTableViewCell.swift; sourceTree = "<group>"; };
 		F6C85C2A1FDA929000BF4987 /* PageItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 		F6C9F9D120AD39830090D0C5 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
@@ -990,9 +991,10 @@
 		F639821F1FBB0B9200DA61B1 /* right.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F6C1988B20AEAD84009AF4A5 /* right 2.xcdatamodel */,
 				F63982201FBB0B9200DA61B1 /* right.xcdatamodel */,
 			);
-			currentVersion = F63982201FBB0B9200DA61B1 /* right.xcdatamodel */;
+			currentVersion = F6C1988B20AEAD84009AF4A5 /* right 2.xcdatamodel */;
 			path = right.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

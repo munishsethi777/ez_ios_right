@@ -15,6 +15,7 @@ class PreferencesUtil{
     static let NOTIFICATION_STATE = "notificationState"
     static let NOTIFICATION_ENTITY_SEQ = "notificationEntitySeq"
     static let FROM_USER_NAME = "fromUserName";
+    static let LP_SEQ = "lpSeq";
     static let NOTIFICATION_ENTITY_TYPE = "notificationEntityType"
     static let APP_ACTIVE_STATE = "AppActiveState"
     
@@ -77,20 +78,23 @@ class PreferencesUtil{
         setValue(key: PreferencesUtil.APP_ACTIVE_STATE,value: flag);
     }
     
-    func setNotificationData(entityType:String,entitySeq:String,fromUserName:String){
+    func setNotificationData(entityType:String,entitySeq:String,fromUserName:String,lpSeq:String){
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ, value: entitySeq)
         setValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE, value: entityType)
         setValue(key: PreferencesUtil.FROM_USER_NAME, value: fromUserName)
+        setValue(key: PreferencesUtil.LP_SEQ, value: lpSeq)
     }
     
     func getNotificationData()->[String: String]{
         let entityType = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_TYPE)!
         let entitySeq = getValue(key: PreferencesUtil.NOTIFICATION_ENTITY_SEQ)!
         let fromUserName = getValue(key: PreferencesUtil.FROM_USER_NAME)!
+        let lpSeq = getValue(key: PreferencesUtil.LP_SEQ)!
         var notificationData:[String:String] = [:]
         notificationData["entityType"] = entityType
         notificationData["entitySeq"] = entitySeq
         notificationData["fromUserName"] = fromUserName
+        notificationData["lpSeq"] = lpSeq
         return notificationData
     }
     

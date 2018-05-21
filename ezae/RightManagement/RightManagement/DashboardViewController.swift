@@ -283,17 +283,23 @@ class DashboardViewController:UIViewController{
             let data = PreferencesUtil.sharedInstance.getNotificationData()
             let entityType = data["entityType"]
             let entitySeq = Int(data["entitySeq"]!)!
-            let fromUserName = data["fromUserName"]
             if(entityType == "module"){
+                let lpSeq = Int(data["lpSeq"]!)!
                 let moduleViewController = self.tabBarController?.viewControllers![2] as! ModuleViewController
                 moduleViewController.isLaunch = true
                 moduleViewController.selectedModuleSeq = entitySeq
+                moduleViewController.selectedLpSeq = lpSeq
                 PreferencesUtil.sharedInstance.resetNotificationData()
                 self.tabBarController?.selectedIndex = 2
             }else if(entityType == "badge"){
                 PreferencesUtil.sharedInstance.resetNotificationData()
                 self.performSegue(withIdentifier: "Achievements", sender: nil)
-            }else {
+            }else if(entityType == "chatroom" || entityType == "classroom"){
+                PreferencesUtil.sharedInstance.resetNotificationData()
+                self.performSegue(withIdentifier: "Notifications", sender: nil)
+            }
+            else {
+                let fromUserName = data["fromUserName"]
                 let navController = self.tabBarController?.viewControllers![3] as!  UINavigationController
                 let messageViewController = navController.viewControllers.first as! MessageTableViewController
                 messageViewController.isGoToMessageDetail = true

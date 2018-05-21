@@ -130,10 +130,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let notificationData = userInfo["data"] as! [String:Any]
         let entitySeq = notificationData["entitySeq"] as! String
         let entityType = notificationData["entityType"] as! String
-        let fromUserName = notificationData["fromUserName"] as? String
+        var fromUserName = notificationData["fromUserName"] as? String
+        var lpSeq = notificationData["lpSeq"] as? String
+        if(lpSeq == nil){
+            lpSeq = "0"
+        }
+        if(fromUserName == nil){
+            fromUserName = ""
+        }
         let prefUtil = PreferencesUtil.sharedInstance
         prefUtil.setNotificationState(flag: true)
-        prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq,fromUserName:fromUserName!)
+        prefUtil.setNotificationData(entityType: entityType, entitySeq: entitySeq,fromUserName:fromUserName!,lpSeq:lpSeq!)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         var viewController:UIViewController!;

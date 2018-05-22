@@ -35,6 +35,13 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         getMessages(isScroll: true)
         syncMessages()
     }
+    
+   
+
+    @IBAction func userTapped(_ sender: Any) {
+         self.inputbar.inputResignFirstResponder()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
           if(isCallFromNotification){
                 var toolBarFrame = self.inputbar.frame

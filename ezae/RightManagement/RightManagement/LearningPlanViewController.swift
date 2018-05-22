@@ -81,15 +81,17 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         let score = learningPlan["score"] as! Int
         let badges = learningPlan["badges"] as? [Any]
         let moduleArr = learningPlan["modules"] as! [Any]
-      
+        cell?.bottomView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1).cgColor]
+        var moduleImageUrl : String?
         if moduleArr.count > 0 {
-            let moduleJson = moduleArr[0] as? [String: Any]
-            var colorArr:[UIColor] = []
+            let moduleJson = moduleArr[0] as! [String: Any]
+            moduleImageUrl = moduleJson["imagepath"] as? String
+            
+        }
+        if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
+            moduleImageUrl = "dummy.jpg"
+        }
             var continueLabelText = "Continue"
-            var moduleImageUrl = moduleJson!["imagepath"] as? String
-            if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
-                moduleImageUrl = "dummy.jpg"
-            }
             cell?.titleLabel.text = learningPlan["title"] as? String
             cell?.desLabel.text = learningPlan["description"] as? String
             let percent = learningPlan["percentCompleted"] as! Float
@@ -192,19 +194,18 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
                     x = x + 25
                 }
             }
-            let tap = UITapGestureRecognizer(target: self, action: #selector(launch))
-            cell?.launchPlanImageView.tag = Int(id)!
-            cell?.launchPlanImageView.addGestureRecognizer(tap)
-            cell?.launchPlanImageView.isUserInteractionEnabled = true
-            cell?.progressView.sendSubview(toBack: (cell?.bottomView)!)
-            cell?.bottomView.layer.borderWidth = 0.3
-            cell?.bottomView.layer.borderColor = UIColor.lightGray.cgColor
-            cell?.bottomView.layer.shadowColor = UIColor.lightGray.cgColor
-            cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
-            cell?.bottomView.layer.shadowOpacity = 0.5
-            cell?.bottomView.layer.shadowRadius = 4.0
-            cell?.bottomView.commonInit()
-        }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(launch))
+        cell?.launchPlanImageView.tag = Int(id)!
+        cell?.launchPlanImageView.addGestureRecognizer(tap)
+        cell?.launchPlanImageView.isUserInteractionEnabled = true
+        cell?.progressView.sendSubview(toBack: (cell?.bottomView)!)
+        cell?.bottomView.layer.borderWidth = 0.3
+        cell?.bottomView.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell?.bottomView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell?.bottomView.layer.shadowOpacity = 0.5
+        cell?.bottomView.layer.shadowRadius = 4.0
+        cell?.bottomView.commonInit()
         return cell!
     }
     

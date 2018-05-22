@@ -71,9 +71,9 @@ class MessageGateway:NSObject {
         default: break
         }
         
-        if self.delegate != nil && self.delegate.responds(to: #selector(MessageGatewayDelegate.gatewayDidUpdateStatusForMessage(message:))) {
-            self.delegate!.gatewayDidUpdateStatusForMessage(message: message)
-        }
+//        if self.delegate != nil && self.delegate.responds(to: #selector(MessageGatewayDelegate.gatewayDidUpdateStatusForMessage(message:))) {
+//            self.delegate!.gatewayDidUpdateStatusForMessage(message: message)
+//        }
         
         //
         // Remove this when connect to your server

@@ -187,7 +187,9 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         if(moduleType == "quiz"){
             countStr = " Questions"
         }
-        pageNoLabel.text = String(page) + " of " + String(totalQuesCount) + countStr
+        if questionJsonArr.count > 1 {
+            pageNoLabel.text = String(page) + " of " + String(totalQuesCount) + countStr
+        }
         let question = questionJson[page-1] as! [String: Any]
         var marks = question["maxMarks"] as? String
         if(marks == nil){

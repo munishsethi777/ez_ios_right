@@ -214,9 +214,10 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     let imageUrl = StringConstants.WEB_API_URL + imagePath
                     if let url = NSURL(string: imageUrl) {
                         if let data = NSData(contentsOf: url as URL) {
-                            let img = UIImage(data: data as Data)
-                            imageView.image = UIImage(data: data as Data)
-                            self.cache.setObject(img!, forKey: badgeSeq as AnyObject)
+                            if let img = UIImage(data: data as Data) {
+                                imageView.image = UIImage(data: data as Data)
+                                self.cache.setObject(img, forKey: badgeSeq as AnyObject)
+                            }
                         }
                     }
                 }

@@ -2507,7 +2507,7 @@
             <objects>
                 <viewController storyboardIdentifier="DashboardTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QGl-as-xxN" customClass="DashboardViewController" customModule="RightManagement" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L8n-Ao-L3H" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="610"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_back_bw_light.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2u0-g2-m2D">
@@ -2656,11 +2656,11 @@
                                 <rect key="frame" x="0.0" y="195" width="320" height="120"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mb-PS-qA3" userLabel="notifications">
-                                        <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="120"/>
+                                        <rect key="frame" x="4" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZJ-ra-WLK">
-                                                <rect key="frame" x="2" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeD-lh-iF0">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2693,11 +2693,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HR3-fZ-oUp" userLabel="learnings">
-                                        <rect key="frame" x="108.66666666666666" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="110" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5z-JY-xuT">
-                                                <rect key="frame" x="2" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Learnings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbv-aa-grp">
                                                         <rect key="frame" x="-1" y="73" width="100" height="24"/>
@@ -2730,11 +2730,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hst-D6-jAC" userLabel="messages">
-                                        <rect key="frame" x="217.33333333333334" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="216" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-yG-ZX2">
                                                 <rect key="frame" x="0.0" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewP-Mt-UWT">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2767,16 +2767,17 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <edgeInsets key="layoutMargins" top="0.0" left="4" bottom="0.0" right="4"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TCS-p2-XKR" userLabel="stack2">
                                 <rect key="frame" x="0.0" y="331" width="320" height="120"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNs-Ox-RUq" userLabel="achievements">
-                                        <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="120"/>
+                                        <rect key="frame" x="4" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI4-Vm-7Lp">
-                                                <rect key="frame" x="1" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Achievements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuw-s8-3rz">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2802,11 +2803,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-G4-MdX" userLabel="notes">
-                                        <rect key="frame" x="108.66666666666666" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="110" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIa-Td-hAP">
-                                                <rect key="frame" x="1" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-Wa-gn1">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2832,11 +2833,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDg-7G-N15" userLabel="calendar">
-                                        <rect key="frame" x="217.33333333333334" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="216" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-2L-Hkb">
-                                                <rect key="frame" x="2" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt8-gd-XfF">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2862,16 +2863,17 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <edgeInsets key="layoutMargins" top="0.0" left="4" bottom="0.0" right="4"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aid-dn-f4e" userLabel="stack3">
-                                <rect key="frame" x="0.0" y="459" width="320" height="120"/>
+                                <rect key="frame" x="0.0" y="459" width="320" height="203"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJs-NQ-JdO" userLabel="chatrooms">
-                                        <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="120"/>
+                                        <rect key="frame" x="4" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5X-nL-VSr">
-                                                <rect key="frame" x="1" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chatrooms" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJk-L2-32J">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2897,11 +2899,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-sQ-zpi" userLabel="profile">
-                                        <rect key="frame" x="108.66666666666666" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="110" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-IJ-bZV">
-                                                <rect key="frame" x="1" y="12" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bna-zS-axw">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2927,11 +2929,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpu-2a-pLz" userLabel="password">
-                                        <rect key="frame" x="217.33333333333334" y="0.0" width="102.66666666666666" height="120"/>
+                                        <rect key="frame" x="216" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r0b-td-62e">
-                                                <rect key="frame" x="2" y="10" width="100" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybI-pV-jLd">
                                                         <rect key="frame" x="0.0" y="73" width="100" height="24"/>
@@ -2957,6 +2959,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <edgeInsets key="layoutMargins" top="0.0" left="4" bottom="0.0" right="4"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTl-Gr-wA3" userLabel="stack4">
                                 <rect key="frame" x="0.0" y="583" width="320" height="120"/>
@@ -3024,7 +3027,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vBO-is-ZSq"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <size key="freeformSize" width="320" height="650"/>
+                    <size key="freeformSize" width="320" height="610"/>
                     <connections>
                         <outlet property="achievementsView" destination="HI4-Vm-7Lp" id="TpA-LJ-giH"/>
                         <outlet property="changePasswordView" destination="r0b-td-62e" id="LOG-J2-ndY"/>

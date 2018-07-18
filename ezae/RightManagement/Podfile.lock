@@ -1,15 +1,18 @@
 PODS:
+  - CropViewController (2.3.6)
   - ReachabilitySwift (3)
   - SSCalendar (0.0.3)
 
 DEPENDENCIES:
+  - CropViewController
   - ReachabilitySwift (~> 3)
   - SSCalendar
 
 SPEC CHECKSUMS:
+  CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SSCalendar: 65498d7ec6ff38b4aead38d3cf8bb317666a2fe4
 
-PODFILE CHECKSUM: c259c734d20da2f7ed75877309bd32b1bbcfd7d8
+PODFILE CHECKSUM: b37057163362390c0dbf1ad8e62012ede87009fc
 
 COCOAPODS: 1.3.1

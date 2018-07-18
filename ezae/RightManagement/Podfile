@@ -3,4 +3,5 @@ use_frameworks!
 target 'RightManagement' do
 pod 'SSCalendar'
 pod 'ReachabilitySwift', '~> 3'
+pod 'CropViewController'
 end

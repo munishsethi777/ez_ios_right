@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D30D235E6C97C2F0D54D07144E5175E2"
+               BlueprintIdentifier = "E5561D0D58BB1A0570A835BB26D1F2DB"
                BuildableName = "Pods_RightManagement.framework"
                BlueprintName = "Pods-RightManagement"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D30D235E6C97C2F0D54D07144E5175E2"
+            BlueprintIdentifier = "E5561D0D58BB1A0570A835BB26D1F2DB"
             BuildableName = "Pods_RightManagement.framework"
             BlueprintName = "Pods-RightManagement"
             ReferencedContainer = "container:Pods.xcodeproj">

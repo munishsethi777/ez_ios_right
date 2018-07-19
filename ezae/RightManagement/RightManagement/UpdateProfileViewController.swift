@@ -39,6 +39,13 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         editImage()
     }
 
+    @IBAction func logoutTapped(_ sender: Any) {
+        logout()
+    }
+    
+    @IBAction func changePasswordTapped(_ sender: Any) {
+        
+    }
     func setbackround(){
         UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "login_back_bw_lighter.jpg")?.draw(in: self.view.bounds)
@@ -265,6 +272,29 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         progressHUD.hide()
         mainScrollView.contentSize = CGSize(width: mainScrollView.contentSize.width, height:y+10)
     }
+    
+    private func logout(){
+        let refreshAlert = UIAlertController(title: "Logout", message: "Are you realy want to logout.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.logoutInternal()
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    
+    
+    private func logoutInternal(){
+        PreferencesUtil.sharedInstance.resetDefaults()
+        //self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     
     func editingChanged(textField: UITextField) {
         editingTextField = textField

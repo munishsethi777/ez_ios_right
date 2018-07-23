@@ -7,9 +7,8 @@
 //
 
 import UIKit
-class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
-   
-    
+import XLPagerTabStrip
+class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate ,IndicatorInfoProvider{
     @IBOutlet weak var moduleTrainingView: UITableView!
     var loggedInUserSeq: Int = 0
     var loggedInCompanySeq: Int = 0
@@ -40,6 +39,10 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         setbackround()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
+    }
+    var itemInfo: IndicatorInfo = "Modules"
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo;
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -277,13 +280,20 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func launchModule(sender:UIButton){
-        selectedModuleSeq = sender.tag
-        selectedLpSeq = (sender.titleLabel?.tag)!
-        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+        //selectedModuleSeq = sender.tag
+       // selectedLpSeq = (sender.titleLabel?.tag)!
+       // self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+        let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
+        launchModuleVC.moduleSeq = sender.tag
+        launchModuleVC.lpSeq = (sender.titleLabel?.tag)!
+        self.present(launchModuleVC, animated: true, completion: nil)
     }
     
     func launch(){
-        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+        let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
+        launchModuleVC.moduleSeq = selectedModuleSeq
+        launchModuleVC.lpSeq = selectedLpSeq
+        self.present(launchModuleVC, animated: true, completion: nil)
     }
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)

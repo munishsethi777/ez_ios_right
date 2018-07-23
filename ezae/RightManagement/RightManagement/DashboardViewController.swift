@@ -38,11 +38,11 @@ class DashboardViewController:UIViewController{
     @IBOutlet weak var userProfileLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBAction func messagesButtonAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 3
+        self.tabBarController?.selectedIndex = 2
     }
     
     @IBAction func chatroomsAction(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 4
+        self.tabBarController?.selectedIndex = 3
     }
    
     
@@ -69,9 +69,7 @@ class DashboardViewController:UIViewController{
         let refreshAlert = UIAlertController(title: "Logout", message: "Are you realy want to logout.", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            PreferencesUtil.sharedInstance.resetDefaults()
-            //self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
-            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+            self.logoutInternal()
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -83,6 +81,12 @@ class DashboardViewController:UIViewController{
     
     @IBAction func logoutAction(_ sender: Any) {
         logout()
+    }
+    
+    private func logoutInternal(){
+        PreferencesUtil.sharedInstance.resetDefaults()
+        //self.performSegue(withIdentifier: "showLoginViewController", sender: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func eventAction(_ sender: Any) {
@@ -169,9 +173,11 @@ class DashboardViewController:UIViewController{
         logoutView.layer.shadowOpacity = 0.8
         logoutView.layer.shadowRadius = 6.0
         
-        scrollView.isScrollEnabled = true
-        scrollView.contentSize.height = 880
         
+        //scrollView.contentSize.height = 700
+        scrollView.layoutIfNeeded()
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: scrollView.frame.size.height)
         //self.topView.backgroundColor = UIColor(patternImage: UIImage(named: "topview_back_blue.jpg")!)
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
@@ -251,8 +257,9 @@ class DashboardViewController:UIViewController{
         UIApplication.shared.applicationIconBadgeNumber = 0
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
        
-        getDashboardCounts()
+       
         getDashboardStates()
+        getDashboardCounts()
         populateUserInfoFromLocal()
         handleNotificationData()
     }
@@ -285,12 +292,13 @@ class DashboardViewController:UIViewController{
             let entitySeq = Int(data["entitySeq"]!)!
             if(entityType == "module"){
                 let lpSeq = Int(data["lpSeq"]!)!
-                let moduleViewController = self.tabBarController?.viewControllers![2] as! ModuleViewController
+                let navController = self.tabBarController?.viewControllers![1] as!  UINavigationController
+                let moduleViewController = navController.viewControllers.first as! LearningTabController
                 moduleViewController.isLaunch = true
                 moduleViewController.selectedModuleSeq = entitySeq
                 moduleViewController.selectedLpSeq = lpSeq
                 PreferencesUtil.sharedInstance.resetNotificationData()
-                self.tabBarController?.selectedIndex = 2
+                self.tabBarController?.selectedIndex = 1
             }else if(entityType == "badge"){
                 PreferencesUtil.sharedInstance.resetNotificationData()
                 self.performSegue(withIdentifier: "Achievements", sender: nil)
@@ -307,7 +315,7 @@ class DashboardViewController:UIViewController{
                 messageViewController.selectedMessageUserName = fromUserName
                 messageViewController.selectedMessageUserType = entityType!
                 PreferencesUtil.sharedInstance.resetNotificationData()
-                self.tabBarController?.selectedIndex = 3
+                self.tabBarController?.selectedIndex = 2
             }
         }
     }
@@ -439,7 +447,14 @@ class DashboardViewController:UIViewController{
                     if(success == 1){
                         self.populateDashboardStats(response: json)
                     }else{
-                        self.showAlert(message: message!)
+                        let isEnabled = json["isenabled"] as! Bool
+                        if(!isEnabled){
+                            self.logoutInternal()
+                            return
+                        }else{
+                            self.showAlert(message: message!)
+                        }
+                        
                     }
                 }
             } catch let parseError as NSError {

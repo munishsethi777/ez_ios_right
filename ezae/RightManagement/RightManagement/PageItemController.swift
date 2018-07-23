@@ -116,6 +116,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         goToNextPage()
     }
     
+    @IBAction func backTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: { () -> Void in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshController"), object: nil)
+        })
+    }
     private func goToNextPage(){
         if(isLastPage()){
             //self.performSegue(withIdentifier: "showTrainingTabs", sender: self)

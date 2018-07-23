@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class LearningPlanViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class LearningPlanViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,IndicatorInfoProvider{
+    
+    
     var  progressHUD: ProgressHUD!
     var loggedInUserSeq:Int!
     var loggedInCompanySeq:Int!
     var learningPlanArr:[Any]!
     var selectedlearningPlanSeq:Int!
     var cache:NSCache<AnyObject, AnyObject>!
+    
+   
     @IBOutlet weak var lpTableView: UITableView!
     var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
@@ -35,6 +40,10 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         }
         self.view.addSubview(progressHUD)
     }
+    var itemInfo: IndicatorInfo = "LearningPlans"
+    
+    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
     }
@@ -262,5 +271,9 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         if let secondController = segue.destination as? TrainingViewController {
             secondController.selectedLpSeq = selectedlearningPlanSeq
         }
+    }
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo;
     }
 }

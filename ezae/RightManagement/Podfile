@@ -4,4 +4,5 @@ target 'RightManagement' do
 pod 'SSCalendar'
 pod 'ReachabilitySwift', '~> 3'
 pod 'CropViewController'
+pod 'XLPagerTabStrip', '~> 8.0'
 end

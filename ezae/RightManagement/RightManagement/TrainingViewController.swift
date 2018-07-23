@@ -150,11 +150,12 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
                 DispatchQueue.global().async {
                     if let data = NSData(contentsOf: url as URL) {
                         DispatchQueue.main.async {
-                            let img = UIImage(data: data as Data)
-                            cell?.moduleImageView.image = img
-                            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                            cell?.moduleImageView.clipsToBounds = true
-                            self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+                             let img = UIImage(data: data as Data)
+                                cell?.moduleImageView.image = img
+                                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                                cell?.moduleImageView.clipsToBounds = true
+                                self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+                            //}
                         }
                     }
                 }

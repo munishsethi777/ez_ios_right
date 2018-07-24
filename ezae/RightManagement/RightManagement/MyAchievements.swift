@@ -15,6 +15,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     @IBOutlet weak var testTableView: UITableView!
     @IBOutlet weak var leaderboardTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var myScoreTableViewHeigh: NSLayoutConstraint!
     @IBOutlet weak var lpPickerView: UIPickerView!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var noRowFoundLabel: UILabel!
@@ -445,6 +446,11 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         myScoreDataArr = response["scores"] as! [Any]
         progressView.isHidden = true
         myScoreTableView.reloadData()
+        
+        myScoreTableView.frame.size.height = CGFloat(myScoreDataArr.count*100)
+        myScoreTableViewHeigh.constant = CGFloat(myScoreDataArr.count*100)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + leaderboardTableViewHeight.constant + myScoreTableViewHeigh.constant+600)
+        
     }
     
     func loadLeaderboard(response:[String: Any]){
@@ -464,7 +470,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         //badgeTableView.frame.size.height = CGFloat(badgesCount*100)
         //badgeTableViewHeight.constant = CGFloat(badgesCount*100)
         
-        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 400 + leaderboardTableViewHeight.constant)
+        scrollView.contentSize = CGSize(width: scrollView.contentSize.width, height:badgeTableView.frame.size.height + 600 + myScoreTableViewHeigh.constant + leaderboardTableViewHeight.constant)
     }
 
     

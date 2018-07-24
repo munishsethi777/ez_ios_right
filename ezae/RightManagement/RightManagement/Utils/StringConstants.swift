@@ -42,6 +42,8 @@ struct StringConstants {
     static let GET_LEADERBOARD_BY_MODULE = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByModule&userSeq={0}&companySeq={1}&moduleSeq={2}";
     static let GET_LEADERBOARD_BY_PROFILE = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByProfile&userSeq={0}&companySeq={1}&profileSeq={2}";
     static let GET_LEADERBOARD_BY_LEARNINGPLAN = ACTION_API_URL + "UserAction.php?call=getLeaderBoardDataByLearningPlan&userSeq={0}&companySeq={1}&lpSeq={2}";
+    static let GET_SCORES = ACTION_API_URL + "UserAction.php?call=getScoresByLearningPlan&userSeq={0}&companySeq={1}&lpSeq={2}";
+    
 
     static let SYNCH_USERS = ACTION_API_URL + "UserAction.php?call=synchUsersAndAdmins&userSeq={0}&companySeq={1}"
 
@@ -53,6 +55,7 @@ struct StringConstants {
     static let GET_LEARNING_PLAN = ACTION_API_URL + "LearningPlanAction.php?call=getLearningPlans&userSeq={0}&companySeq={1}"
     static let GET_LEARNING_PLAN_DETAIL = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&call=getLearningPlanDetails"
     static let GET_LEARNING_PLAN_MODULES = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&learningPlanSeq={2}&call=getLearningPlanModules"
+    static let GET_ALL_LEARNING_PLANS = ACTION_API_URL + "LearningPlanAction.php?userSeq={0}&companySeq={1}&call=getLearningPlansByUser"
     
     //Badge Actions
     static let GET_ACHIEVEMENT_BADGES = ACTION_API_URL + "BadgeAction.php?call=myAchievementMyBadges&userSeq={0}&companyseq={1}"

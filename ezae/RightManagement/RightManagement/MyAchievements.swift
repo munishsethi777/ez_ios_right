@@ -11,9 +11,11 @@ import UIKit
 class
 MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
     
+    @IBOutlet weak var myScoreTableView: UITableView!
     @IBOutlet weak var testTableView: UITableView!
     @IBOutlet weak var leaderboardTableViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var lpPickerView: UIPickerView!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var noRowFoundLabel: UILabel!
     @IBOutlet weak var leaderboardTable: UITableView!
@@ -34,8 +36,11 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     var progressHUD: ProgressHUD!
     var refreshControl:UIRefreshControl!
     var pickerData: [String] = [String]()
+    var learningPlanPickerData: [String] = [String]()
     var profileAndModules = [Any]()
+    var learningPlans = [Any]()
     var leaderBoardDataArr = [Any]()
+    var myScoreDataArr = [Any]()
     var cache:NSCache<AnyObject, AnyObject>!
     override func viewDidLoad() {
         cache = NSCache()
@@ -53,6 +58,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         getBadges()
         setbackround()
         getProfileAndModules();
+        getLearningPlans();
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshDashboard), for: .valueChanged)
@@ -93,6 +99,10 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         self.rankBackView.layer.addSublayer(gradient3)
         self.leaderboardPicker.delegate = self
         self.leaderboardPicker.dataSource = self
+        lpPickerView.delegate = self
+        lpPickerView.dataSource = self
+        myScoreTableView.delegate = self
+        myScoreTableView.dataSource = self
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -100,29 +110,46 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     }
   
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        if(pickerView == leaderboardPicker){
+            return pickerData.count
+        }else{
+            return learningPlanPickerData.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        if(pickerView == leaderboardPicker){
+            return pickerData[row]
+        }else{
+            return learningPlanPickerData[row]
+        }
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let profileAndModule = profileAndModules[row] as! [String:Any];
-        let id = profileAndModule["id"] as! String
-        getLeaderboardData(selectedId: id);
+        if(pickerView == leaderboardPicker){
+            let profileAndModule = profileAndModules[row] as! [String:Any];
+            let id = profileAndModule["id"] as! String
+            getLeaderboardData(selectedId: id);
+        }else{
+            let learningPlans = self.learningPlans[row] as! [String:Any];
+            let id = learningPlans["id"] as! String
+            getMyScores(selectedId: id);
+        }
     }
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel = view as? UILabel;
-        
         if (pickerLabel == nil)
         {
             pickerLabel = UILabel()
-            
             pickerLabel?.font = UIFont(name: "Montserrat", size: 12)
             pickerLabel?.textAlignment = NSTextAlignment.center
         }
-        
-        pickerLabel?.text = self.pickerData[row]
+        if(pickerView == leaderboardPicker){
+            pickerLabel?.text = self.pickerData[row]
+        }else{
+            pickerLabel?.text = self.learningPlanPickerData[row]
+        }
         return pickerLabel!;
     }
     func setbackround(){
@@ -162,7 +189,10 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == self.badgeTableView){
             return self.badgesCount
-        }else{
+        }else if(tableView == self.myScoreTableView){
+            return self.myScoreDataArr.count
+        }
+        else{
             return self.leaderBoardDataArr.count
         }
     }
@@ -182,7 +212,43 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
                 }
             }
             return cell!
-        }else{
+        }else if(tableView == myScoreTableView){
+            let cellIdentifier = "MyScoreTableViewCell"
+             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MyScoreTableViewCell
+            var scoreData = myScoreDataArr[indexPath.row] as? [String : Any]
+            if scoreData != nil{
+                var moduleImage = scoreData!["moduleimage"] as? String
+                let score = scoreData!["score"] as? String
+                let moduleTitle = scoreData!["module"] as? String
+                cell?.scoreLabelView.text = score
+                cell?.moduleNameLableView.text = moduleTitle
+                if(moduleImage == nil){
+                    moduleImage = "dummy.jpg"
+                }
+                if (self.cache.object(forKey: moduleTitle as AnyObject) != nil){
+                    cell?.moduleImageView.image = self.cache.object(forKey: moduleTitle as AnyObject) as? UIImage
+                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                    cell?.moduleImageView.clipsToBounds = true
+                }else {
+                    moduleImage = StringConstants.IMAGE_URL + "modules/" + moduleImage!
+                    if let url = NSURL(string: moduleImage!) {
+                        DispatchQueue.global().async {
+                            if let data = NSData(contentsOf: url as URL) {
+                                DispatchQueue.main.async {
+                                    let img = UIImage(data: data as Data)
+                                    cell?.moduleImageView.image = UIImage(data: data as Data)
+                                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                                    cell?.moduleImageView.clipsToBounds = true
+                                    self.cache.setObject(img!, forKey: moduleTitle as AnyObject)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return cell!
+        }
+        else{
             let cellIdentifier = "LeaderboardTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LeaderboardTableViewCell
             let leaderboardData = leaderBoardDataArr[indexPath.row] as? [String : Any]
@@ -245,6 +311,39 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
                 self.showAlert(message: parseError.description)
             }
         })
+    }
+    
+    func getLearningPlans(){
+        let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
+        let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_ALL_LEARNING_PLANS, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.populateLearningPlans(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func populateLearningPlans(response : [String: Any]){
+        learningPlans = response["learningplans"] as! [Any]
+        for i in 0..<learningPlans.count{
+            let lpJson = learningPlans[i] as! [String:Any]
+            let name = lpJson["title"] as! String
+            learningPlanPickerData.append(name);
+        }
+        lpPickerView.reloadAllComponents()
     }
     
     func populateProfileAndModule(response : [String: Any]){
@@ -315,6 +414,37 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
                 self.showAlert(message: parseError.description)
             }
         })
+    }
+    func getMyScores(selectedId:String){
+        progressView.isHidden = false
+        let id = selectedId
+        let actionUrl =  StringConstants.GET_SCORES;
+        let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,id]
+        let apiUrl: String = MessageFormat.format(pattern: actionUrl, args: args)
+        var success : Int = 0
+        var message : String? = nil
+        ServiceHandler.instance().makeAPICall(url: apiUrl, method: HttpMethod.GET, completionHandler: { (data, response, error) in
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options:[]) as! [String: Any]
+                success = json["success"] as! Int
+                message = json["message"] as? String
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if(success == 1){
+                        self.loadMyScore(response: json)
+                    }else{
+                        self.showAlert(message: message!)
+                    }
+                }
+            } catch let parseError as NSError {
+                self.showAlert(message: parseError.description)
+            }
+        })
+    }
+    
+    func loadMyScore(response:[String: Any]){
+        myScoreDataArr = response["scores"] as! [Any]
+        progressView.isHidden = true
+        myScoreTableView.reloadData()
     }
     
     func loadLeaderboard(response:[String: Any]){

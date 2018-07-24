@@ -28,6 +28,4 @@ class LearningPlanTableViewCell: UITableViewCell{
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var moduleCountLabel: UILabel!
     
-    
-    
 }

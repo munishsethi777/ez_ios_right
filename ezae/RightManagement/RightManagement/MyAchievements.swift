@@ -223,7 +223,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
                 let moduleTitle = scoreData!["module"] as? String
                 cell?.scoreLabelView.text = score
                 cell?.moduleNameLableView.text = moduleTitle
-                if(moduleImage == nil){
+                if(moduleImage == nil || moduleImage == ""){
                     moduleImage = "dummy.jpg"
                 }
                 if (self.cache.object(forKey: moduleTitle as AnyObject) != nil){
@@ -345,6 +345,10 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
             learningPlanPickerData.append(name);
         }
         lpPickerView.reloadAllComponents()
+        lpPickerView.selectRow(0, inComponent: 0, animated: true)
+        let lp = learningPlans[0] as! [String:Any];
+        let id = lp["id"] as! String
+        getMyScores(selectedId: id);
     }
     
     func populateProfileAndModule(response : [String: Any]){

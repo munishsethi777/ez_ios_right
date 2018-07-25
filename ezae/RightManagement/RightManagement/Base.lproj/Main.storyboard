@@ -2619,7 +2619,11 @@
                                     <action selector="updateProfileAction:" destination="NaD-SW-Xf4" id="ZdN-hq-QDc"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="password" image="icons8-lock-25.png" style="plain" id="ihC-ns-K0r"/>
+                            <barButtonItem title="password" image="icons8-lock-25.png" style="plain" id="ihC-ns-K0r">
+                                <connections>
+                                    <segue destination="KNh-XY-bYL" kind="show" id="RzW-GC-rek"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="logout" image="icons8-shutdown-25.png" style="plain" id="7lS-5c-Lee">
                                 <connections>
                                     <action selector="logoutTapped:" destination="NaD-SW-Xf4" id="gbZ-dU-OFA"/>
@@ -3436,14 +3440,14 @@ F4Q
     <inferredMetricsTieBreakers>
         <segue reference="k4C-v3-nNs"/>
         <segue reference="4kA-P9-V6w"/>
-        <segue reference="Zfg-DY-aDn"/>
+        <segue reference="RzW-GC-rek"/>
         <segue reference="KEB-lz-C9N"/>
         <segue reference="AlW-TL-44Y"/>
         <segue reference="hTZ-kw-6yF"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="gN8-BW-sNN"/>
-        <segue reference="PkI-zp-FOV"/>
-        <segue reference="6hm-Uk-eBQ"/>
+        <segue reference="LaB-32-zew"/>
+        <segue reference="dWf-9O-1df"/>
         <segue reference="26S-pN-GFy"/>
     </inferredMetricsTieBreakers>
 </document>

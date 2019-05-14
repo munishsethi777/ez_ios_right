@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0AEC202531AF47B692B3C9DA6D58675C'
-               BlueprintName = 'CropViewController'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'CropViewController.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FC4258BFE0C94850EEAA3E5C30DEA569"
+               BuildableName = "CropViewController.framework"
+               BlueprintName = "CropViewController"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

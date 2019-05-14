@@ -59,7 +59,7 @@ class ChatViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         changeNavBarColor()
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
+   @objc func refreshView(refreshControl: UIRefreshControl) {
         cache = NSCache()
         getChatRooms()
     }

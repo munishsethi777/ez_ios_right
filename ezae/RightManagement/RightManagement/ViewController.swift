@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
 
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 if self.view.frame.height - keyboardSize.height < 350{
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
                 if self.view.frame.height - keyboardSize.height < 350{
@@ -114,9 +114,9 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Validation", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
+        }
     
-    func editingChanged(_ textField: UITextField) {
+    @objc func editingChanged(_ textField: UITextField) {
         if textField.text?.characters.count == 1 {
             if textField.text?.characters.first == " " {
                 textField.text = ""

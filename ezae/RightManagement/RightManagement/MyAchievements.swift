@@ -181,7 +181,7 @@ MyAchievements:UIViewController,UITableViewDataSource,UITableViewDelegate,UIPick
         super.viewWillDisappear(animated)
     }
     
-    func refreshDashboard(refreshControl: UIRefreshControl) {
+    @objc func refreshDashboard(refreshControl: UIRefreshControl) {
         getMyAchievements()
         getBadges()
         getProfileAndModules()

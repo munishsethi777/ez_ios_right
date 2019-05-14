@@ -19,8 +19,8 @@ class ModuleProgressMgr{
         let userSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         moduleProgress.ansseq = 0
         moduleProgress.anstext = answerText
-        moduleProgress.startdate = startDate as NSDate
-        moduleProgress.enddate = NSDate.init()
+        moduleProgress.startdate = startDate as NSDate as Date
+        moduleProgress.enddate = NSDate.init() as Date
         moduleProgress.moduleseq = Int32(moduleSeq)!
         moduleProgress.questionseq = Int32(questionSeq)!
         moduleProgress.learningplanseq = Int32(learningPlanSeq)!
@@ -44,9 +44,9 @@ class ModuleProgressMgr{
             let moduleProgress = NSEntityDescription.insertNewObject(forEntityName: "ModuleProgress", into: coreDataManager.managedObjectContext) as! ModuleProgress
             let seq:Int = ansSeq as! Int
             moduleProgress.ansseq = Int32(seq)
-            moduleProgress.startdate = startDate as NSDate
+            moduleProgress.startdate = startDate as NSDate as Date
             let now = NSDate.init()
-            moduleProgress.enddate = now
+            moduleProgress.enddate = now as Date
             moduleProgress.moduleseq = Int32(moduleSeq)!
             moduleProgress.questionseq = Int32(questionSeq)!
             moduleProgress.learningplanseq = Int32(learningPlanSeq)!

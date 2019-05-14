@@ -37,7 +37,7 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
             notificationsTableView.refreshControl = refreshControl
         }
     }
-    func refreshView(refreshControl: UIRefreshControl) {
+    @objc func refreshView(refreshControl: UIRefreshControl) {
         getNotifications()
     }
     func setbackround(){
@@ -114,12 +114,12 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         }
         return cell!
     }
-    
-    func alreadyNominated(){
+   
+    @objc func alreadyNominated(){
         showAlert(message: "Training Already Nominated", title: "Nominated")
-    }
+        }
     
-    func goToEvents(){
+    @objc func goToEvents(){
         getEvents()
     }
   
@@ -138,15 +138,15 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    func launchChatroom(sender:UIButton){
+   @objc func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         selectedChatroomId = notification.entitySeq
         selctedChatroomName = notification.title
-        self.performSegue(withIdentifier: "ChatroomDetailView", sender: nil)
+    self.performSegue(withIdentifier: "ChatroomDetailView", sender: nil)
     }
     
-    func launchModule(sender:UIButton){
+    @objc func launchModule(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
@@ -155,11 +155,11 @@ class NotificationViewController:UIViewController,UITableViewDataSource,UITableV
         self.present(launchModuleVC, animated: true, completion: nil)
     }
     
-    func goToAchievements(sender:UIButton){
-       self.performSegue(withIdentifier: "MyAchievements", sender: nil)
+    @objc func goToAchievements(sender:UIButton){
+        self.performSegue(withIdentifier: "MyAchievem@objc @objc ents", sender: nil)
     }
     
-    func nominateTraining(sender:UIButton){
+    @objc func nominateTraining(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         let tSeq = notification.entitySeq

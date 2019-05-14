@@ -44,7 +44,7 @@ class NotesViewController: UIViewController,UITableViewDataSource,UITableViewDel
         }
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
+    @objc func refreshView(refreshControl: UIRefreshControl) {
         getNotes()
     }
     

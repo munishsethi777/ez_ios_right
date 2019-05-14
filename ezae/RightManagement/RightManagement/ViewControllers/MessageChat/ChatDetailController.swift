@@ -244,7 +244,7 @@ class ChatDetailController:UIViewController,InputbarDelegate,MessageGatewayDeleg
         self.tableView.reloadData()
     }
     
-    func getMessages(isScroll:Bool){
+    @objc func getMessages(isScroll:Bool){
         let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,self.chatRoomId,0]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_CHATROOM_DETAIL, args: args)
         var success : Int = 0

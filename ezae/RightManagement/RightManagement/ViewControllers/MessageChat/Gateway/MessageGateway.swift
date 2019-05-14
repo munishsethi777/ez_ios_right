@@ -57,7 +57,7 @@ class MessageGateway:NSObject {
         self.perform(#selector(MessageGateway.updateMessageStatus(message:)), with:message, afterDelay:2)
     }
     
-    func updateMessageStatus(message:MessageDetail) {
+    @objc func updateMessageStatus(message:MessageDetail) {
         
         switch message.status {
         case .Sending:

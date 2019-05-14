@@ -21,7 +21,7 @@ class ReachabilityManager: NSObject {
     // 5. Reachability instance for Network status monitoring
     var reachability = Reachability()!
     
-    func reachabilityChanged(notification: Notification) {
+   @objc func reachabilityChanged(notification: Notification) {
         let reachability = notification.object as! Reachability
         switch reachability.currentReachabilityStatus {
         case .notReachable:

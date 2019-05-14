@@ -15,7 +15,7 @@ class ModuleMgr{
         let userSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         let pendingModule = NSEntityDescription.insertNewObject(forEntityName: "PendingModule", into: coreDataManager.managedObjectContext) as! PendingModule
         let now = NSDate.init()
-        pendingModule.dated = now
+        pendingModule.dated = now as Date
         pendingModule.moduleseq = Int32(moduleSeq)
         pendingModule.userseq = Int32(userSeq)
         pendingModule.learningplanseq = Int32(learningPlanSeq)

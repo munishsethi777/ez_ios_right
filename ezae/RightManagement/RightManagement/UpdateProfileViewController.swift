@@ -35,7 +35,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
         userImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func connected(_ sender:AnyObject){
+    @objc func connected(_ sender:AnyObject){
         editImage()
     }
 
@@ -296,7 +296,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
     }
     
     
-    func editingChanged(textField: UITextField) {
+    @objc func editingChanged(textField: UITextField) {
         editingTextField = textField
         let dateStr = editingTextField.text!
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -310,7 +310,7 @@ class UpdateProfileViewController:UIViewController,UIImagePickerControllerDelega
             datePickerView.setDate(dated!, animated: true)
         }
     }
-    func datePickerValueChanged(sender:UIDatePicker) {
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
         editingTextField.text = dateFormatter.string(from: sender.date)

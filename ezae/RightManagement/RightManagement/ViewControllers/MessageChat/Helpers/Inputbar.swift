@@ -147,7 +147,7 @@ class Inputbar: UIToolbar, HPGrowingTextViewDelegate {
     
     // MARK - Delegate
     
-    func didPressRightButton(sender:UIButton) {
+    @objc func didPressRightButton(sender:UIButton) {
         if self.rightButton.isSelected {
             return
         }
@@ -156,7 +156,7 @@ class Inputbar: UIToolbar, HPGrowingTextViewDelegate {
         self.textView.text = ""
     }
     
-    func didPressLeftButton(sender:UIButton) {
+    @objc func didPressLeftButton(sender:UIButton) {
         self.inputDelegate?.inputbarDidPressLeftButton(inputbar: self)
     }
     

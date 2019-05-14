@@ -69,7 +69,7 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
     override func viewWillAppear(_ animated: Bool) {
         handleNotificationData()
     }
-    func refreshDashboard(refreshControl: UIRefreshControl) {
+    @objc func refreshDashboard(refreshControl: UIRefreshControl) {
         getDashboardStates()
         getNotifications()
         getActiveLearningPlans()
@@ -113,8 +113,8 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
             cell?.notificationButton.addTarget(self, action:#selector(goToEvents), for: .touchUpInside)
         }
         return cell!
-    }
-    func goToEvents(){
+         }
+    @objc func goToEvents(){
         let controller = self.tabBarController?.viewControllers![4]
         let settingController = controller?.childViewControllers[0] as! SettingsTableViewController
         settingController.isGotoEvents = true
@@ -134,9 +134,9 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                 settingController.isGotoAchivement = true
                 self.tabBarController?.selectedIndex = 4
             }
-        }
+             }
     }
-    func nominateTraining(sender:UIButton){
+   @objc func nominateTraining(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         let tSeq = notification.seq
@@ -171,10 +171,10 @@ class DashboardVC:UIViewController,UITableViewDataSource,UITableViewDelegate,UIC
                 }
             } catch let parseError as NSError {
                 self.showAlert(message: parseError.description)
-            }
+                }
         })
     }
-    func launchChatroom(sender:UIButton){
+    @objc func launchChatroom(sender:UIButton){
         let index = sender.tag
         let notification = notifications[index]
         selectedChatroomId = notification.seq

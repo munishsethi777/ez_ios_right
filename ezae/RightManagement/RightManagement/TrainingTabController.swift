@@ -25,7 +25,7 @@ class TrainingTabController : UITabBarController {
     }
 
     
-    func backAction(){
+    @objc func backAction(){
         //print("Back Button Clicked")
         //self.performSegue(withIdentifier: "showDashboard", sender: nil)
         self.navigationController?.popToRootViewController(animated: true)

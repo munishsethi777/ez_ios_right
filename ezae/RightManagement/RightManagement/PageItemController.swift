@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITableViewDataSource, UITableViewDelegate{
+class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITableViewDataSource, UITableViewDelegate,UIWebViewDelegate{
     
     
     func didSelectButton(selectedButton: UIButton?) {
@@ -38,7 +38,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     var longQuestionTextView:UITextView!
     var switcher: UISwitch!
     var activityData:[String: Any] = [:]
-    var moduleProgress:[Any]!
+    var moduleProgress:[Any] = []
     var isProgressExist = false
     var isActivitySaved:Bool = false
     var feedback_success_arr:[String]!
@@ -50,6 +50,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         submit(question:questionJson,isTimeUp: false)
     }
     
+    @IBOutlet weak var scrolView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedAnsSeqs = []
@@ -57,44 +58,53 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         feedback_error_arr = []
         loggedInUserSeq = PreferencesUtil.sharedInstance.getLoggedInUserSeq();
         loggedInCompanySeq = PreferencesUtil.sharedInstance.getLoggedInCompanySeq();
-        let questionTitle = questionJson["title"] as! String
-        quesTitle.text = String(pageNo) + ". " + questionTitle
-        quesTitle.numberOfLines = 3
-        questionType = questionJson["type"] as! String;
-        options = questionJson["answers"] as! [Any];
-        seqOptions = options
         moduleType = moduleJson["moduletype"] as! String
-        moduleProgress = questionJson["progress"] as! [Any]
-        let showFeedback = moduleJson["isshowfeedback"] as! String
-        isShowFeedback =  Int(showFeedback)! > 0
-        if(!moduleProgress.isEmpty){
-            isProgressExist = true
-        }
-        handleWithExistingProgress()
-        let allQuestions = moduleJson["questions"] as! [Any]
-        
-        totalQuestion = allQuestions.count
-        if(questionType == StringConstants.SINGLE_TYPE_QUESTION){
-            addRadioViews()
-        }else if(questionType == StringConstants.MULTI_TYPE_QUESTION){
-            addCheckboxViews()
-        }else if(questionType == StringConstants.LONG_TYPE_QUESTION){
-            addTextView()
-        }else if(questionType == StringConstants.YES_NO_TYPE_QUESTION){
-            addSwitchView()
-        }else if(questionType == StringConstants.WEB_PAGE_TYPE_QUESTION){
-            addWebView()
-        }else if(questionType == StringConstants.MEDIA_TYPE_QUESTION){
-            addWebViewForVideo()
-        }
-        else if(questionType == StringConstants.DOC_TYPE_QUESTION){
-            addWebViewforDoc()
-        }else if(questionType == StringConstants.LIKART_SCALE_TYPE_QUESTION){
-            addRadioViews()
-        }else if(questionType == StringConstants.SEQUENCING){
-            addTableView()
-        }else if(questionType == StringConstants.ESTIMATE_PERCENT_TYPE_QUESTION){
-            addSliderView()
+        scrolView.layoutIfNeeded()
+        scrolView.isScrollEnabled = true
+        scrolView.contentSize = CGSize(width: self.view.frame.width, height: scrolView.frame.size.height)
+        if(moduleType != "elearning"){
+            let questionTitle = questionJson["title"] as! String
+            quesTitle.text = String(pageNo) + ". " + questionTitle
+            quesTitle.numberOfLines = 3
+            questionType = questionJson["type"] as! String;
+            options = questionJson["answers"] as! [Any];
+            seqOptions = options
+            
+            moduleProgress = questionJson["progress"] as! [Any]
+            let showFeedback = moduleJson["isshowfeedback"] as! String
+            isShowFeedback =  Int(showFeedback)! > 0
+            if(!moduleProgress.isEmpty){
+                isProgressExist = true
+            }
+            handleWithExistingProgress()
+            let allQuestions = moduleJson["questions"] as! [Any]
+            
+            totalQuestion = allQuestions.count
+       
+            if(questionType == StringConstants.SINGLE_TYPE_QUESTION){
+                addRadioViews()
+            }else if(questionType == StringConstants.MULTI_TYPE_QUESTION){
+                addCheckboxViews()
+            }else if(questionType == StringConstants.LONG_TYPE_QUESTION){
+                addTextView()
+            }else if(questionType == StringConstants.YES_NO_TYPE_QUESTION){
+                addSwitchView()
+            }else if(questionType == StringConstants.WEB_PAGE_TYPE_QUESTION){
+                addWebView()
+            }else if(questionType == StringConstants.MEDIA_TYPE_QUESTION){
+                addWebViewForVideo()
+            }
+            else if(questionType == StringConstants.DOC_TYPE_QUESTION){
+                addWebViewforDoc()
+            }else if(questionType == StringConstants.LIKART_SCALE_TYPE_QUESTION){
+                addRadioViews()
+            }else if(questionType == StringConstants.SEQUENCING){
+                addTableView()
+            }else if(questionType == StringConstants.ESTIMATE_PERCENT_TYPE_QUESTION){
+                addSliderView()
+            }
+        }else{
+            addElearningWebView();
         }
         executeSaveActivityCall()
         if(!moduleProgress.isEmpty){
@@ -176,7 +186,6 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
             getScoreForSelectedOption()
         }
     }
-    
     func addCheckboxViews(){
         var y:CGFloat = quesTitle.frame.height + 10.00
         var button: CheckBox!
@@ -320,7 +329,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         }
     }
     
-    func changeSwitcher(sender: UISwitch){
+    @objc func changeSwitcher(sender: UISwitch){
         var ansTitle = "no"
         if(sender.isOn){
             ansTitle = "yes"
@@ -340,6 +349,45 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         view.addSubview(webView)
     }
     
+    func addElearningWebView(){
+        let webView:UIWebView = UIWebView()
+        webView.delegate = self
+        var height = self.view.frame.height;
+        height = height - 80
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ||
+                        UIDevice.current.orientation == UIDeviceOrientation.landscapeRight{
+            height =  view.bounds.size.height
+        }
+        webView.frame = CGRect(x:0,y:0,width:view.frame.width,height:height)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        webView.scalesPageToFit = true
+        webView.scrollView.isScrollEnabled = true
+        webView.isUserInteractionEnabled = true
+        view.addSubview(webView)
+        //scrolView.addSubview(webView);
+        let urlS = moduleJson["elearningUrl"] as! String
+        //urlS = urlS.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let url = URL(string: urlS)
+        let request = URLRequest(url: url!)
+        webView.loadRequest(request)
+        submitProgress.isHidden = true
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+            if(moduleType == "elearning"){
+                for view in view.subviews{
+                    if view is UIWebView {
+                        view.removeFromSuperview()
+                    }
+                }
+                addElearningWebView()
+            }
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        if(moduleType == "elearning"){
+            webView.stringByEvaluatingJavaScript(from: "setUserSeq("+String(loggedInUserSeq)+")")
+        }
+    }
     func addWebViewForVideo(){
         let y:CGFloat = quesTitle.frame.height
         let webView: UIWebView = UIWebView.init()
@@ -395,13 +443,13 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         slider.addTarget(self, action:#selector(sliderValueChanged), for: .valueChanged)
     }
     
-    func addSelectedAnsSeq(sender: UIButton){
+    @objc func addSelectedAnsSeq(sender: UIButton){
         let selectedAnsSeq = sender.tag
         selectedAnsSeqs = []
         selectedAnsSeqs.append(selectedAnsSeq)
     }
     
-    func addMultiSelectedAnsSeq(sender: CheckBox){
+    @objc func addMultiSelectedAnsSeq(sender: CheckBox){
         let selectedAnsSeq = sender.tag
         if(sender.isChecked){
             selectedAnsSeqs.append(selectedAnsSeq)
@@ -412,7 +460,7 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
         }
     }
     
-    func sliderValueChanged(sender: UISlider) {
+    @objc func sliderValueChanged(sender: UISlider) {
         //let value = options[Int(sender.value)]
         //sender.value = value
         // Do something else with the value
@@ -512,8 +560,8 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     func executeSaveActivityCall(){
         if(moduleProgress.isEmpty && itemIndex == 0 && !isActivitySaved){
             let randomQuestionKeys:[String] = parentController.randomQuestionKeys
-            let moduleSeq = Int(questionJson["moduleSeq"] as! String)!;
-            let learningPlanSeq = Int(questionJson["learningPlanSeq"] as! String)!;
+            let moduleSeq = Int(moduleJson["seq"] as! String)!;
+            let learningPlanSeq = Int(moduleJson["learningPlanSeq"] as! String)!;
             var jsonString = ModuleProgressMgr.sharedInstance.getActivityJsonString(moduleSeq: moduleSeq, learningPlanSeq: learningPlanSeq,randomQuesitionKeys: randomQuestionKeys)
             jsonString = jsonString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
             let args: [Any] = [self.loggedInUserSeq,self.loggedInCompanySeq,jsonString]

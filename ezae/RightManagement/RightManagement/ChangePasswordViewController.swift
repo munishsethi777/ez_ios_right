@@ -62,7 +62,7 @@ class ChangePassworViewController: UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func editingChanged(_ textField: UITextField) {
+    @objc func editingChanged(_ textField: UITextField) {
         if textField.text?.characters.count == 1 {
             if textField.text?.characters.first == " " {
                 textField.text = ""

@@ -385,7 +385,11 @@ class PageItemController: UIViewController, SSRadioButtonControllerDelegate,UITa
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
         if(moduleType == "elearning"){
+            let moduleSeq = Int(moduleJson["seq"] as! String)!
+            let learningPlanseq = Int(moduleJson["learningPlanSeq"] as! String)!
             webView.stringByEvaluatingJavaScript(from: "setUserSeq("+String(loggedInUserSeq)+")")
+            webView.stringByEvaluatingJavaScript(from: "setModuleSeq("+String(moduleSeq)+")")
+            webView.stringByEvaluatingJavaScript(from: "setlpSeq("+String(learningPlanseq)+")")
         }
     }
     func addWebViewForVideo(){

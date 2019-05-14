@@ -36,7 +36,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             moduleTrainingView.refreshControl = refreshControl
         }
-        setbackround()
+        //setbackround()
         progressHUD = ProgressHUD(text: "Loading")
         self.view.addSubview(progressHUD)
     }
@@ -52,15 +52,15 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.navigationController?.navigationBar.tintColor = .black
         let color = UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
+        //self.navigationController?.navigationBar.isTranslucent = true
     }
-  
-    func refreshController(){
+    
+    @objc func refreshController(){
         cache = NSCache()
         getModules()
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
+    @objc func refreshView(refreshControl: UIRefreshControl) {
         refreshController()
     }
     
@@ -83,118 +83,130 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
             debugPrint("Image not available")
         }
     }
-    
+    var isReattempted:Bool = false;
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ModuleTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ModuleTableViewCell
         let section: Int = indexPath.row
-            let moduleJson = moduleArr[section] as! [String: Any]
-            var moduleImageUrl = moduleJson["imagepath"] as? String
-            var progressStr = moduleJson["progress"] as? String
-            var moduleType = moduleJson["moduletype"] as! String
-            var leaderboardRankStr = moduleJson["leaderboard"] as? String
-            var lpSeqStr = moduleJson["learningPlanSeq"] as? String
-            var seqStr = moduleJson["seq"] as? String
-            let badges = moduleJson["badges"] as? [Any]
-            let moduleDes = moduleJson["description"] as? String
-            var lpSeq = 0
-            if(lpSeqStr != nil){
-                 lpSeq = Int(lpSeqStr!)!
-            }
-            let seq = Int(seqStr!)!
-            if(leaderboardRankStr == nil){
-                leaderboardRankStr = "0"
-            }
-            let rank: Int = Int(leaderboardRankStr!)!
-            let rankStr = String(rank) + "\nLeaderboard"
-            if(progressStr == nil){
-                progressStr = "0"
-            }
-            let progress: Int = Int(progressStr!)!
-            if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
-                moduleImageUrl = "dummy.jpg"
-            }
-            if (self.cache.object(forKey: seqStr as AnyObject) != nil){
-                cell?.moduleImageView?.image = self.cache.object(forKey: seqStr as AnyObject) as? UIImage
-                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                cell?.moduleImageView.clipsToBounds = true
-            }else {
-                moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
-
-                if let url = NSURL(string: moduleImageUrl!) {
-                    DispatchQueue.global().async {
-                        if let data = NSData(contentsOf: url as URL) {
-                            DispatchQueue.main.async {
-                                let img = UIImage(data: data as Data)
-                                cell?.moduleImageView.image = UIImage(data: data as Data)
-                                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                                cell?.moduleImageView.clipsToBounds = true
-                                self.cache.setObject(img!, forKey: seqStr as AnyObject)
-                            }
+        let moduleJson = moduleArr[section] as! [String: Any]
+        var moduleImageUrl = moduleJson["imagepath"] as? String
+        var progressStr = moduleJson["progress"] as? String
+        var moduleType = moduleJson["moduletype"] as! String
+        var leaderboardRankStr = moduleJson["leaderboard"] as? String
+        var lpSeqStr = moduleJson["learningPlanSeq"] as? String
+        var seqStr = moduleJson["seq"] as? String
+        let badges = moduleJson["badges"] as? [Any]
+        let moduleDes = moduleJson["description"] as? String
+        let reattempted = moduleJson["reattempts"] as! Int
+        var lpSeq = 0
+        if(lpSeqStr != nil){
+            lpSeq = Int(lpSeqStr!)!
+        }
+        let seq = Int(seqStr!)!
+        if(leaderboardRankStr == nil){
+            leaderboardRankStr = "0"
+        }
+        let rank: Int = Int(leaderboardRankStr!)!
+        let rankStr = String(rank) + "\nLeaderboard"
+        if(progressStr == nil){
+            progressStr = "0"
+        }
+        let progress: Int = Int(progressStr!)!
+        if(moduleImageUrl == nil || (moduleImageUrl?.isEmpty)!){
+            moduleImageUrl = "dummy.jpg"
+        }
+        if (self.cache.object(forKey: seqStr as AnyObject) != nil){
+            cell?.moduleImageView?.image = self.cache.object(forKey: seqStr as AnyObject) as? UIImage
+            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+            cell?.moduleImageView.clipsToBounds = true
+        }else {
+            moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
+            
+            if let url = NSURL(string: moduleImageUrl!) {
+                DispatchQueue.global().async {
+                    if let data = NSData(contentsOf: url as URL) {
+                        DispatchQueue.main.async {
+                            let img = UIImage(data: data as Data)
+                            cell?.moduleImageView.image = UIImage(data: data as Data)
+                            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                            cell?.moduleImageView.clipsToBounds = true
+                            self.cache.setObject(img!, forKey: seqStr as AnyObject)
                         }
                     }
                 }
             }
-            cell?.moduleTitleLabel.text = moduleJson["title"] as? String
-            var points = moduleJson["points"] as? String
-            if(points == nil){
-                points = "0"
-            }
-            var score = moduleJson["score"] as? String
-            if(score == nil){
-                score = "0"
-            }
-            cell?.pointsLabel.text = points
-            cell?.scoreLabel.text = score
-            var buttonTitle: String = "Launch"
-            cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
-            let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
-             cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1).cgColor]
-            if(isLocalProgressExists && progress < 100){
-                buttonTitle = "Continue"
-               cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1).cgColor]
-                cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
-            }
-            if(progress == 100){
+        }
+        cell?.moduleTitleLabel.text = moduleJson["title"] as? String
+        var points = moduleJson["points"] as? String
+        if(points == nil){
+            points = "0"
+        }
+        var score = moduleJson["score"] as? String
+        if(score == nil){
+            score = "0"
+        }
+        cell?.pointsLabel.text = points
+        cell?.scoreLabel.text = score
+        var buttonTitle: String = "Launch"
+        cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_up.png"), for: .normal)
+        cell?.launchModuleImageButton.isEnabled = true
+        let isLocalProgressExists:Bool = ModuleProgressMgr.sharedInstance.isProgressForModule(moduleSeq: seq, learningPlanSeq: lpSeq)
+        cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 99/255.0, green: 144/255.0, blue: 198/255.0, alpha: 1).cgColor]
+        if(isLocalProgressExists && progress < 100){
+            buttonTitle = "Continue"
+            cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1).cgColor]
+            cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
+        }
+        if(progress == 100){
+            if(reattempted > 0){
+                buttonTitle = "Re-attempt"
+                cell?.launchModuleImageButton.setImage(UIImage(named: "reattempt1.png"), for: .normal)
+                isReattempted = true
+            }else{
                 cell?.launchModuleImageButton.isHidden = false
-                 cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
+                cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
                 cell?.launchModuleImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
                 buttonTitle = "Review"
-            }else{
-                cell?.launchModuleImageButton.isHidden = false
-            }
-            cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
-            cell?.lauchModuleButton.tag = seq
-            cell?.lauchModuleButton.titleLabel?.tag = lpSeq
-            cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-        
-            cell?.launchModuleImageButton.tag = seq
-            cell?.launchModuleImageButton.titleLabel?.tag = lpSeq
-            cell?.launchModuleImageButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-        
-            cell?.scoreLabel.isHidden = true
-            cell?.pointsLabel.isHidden = true
-            cell?.scoreCaptionLabel.isHidden = true
-            cell?.pointsCaptionLabel.isHidden = true
-            cell?.leaderboardLabel.isHidden = false
-            if(moduleType == "quiz" && progress == 100){
-                cell?.scoreLabel.text = score
-                cell?.pointsLabel.text = points
-                cell?.scoreLabel.isHidden = false
-                cell?.pointsLabel.isHidden = false
-                cell?.scoreCaptionLabel.isHidden = false
-                cell?.pointsCaptionLabel.isHidden = false
-                if(rank > 0){
-                    cell?.leaderboardLabel.text = rankStr
-                }
-               
-            }else{
-                if(progress > 0){
-                    cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
-                }else{
-                    cell?.leaderboardLabel.isHidden = true
+                if(moduleType == "elearning"){
+                    buttonTitle = "Completed"
+                    cell?.launchModuleImageButton.isEnabled = false
                 }
             }
+        }else{
+            cell?.launchModuleImageButton.isHidden = false
+        }
+        cell?.lauchModuleButton.setTitle(buttonTitle, for: .normal)
+        cell?.lauchModuleButton.tag = seq
+        cell?.lauchModuleButton.titleLabel?.tag = lpSeq
+        cell?.lauchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        
+        cell?.launchModuleImageButton.tag = seq
+        cell?.launchModuleImageButton.titleLabel?.tag = lpSeq
+        cell?.launchModuleImageButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
+        
+        cell?.scoreLabel.isHidden = true
+        cell?.pointsLabel.isHidden = true
+        cell?.scoreCaptionLabel.isHidden = true
+        cell?.pointsCaptionLabel.isHidden = true
+        cell?.leaderboardLabel.isHidden = false
+        if(moduleType == "quiz" && progress == 100){
+            cell?.scoreLabel.text = score
+            cell?.pointsLabel.text = points
+            cell?.scoreLabel.isHidden = false
+            cell?.pointsLabel.isHidden = false
+            cell?.scoreCaptionLabel.isHidden = false
+            cell?.pointsCaptionLabel.isHidden = false
+            if(rank > 0){
+                cell?.leaderboardLabel.text = rankStr
+            }
+            
+        }else{
+            if(progress > 0){
+                cell?.leaderboardLabel.text = String(progress)+"%\nCompleted"
+            }else{
+                cell?.leaderboardLabel.isHidden = true
+            }
+        }
         //remove badgeImage with tag 5 before add badgeImage
         let theSubviews: Array = (cell?.contentView.subviews)!
         for view in theSubviews{
@@ -241,7 +253,7 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell!
     }
     
-   
+    
     func getModules(){
         let args: [Int] = [self.loggedInUserSeq,self.loggedInCompanySeq]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MODULES, args: args)
@@ -279,14 +291,25 @@ class ModuleViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
     
-    func launchModule(sender:UIButton){
+    @objc func launchModule(sender:UIButton){
         //selectedModuleSeq = sender.tag
-       // selectedLpSeq = (sender.titleLabel?.tag)!
-       // self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+        // selectedLpSeq = (sender.titleLabel?.tag)!
+        // self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
         let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
         launchModuleVC.moduleSeq = sender.tag
         launchModuleVC.lpSeq = (sender.titleLabel?.tag)!
-        self.present(launchModuleVC, animated: true, completion: nil)
+        if(isReattempted){
+            let reattemptedAlert = UIAlertController(title: "Re-attempted", message: "Do you really want to re-attempt this Training?", preferredStyle: UIAlertControllerStyle.alert)
+            reattemptedAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                launchModuleVC.isReattempt = self.isReattempted
+                self.present(launchModuleVC, animated: true, completion: nil)
+            }))
+            reattemptedAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+            present(reattemptedAlert, animated: true, completion: nil)
+        }else{
+            self.present(launchModuleVC, animated: true, completion: nil)
+        }
     }
     
     func launch(){

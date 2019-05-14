@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 let mcv = currentController as! MessageChatController
                 let chatUserSeq = mcv.chatUserSeq;
                 let chatUserType = mcv.charUserType;
-                if(chatUserSeq == Int(entitySeq) && chatUserType! == entityType){
+                if(chatUserSeq == Int(entitySeq) && chatUserType == entityType){
                     mcv.getMessages(isScroll: false);
                 }else{
                     withCompletionHandler([.alert, .sound, .badge])

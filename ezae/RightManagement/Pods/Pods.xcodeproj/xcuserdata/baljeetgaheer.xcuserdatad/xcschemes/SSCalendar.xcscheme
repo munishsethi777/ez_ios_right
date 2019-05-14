@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '946CE32753039D53EDC4B611F29101D6'
-               BlueprintName = 'SSCalendar'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SSCalendar.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B4A6B1D8D8E67A8D8F7BC561911E43A3"
+               BuildableName = "SSCalendar.framework"
+               BlueprintName = "SSCalendar"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

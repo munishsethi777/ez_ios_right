@@ -28,6 +28,7 @@ class UserMgr{
         user.imagename = userJson["userImage"] as? String
         user.profiles = userJson["profiles"] as? String
         user.companyimage = userJson["companyLogo"] as? String
+        user.vendorlogo = userJson["vendorLogo"] as? String
         user.ismanager = false
         do {
             try coreDataManager.managedObjectContext.save()

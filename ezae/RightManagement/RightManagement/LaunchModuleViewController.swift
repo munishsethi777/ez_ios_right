@@ -15,6 +15,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     @IBOutlet weak var marksLabel: UILabel!
     
     @IBOutlet weak var timerLabel: UILabel!
+    var isReattempt:Bool = false
     var moduleSeq: Int = 0
     var lpSeq: Int = 0
     var jsonResponse: [String: Any] = [:]
@@ -37,7 +38,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         super.viewDidLoad()
         self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
         self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-       
+        
         getModuleDetail()
         setupPageControl()
         // Do any additional setup after loading the view, typically from a nib.
@@ -49,7 +50,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     }
     
     @IBAction func backTapped(_ sender: Any) {
-       self.performSegue(withIdentifier: "showMainTabs", sender: self)
+        self.performSegue(withIdentifier: "showMainTabs", sender: self)
     }
     var pageViewController: UIPageViewController?
     override func didReceiveMemoryWarning() {
@@ -60,11 +61,11 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     func createPageViewController(itemIndex:Int) {
         let moduleType = moduleJson["moduletype"] as! String
         if(moduleType == "quiz"){
-           marksLabel.isHidden = false
+            marksLabel.isHidden = false
         }else{
             marksLabel.isHidden = true
         }
-       
+        
         questionJsonArr = moduleJson["questions"] as! [Any]
         let activity = moduleJson["activityData"] as? [String: Any]
         if(activity != nil){
@@ -78,10 +79,10 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
         
         if questionJsonArr.count > 0 {
             setPaggerLabel(page: itemIndex+1)
-            let firstController = getItemController(itemIndex: itemIndex)!
-            let startingViewControllers = [firstController]
-            pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
+        let firstController = getItemController(itemIndex: itemIndex)!
+        let startingViewControllers = [firstController]
+        pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         pageController.delegate = self
         pageViewController = pageController
         addChildViewController(pageViewController!)
@@ -242,7 +243,8 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     }
     
     private func getItemController(itemIndex: Int) -> PageItemController? {
-        if itemIndex < questionJsonArr.count {
+        let moduleType = moduleJson["moduletype"] as! String
+        if itemIndex < questionJsonArr.count || moduleType == "elearning" {
             if(itemIndex > 0){
                 let progress = getQuesProgress(itemIndex: itemIndex-1)
                 if(progress.isEmpty){
@@ -256,8 +258,9 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             let pageNo = itemIndex + 1
             pageItemController.parentController = self
             pageItemController.pageNo = pageNo
-            pageItemController.questionJson = questionJsonArr[itemIndex] as! [String: Any]
-           
+            if(questionJsonArr.count > 0){
+                pageItemController.questionJson = questionJsonArr[itemIndex] as! [String: Any]
+            }
             childItemController = pageItemController
             return pageItemController
         }
@@ -273,7 +276,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
     }
     
     func getModuleDetail(){
-        let args: [Int] = [self.loggedInUserSeq,self.moduleSeq,self.lpSeq]
+        let args: [Any] = [self.loggedInUserSeq,self.moduleSeq,self.lpSeq,self.isReattempt]
         let apiUrl: String = MessageFormat.format(pattern: StringConstants.GET_MODULE_DETAIL, args: args)
         var success : Int = 0
         var message : String? = nil
@@ -301,7 +304,7 @@ class LaunchModuleViewController: UIViewController,UIPageViewControllerDelegate,
             }
         })
     }
-
+    
     func showAlert(message: String){
         let alert = UIAlertController(title: "API Exception", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

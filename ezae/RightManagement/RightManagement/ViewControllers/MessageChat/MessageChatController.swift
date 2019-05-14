@@ -20,7 +20,7 @@ class MessageChatController:UIViewController,InputbarDelegate,MessageGatewayDele
     
     
     var chatUserSeq:Int = 0
-    var charUserType:String!
+    var charUserType:String = ""
     var chattingUserName:String!
     var loggedInUserSeq:Int = 0
     var loggedInCompanySeq:Int = 0

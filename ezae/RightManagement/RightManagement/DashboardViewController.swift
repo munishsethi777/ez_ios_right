@@ -44,7 +44,8 @@ class DashboardViewController:UIViewController{
     @IBAction func chatroomsAction(_ sender: Any) {
         self.tabBarController?.selectedIndex = 3
     }
-   
+    
+    @IBOutlet weak var vendorLogo: UIImageView!
     
 //    @IBAction func notificationAction(_ sender: Any) {
 //        let controller = self.tabBarController?.viewControllers![4]
@@ -194,15 +195,15 @@ class DashboardViewController:UIViewController{
         userImageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func connected(_ sender:AnyObject){
+    @objc func connected(_ sender:AnyObject){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "UpdateProfileController") as! UpdateProfileViewController
         self.navigationController!.pushViewController(nextViewController, animated:true)
     }
     
-   
-    func refreshDashboard(refreshControl: UIRefreshControl) {
+    
+    @objc func refreshDashboard(refreshControl: UIRefreshControl) {
         getDashboardCounts()
         getDashboardStates()
         populateUserInfoFromLocal()
@@ -212,6 +213,7 @@ class DashboardViewController:UIViewController{
        let userName = user?.fullname
        var userImageName = user?.imagename
        let compmanyImage = user?.companyimage
+       let vendorLogo = user?.vendorlogo
        if(userImageName == nil){
            userImageName = "dummy.jpg"
        }
@@ -219,6 +221,10 @@ class DashboardViewController:UIViewController{
         var companyImageUrl = ""
         if(compmanyImage != nil){
             companyImageUrl = StringConstants.IMAGE_URL + "CompanyImages/companylogo/"+compmanyImage!
+        }
+        var vendorLogoUrl = ""
+        if(vendorLogo != nil){
+            vendorLogoUrl = StringConstants.IMAGE_URL + "AdminImages/vendorLogo/"+vendorLogo!
         }
        let userProfiles = user?.profiles
 //       if let url = NSURL(string: imageUrl) {
@@ -248,6 +254,19 @@ class DashboardViewController:UIViewController{
                     }
                 }
                 self.companyLogo.isHidden = false
+            }
+        }
+        self.vendorLogo.isHidden = true
+        if(vendorLogoUrl != ""){
+            if let url = NSURL(string: vendorLogoUrl) {
+                DispatchQueue.global().async {
+                    if let data = NSData(contentsOf: url as URL) {
+                        DispatchQueue.main.async {
+                            self.vendorLogo.image = UIImage(data: data as Data)
+                        }
+                    }
+                }
+                self.vendorLogo.isHidden = false
             }
         }
     }

@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Heavy</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
@@ -535,7 +528,7 @@
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75038548519736847" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SIK-s5-7wZ">
-                                                    <rect key="frame" x="30" y="11" width="50" height="50"/>
+                                                    <rect key="frame" x="30" y="31" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="8IW-Fx-1b1"/>
                                                         <constraint firstAttribute="height" constant="50" id="e2p-Ol-lkf"/>
@@ -596,17 +589,17 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7io-5s-zaY" userLabel="badgesHeader">
                                 <rect key="frame" x="0.0" y="123" width="375" height="38"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-OV-2Se">
-                                        <rect key="frame" x="126" y="4" width="120.5" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-OV-2Se">
+                                        <rect key="frame" x="127.5" y="4" width="120.5" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="s5m-H1-Vl9">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="s5m-H1-Vl9">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="PUe-fL-Oh1"/>
                                                     <constraint firstAttribute="height" constant="30" id="XdM-Sx-qHm"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="My Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bh-ID-DxE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bh-ID-DxE">
                                                 <rect key="frame" x="30" y="0.0" width="90.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -628,17 +621,17 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M02-O5-Is9" userLabel="leaderboardHeader">
                                 <rect key="frame" x="0.0" y="281" width="375" height="38"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qYD-fZ-NJX">
-                                        <rect key="frame" x="126" y="4" width="133" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYD-fZ-NJX">
+                                        <rect key="frame" x="121" y="4" width="133" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="q75-f7-NQx">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="q75-f7-NQx">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="iyW-bw-pJk"/>
                                                     <constraint firstAttribute="height" constant="30" id="lcK-dI-roc"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9M-fl-8h2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9M-fl-8h2">
                                                 <rect key="frame" x="30" y="0.0" width="103" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -678,7 +671,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZj-Gb-bog">
-                                                    <rect key="frame" x="0.0" y="-1" width="375" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.80603543133802813" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-4E-7nd">
@@ -718,7 +711,7 @@
                                 </prototypes>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jf-Jw-UlJ">
-                                <rect key="frame" x="134" y="365" width="108.5" height="21"/>
+                                <rect key="frame" x="133" y="365" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -726,17 +719,17 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oc0-e6-nEX" userLabel="myScoreHeader">
                                 <rect key="frame" x="0.0" y="475" width="375" height="38"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="soE-4Z-1Yh">
-                                        <rect key="frame" x="126" y="4" width="115.5" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soE-4Z-1Yh">
+                                        <rect key="frame" x="130" y="4" width="115.5" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="rIQ-ej-FrP">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_badge_white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="rIQ-ej-FrP">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="9w0-7Q-JN4"/>
                                                     <constraint firstAttribute="height" constant="30" id="aoe-2B-iVF"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="My Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K52-TM-O1Q">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K52-TM-O1Q">
                                                 <rect key="frame" x="30" y="0.0" width="85.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -851,7 +844,7 @@
                                 </prototypes>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZb-za-hhj">
-                                <rect key="frame" x="133" y="323" width="108.5" height="21"/>
+                                <rect key="frame" x="133" y="323" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1171,7 +1164,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ue-XZ-abK">
-                                                            <rect key="frame" x="306" y="69" width="53" height="12"/>
+                                                            <rect key="frame" x="297" y="69" width="66" height="12"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <state key="normal" title="Button">
@@ -1217,7 +1210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0u-cz-fLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2402" y="537"/>
+            <point key="canvasLocation" x="-2402.4000000000001" y="536.58170914542734"/>
         </scene>
         <!--Notes-->
         <scene sceneID="s1K-tP-X5u">
@@ -1407,7 +1400,7 @@
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df3-pa-xxD">
-                                                            <rect key="frame" x="296" y="65" width="61" height="12"/>
+                                                            <rect key="frame" x="296" y="65" width="66" height="12"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <state key="normal" title="Launch">
@@ -1621,6 +1614,7 @@
                     <navigationItem key="navigationItem" title="Learnings" id="N43-bX-BaP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="I0J-ER-07C"/>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="lpTableView" destination="Vsh-Sf-qOc" id="Vfo-uS-ueZ"/>
                         <segue destination="Vqh-mw-9Cr" kind="show" identifier="LearningPlanDetail" id="WW2-TB-a6d"/>
@@ -1738,6 +1732,7 @@
                         <outlet property="feedbackSuccessLabel" destination="wsp-Dj-g0S" id="yaz-RW-Y6X"/>
                         <outlet property="okButton" destination="63T-Pj-Zm9" id="3wA-tv-IAm"/>
                         <outlet property="quesTitle" destination="NtD-wp-Tkb" id="05E-nn-BbO"/>
+                        <outlet property="scrolView" destination="3r6-UR-I3h" id="8OV-bh-m9n"/>
                         <outlet property="submitProgress" destination="15j-Ic-c1X" id="PfI-PL-C4D"/>
                         <segue destination="krr-2b-sIX" kind="show" identifier="showTrainingTabs" id="26S-pN-GFy"/>
                     </connections>
@@ -1929,28 +1924,11 @@
                         <viewControllerLayoutGuide type="bottom" id="b6D-K3-tku"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XOk-M8-bM1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzw-VC-Oyi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Tzw-VC-Oyi" secondAttribute="trailing" id="3aW-Lh-sWm"/>
-                            <constraint firstItem="Tzw-VC-Oyi" firstAttribute="leading" secondItem="XOk-M8-bM1" secondAttribute="leading" id="JTh-yY-cbe"/>
-                            <constraint firstItem="Tzw-VC-Oyi" firstAttribute="top" secondItem="y4B-yN-3Ud" secondAttribute="bottom" constant="66" id="N3X-11-4Xc"/>
-                            <constraint firstAttribute="bottom" secondItem="Tzw-VC-Oyi" secondAttribute="bottom" id="Ytg-NR-Q39"/>
-                            <constraint firstItem="Tzw-VC-Oyi" firstAttribute="top" secondItem="y4B-yN-3Ud" secondAttribute="bottom" id="omN-Xl-pSo"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gwy-qu-aBA"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="containerView" destination="Tzw-VC-Oyi" id="vow-dL-XZo"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhv-FB-uST" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1961,8 +1939,7 @@
             <objects>
                 <navigationController id="Djq-6T-UqR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learnings" image="icons8-learningplans-24.png" id="TS7-83-R3O"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AS1-Sb-Fdx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="AS1-Sb-Fdx">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2851,7 +2828,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWX-Mn-c2T">
-                                        <rect key="frame" x="155" y="123" width="11.5" height="16"/>
+                                        <rect key="frame" x="154.5" y="123.5" width="11.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2884,7 +2861,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="egy-0q-oBp" userLabel="stack1">
                                 <rect key="frame" x="0.0" y="195" width="320" height="120"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HR3-fZ-oUp" userLabel="learnings">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HR3-fZ-oUp" userLabel="learnings">
                                         <rect key="frame" x="4" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5z-JY-xuT">
@@ -2921,7 +2898,7 @@
                                             <constraint firstAttribute="height" constant="120" id="h4g-0J-D60"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hst-D6-jAC" userLabel="messages">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hst-D6-jAC" userLabel="messages">
                                         <rect key="frame" x="110" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-yG-ZX2">
@@ -2958,7 +2935,7 @@
                                             <constraint firstAttribute="height" constant="120" id="uBe-sM-0C0"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJs-NQ-JdO" userLabel="chatrooms">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJs-NQ-JdO" userLabel="chatrooms">
                                         <rect key="frame" x="216" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X5X-nL-VSr">
@@ -2994,7 +2971,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="TCS-p2-XKR" userLabel="stack2">
                                 <rect key="frame" x="0.0" y="331" width="320" height="120"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNs-Ox-RUq" userLabel="achievements">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNs-Ox-RUq" userLabel="achievements">
                                         <rect key="frame" x="4" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI4-Vm-7Lp">
@@ -3024,7 +3001,7 @@
                                             <constraint firstAttribute="height" constant="120" id="xxt-a9-6lR"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-G4-MdX" userLabel="notes">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxf-G4-MdX" userLabel="notes">
                                         <rect key="frame" x="110" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIa-Td-hAP">
@@ -3054,7 +3031,7 @@
                                             <constraint firstAttribute="height" constant="120" id="mt7-Il-jLa"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDg-7G-N15" userLabel="calendar">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDg-7G-N15" userLabel="calendar">
                                         <rect key="frame" x="216" y="0.0" width="100" height="120"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-2L-Hkb">
@@ -3281,6 +3258,7 @@
                         <outlet property="userImageView" destination="7bZ-vv-7Vi" id="jOe-zA-9xq"/>
                         <outlet property="userNameLabel" destination="kmn-Ii-MBj" id="REc-BL-xva"/>
                         <outlet property="userProfileLabel" destination="TWX-Mn-c2T" id="ncn-2O-Vzh"/>
+                        <outlet property="vendorLogo" destination="MaA-OF-eYG" id="GwL-rU-ww1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adr-rd-s1q" sceneMemberID="firstResponder"/>
@@ -3290,37 +3268,37 @@
     </scenes>
     <resources>
         <image name="RM_BE_Logo_SS_STK_MC_RGB.png" width="70" height="63"/>
-        <image name="arrow_right_orange.png" width="50" height="50"/>
-        <image name="arrow_up.png" width="40" height="40"/>
-        <image name="ico_badge_white_50.png" width="80" height="80"/>
+        <image name="arrow_right_orange.png" width="40" height="40"/>
+        <image name="arrow_up.png" width="32" height="32"/>
+        <image name="ico_badge_white_50.png" width="40" height="40"/>
         <image name="ico_chatroom.png" width="30" height="30"/>
-        <image name="ico_edit_64.png" width="64" height="64"/>
+        <image name="ico_edit_64.png" width="200.34782409667969" height="200.34782409667969"/>
         <image name="ico_learningplans.png" width="30" height="30"/>
-        <image name="icons8-alarm-filled-100.png" width="100" height="100"/>
-        <image name="icons8-calendar-1-filled-100.png" width="100" height="100"/>
-        <image name="icons8-chat-filled-100.png" width="100" height="100"/>
-        <image name="icons8-chat_24.png" width="24" height="24"/>
-        <image name="icons8-collaboration-filled-100.png" width="100" height="100"/>
-        <image name="icons8-dashboard_24.png" width="24" height="24"/>
-        <image name="icons8-e-learning-100.png" width="100" height="100"/>
-        <image name="icons8-learningplans-24.png" width="24" height="24"/>
-        <image name="icons8-lock-25.png" width="25" height="25"/>
-        <image name="icons8-modules-24.png" width="24" height="24"/>
-        <image name="icons8-more_24.png" width="24" height="24"/>
-        <image name="icons8-note-filled-100.png" width="100" height="100"/>
-        <image name="icons8-password-filled-100.png" width="100" height="100"/>
-        <image name="icons8-profile-filled-100.png" width="100" height="100"/>
-        <image name="icons8-save-25.png" width="25" height="25"/>
-        <image name="icons8-shutdown-25.png" width="25" height="25"/>
-        <image name="icons8-shutdown-filled-100.png" width="100" height="100"/>
-        <image name="icons8-sms_24.png" width="24" height="24"/>
-        <image name="icons8-trophy-filled-100.png" width="100" height="100"/>
+        <image name="icons8-alarm-filled-100.png" width="40" height="40"/>
+        <image name="icons8-calendar-1-filled-100.png" width="40" height="40"/>
+        <image name="icons8-chat-filled-100.png" width="40" height="40"/>
+        <image name="icons8-chat_24.png" width="18" height="18"/>
+        <image name="icons8-collaboration-filled-100.png" width="40" height="40"/>
+        <image name="icons8-dashboard_24.png" width="18" height="18"/>
+        <image name="icons8-e-learning-100.png" width="40" height="40"/>
+        <image name="icons8-learningplans-24.png" width="18" height="18"/>
+        <image name="icons8-lock-25.png" width="18.75" height="18.75"/>
+        <image name="icons8-modules-24.png" width="18" height="18"/>
+        <image name="icons8-more_24.png" width="18" height="18"/>
+        <image name="icons8-note-filled-100.png" width="40" height="40"/>
+        <image name="icons8-password-filled-100.png" width="40" height="40"/>
+        <image name="icons8-profile-filled-100.png" width="40" height="40"/>
+        <image name="icons8-save-25.png" width="18.75" height="18.75"/>
+        <image name="icons8-shutdown-25.png" width="18.75" height="18.75"/>
+        <image name="icons8-shutdown-filled-100.png" width="40" height="40"/>
+        <image name="icons8-sms_24.png" width="18" height="18"/>
+        <image name="icons8-trophy-filled-100.png" width="40" height="40"/>
         <image name="imageView:zxv-Jl-C1c:image" width="23" height="23">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
 c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MjMsIDIzfdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
-HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPERXWTU0AKgAACEwAAAAAAAAA
+HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPERXuTU0AKgAACEwAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAABDRAdHUZbnJxmlf//UVr//1BH//9RWv//ZpX//0VcnJwMEBweAAAA
 AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADRAeHjA1kpJBS8rKNjmu
 riYxa2sYGklJEwg+PhgaSUkmMWtrNzSurkFLysowNJKSDRAeHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3356,76 +3334,76 @@ jhAUJCUBAAACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAACEBQkJTA4jo5DSdbWHiVXVwEAAAIAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0QHh4wNJKSQUrLyzY0ra0mMGxsGBpKShMIPj4YGkpKJjBs
 bDY0ra1BSsvLMDSSkg0QHh4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAEMEBweRVycnGiW//9RXP//UEL//1Fc//9olv//RVycnAwQHB4AAAABAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAA4BAAADAAAAAQAXAAABAQADAAAAAQAXAAABAgADAAAABAAACPoBAwADAAAAAQABAAAB
-BgADAAAAAQACAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAXAAAB
-FwAEAAAAAQAACEQBHAADAAAAAQABAAABUgADAAAAAQABAAABUwADAAAABAAACQKHcwAHAAAMzAAACQoA
-AAAAAAgACAAIAAgAAQABAAEAAQAADMxhcHBsAhAAAG1udHJSR0IgWFlaIAfiAAEAAQAKAAEAC2Fjc3BB
-UFBMAAAAAEFQUEwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWRlc2MAAAFQAAAAYmRzY20AAAG0AAABsmNwcnQA
-AANoAAAAI3d0cHQAAAOMAAAAFHJYWVoAAAOgAAAAFGdYWVoAAAO0AAAAFGJYWVoAAAPIAAAAFHJUUkMA
-AAPcAAAIDGFhcmcAAAvoAAAAIHZjZ3QAAAwIAAAAMG5kaW4AAAw4AAAAPmNoYWQAAAx4AAAALG1tb2QA
-AAykAAAAKGJUUkMAAAPcAAAIDGdUUkMAAAPcAAAIDGFhYmcAAAvoAAAAIGFhZ2cAAAvoAAAAIGRlc2MA
-AAAAAAAACERpc3BsYXkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtbHVjAAAAAAAAACIAAAAMaHJIUgAAAAoA
-AAGoa29LUgAAAAoAAAGobmJOTwAAAAoAAAGoaWQAAAAAAAoAAAGoaHVIVQAAAAoAAAGoY3NDWgAAAAoA
-AAGoZGFESwAAAAoAAAGodWtVQQAAAAoAAAGoYXIAAAAAAAoAAAGoaXRJVAAAAAoAAAGocm9STwAAAAoA
-AAGobmxOTAAAAAoAAAGoaGVJTAAAAAoAAAGoZXNFUwAAAAoAAAGoZmlGSQAAAAoAAAGoemhUVwAAAAoA
-AAGodmlWTgAAAAoAAAGoc2tTSwAAAAoAAAGoemhDTgAAAAoAAAGocnVSVQAAAAoAAAGoZnJGUgAAAAoA
-AAGobXMAAAAAAAoAAAGoY2FFUwAAAAoAAAGodGhUSAAAAAoAAAGoZXNYTAAAAAoAAAGoZGVERQAAAAoA
-AAGoZW5VUwAAAAoAAAGocHRCUgAAAAoAAAGocGxQTAAAAAoAAAGoZWxHUgAAAAoAAAGoc3ZTRQAAAAoA
-AAGodHJUUgAAAAoAAAGoamFKUAAAAAoAAAGocHRQVAAAAAoAAAGoAEwARQA3ADAAMQAAdGV4dAAAAABD
-b3B5cmlnaHQgQXBwbGUgSW5jLiwgMjAxOAAAWFlaIAAAAAAAAPPYAAEAAAABFghYWVogAAAAAAAAc2YA
-AEFKAAAIUlhZWiAAAAAAAABZVAAAln4AABjeWFlaIAAAAAAAACocAAAoOAAAsf1jdXJ2AAAAAAAABAAA
-AAAFAAoADwAUABkAHgAjACgALQAyADYAOwBAAEUASgBPAFQAWQBeAGMAaABtAHIAdwB8AIEAhgCLAJAA
-lQCaAJ8AowCoAK0AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA8AD2APsBAQEHAQ0BEwEZAR8BJQErATIB
-OAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEBuQHBAckB0QHZAeEB6QHyAfoCAwIMAhQC
-HQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqICrAK2AsECywLVAuAC6wL1AwADCwMWAyEDLQM4A0MD
-TwNaA2YDcgN+A4oDlgOiA64DugPHA9MD4APsA/kEBgQTBCAELQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE
-0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcFhgWWBaYFtQXFBdUF5QX2BgYGFgYnBjcGSAZZBmoGewaMBp0G
-rwbABtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZB6wHvwfSB+UH+AgLCB8IMghGCFoIbgiCCJYIqgi+CNII
-5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J5Qn7ChEKJwo9ClQKagqBCpgKrgrFCtwK8wsLCyILOQtRC2kL
-gAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4MpwzADNkM8w0NDSYNQA1aDXQNjg2pDcMN3g34DhMOLg5JDmQO
-fw6bDrYO0g7uDwkPJQ9BD14Peg+WD7MPzw/sEAkQJhBDEGEQfhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR
-6BIHEiYSRRJkEoQSoxLDEuMTAxMjE0MTYxODE6QTxRPlFAYUJxRJFGoUixStFM4U8BUSFTQVVhV4FZsV
-vRXgFgMWJhZJFmwWjxayFtYW+hcdF0EXZReJF64X0hf3GBsYQBhlGIoYrxjVGPoZIBlFGWsZkRm3Gd0a
-BBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMczBz1HR4dRx1wHZkdwx3sHhYeQB5qHpQe
-vh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJggxCDwIRwhSCF1IaEhziH7IiciVSKCIq8i3SMKIzgjZiOUI8Ij
-8CQfJE0kfCSrJNolCSU4JWgllyXHJfcmJyZXJocmtyboJxgnSSd6J6sn3CgNKD8ocSiiKNQpBik4KWsp
-nSnQKgIqNSpoKpsqzysCKzYraSudK9EsBSw5LG4soizXLQwtQS12Last4S4WLkwugi63Lu4vJC9aL5Ev
-xy/+MDUwbDCkMNsxEjFKMYIxujHyMioyYzKbMtQzDTNGM38zuDPxNCs0ZTSeNNg1EzVNNYc1wjX9Njc2
-cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6sjrvOy07azuqO+g8JzxlPKQ84z0iPWE9
-oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5CMEJyQrVC90M6Q31DwEQDREdEikTORRJF
-VUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjXSR1JY0mpSfBKN0p9SsRLDEtTS5pL4kwqTHJMuk0CTUpN
-k03cTiVObk63TwBPSU+TT91QJ1BxULtRBlFQUZtR5lIxUnxSx1MTU19TqlP2VEJUj1TbVShVdVXCVg9W
-XFapVvdXRFeSV+BYL1h9WMtZGllpWbhaB1pWWqZa9VtFW5Vb5Vw1XIZc1l0nXXhdyV4aXmxevV8PX2Ff
-s2AFYFdgqmD8YU9homH1YklinGLwY0Njl2PrZEBklGTpZT1lkmXnZj1mkmboZz1nk2fpaD9olmjsaUNp
-mmnxakhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8eb3hv0XArcIZw4HE6cZVx8HJLcqZzAXNdc7h0
-FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5iXnnekZ6pXsEe2N7wnwhfIF84X1BfaF+AX5ifsJ/
-I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eDuoQdhICE44VHhauGDoZyhteHO4efiASIaYjOiTOJmYn+imSK
-yoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaPnpAGkG6Q1pE/kaiSEZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+X
-Cpd1l+CYTJi4mSSZkJn8mmia1ZtCm6+cHJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2oiailqMGo3aj
-5qRWpMelOKWpphqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24ri2uoa8Wr4uwALB1sOqx
-YLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5wro7urW7LrunvCG8m70VvY++Cr6Evv+/
-er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/IPci8yTrJuco4yrfLNsu2zDXMtc01zbXO
-Ns62zzfPuNA50LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV1tjXXNfg2GTY6Nls2fHadtr724DcBdyK3RDd
-lt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbnH+ep6DLovOlG6dDqW+rl63Dr++yG7RHt
-nO4o7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt9vv3ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+
-S/7c/23//3BhcmEAAAAAAAMAAAACZmYAAPKnAAANWQAAE9AAAAoOdmNndAAAAAAAAAABAAEAAAAAAAAA
-AQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAbmRpbgAAAAAAAAA2AACYwAAAV8AAAFEAAACRAAAAJ0AA
-ACGAAABQQAAAVEAAAjMzAAIzMwACMzMAAAAAAAAAAHNmMzIAAAAAAAELtwAABZb///NXAAAHKQAA/df/
-//u3///9pgAAA9oAAMD2bW1vZAAAAAAAADGFAABwEAAAAW7B4u74AAAAAAAAAAAAAAAAAAAAANIlJico
-WiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdlUmVwoycpKlpOU0ltYWdlUmVwWE5TT2Jq
-ZWN00iUmLC1XTlNBcnJheaIsKtIlJi8wXk5TTXV0YWJsZUFycmF5oy8sKtMyMwo0NTZXTlNXaGl0ZVxO
-U0NvbG9yU3BhY2VEMCAwABADgAzSJSY4OVdOU0NvbG9yojgq0iUmOzxXTlNJbWFnZaI7Kl8QD05TS2V5
-ZWRBcmNoaXZlctE/QFRyb290gAEACAARABoAIwAtADIANwBGAEwAVwBeAGUAcgB5AIEAgwCFAIoAjACO
-AJcAnACnAKkAqwCtALIAtQC3ALkAuwC9AMIA2QDbAN0Wtxa8FscW0BbjFucW8hb7FwAXCBcLFxAXHxcj
-FyoXMhc/F0QXRhdIF00XVRdYF10XZRdoF3oXfReCAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAA
-F4Q
+AAAAAAAAAAAAABABAAADAAAAAQAXAAABAQADAAAAAQAXAAABAgADAAAABAAACRIBAwADAAAAAQABAAAB
+BgADAAAAAQACAAABCgADAAAAAQABAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAAB
+FgADAAAAAQAXAAABFwAEAAAAAQAACEQBHAADAAAAAQABAAABKAADAAAAAQACAAABUgADAAAAAQABAAAB
+UwADAAAABAAACRqHcwAHAAAMzAAACSIAAAAAAAgACAAIAAgAAQABAAEAAQAADMxhcHBsAhAAAG1udHJS
+R0IgWFlaIAfiAAEAAQAKAAEAC2Fjc3BBUFBMAAAAAEFQUEwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAA
+ANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWRlc2MA
+AAFQAAAAYmRzY20AAAG0AAABsmNwcnQAAANoAAAAI3d0cHQAAAOMAAAAFHJYWVoAAAOgAAAAFGdYWVoA
+AAO0AAAAFGJYWVoAAAPIAAAAFHJUUkMAAAPcAAAIDGFhcmcAAAvoAAAAIHZjZ3QAAAwIAAAAMG5kaW4A
+AAw4AAAAPmNoYWQAAAx4AAAALG1tb2QAAAykAAAAKGJUUkMAAAPcAAAIDGdUUkMAAAPcAAAIDGFhYmcA
+AAvoAAAAIGFhZ2cAAAvoAAAAIGRlc2MAAAAAAAAACERpc3BsYXkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt
+bHVjAAAAAAAAACIAAAAMaHJIUgAAAAoAAAGoa29LUgAAAAoAAAGobmJOTwAAAAoAAAGoaWQAAAAAAAoA
+AAGoaHVIVQAAAAoAAAGoY3NDWgAAAAoAAAGoZGFESwAAAAoAAAGodWtVQQAAAAoAAAGoYXIAAAAAAAoA
+AAGoaXRJVAAAAAoAAAGocm9STwAAAAoAAAGobmxOTAAAAAoAAAGoaGVJTAAAAAoAAAGoZXNFUwAAAAoA
+AAGoZmlGSQAAAAoAAAGoemhUVwAAAAoAAAGodmlWTgAAAAoAAAGoc2tTSwAAAAoAAAGoemhDTgAAAAoA
+AAGocnVSVQAAAAoAAAGoZnJGUgAAAAoAAAGobXMAAAAAAAoAAAGoY2FFUwAAAAoAAAGodGhUSAAAAAoA
+AAGoZXNYTAAAAAoAAAGoZGVERQAAAAoAAAGoZW5VUwAAAAoAAAGocHRCUgAAAAoAAAGocGxQTAAAAAoA
+AAGoZWxHUgAAAAoAAAGoc3ZTRQAAAAoAAAGodHJUUgAAAAoAAAGoamFKUAAAAAoAAAGocHRQVAAAAAoA
+AAGoAEwARQA3ADAAMQAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUgSW5jLiwgMjAxOAAAWFlaIAAAAAAA
+APPYAAEAAAABFghYWVogAAAAAAAAc2YAAEFKAAAIUlhZWiAAAAAAAABZVAAAln4AABjeWFlaIAAAAAAA
+ACocAAAoOAAAsf1jdXJ2AAAAAAAABAAAAAAFAAoADwAUABkAHgAjACgALQAyADYAOwBAAEUASgBPAFQA
+WQBeAGMAaABtAHIAdwB8AIEAhgCLAJAAlQCaAJ8AowCoAK0AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA
+8AD2APsBAQEHAQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEB
+uQHBAckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqICrAK2AsEC
+ywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPHA9MD4APsA/kEBgQTBCAE
+LQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcFhgWWBaYFtQXFBdUF
+5QX2BgYGFgYnBjcGSAZZBmoGewaMBp0GrwbABtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZB6wHvwfSB+UH
++AgLCB8IMghGCFoIbgiCCJYIqgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J5Qn7ChEKJwo9ClQK
+agqBCpgKrgrFCtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4MpwzADNkM8w0NDSYN
+QA1aDXQNjg2pDcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9BD14Peg+WD7MPzw/sEAkQJhBDEGEQ
+fhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR6BIHEiYSRRJkEoQSoxLDEuMTAxMjE0MTYxODE6QTxRPlFAYU
+JxRJFGoUixStFM4U8BUSFTQVVhV4FZsVvRXgFgMWJhZJFmwWjxayFtYW+hcdF0EXZReJF64X0hf3GBsY
+QBhlGIoYrxjVGPoZIBlFGWsZkRm3Gd0aBBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMc
+zBz1HR4dRx1wHZkdwx3sHhYeQB5qHpQevh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJggxCDwIRwhSCF1IaEh
+ziH7IiciVSKCIq8i3SMKIzgjZiOUI8Ij8CQfJE0kfCSrJNolCSU4JWgllyXHJfcmJyZXJocmtyboJxgn
+SSd6J6sn3CgNKD8ocSiiKNQpBik4KWspnSnQKgIqNSpoKpsqzysCKzYraSudK9EsBSw5LG4soizXLQwt
+QS12Last4S4WLkwugi63Lu4vJC9aL5Evxy/+MDUwbDCkMNsxEjFKMYIxujHyMioyYzKbMtQzDTNGM38z
+uDPxNCs0ZTSeNNg1EzVNNYc1wjX9Njc2cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6
+sjrvOy07azuqO+g8JzxlPKQ84z0iPWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5C
+MEJyQrVC90M6Q31DwEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjXSR1JY0mpSfBK
+N0p9SsRLDEtTS5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91QJ1BxULtRBlFQUZtR5lIxUnxS
+x1MTU19TqlP2VEJUj1TbVShVdVXCVg9WXFapVvdXRFeSV+BYL1h9WMtZGllpWbhaB1pWWqZa9VtFW5Vb
+5Vw1XIZc1l0nXXhdyV4aXmxevV8PX2Ffs2AFYFdgqmD8YU9homH1YklinGLwY0Njl2PrZEBklGTpZT1l
+kmXnZj1mkmboZz1nk2fpaD9olmjsaUNpmmnxakhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8eb3hv
+0XArcIZw4HE6cZVx8HJLcqZzAXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5iXnnekZ6
+pXsEe2N7wnwhfIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eDuoQdhICE44VHhauG
+DoZyhteHO4efiASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaPnpAGkG6Q1pE/kaiS
+EZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+XCpd1l+CYTJi4mSSZkJn8mmia1ZtCm6+cHJyJnPedZJ3SnkCe
+rp8dn4uf+qBpoNihR6G2oiailqMGo3aj5qRWpMelOKWpphqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr
+6axcrNCtRK24ri2uoa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5
+wro7urW7LrunvCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/I
+Pci8yTrJuco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV1tjX
+XNfg2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbn
+H+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt9vv3
+ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+S/7c/23//3BhcmEAAAAAAAMAAAACZmYAAPKnAAANWQAAE9AA
+AAoOdmNndAAAAAAAAAABAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAQAAbmRpbgAAAAAA
+AAA2AACYwAAAV8AAAFEAAACRAAAAJ0AAACGAAABQQAAAVEAAAjMzAAIzMwACMzMAAAAAAAAAAHNmMzIA
+AAAAAAELtwAABZb///NXAAAHKQAA/df///u3///9pgAAA9oAAMD2bW1vZAAAAAAAADGFAABwEAAAAW7B
+4u74AAAAAAAAAAAAAAAAAAAAANIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdl
+UmVwoycpKlpOU0ltYWdlUmVwWE5TT2JqZWN00iUmLC1XTlNBcnJheaIsKtIlJi8wXk5TTXV0YWJsZUFy
+cmF5oy8sKtMyMwo0NTZXTlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABADgAzSJSY4OVdOU0NvbG9yojgq
+0iUmOzxXTlNJbWFnZaI7Kl8QD05TS2V5ZWRBcmNoaXZlctE/QFRyb290gAEACAARABoAIwAtADIANwBG
+AEwAVwBeAGUAcgB5AIEAgwCFAIoAjACOAJcAnACnAKkAqwCtALIAtQC3ALkAuwC9AMIA2QDbAN0WzxbU
+Ft8W6Bb7Fv8XChcTFxgXIBcjFygXNxc7F0IXShdXF1wXXhdgF2UXbRdwF3UXfReAF5IXlReaAAAAAAAA
+AgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAF5w
 </mutableData>
         </image>
         <image name="login_back_bw_light.jpg" width="1242" height="2208"/>
-        <image name="login_back_bw_lighter.jpg" width="1242" height="2208"/>
-        <image name="login_back_colored.jpg" width="1242" height="2208"/>
+        <image name="login_back_bw_lighter.jpg" width="298.07998657226562" height="529.91998291015625"/>
+        <image name="login_back_colored.jpg" width="298.07998657226562" height="529.91998291015625"/>
         <image name="login_logo.png" width="250" height="78"/>
         <image name="more_ico_achievement_24.png" width="24" height="24"/>
         <image name="more_ico_changepassword_24.png" width="24" height="24"/>
@@ -3435,19 +3413,19 @@ F4Q
         <image name="more_ico_notification_24.png" width="24" height="24"/>
         <image name="more_ico_profile_24.png" width="24" height="24"/>
         <image name="user" width="80" height="80"/>
-        <image name="userPlaceholder.png" width="100" height="100"/>
+        <image name="userPlaceholder.png" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k4C-v3-nNs"/>
-        <segue reference="4kA-P9-V6w"/>
-        <segue reference="RzW-GC-rek"/>
+        <segue reference="PPM-TZ-4LS"/>
+        <segue reference="Zfg-DY-aDn"/>
         <segue reference="KEB-lz-C9N"/>
         <segue reference="AlW-TL-44Y"/>
-        <segue reference="hTZ-kw-6yF"/>
+        <segue reference="GPJ-z3-CRz"/>
         <segue reference="rRV-pc-Utm"/>
         <segue reference="gN8-BW-sNN"/>
-        <segue reference="LaB-32-zew"/>
-        <segue reference="dWf-9O-1df"/>
-        <segue reference="26S-pN-GFy"/>
+        <segue reference="I7L-vY-GYd"/>
+        <segue reference="6hm-Uk-eBQ"/>
+        <segue reference="AVW-CC-bvd"/>
     </inferredMetricsTieBreakers>
 </document>

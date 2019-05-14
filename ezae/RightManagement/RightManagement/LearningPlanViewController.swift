@@ -47,7 +47,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
     }
-    func refreshView(control:UIRefreshControl){
+    @objc func refreshView(control:UIRefreshControl){
         cache = NSCache()
         getLearningPlans()
     }
@@ -59,7 +59,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
         self.navigationController?.navigationBar.tintColor = .black
         let image = UIImage.imageFromColor(color: UIColor(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5))
         self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
+       // self.navigationController?.navigationBar.isTranslucent = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         changeNavBarColor()
@@ -220,7 +220,7 @@ class LearningPlanViewController: UIViewController,UITableViewDataSource,UITable
     }
     
     
-    func launch(sender:UITapGestureRecognizer){
+    @objc func launch(sender:UITapGestureRecognizer){
         selectedlearningPlanSeq = sender.view?.tag
         self.performSegue(withIdentifier: "LearningPlanDetail", sender: nil)
     }

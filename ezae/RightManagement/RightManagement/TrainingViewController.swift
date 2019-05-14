@@ -27,25 +27,25 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     var cache:NSCache<AnyObject, AnyObject>!
     @IBOutlet weak var trainingTableView: UITableView!
     override func viewDidLoad() {
-       super.viewDidLoad()
-       cache = NSCache()
-       trainingTableView.delegate = self
-       trainingTableView.dataSource = self
-       setbackround()
-       self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
-       self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
-         NotificationCenter.default.addObserver(self, selector: #selector(TrainingViewController.refreshController), name: NSNotification.Name(rawValue: "refreshController"), object: nil)
+        super.viewDidLoad()
+        cache = NSCache()
+        trainingTableView.delegate = self
+        trainingTableView.dataSource = self
+        //setbackround()
+        self.loggedInUserSeq =  PreferencesUtil.sharedInstance.getLoggedInUserSeq()
+        self.loggedInCompanySeq =  PreferencesUtil.sharedInstance.getLoggedInCompanySeq()
+        NotificationCenter.default.addObserver(self, selector: #selector(TrainingViewController.refreshController), name: NSNotification.Name(rawValue: "refreshController"), object: nil)
         progressHUD = ProgressHUD(text: "Loading")
         if #available(iOS 10.0, *) {
             refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
             trainingTableView.refreshControl = refreshControl
         }
-       self.view.addSubview(progressHUD)
-       getLearningPlanAndModules()
+        self.view.addSubview(progressHUD)
+        getLearningPlanAndModules()
     }
     
-    func refreshController(){
+    @objc func refreshController(){
         cache = NSCache()
         totalModuleCount = 0
         headerCount = 0
@@ -61,7 +61,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         self.navigationController?.navigationBar.tintColor = .black
         let image = UIImage.imageFromColor(color: UIColor(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 0.5))
         self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
+        //self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func setbackround(){
@@ -77,7 +77,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
     }
     
-    func refreshView(refreshControl: UIRefreshControl) {
+    @objc func refreshView(refreshControl: UIRefreshControl) {
         refreshController()
     }
     
@@ -92,9 +92,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return headerCount
     }
-  
     
- 
+    
+    var isReattempted:Bool = false;
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row: Int = indexPath.row
         let section: Int = indexPath.section
@@ -118,6 +118,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         var progressStr = moduleJson["progress"] as? String
         var moduleType = moduleJson["moduletype"] as! String
         var leaderboardRankStr = moduleJson["leaderboard"] as? String
+        let reattempted = moduleJson["reattempts"] as! Int
         let badges = moduleJson["badges"] as? [Any]
         if(leaderboardRankStr == nil){
             leaderboardRankStr = "0"
@@ -137,24 +138,24 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             cell?.moduleImageView.clipsToBounds = true
         }else {
             moduleImageUrl = StringConstants.IMAGE_URL + "modules/" + moduleImageUrl!
-//            if let url = NSURL(string: moduleImageUrl!) {
-//                if let data = NSData(contentsOf: url as URL) {
-//                    let img = UIImage(data: data as Data)
-//                    cell?.moduleImageView.image = img
-//                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-//                    cell?.moduleImageView.clipsToBounds = true
-//                    self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
-//                }
-//            }
+            //            if let url = NSURL(string: moduleImageUrl!) {
+            //                if let data = NSData(contentsOf: url as URL) {
+            //                    let img = UIImage(data: data as Data)
+            //                    cell?.moduleImageView.image = img
+            //                    cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+            //                    cell?.moduleImageView.clipsToBounds = true
+            //                    self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+            //                }
+            //            }
             if let url = NSURL(string: moduleImageUrl!) {
                 DispatchQueue.global().async {
                     if let data = NSData(contentsOf: url as URL) {
                         DispatchQueue.main.async {
-                             let img = UIImage(data: data as Data)
-                                cell?.moduleImageView.image = img
-                                cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
-                                cell?.moduleImageView.clipsToBounds = true
-                                self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
+                            let img = UIImage(data: data as Data)
+                            cell?.moduleImageView.image = img
+                            cell?.moduleImageView.layer.cornerRadius = (cell?.moduleImageView.frame.height)! / 2
+                            cell?.moduleImageView.clipsToBounds = true
+                            self.cache.setObject(img!, forKey: moduleSeq as AnyObject)
                             //}
                         }
                     }
@@ -181,11 +182,24 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
             cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 110/255.0, green: 143/255.0, blue: 130/255.0, alpha: 1).cgColor]
             cell?.launchImageButton.setImage(UIImage(named: "arrow_green.png"), for: .normal)
         }
+        isReattempted = false;
         if(progress == 100){
             cell?.launchImageButton.isHidden = false
-            buttonTitle = "Review"
             cell?.baseView.gradientColor = [UIColor.white.cgColor, UIColor.init(red: 231/255.0, green: 124/255.0, blue: 34/255.0, alpha: 1).cgColor]
-            cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
+            if(reattempted > 0){
+                buttonTitle = "Re-attempt"
+                cell?.launchImageButton.setImage(UIImage(named: "reattempt1.png"), for: .normal)
+                isReattempted = true
+            }else{
+                buttonTitle = "Review"
+                cell?.launchImageButton.setImage(UIImage(named: "arrow_orange.png"), for: .normal)
+                if(moduleType == "elearning"){
+                    buttonTitle = "Completed"
+                    cell?.launchImageButton.isEnabled = false
+                    cell?.launchModuleButton.isEnabled = false
+                }
+            }
+            
         }else{
             cell?.launchImageButton.isHidden = false
         }
@@ -206,13 +220,13 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         }
         cell?.launchModuleButton.setTitle(buttonTitle, for: .normal)
         cell?.launchModuleButton.tag = seq
-        cell?.launchModuleButton.titleLabel?.tag = lpSeq
+        
         cell?.launchModuleButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
         
         cell?.launchImageButton.tag = seq
         cell?.launchImageButton.titleLabel?.tag = lpSeq
         cell?.launchImageButton.addTarget(self, action:#selector(launchModule), for: .touchUpInside)
-       
+        
         cell?.scoreLabel.isHidden = true
         cell?.pointLabel.isHidden = true
         cell?.scoreCaptionLabel.isHidden = true
@@ -278,15 +292,27 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         return sectionHeader
     }
     
-    func launchModule(sender:UIButton){
-//        selectedModuleSeq = sender.tag
-//        selectedLpSeq = (sender.titleLabel?.tag)!
-//        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
+    @objc func launchModule(sender:UIButton){
+        //        selectedModuleSeq = sender.tag
+        //        selectedLpSeq = (sender.titleLabel?.tag)!
+        //        self.performSegue(withIdentifier: "LaunchModuleController", sender: nil)
         
         let launchModuleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchModule") as! LaunchModuleViewController
         launchModuleVC.moduleSeq = sender.tag
         launchModuleVC.lpSeq = (sender.titleLabel?.tag)!
-        self.present(launchModuleVC, animated: true, completion: nil)
+        if(isReattempted){
+            let reattemptedAlert = UIAlertController(title: "Re-attempted", message: "Do you really want to re-attempt this Training?", preferredStyle: UIAlertControllerStyle.alert)
+            reattemptedAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                launchModuleVC.isReattempt = self.isReattempted
+                self.present(launchModuleVC, animated: true, completion: nil)
+            }))
+            reattemptedAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+            }))
+            present(reattemptedAlert, animated: true, completion: nil)
+        }else{
+            
+            self.present(launchModuleVC, animated: true, completion: nil)
+        }
     }
     
     var headerArr:[Int:UIView] = [:]
@@ -376,9 +402,9 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         jsonArr.append(title)
         let modulesJsonArr = lpDetailJson["modules"] as! [Any]
         for var j in 0..<modulesJsonArr.count{
-             let moduleJson = modulesJsonArr[j] as! [String: Any]
-             let moduleTile = moduleJson["title"] as! String
-             jsonArr.append(moduleTile)
+            let moduleJson = modulesJsonArr[j] as! [String: Any]
+            let moduleTile = moduleJson["title"] as! String
+            jsonArr.append(moduleTile)
         }
         lpModuleArr.append(jsonArr)
         totalModuleCount =  modulesJsonArr.count
@@ -397,8 +423,8 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let secondController = segue.destination as? LaunchModuleViewController {
-           secondController.moduleSeq = selectedModuleSeq
-           secondController.lpSeq = selectedLpSeq
+            secondController.moduleSeq = selectedModuleSeq
+            secondController.lpSeq = selectedLpSeq
         }
     }
     

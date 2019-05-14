@@ -115,5 +115,161 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+            timestampString = "579501458.503841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "getMessages(isScroll:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightManagement/Managers/UserMgr.swift"
+            timestampString = "579501458.503906"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "saveUser(response:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightManagement/Service/ServiceHandler.swift"
+            timestampString = "579500162.367648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "makeAPICall(url:method:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+            timestampString = "579501458.5039901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "MessageChatController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.charUserType.getter : Swift.String"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.089945"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "127">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.charUserType.setter : Swift.String"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.094008"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.charUserType.modify : Swift.String"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.0977989"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.charUserType.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.101508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RightManagement.MessageChatController"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.1052721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "586">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RightManagement.MessageChatController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RightManagement.MessageChatController&gt;"
+                  moduleName = "RightManagement"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
+                  timestampString = "579501459.1084861"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

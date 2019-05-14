@@ -65,7 +65,7 @@ class MessageTableViewController: UIViewController,UITableViewDelegate,UITableVi
         self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageFromColor(color: color), for: .default)
         self.navigationController?.navigationBar.isTranslucent = true
     }
-    func refreshView(refreshControl: UIRefreshControl) {
+   @objc func refreshView(refreshControl: UIRefreshControl) {
         cache  = NSCache()
         getMessages()
     }

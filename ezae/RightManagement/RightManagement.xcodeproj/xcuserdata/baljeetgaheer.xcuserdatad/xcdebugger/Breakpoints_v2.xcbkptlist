@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "loginButton(_:)"
+            landmarkName = "keyboardWillHide(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "loginButton(_:)"
+            landmarkName = "keyboardWillHide(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -744,12 +744,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/MessageTableViewController.swift"
-            timestampString = "536490248.220527"
+            timestampString = "579501458.499712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "loadMessages(response:)"
+            landmarkName = "markAsRead(row:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -760,13 +760,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/MessageTableViewController.swift"
-            timestampString = "536490248.224694"
+            timestampString = "579501458.500188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "showAlert(message:)"
-            landmarkType = "7">
+            landmarkName = "MessageTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -776,7 +776,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/MessageTableViewController.swift"
-            timestampString = "536490248.224797"
+            timestampString = "579501458.500478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -813,7 +813,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "viewDidAppear(_:)"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -829,8 +829,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -887,262 +887,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.674812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "getLearningPlanAndModules()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.674917"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.674976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675031"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675084"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675184"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675234"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675284"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675352"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675509"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.496298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.496351"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "getModules()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.496403"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.496454"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.496506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/DynamicViewController.swift"
             timestampString = "534402947.850719"
             startingColumnNumber = "9223372036854775807"
@@ -1159,104 +903,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675731"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "tableView(_:titleForHeaderInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675785"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "showAlert(message:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675836"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "TrainingViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675883"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "showAlert(message:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675933"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.675981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.216097"
+            timestampString = "579441361.3284889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -1397,22 +1045,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.676114"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "loadLearningPlanAndModule(response:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/ModuleProgressMgr.swift"
             timestampString = "536323033.804097"
             startingColumnNumber = "9223372036854775807"
@@ -1461,29 +1093,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/Service/ServiceHandler.swift"
-            timestampString = "535022536.935434"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "makeAPICall(url:method:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217102"
+            timestampString = "579441361.329062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
             endingLineNumber = "288"
-            landmarkName = "addSwitchView()"
+            landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1494,12 +1110,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217244"
+            timestampString = "579441361.329177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "446"
             endingLineNumber = "446"
-            landmarkName = "executeSubmitModuleCall()"
+            landmarkName = "addSelectedAnsSeq(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1510,12 +1126,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217338"
+            timestampString = "579441361.3292609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "457"
             endingLineNumber = "457"
-            landmarkName = "executeSubmitModuleCall()"
+            landmarkName = "addMultiSelectedAnsSeq(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1526,12 +1142,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217429"
+            timestampString = "579441361.3293411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "461"
             endingLineNumber = "461"
-            landmarkName = "executeSubmitModuleCall()"
+            landmarkName = "addMultiSelectedAnsSeq(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1542,12 +1158,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217518"
+            timestampString = "579441361.329416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "433"
             endingLineNumber = "433"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addSliderView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1558,12 +1174,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217602"
+            timestampString = "579441361.329513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "418"
             endingLineNumber = "418"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addWebViewforDoc()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1574,7 +1190,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217685"
+            timestampString = "579441361.329605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -1590,12 +1206,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217769"
+            timestampString = "579441361.329698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "565"
             endingLineNumber = "565"
-            landmarkName = "addSelectedSequenceOrderSeq()"
+            landmarkName = "executeSaveActivityCall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1606,7 +1222,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.217854"
+            timestampString = "579441361.3297909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -1622,12 +1238,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.21796"
+            timestampString = "579441361.329883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
             endingLineNumber = "362"
-            landmarkName = "addSliderView()"
+            landmarkName = "addElearningWebView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1638,12 +1254,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218045"
+            timestampString = "579441361.329971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "602"
             endingLineNumber = "602"
-            landmarkName = "isOptionSeqExistsInAnwers(optionSeq:)"
+            landmarkName = "getScoreForSelectedOption()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1654,7 +1270,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218126"
+            timestampString = "579441361.330049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -1670,12 +1286,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218212"
+            timestampString = "579441361.330121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "goToNextPage()"
+            landmarkName = "handleWithExistingProgress()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1686,12 +1302,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218296"
+            timestampString = "579441361.3304271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "executeSaveActivityCall()"
+            landmarkName = "submit(question:isTimeUp:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1702,13 +1318,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218378"
+            timestampString = "579441361.330765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "382"
             endingLineNumber = "382"
-            landmarkName = "PageItemController"
-            landmarkType = "3">
+            landmarkName = "viewWillTransition(to:with:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1718,12 +1334,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218464"
+            timestampString = "579441361.331019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
             endingLineNumber = "202"
-            landmarkName = "addTextView()"
+            landmarkName = "addCheckboxViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1734,12 +1350,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218545"
+            timestampString = "579441361.331259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "379"
             endingLineNumber = "379"
-            landmarkName = "addMultiSelectedAnsSeq(sender:)"
+            landmarkName = "viewWillTransition(to:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1750,12 +1366,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218628"
+            timestampString = "579441361.331447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "396"
             endingLineNumber = "396"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addWebViewForVideo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1766,28 +1382,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218708"
+            timestampString = "579441361.331581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "addTextView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.499001"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "launchModule(sender:)"
+            landmarkName = "addCheckboxViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1798,28 +1398,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218832"
+            timestampString = "579441361.331681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "315"
             endingLineNumber = "315"
-            landmarkName = "changeSwitcher(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/ModuleViewController.swift"
-            timestampString = "535980737.499111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "addSwitchView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1830,12 +1414,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.218951"
+            timestampString = "579441361.331758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "432"
             endingLineNumber = "432"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addSliderView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1846,12 +1430,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.219036"
+            timestampString = "579441361.331831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "441"
             endingLineNumber = "441"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addSliderView()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1894,29 +1478,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.219119"
+            timestampString = "579441361.331915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "445"
             endingLineNumber = "445"
-            landmarkName = "executeSubmitModuleCall()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.219201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "goToNextPage()"
-            landmarkType = "7">
+            landmarkName = "PageItemController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1925,13 +1493,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.676683"
+            filePath = "RightManagement/PageItemController.swift"
+            timestampString = "579441361.331987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "handleWithExistingProgress()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1989,38 +1557,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.461752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "goNextPage(index:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.461846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "createPageViewController(itemIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/ModuleProgressMgr.swift"
             timestampString = "536323033.8052"
             startingColumnNumber = "9223372036854775807"
@@ -2028,54 +1564,6 @@
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "getTimeConsumed(questions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.461982"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462096"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "getModuleDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462175"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "runTimer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2133,22 +1621,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462445"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "getModuleDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/ModuleProgressMgr.swift"
             timestampString = "536323033.805519"
             startingColumnNumber = "9223372036854775807"
@@ -2156,38 +1628,6 @@
             startingLineNumber = "39"
             endingLineNumber = "39"
             landmarkName = "saveModuleProgress(response:ansSeqs:scores:startDate:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462587"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "getModuleDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462674"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "goNextPage(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2229,54 +1669,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.462918"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "submitPendingQuestions()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463004"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "updateTimer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463089"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "updateTimer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/ModuleProgressMgr.swift"
             timestampString = "536323033.80592"
             startingColumnNumber = "9223372036854775807"
@@ -2293,109 +1685,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463226"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "getModuleDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463305"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "getModuleDetail()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RightManagement.LaunchModuleViewController.getModuleDetail() -&gt; ()"
-                  moduleName = "RightManagement"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/LaunchModuleViewController.swift"
-                  timestampString = "535633684.51202"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "215"
-                  endingLineNumber = "215"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.HTTPURLResponse&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in RightManagement.LaunchModuleViewController.getModuleDetail() -&gt; ()"
-                  moduleName = "RightManagement"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baljeetgaheer/Applications/right_ios/ezae/RightManagement/RightManagement/LaunchModuleViewController.swift"
-                  timestampString = "535633684.516288"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "213"
-                  endingLineNumber = "213"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "createPageViewController(itemIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.463464"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "createPageViewController(itemIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220188"
+            timestampString = "579441361.332461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "579"
             endingLineNumber = "579"
-            landmarkName = "showAlert(message:)"
+            landmarkName = "executeSaveActivityCall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2406,12 +1702,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220318"
+            timestampString = "579441361.3325371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "479"
             endingLineNumber = "479"
-            landmarkName = "executeSaveActivityCall()"
+            landmarkName = "submit(question:isTimeUp:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2438,12 +1734,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220438"
+            timestampString = "579441361.332649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "476"
             endingLineNumber = "476"
-            landmarkName = "executeSaveActivityCall()"
+            landmarkName = "submit(question:isTimeUp:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2454,12 +1750,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220524"
+            timestampString = "579441361.3327219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "480"
             endingLineNumber = "480"
-            landmarkName = "executeSaveActivityCall()"
+            landmarkName = "submit(question:isTimeUp:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2470,12 +1766,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220609"
+            timestampString = "579441361.332795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "411"
             endingLineNumber = "411"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addWebViewforDoc()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2486,28 +1782,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220693"
+            timestampString = "579441361.332868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "434"
             endingLineNumber = "434"
-            landmarkName = "submit(question:isTimeUp:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.464552"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "updateTimer()"
+            landmarkName = "addSliderView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2518,92 +1798,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.220811"
+            timestampString = "579441361.332942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "625"
             endingLineNumber = "625"
-            landmarkName = "handleViews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.464753"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.677422"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.464897"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "backTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.464972"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/LaunchModuleViewController.swift"
-            timestampString = "536238130.465042"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "getAnswerBySeq(ansSeq:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3140,12 +2340,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.221898"
+            timestampString = "579441361.334033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
             endingLineNumber = "263"
-            landmarkName = "tableView(_:moveRowAt:to:)"
+            landmarkName = "addTableView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3156,12 +2356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.22199"
+            timestampString = "579441361.334124"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
             endingLineNumber = "219"
-            landmarkName = "addTextView()"
+            landmarkName = "addCheckboxViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3172,12 +2372,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222071"
+            timestampString = "579441361.334199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "380"
             endingLineNumber = "380"
-            landmarkName = "addMultiSelectedAnsSeq(sender:)"
+            landmarkName = "viewWillTransition(to:with:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -3220,12 +2420,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222166"
+            timestampString = "579441361.3342741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "397"
             endingLineNumber = "397"
-            landmarkName = "submit(question:isTimeUp:)"
+            landmarkName = "addWebViewForVideo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3236,12 +2436,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222246"
+            timestampString = "579441361.334345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "556"
             endingLineNumber = "556"
-            landmarkName = "addSelectedSequenceOrderSeq()"
+            landmarkName = "executeSubmitModuleCall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3252,12 +2452,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.22234"
+            timestampString = "579441361.334414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
             endingLineNumber = "223"
-            landmarkName = "addTableView()"
+            landmarkName = "addTextView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3268,12 +2468,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222427"
+            timestampString = "579441361.334484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "235"
             endingLineNumber = "235"
-            landmarkName = "addTableView()"
+            landmarkName = "addTextView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3284,12 +2484,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222506"
+            timestampString = "579441361.334553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "addTableView()"
+            landmarkName = "addTextView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3300,7 +2500,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222587"
+            timestampString = "579441361.3346241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -3315,45 +2515,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.678142"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "getLearningPlanAndModules()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.678198"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222731"
+            timestampString = "579441361.3346961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "376"
             endingLineNumber = "376"
-            landmarkName = "addMultiSelectedAnsSeq(sender:)"
+            landmarkName = "viewWillTransition(to:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3364,7 +2532,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222802"
+            timestampString = "579441361.334767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -3380,13 +2548,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536241198.222876"
+            timestampString = "579441361.334837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "332"
             endingLineNumber = "332"
-            landmarkName = "PageItemController"
-            landmarkType = "3">
+            landmarkName = "changeSwitcher(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3396,12 +2564,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/MessageTableViewController.swift"
-            timestampString = "536490248.228091"
+            timestampString = "579501458.502764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkName = "setbackround()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3428,12 +2596,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/MessageTableViewController.swift"
-            timestampString = "536490248.228252"
+            timestampString = "579501458.503116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "markAsRead(row:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3508,28 +2676,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
-            timestampString = "536495319.678504"
+            timestampString = "579501458.503576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
             endingLineNumber = "285"
-            landmarkName = "loadMessageDetail(response:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RightManagement/TrainingViewController.swift"
-            timestampString = "536495319.678557"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "numberOfSections(in:)"
+            landmarkName = "sendMessage(messageDetail:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3540,13 +2692,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
-            timestampString = "536495319.67861"
+            timestampString = "579501458.503638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "numberOfSections(in:)"
-            landmarkType = "7">
+            landmarkName = "MessageChatController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3556,7 +2708,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
-            timestampString = "536495319.678662"
+            timestampString = "579501458.5036891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "307"
@@ -3572,12 +2724,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536489009.081842"
+            timestampString = "579441361.335277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "addTableView()"
+            landmarkName = "addTextView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3588,28 +2740,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/ViewControllers/MessageChat/MessageChatController.swift"
-            timestampString = "536495319.678732"
+            timestampString = "579501458.5037659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "setInputbar()"
+            landmarkName = "viewDidDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightManagement/PageItemController.swift"
-            timestampString = "536495396.226064"
+            timestampString = "579441361.335392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
             endingLineNumber = "118"
-            landmarkName = "goToNextPage()"
+            landmarkName = "handleWithExistingProgress()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

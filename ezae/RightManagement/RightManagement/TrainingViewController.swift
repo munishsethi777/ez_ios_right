@@ -303,7 +303,7 @@ class TrainingViewController: UIViewController,UITableViewDataSource,UITableView
         launchModuleVC.lpSeq = (sender.titleLabel?.tag)!
         let reattempted = sender.params["isReattempted"] as! Bool
         if(reattempted){
-            let reattemptedAlert = UIAlertController(title: "Re-attempted", message: "Do you really want to re-attempt this Training?", preferredStyle: UIAlertControllerStyle.alert)
+            let reattemptedAlert = UIAlertController(title: "Re-attempt", message: "Do you really want to re-attempt this Training?", preferredStyle: UIAlertControllerStyle.alert)
             reattemptedAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
                 launchModuleVC.isReattempt = self.isReattempted
                 self.present(launchModuleVC, animated: true, completion: nil)

@@ -70,7 +70,7 @@ struct StringConstants {
     
     //Module Actions
     static let GET_MODULES = ACTION_API_URL + "ModuleAction.php?&call=getDirectModules&userSeq={0}&companySeq={1}"
-    static let GET_MODULE_DETAIL = ACTION_API_URL + "ModuleAction.php?call=getModuleDetails&userSeq={0}&moduleSeq={1}&learningPlanSeq={2}"
+    static let GET_MODULE_DETAIL = ACTION_API_URL + "ModuleAction.php?call=getModuleDetails&userSeq={0}&moduleSeq={1}&learningPlanSeq={2}&isreattempted={3}"
     
     static let SUBMIT_MODULE_PROGRESS = ACTION_API_URL  + "QuizProgressAction.php?call=saveQuizProgress&userSeq={0}&companySeq={1}&answers={2}"
     
